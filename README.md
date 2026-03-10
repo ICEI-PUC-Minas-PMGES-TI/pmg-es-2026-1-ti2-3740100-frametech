@@ -1,21 +1,21 @@
-# Nome do projeto
+# Fame Tech
 
 Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Mateus Marçal Ribas Marques
+* Arthur Monserrat Souza
+* Bruno Henrique de Aguiar Xavier
+* Gabriel de Souza Carvalho Ferreira
+* Lucas do carmo Braz
+* Gustavo Paulino cicero
 
 ## Professor
 
-* Nome completo do professor 1
-* Nome completo do professor 2
-* Nome completo do professor 3
+* Lucca Soares De Paiva Lacerda
+* Michelle Hanne Soares de Almeida 
+* Luiz 
 
 ## Instruções de utilização
 
