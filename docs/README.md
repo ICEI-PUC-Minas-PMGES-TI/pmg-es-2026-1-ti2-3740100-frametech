@@ -57,8 +57,23 @@ Desenvolver um sistema de gestão para empresas de produção audiovisual que ce
 
 #### 1.3.1 Objetivos específicos
 
-_Apresente também alguns (pelo menos 4) **objetivos específicos** dependendo de onde você vai querer 
-concentrar sua prática investigativa, ou como você irá aprofundar seu trabalho._
+
+
+Registrar e gerenciar clientes.
+
+Registrar requisitos junto ao cliente.
+
+Controlar o agendamento de eventos e serviços.
+
+Registrar e gerenciar agendas internas e externas.
+
+Organizar a equipe responsável por cada projeto.
+
+Gerenciar a reserva e devolução de equipamentos.
+
+Acompanhar pagamentos e serviços realizados.
+
+Melhorar a organização dos processos e evitar conflitos de horários.
 
 ### 1.4 Justificativas
 
