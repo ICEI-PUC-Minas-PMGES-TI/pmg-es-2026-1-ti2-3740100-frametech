@@ -53,9 +53,7 @@ Muitas empresas de produção audiovisual enfrentam dificuldades na organizaçã
 Essa forma de trabalho pode gerar perda de informações, falta de acerto nos projetos e dificuldades no controle das atividades, comprometendo a eficiência e a qualidade dos serviços prestados.
 
 ### 1.3 Objetivo geral
-
-_O aluno deve escrever um pequeno parágrafo ou frase com o **objetivo geral** do trabalho. 
-O objetivo deve ser bem direto, específico e definido com verbos de ação (elaborar, propor, avaliar, comparar, desenvolver, etc.). No caso específico deste projeto, o objetivo deste trabalho é desenvolver um sistema para automação de processos para um problema específico._
+Desenvolver um sistema de gestão para empresas de produção audiovisual que centralize e organize os processos em uma única plataforma, atuando como uma ponte entre o primeiro contato com o cliente e a entrega final do serviço, além de gerir a parte dos profissionais envolvidos, visando melhorar a eficiência, reduzir erros operacionais e facilitar o acompanhamento das atividades.
 
 #### 1.3.1 Objetivos específicos
 
