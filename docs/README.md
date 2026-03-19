@@ -77,7 +77,14 @@ _Apresente aqui os perfis dos usuários-chave do sistema. Diversas são as infor
 
 ### 3.1. Análise da situação atual
 
-_Apresente uma descrição textual de como os sistemas atuais resolvem o problema que seu projeto se propõe a resolver. Caso sua proposta seja inovadora e não existam processos claramente definidos, **apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente**, mesmo que não se utilize tecnologia computacional._
+Atualmente, a gestão de projetos audiovisuais é realizada por meio de ferramentas genéricas, como planilhas, aplicativos de mensagens e softwares de gestão não especializados.
+Esses sistemas permitem organizar tarefas, prazos e equipes, porém de forma não integrada, exigindo o uso de múltiplas plataformas para controlar todas as etapas da produção. 
+Além disso, muitas dessas tarefas também são executadas de forma manual, por meio de anotações, trocas informais de mensagens e organização individual dos envolvidos, o que pode gerar desorganização e perda de informações.
+Assim, embora resolvam parcialmente o problema, essas soluções não atendem de forma completa e centralizada às demandas específicas do setor audiovisual.
+
+Como solução, propõe-se o desenvolvimento de uma plataforma que centralize a gestão de projetos audiovisuais,
+integrando organização de tarefas, controle de prazos, comunicação e gerenciamento das etapas de produção em um único ambiente.
+
 
 ### 3.2. Descrição geral da proposta de solução
 
