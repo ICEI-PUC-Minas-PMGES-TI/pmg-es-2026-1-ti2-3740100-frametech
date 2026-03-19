@@ -1,13 +1,13 @@
-# TITULO DO PROJETO
+# FRAME TECH
 
 
-**Nome completo do Aluno 1, email do aluno 1**
+**Mateus Marçal Ribas Marques, marcalribas315@gmail.com**
 
-**Nome completo do Aluno 2, email do aluno 2**
+**Bruno Henrique de Aguiar Xavier, brunohenriquexavier99@gmail.com**
 
-**Nome completo do Aluno 3, email do aluno 3**
+**Gustavo Paulino Cicero, gugupaulino123@gmail.com**
 
-**Nome completo do Aluno 4, email do aluno 4**
+**Arthur Monserrat Souza, arthurmonserrat6@gmail.com**
 
 **Nome completo do Aluno 5, email do aluno 5**
 
@@ -17,11 +17,11 @@
 
 Professores:
 
-** Prof. Nome do Prof 1 **
+** Lucca Soares de Paiva Lacerda **
 
-** Prof. Nome do Prof 2 **
+** Michelle Hanne Soares de Andrade **
 
-** Prof. Nome do Prof 3 **
+** Luiz **
 
 ---
 
