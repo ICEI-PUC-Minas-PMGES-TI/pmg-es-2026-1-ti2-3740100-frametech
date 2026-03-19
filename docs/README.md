@@ -42,10 +42,9 @@ mostrar algum resultado relevante do trabalho (até 10 linhas)._
 _Apresente uma frase introdutória definindo o que será apresentado._
 
 ### 1.1 Contextualização
+O setor audiovisual vem crescendo nos últimos anos, aumentando a demanda por uma gestão mais organizada e eficiente dos projetos. Nesse contexto, a comunicação e a gestão dos processos audiovisuais envolvem diversas etapas, como contato com o cliente, planejamento, organização de equipes, controle de equipamentos e cumprimento de prazos.
 
-_Na **contextualização**, o aluno deve dizer do que se trata o trabalho, em que área ou contexto se insere.
-A **contextualização** deve ser desenvolvida de algo mais genérico para algo mais específico. 
-A citação de pesquisas quantitativas é bem aceita aqui (corretamente referenciadas)._
+No entanto, muitos desses processos ainda são realizados de forma manual ou com o uso de ferramentas não integradas, o que dificulta a comunicação entre os envolvidos e o acompanhamento das atividades. Diante disso, torna-se necessária a melhoria da organização da empresa, evitando conflitos de horários, reduzindo erros operacionais e tornando o processo de gestão mais eficiente e profissional.
 
 ### 1.2 Problema
 
