@@ -77,8 +77,9 @@ Melhorar a organização dos processos e evitar conflitos de horários.
 
 ### 1.4 Justificativas
 
-_Mostre também as **justificativas** para o 
-desenvolvimento do seu trabalho e, caso deseje, destaque alguma contribuição do trabalho._
+O desenvolvimento deste projeto se justifica pela necessidade de melhorar a organização dos processos em empresas do setor audiovisual, que frequentemente utilizam métodos manuais ou ferramentas não integradas para gerenciar suas atividades.
+
+Como diferencial, a proposta apresenta uma gestão automatizada de todos os processos, permitindo maior integração, controle e eficiência nas atividades, desde o contato com o cliente até a execução e finalização dos serviços.
 
 ## 2. Participantes do processo
 
