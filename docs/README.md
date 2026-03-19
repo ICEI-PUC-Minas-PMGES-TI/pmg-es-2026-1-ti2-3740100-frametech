@@ -88,7 +88,13 @@ integrando organização de tarefas, controle de prazos, comunicação e gerenci
 
 ### 3.2. Descrição geral da proposta de solução
 
-_Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias do negócio e os objetivos geral e específicos do projeto. Apresente aqui as oportunidades de melhorias._
+A FrameTech é uma plataforma de gestão voltada ao setor audiovisual, criada para facilitar e automatizar processos que ainda são realizados de forma manual. A proposta é conectar todo o fluxo de trabalho, atuando como uma ponte entre o cliente e o prestador de serviços, desde o primeiro contato até o fechamento do contrato e a entrega final.
+
+A plataforma realiza a gestão tanto do lado do cliente quanto do profissional, organizando etapas como preparação de equipamentos, locação, controle de agendas (internas e externas) e execução do serviço.
+
+A solução está alinhada com a necessidade de organizar melhor os processos do negócio, trazendo mais controle, eficiência e praticidade no dia a dia, além de auxiliar no acompanhamento das atividades e na tomada de decisões.
+
+As melhorias nos processos incluem uma melhor organização por meio de diferentes tipos de perfis de usuários, gestão automatizada de agendas e monitoramento de equipamentos, garantindo maior controle e eficiência na execução dos projetos.
 
 ### 3.3. Modelagem dos processos
 
