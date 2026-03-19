@@ -48,10 +48,9 @@ No entanto, muitos desses processos ainda são realizados de forma manual ou com
 
 ### 1.2 Problema
 
-_Em seguida o aluno deve caminhar a contextualização para descrever o **problema** que o trabalho trata. 
-O **problema** pode ser algo vivido em uma empresa específica. Neste caso, o aluno deve rapidamente apresentar 
-o cenário de problema da empresa. A empresa só deve ser citada explicitamente se o aluno tiver autorização 
-para tal._
+Muitas empresas de produção audiovisual enfrentam dificuldades na organização de suas atividades, principalmente devido ao uso de processos manuais e descentralizados. A gestão de agendamentos, clientes, equipes e equipamentos costuma ser feita de forma pouco integrada, o que aumenta as chances de erros.
+
+Essa forma de trabalho pode gerar perda de informações, falta de acerto nos projetos e dificuldades no controle das atividades, comprometendo a eficiência e a qualidade dos serviços prestados.
 
 ### 1.3 Objetivo geral
 
