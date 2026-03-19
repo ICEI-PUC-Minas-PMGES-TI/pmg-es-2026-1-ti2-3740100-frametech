@@ -9,19 +9,19 @@
 
 **Arthur Monserrat Souza, arthurmonserrat6@gmail.com**
 
-**Nome completo do Aluno 5, email do aluno 5**
+**Lucas do Carmo Braz, Luiopsaga@gmail.com**
 
-**Nome completo do Aluno 6, email do aluno 6**
+**Gabriel de Souza Carvalho Ferreira, gabriel.scferreira@gmail.com**
 
 ---
 
 Professores:
 
-** Lucca Soares de Paiva Lacerda **
+**Lucca Soares de Paiva Lacerda**
 
-** Michelle Hanne Soares de Andrade **
+**Michelle Hanne Soares de Andrade**
 
-** Luiz **
+**Luiz**
 
 ---
 
