@@ -1,4 +1,4 @@
-# Fame Tech
+# Frame Tech
 
 Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
 
