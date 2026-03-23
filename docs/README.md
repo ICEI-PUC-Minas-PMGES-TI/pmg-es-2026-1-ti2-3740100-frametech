@@ -31,8 +31,7 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade Cató
 
 ---
 
-_**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o trabalho, descrever seu objetivo e, ao final, 
-mostrar algum resultado relevante do trabalho (até 10 linhas)._
+O projeto propõe o desenvolvimento de um sistema de gestão para empresas do setor audiovisual, com o objetivo de centralizar e organizar todos os processos em uma única plataforma. A solução busca substituir métodos manuais e ferramentas dispersas por uma gestão automatizada, integrando atividades como atendimento ao cliente, agendamento, organização de equipes, controle de equipamentos e acompanhamento de serviços. Com isso, pretende-se reduzir erros, evitar conflitos de horários e aumentar a eficiência e o profissionalismo na execução dos projetos.
 
 ---
 
