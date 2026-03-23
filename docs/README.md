@@ -38,7 +38,7 @@ O projeto propõe o desenvolvimento de um sistema de gestão para empresas do se
 
 ## 1. Introdução
 
-_Apresente uma frase introdutória definindo o que será apresentado._
+Transformamos a gestão do seu projeto em algo simples e eficiente.
 
 ### 1.1 Contextualização
 O setor audiovisual vem crescendo nos últimos anos, aumentando a demanda por uma gestão mais organizada e eficiente dos projetos. Nesse contexto, a comunicação e a gestão dos processos audiovisuais envolvem diversas etapas, como contato com o cliente, planejamento, organização de equipes, controle de equipamentos e cumprimento de prazos.
