@@ -91,9 +91,9 @@ Administrador
 - Gere agendas
 - Gere equipamentos
 
-Prestaor de serviços
--aceitam propostas de serviços
--consultam agenda
+Prestador de serviços
+- Aceitam propostas de serviços
+- Consultam agenda
 
 ## 3. Modelagem do processo de negócio
 
