@@ -72,7 +72,6 @@ Gerenciar a reserva e devolução de equipamentos.
 
 Acompanhar pagamentos e serviços realizados.
 
-Melhorar a organização dos processos e evitar conflitos de horários.
 
 ### 1.4 Justificativas
 
@@ -82,7 +81,19 @@ Como diferencial, a proposta apresenta uma gestão automatizada de todos os proc
 
 ## 2. Participantes do processo
 
-_Apresente aqui os perfis dos usuários-chave do sistema. Diversas são as informações que podem ser relevantes para a definição dos perfis dos usuários, tais como idade, gênero, aspectos culturais, nível de educação, entre outros. A pesquisa de mercado pode ser uma ferramenta poderosa para se identificar e caracterizar os perfis de usuários. Apresente claramente o papel a ser desempenhado por cada usuário._
+Cliente
+- Faz cadastro
+- Faz orçamento e solicitação de serviço
+- Acompanha o status do serviço
+  
+Administrador
+- Faz escala
+- Gere agendas
+- Gere equipamentos
+
+Prestaor de serviços
+-aceitam propostas de serviços
+-consultam agenda
 
 ## 3. Modelagem do processo de negócio
 
@@ -109,14 +120,15 @@ As melhorias nos processos incluem uma melhor organização por meio de diferent
 
 ### 3.3. Modelagem dos processos
 
-[PROCESSO 1 - Nome do Processo](processo-1-nome-do-processo.md "Detalhamento do Processo 1.")
+[PROCESSO 1 - Gestão do Cliente](processo-1-nome-do-processo.md "Detalhamento do Processo 1.")
 
-[PROCESSO 2 - Nome do Processo](processo-2-nome-do-processo.md "Detalhamento do Processo 2.")
+[PROCESSO 2 - Gestão dos Profissionais de serviço](processo-2-nome-do-processo.md "Detalhamento do Processo 2.")
 
-[PROCESSO 3 - Nome do Processo](processo-3-nome-do-processo.md "Detalhamento do Processo 3.")
+[PROCESSO 3 - Gestão de eventos](processo-3-nome-do-processo.md "Detalhamento do Processo 3.")
 
-[PROCESSO 4 - Nome do Processo](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
+[PROCESSO 4 - Solicitação de serviços](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
 
+[PROCESSO 5 - cadastro de equipamentos](processo-5-nome-do-processo.md "Detalhamento do Processo 5.")
 ## 4. Projeto da solução
 
 _O documento a seguir apresenta o detalhamento do projeto da solução. São apresentadas duas seções que descrevem, respectivamente: modelo relacional e tecnologias._
