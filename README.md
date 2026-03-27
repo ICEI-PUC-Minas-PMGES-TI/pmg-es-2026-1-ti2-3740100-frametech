@@ -1,6 +1,8 @@
 # Frame Tech
 
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
+O projeto tem como objetivo desenvolver um sistema que permita ao cliente solicitar serviços de forma simples, organizada e totalmente digital. A proposta é centralizar todas as etapas do processo — desde o cadastro e login, passando pela solicitação e detalhamento do serviço, até o recebimento de propostas, pagamento e acompanhamento — em uma única plataforma, proporcionando mais praticidade e transparência para o usuário.
+
+Além disso, o sistema busca otimizar a comunicação entre cliente e responsável pelo atendimento, garantindo maior agilidade na análise das solicitações e no envio de propostas. Com isso, espera-se melhorar a experiência do cliente, reduzir falhas no processo e tornar a contratação de serviços mais eficiente e confiável.
 
 ## Integrantes
 
