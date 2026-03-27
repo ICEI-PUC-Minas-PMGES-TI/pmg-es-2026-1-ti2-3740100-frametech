@@ -3,7 +3,8 @@
 _Apresente aqui o nome e as oportunidades de melhoria para o processo 1. 
 Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN._
 
-![Exemplo de um Modelo BPMN do PROCESSO 1](images/process.png "Modelo BPMN do Processo 1.")
+<img width="2520" height="947" alt="Cliente Diagrama" src="https://github.com/user-attachments/assets/ea3a0c26-be6a-4519-91d1-f545c731cf12" />
+
 
 #### Detalhamento das atividades
 
