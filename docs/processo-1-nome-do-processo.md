@@ -3,7 +3,8 @@
 _Apresente aqui o nome e as oportunidades de melhoria para o processo 1. 
 Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN._
 
-<img width="2520" height="947" alt="Cliente Diagrama" src="https://github.com/user-attachments/assets/ea3a0c26-be6a-4519-91d1-f545c731cf12" />
+<img width="2520" height="1052" alt="Cliente Diagrama (2)" src="https://github.com/user-attachments/assets/ea68e424-b1cd-464b-a2cc-e1721e882472" />
+
 
 
 #### Detalhamento das atividades
