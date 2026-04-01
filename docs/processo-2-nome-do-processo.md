@@ -1,9 +1,8 @@
-### 3.3.2 Processo 2 – NOME DO PROCESSO
+### 3.3.2 Processo 2 – GESTÃO DE PROFISSIONAIS DE SERVIÇO
 
-_Apresente aqui o nome e as oportunidades de melhoria para o processo 2. 
-Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN._
+Automatizar a verificação de disponibilidade dos profissionais e integrar notificações em tempo real, reduzindo conflitos de agenda e retrabalho na definição de equipes.
 
-![Exemplo de um Modelo BPMN do PROCESSO 2](images/process.png "Modelo BPMN do Processo 2.")
+![Exemplo de um Modelo BPMN do PROCESSO 2](modelagem.png "Modelo BPMN do Processo 2.")
 
 
 #### Detalhamento das atividades
@@ -41,7 +40,7 @@ _* **Tabela** - campo formado por uma matriz de valores_
 
 | **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
 | ---             | ---              | ---            | ---               |
-| [Nome do campo] | [tipo de dados]  |                |                   |
+| nome_profissional|Caixa de texto   |obrigatório     |                   |
 | ***Exemplo:***  |                  |                |                   |
 | login           | Caixa de Texto   | formato de e-mail |                |
 | senha           | Caixa de Texto   | mínimo de 8 caracteres |           |
