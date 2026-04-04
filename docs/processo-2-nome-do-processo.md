@@ -50,7 +50,7 @@ _* **Tabela** - campo formado por uma matriz de valores_
 | Salvar   | Atividade: Salva profissional   | default |
 | Cancelar | Atividade: Exibir profissionais | cancel  |
 
-
+------------------------------------------------------------------------------------
 
 **Atividade: Seleciona data/evento**
 
@@ -65,7 +65,7 @@ _* **Tabela** - campo formado por uma matriz de valores_
 | Verificar Disponibilidade | Atividade: Consulta disponibilidade de profissionais | default |
 | Voltar                    | Atividade: Acessa lista de profissionais             | cancel  |
 
-
+------------------------------------------------------------------------------------
 
 **Atividade: Seleciona profissionais (fotógrafo, cinegrafista, editor)**
 
@@ -79,7 +79,7 @@ _* **Tabela** - campo formado por uma matriz de valores_
 | Confirmar Alocação | Atividade: Aloca profissionais | default |
 | Reprogramar Evento | Atividade: Reprogramar evento  | cancel  |
 
-
+------------------------------------------------------------------------------------
 
 **Atividade: Notifica profissionais**
 
@@ -92,8 +92,7 @@ _* **Tabela** - campo formado por uma matriz de valores_
 | ------------------- | --------------- | ------- |
 | Enviar Notificações | Fim do Processo | default |
 
-
-
+------------------------------------------------------------------------------------
 
 **Atividade: Reprogramar evento**
 
