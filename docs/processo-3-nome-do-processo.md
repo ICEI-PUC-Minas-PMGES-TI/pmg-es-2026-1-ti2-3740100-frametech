@@ -1,7 +1,8 @@
 ### 3.3.3 Processo 3 – Gerenciamento de cadastro de equipamentos
 
-![Exemplo de um Modelo BPMN do PROCESSO 3](<img width="1478" height="638" alt="image" src="https://github.com/user-attachments/assets/c1389b3b-7034-4fc6-95ef-cb0294b5b29b"/>
-)
+O processo de gerenciamento de cadastro de equipamentos tem como objetivo organizar o cadastro, atualização e controle dos equipamentos utilizados nos projetos audiovisuais, garantindo maior eficiência e disponibilidade dos recursos.
+
+![9f4500df-0a1f-4f77-bc21-92a7e054c579](https://github.com/user-attachments/assets/ff1908b6-37f0-476c-bbda-37000cbfb4f3)
 
 
 **Cadastrar Equipamento**
