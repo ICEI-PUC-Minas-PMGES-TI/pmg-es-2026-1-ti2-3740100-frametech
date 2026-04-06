@@ -17,7 +17,7 @@ Além disso, o sistema busca otimizar a comunicação entre cliente e responsáv
 
 * Lucca Soares De Paiva Lacerda
 * Michelle Hanne Soares de Almeida 
-* Luiz 
+* Luiz Carlos da Silva
 
 ## Instruções de utilização
 
