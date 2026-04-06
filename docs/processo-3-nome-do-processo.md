@@ -1,67 +1,78 @@
-### 3.3.3 Processo 3 – NOME DO PROCESSO
+### 3.3.3 Processo 3 – Gerenciamento de cadastro de equipamentos
 
-_Apresente aqui o nome e as oportunidades de melhoria para o processo 3. 
-Em seguida, apresente o modelo do processo 3, descrito no padrão BPMN._
-
-![Exemplo de um Modelo BPMN do PROCESSO 3](images/process.png "Modelo BPMN do Processo 3.")
+![Exemplo de um Modelo BPMN do PROCESSO 3](<img width="1478" height="638" alt="image" src="https://github.com/user-attachments/assets/c1389b3b-7034-4fc6-95ef-cb0294b5b29b"/>
+)
 
 
-#### Detalhamento das atividades
+**Cadastrar Equipamento**
 
-_Descreva aqui cada uma das propriedades das atividades do processo 3. 
-Devem estar relacionadas com o modelo de processo apresentado anteriormente._
-
-_Os tipos de dados a serem utilizados são:_
-
-_* **Área de texto** - campo texto de múltiplas linhas_
-
-_* **Caixa de texto** - campo texto de uma linha_
-
-_* **Número** - campo numérico_
-
-_* **Data** - campo do tipo data (dd-mm-aaaa)_
-
-_* **Hora** - campo do tipo hora (hh:mm:ss)_
-
-_* **Data e Hora** - campo do tipo data e hora (dd-mm-aaaa, hh:mm:ss)_
-
-_* **Imagem** - campo contendo uma imagem_
-
-_* **Seleção única** - campo com várias opções de valores que são mutuamente exclusivas (tradicional radio button ou combobox)_
-
-_* **Seleção múltipla** - campo com várias opções que podem ser selecionadas mutuamente (tradicional checkbox ou listbox)_
-
-_* **Arquivo** - campo de upload de documento_
-
-_* **Link** - campo que armazena uma URL_
-
-_* **Tabela** - campo formado por uma matriz de valores_
-
-**Nome da atividade 1**
-
-| **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
-| ---             | ---              | ---            | ---               |
-| [Nome do campo] | [tipo de dados]  |                |                   |
-| ***Exemplo:***  |                  |                |                   |
-| login           | Caixa de Texto   | formato de e-mail |                |
-| senha           | Caixa de Texto   | mínimo de 8 caracteres |           |
-
-| **Comandos**         |  **Destino**                   | **Tipo** |
-| ---                  | ---                            | ---               |
-| [Nome do botão/link] | Atividade/processo de destino  | (default/cancel  ) |
-| ***Exemplo:***       |                                |                   |
-| entrar               | Fim do Processo 1              | default           |
-| cadastrar            | Início do proceso de cadastro  |                   |
+| **Campo**        | **Tipo**       | **Restrições**                        | **Valor default** |
+| ---------------- | -------------- | ------------------------------------- | ----------------- |
+| nome_equipamento | Caixa de texto | obrigatório                           |                   |
+| descricao        | Área de texto  | opcional                              |                   |
+| categoria        | Seleção única  | obrigatório                           |                   |
+| quantidade       | Número         | obrigatório (>=1)                     | 1                 |
+| data_aquisicao   | Data           | opcional                              |                   |
+| status           | Seleção única  | obrigatório (Disponível/Indisponível) | Disponível        |
+| imagem           | Imagem         | opcional                              |                   |
 
 
-**Nome da atividade 2**
+| **Comandos** | **Destino**                   | **Tipo** |
+| ------------ | ----------------------------- | -------- |
+| salvar       | Consultar/Listar Equipamentos | default  |
+| cancelar     | Consultar/Listar Equipamentos | cancel   |
 
-| **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
-| ---             | ---              | ---            | ---               |
-| [Nome do campo] | [tipo de dados]  |                |                   |
-|                 |                  |                |                   |
 
-| **Comandos**         |  **Destino**                   | **Tipo**          |
-| ---                  | ---                            | ---               |
-| [Nome do botão/link] | Atividade/processo de destino  | (default/cancel/  ) |
-|                      |                                |                   |
+**Consultar/Listar Equipamentos**
+
+| **Campo**           | **Tipo**       | **Restrições**            | **Valor default** |
+| ------------------- | -------------- | ------------------------- | ----------------- |
+| filtro_nome         | Caixa de texto | opcional                  |                   |
+| categoria           | Seleção única  | opcional                  |                   |
+| status              | Seleção única  | opcional                  |                   |
+| tabela_equipamentos | Tabela         | listagem dos equipamentos |                   |
+
+
+| **Comandos** | **Destino**           | **Tipo** |
+| ------------ | --------------------- | -------- |
+| buscar       | Atualiza tabela       | default  |
+| cadastrar    | Cadastrar Equipamento | default  |
+| editar       | Editar Equipamento    | default  |
+
+**Editar Equipamento**
+
+| **Campo**        | **Tipo**       | **Restrições** | **Valor default** |
+| ---------------- | -------------- | -------------- | ----------------- |
+| nome_equipamento | Caixa de texto | obrigatório    | preenchido        |
+| descricao        | Área de texto  | opcional       | preenchido        |
+| categoria        | Seleção única  | obrigatório    | preenchido        |
+| quantidade       | Número         | obrigatório    | preenchido        |
+| status           | Seleção única  | obrigatório    | preenchido        |
+| imagem           | Imagem         | opcional       | preenchido        |
+
+
+| **Comandos** | **Destino**                   | **Tipo** |
+| ------------ | ----------------------------- | -------- |
+| salvar       | Consultar/Listar Equipamentos | default  |
+| excluir      | Consultar/Listar Equipamentos | cancel   |
+| cancelar     | Consultar/Listar Equipamentos | cancel   |
+
+
+**Registrar Retirada de Equipamento**
+
+| **Campo**               | **Tipo**       | **Restrições** | **Valor default** |
+| ----------------------- | -------------- | -------------- | ----------------- |
+| equipamento             | Seleção única  | obrigatório    |                   |
+| quantidade              | Número         | obrigatório    |                   |
+| responsavel             | Caixa de texto | obrigatório    |                   |
+| data_retirada           | Data e Hora    | obrigatório    |                   |
+| data_prevista_devolucao | Data           | obrigatório    |                   |
+
+
+| **Comandos** | **Destino**                   | **Tipo** |
+| ------------ | ----------------------------- | -------- |
+| confirmar    | Consultar/Listar Equipamentos | default  |
+| cancelar     | Consultar/Listar Equipamentos | cancel   |
+
+
+
