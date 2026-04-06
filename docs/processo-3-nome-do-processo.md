@@ -76,4 +76,165 @@ O processo de gerenciamento de cadastro de equipamentos tem como objetivo organi
 | cancelar     | Consultar/Listar Equipamentos | cancel   |
 
 
+---
+
+ **3.3.3 Processo 3 – Gestão de Eventos**
+
+O processo de gestão de eventos tem como objetivo organizar o agendamento dos serviços audiovisuais, garantindo o controle da disponibilidade de datas, equipe e equipamentos, além de assegurar a correta execução dos serviços contratados.
+
+Como oportunidade de melhoria, propõe-se a automatização da verificação de disponibilidade dos recursos (data, equipe e equipamentos), bem como a sugestão de novas datas em casos de indisponibilidade, reduzindo conflitos de agenda e retrabalho.
+
+
+
+---
+
+**Detalhamento das atividades**
+
+**Solicitar Serviço**
+
+| Campo         | Tipo           | Restrições  | Valor default |
+| ------------- | -------------- | ----------- | ------------- |
+| cliente       | Caixa de texto | obrigatório |               |
+| tipo_servico  | Seleção única  | obrigatório |               |
+| data_desejada | Data           | obrigatório |               |
+| horario       | Hora           | obrigatório |               |
+| local         | Caixa de texto | obrigatório |               |
+| observacoes   | Área de texto  | opcional    |               |
+
+Comandos
+
+| Comando  | Destino             | Tipo    |
+| -------- | ------------------- | ------- |
+| enviar   | Receber solicitação | default |
+| cancelar | Encerrar processo   | cancel  |
+
+
+
+**Receber Solicitação**
+
+| Campo         | Tipo  | Restrições | Valor default |
+| ------------- | ----- | ---------- | ------------- |
+| dados_cliente | Texto | automático |               |
+| dados_evento  | Texto | automático |               |
+
+Comandos
+
+| Comando   | Destino                           | Tipo    |
+| --------- | --------------------------------- | ------- |
+| continuar | Verificar disponibilidade de data | default |
+
+
+
+**Verificar Disponibilidade de Data**
+
+| Campo       | Tipo | Restrições  | Valor default |
+| ----------- | ---- | ----------- | ------------- |
+| data_evento | Data | obrigatório |               |
+| horario     | Hora | obrigatório |               |
+
+Comandos
+
+| Comando   | Destino           | Tipo    |
+| --------- | ----------------- | ------- |
+| verificar | Verificar equipe  | default |
+| cancelar  | Encerrar processo | cancel  |
+
+
+
+**Verificar Equipe Disponível**
+
+| Campo             | Tipo  | Restrições | Valor default |
+| ----------------- | ----- | ---------- | ------------- |
+| equipe_disponivel | Lista | automático |               |
+
+Comandos
+
+| Comando   | Destino                | Tipo    |
+| --------- | ---------------------- | ------- |
+| verificar | Verificar equipamentos | default |
+| cancelar  | Encerrar processo      | cancel  |
+
+
+
+**Verificar Equipamentos Disponíveis**
+
+| Campo        | Tipo  | Restrições | Valor default |
+| ------------ | ----- | ---------- | ------------- |
+| equipamentos | Lista | automático |               |
+
+### Comandos
+
+| Comando  | Destino             | Tipo    |
+| -------- | ------------------- | ------- |
+| validar  | Disponibilidade OK? | default |
+| cancelar | Encerrar processo   | cancel  |
+
+
+
+ **Sugerir Nova Data**
+
+| Campo        | Tipo          | Restrições  | Valor default |
+| ------------ | ------------- | ----------- | ------------- |
+| nova_data    | Data          | obrigatório |               |
+| novo_horario | Hora          | obrigatório |               |
+| observacao   | Área de texto | opcional    |               |
+
+Comandos
+
+| Comando   | Destino                           | Tipo    |
+| --------- | --------------------------------- | ------- |
+| confirmar | Verificar disponibilidade de data | default |
+| cancelar  | Encerrar processo                 | cancel  |
+
+
+
+**Cadastrar Evento**
+
+| Campo        | Tipo           | Restrições  | Valor default |
+| ------------ | -------------- | ----------- | ------------- |
+| cliente      | Seleção única  | obrigatório |               |
+| tipo_servico | Seleção única  | obrigatório |               |
+| data_evento  | Data           | obrigatório |               |
+| horario      | Hora           | obrigatório |               |
+| equipe       | Lista          | obrigatório |               |
+| equipamentos | Lista          | obrigatório |               |
+| local        | Caixa de texto | obrigatório |               |
+
+Comandos
+
+| Comando  | Destino           | Tipo    |
+| -------- | ----------------- | ------- |
+| salvar   | Registrar evento  | default |
+| cancelar | Encerrar processo | cancel  |
+
+
+
+**Registrar Evento no Sistema**
+
+| Campo        | Tipo  | Restrições | Valor default |
+| ------------ | ----- | ---------- | ------------- |
+| dados_evento | Texto | automático |               |
+
+Comandos
+
+| Comando   | Destino            | Tipo    |
+| --------- | ------------------ | ------- |
+| confirmar | Enviar confirmação | default |
+
+
+
+**Enviar Confirmação ao Cliente**
+
+| Campo    | Tipo  | Restrições | Valor default |
+| -------- | ----- | ---------- | ------------- |
+| mensagem | Texto | automático |               |
+| status   | Texto | automático | Confirmado    |
+
+Comandos
+
+| Comando   | Destino           | Tipo    |
+| --------- | ----------------- | ------- |
+| finalizar | Encerrar processo | default |
+
+
 
