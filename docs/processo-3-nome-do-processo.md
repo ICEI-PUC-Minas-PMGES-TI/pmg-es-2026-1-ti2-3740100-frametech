@@ -84,6 +84,7 @@ O processo de gestão de eventos tem como objetivo organizar o agendamento dos s
 
 Como oportunidade de melhoria, propõe-se a automatização da verificação de disponibilidade dos recursos (data, equipe e equipamentos), bem como a sugestão de novas datas em casos de indisponibilidade, reduzindo conflitos de agenda e retrabalho.
 
+<img width="1687" height="1088" alt="Agendamento de Eventos Audiovisuais Diagrama (1)" src="https://github.com/user-attachments/assets/b059e71a-856e-432a-a55f-df1c0ae88684" />
 
 
 ---
