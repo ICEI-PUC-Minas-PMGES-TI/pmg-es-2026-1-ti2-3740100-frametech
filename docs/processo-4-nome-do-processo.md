@@ -2,7 +2,8 @@
 
 O processo de solicitação de serviços tem como objetivo permitir que o cliente solicite, receba propostas, aprove e finalize a contratação de um serviço de forma organizada.
 
-<img width="1984" height="1063" alt="PROCESSO 4 - Solicitação de serviços Diagrama (2)" src="https://github.com/user-attachments/assets/1c512fba-a3d8-40a1-800e-cccae2822ce8" />
+<img width="1984" height="1063" alt="PROCESSO 4 - Solicitação de serviços Diagrama (3)" src="https://github.com/user-attachments/assets/f6aae1dd-11cc-4d2c-b8e3-d24e24075e95" />
+
 
 **Atividade: Fazer login / cadastro**
 
