@@ -2,7 +2,8 @@
 
 O processo de gerenciamento de cadastro de equipamentos tem como objetivo organizar o cadastro, atualização e controle dos equipamentos utilizados nos projetos audiovisuais, garantindo maior eficiência e disponibilidade dos recursos.
 
-![9f4500df-0a1f-4f77-bc21-92a7e054c579](https://github.com/user-attachments/assets/ff1908b6-37f0-476c-bbda-37000cbfb4f3)
+![Gerenciamento de cadastro de equipamentos02](https://github.com/user-attachments/assets/f361e8fa-82f3-43f0-b934-b3913ded5c61)
+
 
 
 **Cadastrar Equipamento**
@@ -17,11 +18,10 @@ O processo de gerenciamento de cadastro de equipamentos tem como objetivo organi
 | status           | Seleção única  | obrigatório (Disponível/Indisponível) | Disponível        |
 | imagem           | Imagem         | opcional                              |                   |
 
-
-| **Comandos** | **Destino**                   | **Tipo** |
-| ------------ | ----------------------------- | -------- |
-| salvar       | Consultar/Listar Equipamentos | default  |
-| cancelar     | Consultar/Listar Equipamentos | cancel   |
+| **Comandos** | **Destino**     | **Tipo** |
+| ------------ | --------------- | -------- |
+| salvar       | Fim do processo | default  |
+| cancelar     | Fim do processo | cancel   |
 
 
 **Consultar/Listar Equipamentos**
@@ -34,11 +34,10 @@ O processo de gerenciamento de cadastro de equipamentos tem como objetivo organi
 | tabela_equipamentos | Tabela         | listagem dos equipamentos |                   |
 
 
-| **Comandos** | **Destino**           | **Tipo** |
-| ------------ | --------------------- | -------- |
-| buscar       | Atualiza tabela       | default  |
-| cadastrar    | Cadastrar Equipamento | default  |
-| editar       | Editar Equipamento    | default  |
+| **Comandos** | **Destino**     | **Tipo** |
+| ------------ | --------------- | -------- |
+| buscar       | Atualiza tabela | default  |
+
 
 **Editar Equipamento**
 
@@ -52,11 +51,11 @@ O processo de gerenciamento de cadastro de equipamentos tem como objetivo organi
 | imagem           | Imagem         | opcional       | preenchido        |
 
 
-| **Comandos** | **Destino**                   | **Tipo** |
-| ------------ | ----------------------------- | -------- |
-| salvar       | Consultar/Listar Equipamentos | default  |
-| excluir      | Consultar/Listar Equipamentos | cancel   |
-| cancelar     | Consultar/Listar Equipamentos | cancel   |
+| **Comandos** | **Destino**     | **Tipo** |
+| ------------ | --------------- | -------- |
+| salvar       | Fim do processo | default  |
+| excluir      | Fim do processo | cancel   |
+| cancelar     | Fim do processo | cancel   |
 
 
 **Registrar Retirada de Equipamento**
@@ -70,10 +69,10 @@ O processo de gerenciamento de cadastro de equipamentos tem como objetivo organi
 | data_prevista_devolucao | Data           | obrigatório    |                   |
 
 
-| **Comandos** | **Destino**                   | **Tipo** |
-| ------------ | ----------------------------- | -------- |
-| confirmar    | Consultar/Listar Equipamentos | default  |
-| cancelar     | Consultar/Listar Equipamentos | cancel   |
+| **Comandos** | **Destino**     | **Tipo** |
+| ------------ | --------------- | -------- |
+| confirmar    | Fim do processo | default  |
+| cancelar     | Fim do processo | cancel   |
 
 
 ---
