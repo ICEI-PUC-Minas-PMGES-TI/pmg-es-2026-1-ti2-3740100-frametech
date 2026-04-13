@@ -76,21 +76,48 @@ O processo de gerenciamento de cadastro de equipamentos tem como objetivo organi
 
 
 ---
-
- **3.3.3 Processo 3 – Gestão de Eventos**
+3.3.3 Processo 3 – Gestão de Eventos
 
 O processo de gestão de eventos tem como objetivo organizar o agendamento dos serviços audiovisuais, garantindo o controle da disponibilidade de datas, equipe e equipamentos, além de assegurar a correta execução dos serviços contratados.
 
-Como oportunidade de melhoria, propõe-se a automatização da verificação de disponibilidade dos recursos (data, equipe e equipamentos), bem como a sugestão de novas datas em casos de indisponibilidade, reduzindo conflitos de agenda e retrabalho.
+Como oportunidade de melhoria, propõe-se a automatização da verificação de disponibilidade dos recursos (data, equipe e equipamentos), bem como a sugestão de novas datas em casos de indisponibilidade, reduzindo conflitos de agenda e retrabalho. Além disso, o processo passa a considerar autenticação de usuário, seleção de eventos existentes ou criação de novos eventos, e decisões estruturadas para reprogramação, composição de equipe e confirmação final do serviço.
 
-<img width="1687" height="1088" alt="Agendamento de Eventos Audiovisuais Diagrama (1)" src="https://github.com/user-attachments/assets/b059e71a-856e-432a-a55f-df1c0ae88684" />
+<img width="2270" height="1205" alt="Gestão de Eventos Diagrama" src="https://github.com/user-attachments/assets/82b99982-a1fa-4788-a929-4f139d0f505c" />
 
+
+# **Detalhamento das atividades**
+
+## **Acessar Sistema / Realizar Login**
+
+| Campo   | Tipo           | Restrições  | Valor default |
+| ------- | -------------- | ----------- | ------------- |
+| usuario | Caixa de texto | obrigatório |               |
+| senha   | Caixa de texto | obrigatório |               |
+
+### Comandos
+
+| Comando  | Destino              | Tipo    |
+| -------- | -------------------- | ------- |
+| entrar   | Usuário autenticado? | default |
+| cancelar | Encerrar processo    | cancel  |
 
 ---
 
-**Detalhamento das atividades**
+## **Listar Eventos Disponíveis**
 
-**Solicitar Serviço**
+| Campo         | Tipo   | Restrições | Valor default |
+| ------------- | ------ | ---------- | ------------- |
+| lista_eventos | Tabela | automático |               |
+
+### Comandos
+
+| Comando    | Destino        | Tipo    |
+| ---------- | -------------- | ------- |
+| selecionar | Evento é novo? | default |
+
+---
+
+## **Solicitar Serviço**
 
 | Campo         | Tipo           | Restrições  | Valor default |
 | ------------- | -------------- | ----------- | ------------- |
@@ -101,62 +128,62 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 | local         | Caixa de texto | obrigatório |               |
 | observacoes   | Área de texto  | opcional    |               |
 
-Comandos
+### Comandos
 
 | Comando  | Destino             | Tipo    |
 | -------- | ------------------- | ------- |
 | enviar   | Receber solicitação | default |
 | cancelar | Encerrar processo   | cancel  |
 
+---
 
-
-**Receber Solicitação**
+## **Receber Solicitação**
 
 | Campo         | Tipo  | Restrições | Valor default |
 | ------------- | ----- | ---------- | ------------- |
 | dados_cliente | Texto | automático |               |
 | dados_evento  | Texto | automático |               |
 
-Comandos
+### Comandos
 
 | Comando   | Destino                           | Tipo    |
 | --------- | --------------------------------- | ------- |
 | continuar | Verificar disponibilidade de data | default |
 
+---
 
-
-**Verificar Disponibilidade de Data**
+## **Verificar Disponibilidade de Data**
 
 | Campo       | Tipo | Restrições  | Valor default |
 | ----------- | ---- | ----------- | ------------- |
 | data_evento | Data | obrigatório |               |
 | horario     | Hora | obrigatório |               |
 
-Comandos
+### Comandos
 
-| Comando   | Destino           | Tipo    |
-| --------- | ----------------- | ------- |
-| verificar | Verificar equipe  | default |
-| cancelar  | Encerrar processo | cancel  |
+| Comando   | Destino                             | Tipo    |
+| --------- | ----------------------------------- | ------- |
+| verificar | Verificar disponibilidade da equipe | default |
+| cancelar  | Encerrar processo                   | cancel  |
 
+---
 
-
-**Verificar Equipe Disponível**
+## **Verificar Disponibilidade da Equipe**
 
 | Campo             | Tipo  | Restrições | Valor default |
 | ----------------- | ----- | ---------- | ------------- |
 | equipe_disponivel | Lista | automático |               |
 
-Comandos
+### Comandos
 
-| Comando   | Destino                | Tipo    |
-| --------- | ---------------------- | ------- |
-| verificar | Verificar equipamentos | default |
-| cancelar  | Encerrar processo      | cancel  |
+| Comando   | Destino                                   | Tipo    |
+| --------- | ----------------------------------------- | ------- |
+| verificar | Verificar disponibilidade de equipamentos | default |
+| cancelar  | Encerrar processo                         | cancel  |
 
+---
 
-
-**Verificar Equipamentos Disponíveis**
+## **Verificar Disponibilidade de Equipamentos**
 
 | Campo        | Tipo  | Restrições | Valor default |
 | ------------ | ----- | ---------- | ------------- |
@@ -164,14 +191,14 @@ Comandos
 
 ### Comandos
 
-| Comando  | Destino             | Tipo    |
-| -------- | ------------------- | ------- |
-| validar  | Disponibilidade OK? | default |
-| cancelar | Encerrar processo   | cancel  |
+| Comando  | Destino                         | Tipo    |
+| -------- | ------------------------------- | ------- |
+| validar  | Disponibilidade de recursos OK? | default |
+| cancelar | Encerrar processo               | cancel  |
 
+---
 
-
- **Sugerir Nova Data**
+## **Sugerir Nova Data**
 
 | Campo        | Tipo          | Restrições  | Valor default |
 | ------------ | ------------- | ----------- | ------------- |
@@ -179,16 +206,45 @@ Comandos
 | novo_horario | Hora          | obrigatório |               |
 | observacao   | Área de texto | opcional    |               |
 
-Comandos
+### Comandos
 
-| Comando   | Destino                           | Tipo    |
-| --------- | --------------------------------- | ------- |
-| confirmar | Verificar disponibilidade de data | default |
-| cancelar  | Encerrar processo                 | cancel  |
+| Comando   | Destino                      | Tipo    |
+| --------- | ---------------------------- | ------- |
+| confirmar | Deseja reprogramar o evento? | default |
+| cancelar  | Encerrar processo            | cancel  |
 
+---
 
+## **Atualizar Dados do Evento**
 
-**Cadastrar Evento**
+| Campo        | Tipo  | Restrições | Valor default |
+| ------------ | ----- | ---------- | ------------- |
+| dados_evento | Texto | automático |               |
+
+### Comandos
+
+| Comando | Destino           | Tipo    |
+| ------- | ----------------- | ------- |
+| salvar  | Encerrar processo | default |
+
+---
+
+## **Cadastrar Novo Profissional**
+
+| Campo             | Tipo           | Restrições  | Valor default |
+| ----------------- | -------------- | ----------- | ------------- |
+| nome_profissional | Caixa de texto | obrigatório |               |
+| funcao            | Seleção única  | obrigatório |               |
+
+### Comandos
+
+| Comando | Destino           | Tipo    |
+| ------- | ----------------- | ------- |
+| salvar  | Encerrar processo | default |
+
+---
+
+## **Cadastrar Evento**
 
 | Campo        | Tipo           | Restrições  | Valor default |
 | ------------ | -------------- | ----------- | ------------- |
@@ -200,41 +256,40 @@ Comandos
 | equipamentos | Lista          | obrigatório |               |
 | local        | Caixa de texto | obrigatório |               |
 
-Comandos
+### Comandos
 
 | Comando  | Destino           | Tipo    |
 | -------- | ----------------- | ------- |
 | salvar   | Registrar evento  | default |
 | cancelar | Encerrar processo | cancel  |
 
+---
 
-
-**Registrar Evento no Sistema**
+## **Registrar Evento no Sistema**
 
 | Campo        | Tipo  | Restrições | Valor default |
 | ------------ | ----- | ---------- | ------------- |
 | dados_evento | Texto | automático |               |
 
-Comandos
+### Comandos
 
-| Comando   | Destino            | Tipo    |
-| --------- | ------------------ | ------- |
-| confirmar | Enviar confirmação | default |
+| Comando   | Destino           | Tipo    |
+| --------- | ----------------- | ------- |
+| confirmar | Confirmar evento? | default |
 
+---
 
-
-**Enviar Confirmação ao Cliente**
+## **Enviar Confirmação ao Cliente**
 
 | Campo    | Tipo  | Restrições | Valor default |
 | -------- | ----- | ---------- | ------------- |
 | mensagem | Texto | automático |               |
 | status   | Texto | automático | Confirmado    |
 
-Comandos
+### Comandos
 
 | Comando   | Destino           | Tipo    |
 | --------- | ----------------- | ------- |
 | finalizar | Encerrar processo | default |
 
-
-
+---
