@@ -1,67 +1,139 @@
-### 3.3.4 Processo 4 – NOME DO PROCESSO
+###  Processo 4 - Solicitação de serviços
 
-_Apresente aqui o nome e as oportunidades de melhoria para o processo 4. 
-Em seguida, apresente o modelo do processo 4, descrito no padrão BPMN._
+O processo de solicitação de serviços tem como objetivo permitir que o cliente solicite, receba propostas, aprove e finalize a contratação de um serviço de forma organizada.
 
-![Exemplo de um Modelo BPMN do PROCESSO 4](images/process.png "Modelo BPMN do Processo 4.")
-
-
-#### Detalhamento das atividades
-
-_Descreva aqui cada uma das propriedades das atividades do processo 4. 
-Devem estar relacionadas com o modelo de processo apresentado anteriormente._
-
-_Os tipos de dados a serem utilizados são:_
-
-_* **Área de texto** - campo texto de múltiplas linhas_
-
-_* **Caixa de texto** - campo texto de uma linha_
-
-_* **Número** - campo numérico_
-
-_* **Data** - campo do tipo data (dd-mm-aaaa)_
-
-_* **Hora** - campo do tipo hora (hh:mm:ss)_
-
-_* **Data e Hora** - campo do tipo data e hora (dd-mm-aaaa, hh:mm:ss)_
-
-_* **Imagem** - campo contendo uma imagem_
-
-_* **Seleção única** - campo com várias opções de valores que são mutuamente exclusivas (tradicional radio button ou combobox)_
-
-_* **Seleção múltipla** - campo com várias opções que podem ser selecionadas mutuamente (tradicional checkbox ou listbox)_
-
-_* **Arquivo** - campo de upload de documento_
-
-_* **Link** - campo que armazena uma URL_
-
-_* **Tabela** - campo formado por uma matriz de valores_
-
-**Nome da atividade 1**
-
-| **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
-| ---             | ---              | ---            | ---               |
-| [Nome do campo] | [tipo de dados]  |                |                   |
-| ***Exemplo:***  |                  |                |                   |
-| login           | Caixa de Texto   | formato de e-mail |                |
-| senha           | Caixa de Texto   | mínimo de 8 caracteres |           |
-
-| **Comandos**         |  **Destino**                   | **Tipo** |
-| ---                  | ---                            | ---               |
-| [Nome do botão/link] | Atividade/processo de destino  | (default/cancel  ) |
-| ***Exemplo:***       |                                |                   |
-| entrar               | Fim do Processo 1              | default           |
-| cadastrar            | Início do proceso de cadastro  |                   |
+<img width="1878" height="904" alt="PROCESSO 4 - Solicitação de serviços Diagrama" src="https://github.com/user-attachments/assets/1afd5093-8d00-44e2-908d-15ade6f4c25a" />
 
 
-**Nome da atividade 2**
 
-| **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
-| ---             | ---              | ---            | ---               |
-| [Nome do campo] | [tipo de dados]  |                |                   |
-|                 |                  |                |                   |
 
-| **Comandos**         |  **Destino**                   | **Tipo**          |
-| ---                  | ---                            | ---               |
-| [Nome do botão/link] | Atividade/processo de destino  | (default/cancel/  ) |
-|                      |                                |                   |
+**Atividade: Fazer login / cadastro**
+
+| Campo    | Tipo           | Restrições               | Valor default |
+| -------- | -------------- | ------------------------ | ------------- |
+| email    | Caixa de texto | formato de e-mail        | ---           |
+| senha    | Caixa de texto | mínimo 6 caracteres      | ---           |
+
+| Comando   | Destino                      | Tipo    |
+| --------- | ---------------------------- | ------- |
+| Entrar    | Atividade: Solicitar Serviço | default |
+| Cadastrar | Fluxo de cadastro            | default |
+
+------------------------------------------------------------------------------------
+
+**Atividade: Solicitar Serviço**
+
+| Campo         | Tipo           | Restrições  | Valor default |
+| ------------- | -------------- | ----------- | ------------- |
+| tipo_servico  | Seleção única  | obrigatório | ---           |
+| data_evento   | Data           | obrigatório | ---           |
+| local         | Caixa de texto | obrigatório | ---           |
+| descricao     | Área de texto  | opcional    | ---           |
+
+| Comando | Destino                                             | Tipo    |
+| ------- | --------------------------------------------------- | ------- |
+| Avançar | Atividade: Preencher dados e enviar solicitação     | default |
+| Cancelar| Fim do Processo                                     | cancel  |
+
+------------------------------------------------------------------------------------
+
+**Atividade: Preencher dados e enviar solicitação**
+
+| Campo            | Tipo          | Restrições | Valor default |
+| ---------------- | ------------- | ---------- | ------------- |
+| detalhes_servico | Área de texto | obrigatório| ---           |
+| anexos           | Upload        | opcional   | ---           |
+
+| Comando | Destino                        | Tipo    |
+| ------- | ------------------------------ | ------- |
+| Enviar  | Atividade: Receber solicitação | default |
+| Voltar  | Atividade: Solicitar Serviço   | cancel  |
+
+------------------------------------------------------------------------------------
+
+**Atividade: Receber solicitação**
+
+| Campo             | Tipo    | Restrições | Valor default |
+| ----------------- | ------- | ---------- | ------------- |
+| dados_solicitacao | Interno | automático | ---           |
+
+| Comando  | Destino                                              | Tipo    |
+| -------- | ---------------------------------------------------- | ------- |
+| Processar| Atividade: Notificar prestador                       | default |
+
+------------------------------------------------------------------------------------
+
+**Atividade: Notificar prestador**
+
+| Campo      | Tipo    | Restrições | Valor default |
+| ---------- | ------- | ---------- | ------------- |
+| prestador  | Interno | automático | ---           |
+
+| Comando | Destino                           | Tipo    |
+| ------- | --------------------------------- | ------- |
+| Enviar  | Atividade: Analisar solicitação   | default |
+
+------------------------------------------------------------------------------------
+
+**Atividade: Analisar solicitação**
+
+| Campo         | Tipo          | Restrições | Valor default |
+| ------------- | ------------- | ---------- | ------------- |
+| dados_servico | Área de texto | leitura    | ---           |
+
+| Comando | Destino                                | Tipo    |
+| ------- | -------------------------------------- | ------- |
+| Aceitar | Atividade: Enviar orçamento ao cliente | default |
+| Recusar | Procurar outro prestador               | cancel  |
+
+------------------------------------------------------------------------------------
+
+**Atividade: Enviar orçamento ao cliente**
+
+| Campo     | Tipo          | Restrições  | Valor default |
+| --------- | ------------- | ----------- | ------------- |
+| valor     | Número        | obrigatório | ---           |
+| descricao | Área de texto | opcional    | ---           |
+
+| Comando | Destino                      | Tipo    |
+| ------- | ---------------------------- | ------- |
+| Enviar  | Atividade: Analisar proposta | default |
+
+------------------------------------------------------------------------------------
+
+**Atividade: Analisar proposta**
+
+| Campo    | Tipo          | Restrições | Valor default |
+| -------- | ------------- | ---------- | ------------- |
+| proposta | Área de texto | leitura    | ---           |
+
+| Comando | Destino                        | Tipo    |
+| ------- | ------------------------------ | ------- |
+| Aceitar | Atividade: Realizar pagamento  | default |
+| Recusar | Atividade: Reenviar proposta   | cancel  |
+
+------------------------------------------------------------------------------------
+
+**Atividade: Reenviar proposta**
+
+| Campo      | Tipo          | Restrições | Valor default |
+| ---------- | ------------- | ---------- | ------------- |
+| observacao | Área de texto | opcional   | ---           |
+
+| Comando | Destino                         | Tipo    |
+| ------- | ------------------------------- | ------- |
+| Enviar  | Atividade: Analisar solicitação | default |
+
+------------------------------------------------------------------------------------
+
+**Atividade: Realizar pagamento**
+
+| Campo            | Tipo           | Restrições  | Valor default |
+| ---------------- | -------------- | ----------- | ------------- |
+| metodo_pagamento | Seleção única  | obrigatório | ---           |
+| valor            | Número         | automático  | ---           |
+
+| Comando | Destino         | Tipo    |
+| ------- | --------------- | ------- |
+| Pagar   | Fim do Processo | default |
+| Cancelar| Fim do Processo | cancel  |

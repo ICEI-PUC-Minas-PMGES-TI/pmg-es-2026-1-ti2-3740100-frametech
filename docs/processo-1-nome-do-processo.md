@@ -2,7 +2,7 @@
 
 O processo de gestao do cliente, tem como objetivo organizar o fluxo de atendimento do, desde o acesso ao sistema até a contratação e acompanhamento do serviço.
 
-<img width="2520" height="1052" alt="Cliente Diagrama (2)" src="https://github.com/user-attachments/assets/ea68e424-b1cd-464b-a2cc-e1721e882472" />
+<img width="2722" height="841" alt="Gestao--Cliente Diagrama" src="https://github.com/user-attachments/assets/8ad94df9-0823-4146-8692-639d9906676d" />
 
 
 

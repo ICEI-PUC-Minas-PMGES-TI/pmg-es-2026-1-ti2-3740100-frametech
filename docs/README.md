@@ -1,6 +1,6 @@
 # FRAME TECH
 
-
+---
 **Mateus Marçal Ribas Marques, marcalribas315@gmail.com**
 
 **Bruno Henrique de Aguiar Xavier, brunohenriquexavier99@gmail.com**
@@ -37,9 +37,9 @@ O projeto propõe o desenvolvimento de um sistema de gestão para empresas do se
 
 
 ## 1. Introdução
-
+---
 Transformamos a gestão do seu projeto em algo simples e eficiente.
-
+---
 ### 1.1 Contextualização
 O setor audiovisual vem crescendo nos últimos anos, aumentando a demanda por uma gestão mais organizada e eficiente dos projetos. Nesse contexto, a comunicação e a gestão dos processos audiovisuais envolvem diversas etapas, como contato com o cliente, planejamento, organização de equipes, controle de equipamentos e cumprimento de prazos.
 
@@ -71,9 +71,10 @@ Organizar a equipe responsável por cada projeto.
 Gerenciar a reserva e devolução de equipamentos.
 
 Acompanhar pagamentos e serviços realizados.
-
+---
 
 ### 1.4 Justificativas
+---
 
 O desenvolvimento deste projeto se justifica pela necessidade de melhorar a organização dos processos em empresas do setor audiovisual, que frequentemente utilizam métodos manuais ou ferramentas não integradas para gerenciar suas atividades.
 
