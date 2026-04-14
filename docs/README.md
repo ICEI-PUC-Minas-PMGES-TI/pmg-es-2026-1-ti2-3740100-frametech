@@ -21,7 +21,7 @@ Professores:
 
 **Michelle Hanne Soares de Andrade**
 
-**Luiz**
+**Luiz Carlos da Silva**
 
 ---
 
