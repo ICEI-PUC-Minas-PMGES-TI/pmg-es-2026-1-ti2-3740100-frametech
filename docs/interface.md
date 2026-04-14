@@ -13,9 +13,9 @@ Tela principal do sistema
 
 ## 6.2. Telas do processo 1
 
-_Descrição da tela relativa à atividade 1._
+TELA HOME: Tela com a descriçao do que a frametech oferece.
+![Uploading image.png…]()
 
-Tela da atividade 1
 
 _Descrição da tela relativa à atividade 2._
 
