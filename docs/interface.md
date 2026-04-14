@@ -25,14 +25,13 @@ TELA LOGIN: User verifica se tem cadastro ou nao. Caso tenha, seguirá para a p�
 TELA HOME: Tela com os projetos do usuário
 <img width="354" height="600" alt="image" src="https://github.com/user-attachments/assets/39b50006-e654-4a72-89b6-55af87d9ca4f" />
 
- TELA PERFIL: Tela com os dados do usuario. (Nome,tipo,telefone,foto)
+TELA PERFIL: Tela com os dados do usuario. (Nome,tipo,telefone,foto)
  <img width="628" height="438" alt="image" src="https://github.com/user-attachments/assets/425b9ce4-a550-4321-9643-0e2ae64ba014" />
-
+ 
  TELA SERVIÇOS: Tela de solicitaçao de serviços 
 <img width="573" height="706" alt="image" src="https://github.com/user-attachments/assets/461500cf-3088-4e66-b8eb-22cadae38329" />
 <img width="554" height="885" alt="image" src="https://github.com/user-attachments/assets/93c45c37-f110-4084-961d-8e2bb148ef25" />
 <img width="566" height="460" alt="image" src="https://github.com/user-attachments/assets/ee6582c3-52eb-4f99-9a24-f79cc587de40" />
-
 
 TELA MEUS PROJETOS: Tela de aceite ou nao do projeto solicitado
 <img width="316" height="534" alt="image" src="https://github.com/user-attachments/assets/d44e5743-4dc1-40fe-b415-7f7417746083" />
