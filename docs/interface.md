@@ -1,11 +1,12 @@
 
 ## 6. Interface do sistema
+<img width="486" height="546" alt="image" src="https://github.com/user-attachments/assets/1360adee-e11d-4e50-8939-b753db382895" />
 
-_Visão geral da interação do usuário por meio das telas do sistema. Apresente as principais interfaces da plataforma._
 
 ## 6.1. Tela principal do sistema
 
-_Descrição da tela principal do sistema._
+<img width="505" height="843" alt="image" src="https://github.com/user-attachments/assets/2cd653a7-91ee-4cc9-9299-bf849b29b6c8" />
+
 
 Tela principal do sistema
 
