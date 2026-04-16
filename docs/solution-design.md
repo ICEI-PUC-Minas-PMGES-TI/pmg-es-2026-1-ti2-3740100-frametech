@@ -11,10 +11,15 @@ _Apresente o modelo de dados por meio de um modelo relacional que contemple todo
 
 _Descreva qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços Web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas._
 
-| **Dimensão**   | **Tecnologia**     |
-| ---            | ---                |
-| SGBD           | MySQL              |
-| Front end      | React + JavaScript |
-| Back end       | Java SpringBoot    |
-| Deploy         | Github Pages       |
 
+| **Dimensão**            | **Tecnologia**             |
+|------------------------|-----------------------------|
+| **Linguagem Front-end**| **JavaScript (ES6+)**       |
+| **Framework Front-end**| **React.js**                |
+| **Estilização**        | **CSS3 / Bootstrap**        |
+| **Linguagem Back-end** | **Java**                    |
+| **Framework Back-end** | **Spring Boot**             |
+| **API**                | **RESTful API**             |
+| **SGBD**               | **MySQL**                   |
+| **Controle de Versão** | **Git + GitHub**            |
+| **IDE**                | **VS Code / IntelliJ IDEA** |
