@@ -129,6 +129,50 @@ TELA DE GERENCIAMENTO DE EQUEIPAMENTOS: Administrador faz o controle dos equipam
 
 <img width="706" height="800" alt="image" src="https://github.com/user-attachments/assets/aab81c1c-baa7-49a5-a1d3-2ff39ac6e908" />
 
+## 6.3. Telas do processo 3
+
+ 1. Eventos (Listagem)
+
+<img width="4254" height="5242" alt="image" src="https://github.com/user-attachments/assets/506f689b-f62b-46e9-97dc-1e2b86543dd5" />
+
+
+
+Descrição:
+Tela que apresenta a listagem de eventos cadastrados, permitindo ao administrador visualizar, aceitar ou recusar o serviço de um novo evento.
+
+2. Cadastro de Evento
+
+<img width="3024" height="10796" alt="image" src="https://github.com/user-attachments/assets/52806497-5c9d-4ed6-be76-8d84c5ff576c" />
+
+Descrição:
+Tela utilizada para criação de novos eventos, onde são informados dados como cliente, tipo de serviço, data, horário, equipe e equipamentos necessários.
+
+3. Gestão de Agenda / Escala de Equipes
+
+
+
+<img width="4254" height="5242" alt="image" src="https://github.com/user-attachments/assets/9e520b18-4437-4b0d-8668-c797c0ec3cce" />
+
+Descrição:
+Tela responsável por visualizar a agenda da empresa e a disponibilidade da equipe, permitindo evitar conflitos de horários e selecionar profissionais disponíveis.
+
+4. Gestão de Equipamentos
+
+<img width="4254" height="5242" alt="image" src="https://github.com/user-attachments/assets/2a6313b9-301a-430d-a064-288d0f17dcd1" />
+
+Descrição:
+Tela que permite consultar os equipamentos disponíveis, verificar sua utilização e selecionar os recursos necessários para o evento.
+
+5. Tela de Confirmação / Resumo do Evento / Pagamento
+
+<img width="4254" height="5242" alt="image" src="https://github.com/user-attachments/assets/d7aa0bd9-b67d-4cfb-8ad1-dc75bd27a772" />
+
+
+Descrição:
+Tela final onde o administrador revisa todas as informações do evento antes da confirmação, garantindo que os dados estejam corretos antes do envio da confirmação ao cliente e a porcentagem de valor pago pelo serviço.
+
+
+
 ## 6.3. Telas do processo 4
 
 TELA HOME: Tela com a descriçao do que a frametech oferece.
