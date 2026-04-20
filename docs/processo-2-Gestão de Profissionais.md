@@ -2,7 +2,7 @@
 
 Automatizar a verificação de disponibilidade dos profissionais e integrar notificações em tempo real, reduzindo conflitos de agenda e retrabalho na definição de equipes.
 
-![Exemplo de um Modelo BPMN do PROCESSO 2](modelagemProfiossionais.png "Modelo BPMN do Processo 2.")
+![Exemplo de um Modelo BPMN do PROCESSO 2](processodiagrama.png "Modelo BPMN do Processo 2.")
 
 
 
