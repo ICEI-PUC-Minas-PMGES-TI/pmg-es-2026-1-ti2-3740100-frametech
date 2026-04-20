@@ -81,3 +81,24 @@ _Descrição da tela relativa à atividade 2._
 
 Tela da atividade 2
 
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+## 6.3. Telas do processo 3
+
+TELA HOME: Tela com a descriçao do que a frametech oferece.
+
+<img width="486" height="546" alt="image" src="https://github.com/user-attachments/assets/483c788e-1499-4f03-aaa5-b70b7332c9ff" />
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+TELA LOGIN: Administrador loga no sistema.
+
+<img width="491" height="794" alt="image" src="https://github.com/user-attachments/assets/a655544f-829a-4529-af45-483a96f34273" />
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+TELA DE GERENCIAMENTO DE EQUEIPAMENTOS: Administrador faz o controle dos equipamentos disponiveis e cadastro de novos.
+
+<img width="706" height="800" alt="image" src="https://github.com/user-attachments/assets/aab81c1c-baa7-49a5-a1d3-2ff39ac6e908" />
+
