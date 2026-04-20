@@ -76,25 +76,27 @@ O processo de gerenciamento de cadastro de equipamentos tem como objetivo organi
 
 
 ---
-3.3.3 Processo 3 – Gestão de Eventos
+# **3.3.3 Processo 3 – Gestão de Eventos**
 
 O processo de gestão de eventos tem como objetivo organizar o agendamento dos serviços audiovisuais, garantindo o controle da disponibilidade de datas, equipe e equipamentos, além de assegurar a correta execução dos serviços contratados.
 
-Como oportunidade de melhoria, propõe-se a automatização da verificação de disponibilidade dos recursos (data, equipe e equipamentos), bem como a sugestão de novas datas em casos de indisponibilidade, reduzindo conflitos de agenda e retrabalho. Além disso, o processo passa a considerar autenticação de usuário, seleção de eventos existentes ou criação de novos eventos, e decisões estruturadas para reprogramação, composição de equipe e confirmação final do serviço.
+Como oportunidade de melhoria, propõe-se a automatização da verificação de disponibilidade dos recursos (datas, equipe e equipamentos), bem como a sugestão de novas datas em casos de indisponibilidade, reduzindo conflitos de agenda e retrabalho. Além disso, o processo considera a autenticação do usuário, a seleção de eventos existentes ou criação de novos eventos, e decisões estruturadas para reprogramação, composição de equipe e confirmação final do serviço.
 
-<img width="2270" height="1205" alt="Gestão de Eventos Diagrama" src="https://github.com/user-attachments/assets/82b99982-a1fa-4788-a929-4f139d0f505c" />
+<img width="2283" height="1222" alt="Gestão de Eventos Diagrama (1)" src="https://github.com/user-attachments/assets/120627f4-7fe0-459b-8256-4286890c9a55" />
 
+
+---
 
 # **Detalhamento das atividades**
 
 ## **Acessar Sistema / Realizar Login**
 
-| Campo   | Tipo           | Restrições  | Valor default |
-| ------- | -------------- | ----------- | ------------- |
-| usuario | Caixa de texto | obrigatório |               |
-| senha   | Caixa de texto | obrigatório |               |
+**Campos:**
 
-### Comandos
+* usuário (Caixa de texto, obrigatório)
+* senha (Caixa de texto, obrigatório)
+
+**Comandos:**
 
 | Comando  | Destino              | Tipo    |
 | -------- | -------------------- | ------- |
@@ -105,11 +107,11 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Listar Eventos Disponíveis**
 
-| Campo         | Tipo   | Restrições | Valor default |
-| ------------- | ------ | ---------- | ------------- |
-| lista_eventos | Tabela | automático |               |
+**Campos:**
 
-### Comandos
+* lista_eventos (Tabela, automático)
+
+**Comandos:**
 
 | Comando    | Destino        | Tipo    |
 | ---------- | -------------- | ------- |
@@ -119,16 +121,16 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Solicitar Serviço**
 
-| Campo         | Tipo           | Restrições  | Valor default |
-| ------------- | -------------- | ----------- | ------------- |
-| cliente       | Caixa de texto | obrigatório |               |
-| tipo_servico  | Seleção única  | obrigatório |               |
-| data_desejada | Data           | obrigatório |               |
-| horario       | Hora           | obrigatório |               |
-| local         | Caixa de texto | obrigatório |               |
-| observacoes   | Área de texto  | opcional    |               |
+**Campos:**
 
-### Comandos
+* cliente (Caixa de texto, obrigatório)
+* tipo_servico (Seleção única, obrigatório)
+* data_desejada (Data, obrigatório)
+* horario (Hora, obrigatório)
+* local (Caixa de texto, obrigatório)
+* observacoes (Área de texto, opcional)
+
+**Comandos:**
 
 | Comando  | Destino             | Tipo    |
 | -------- | ------------------- | ------- |
@@ -139,12 +141,12 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Receber Solicitação**
 
-| Campo         | Tipo  | Restrições | Valor default |
-| ------------- | ----- | ---------- | ------------- |
-| dados_cliente | Texto | automático |               |
-| dados_evento  | Texto | automático |               |
+**Campos:**
 
-### Comandos
+* dados_cliente (Texto, automático)
+* dados_evento (Texto, automático)
+
+**Comandos:**
 
 | Comando   | Destino                           | Tipo    |
 | --------- | --------------------------------- | ------- |
@@ -154,12 +156,12 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Verificar Disponibilidade de Data**
 
-| Campo       | Tipo | Restrições  | Valor default |
-| ----------- | ---- | ----------- | ------------- |
-| data_evento | Data | obrigatório |               |
-| horario     | Hora | obrigatório |               |
+**Campos:**
 
-### Comandos
+* data_evento (Data, obrigatório)
+* horario (Hora, obrigatório)
+
+**Comandos:**
 
 | Comando   | Destino                             | Tipo    |
 | --------- | ----------------------------------- | ------- |
@@ -170,11 +172,11 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Verificar Disponibilidade da Equipe**
 
-| Campo             | Tipo  | Restrições | Valor default |
-| ----------------- | ----- | ---------- | ------------- |
-| equipe_disponivel | Lista | automático |               |
+**Campos:**
 
-### Comandos
+* equipe_disponivel (Lista, automático)
+
+**Comandos:**
 
 | Comando   | Destino                                   | Tipo    |
 | --------- | ----------------------------------------- | ------- |
@@ -185,11 +187,11 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Verificar Disponibilidade de Equipamentos**
 
-| Campo        | Tipo  | Restrições | Valor default |
-| ------------ | ----- | ---------- | ------------- |
-| equipamentos | Lista | automático |               |
+**Campos:**
 
-### Comandos
+* equipamentos (Lista, automático)
+
+**Comandos:**
 
 | Comando  | Destino                         | Tipo    |
 | -------- | ------------------------------- | ------- |
@@ -200,13 +202,13 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Sugerir Nova Data**
 
-| Campo        | Tipo          | Restrições  | Valor default |
-| ------------ | ------------- | ----------- | ------------- |
-| nova_data    | Data          | obrigatório |               |
-| novo_horario | Hora          | obrigatório |               |
-| observacao   | Área de texto | opcional    |               |
+**Campos:**
 
-### Comandos
+* nova_data (Data, obrigatório)
+* novo_horario (Hora, obrigatório)
+* observacao (Área de texto, opcional)
+
+**Comandos:**
 
 | Comando   | Destino                      | Tipo    |
 | --------- | ---------------------------- | ------- |
@@ -217,11 +219,11 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Atualizar Dados do Evento**
 
-| Campo        | Tipo  | Restrições | Valor default |
-| ------------ | ----- | ---------- | ------------- |
-| dados_evento | Texto | automático |               |
+**Campos:**
 
-### Comandos
+* dados_evento (Texto, automático)
+
+**Comandos:**
 
 | Comando | Destino           | Tipo    |
 | ------- | ----------------- | ------- |
@@ -231,12 +233,12 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Cadastrar Novo Profissional**
 
-| Campo             | Tipo           | Restrições  | Valor default |
-| ----------------- | -------------- | ----------- | ------------- |
-| nome_profissional | Caixa de texto | obrigatório |               |
-| funcao            | Seleção única  | obrigatório |               |
+**Campos:**
 
-### Comandos
+* nome_profissional (Caixa de texto, obrigatório)
+* funcao (Seleção única, obrigatório)
+
+**Comandos:**
 
 | Comando | Destino           | Tipo    |
 | ------- | ----------------- | ------- |
@@ -246,17 +248,17 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Cadastrar Evento**
 
-| Campo        | Tipo           | Restrições  | Valor default |
-| ------------ | -------------- | ----------- | ------------- |
-| cliente      | Seleção única  | obrigatório |               |
-| tipo_servico | Seleção única  | obrigatório |               |
-| data_evento  | Data           | obrigatório |               |
-| horario      | Hora           | obrigatório |               |
-| equipe       | Lista          | obrigatório |               |
-| equipamentos | Lista          | obrigatório |               |
-| local        | Caixa de texto | obrigatório |               |
+**Campos:**
 
-### Comandos
+* cliente (Seleção única, obrigatório)
+* tipo_servico (Seleção única, obrigatório)
+* data_evento (Data, obrigatório)
+* horario (Hora, obrigatório)
+* equipe (Lista, obrigatório)
+* equipamentos (Lista, obrigatório)
+* local (Caixa de texto, obrigatório)
+
+**Comandos:**
 
 | Comando  | Destino           | Tipo    |
 | -------- | ----------------- | ------- |
@@ -265,13 +267,13 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ---
 
-## **Registrar Evento no Sistema**
+## **Registrar Evento**
 
-| Campo        | Tipo  | Restrições | Valor default |
-| ------------ | ----- | ---------- | ------------- |
-| dados_evento | Texto | automático |               |
+**Campos:**
 
-### Comandos
+* dados_evento (Texto, automático)
+
+**Comandos:**
 
 | Comando   | Destino           | Tipo    |
 | --------- | ----------------- | ------- |
@@ -281,15 +283,14 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ## **Enviar Confirmação ao Cliente**
 
-| Campo    | Tipo  | Restrições | Valor default |
-| -------- | ----- | ---------- | ------------- |
-| mensagem | Texto | automático |               |
-| status   | Texto | automático | Confirmado    |
+**Campos:**
 
-### Comandos
+* mensagem (Texto, automático)
+* status (Texto, automático – padrão: Confirmado)
+
+**Comandos:**
 
 | Comando   | Destino           | Tipo    |
 | --------- | ----------------- | ------- |
 | finalizar | Encerrar processo | default |
 
----
