@@ -70,17 +70,44 @@ TELA DE ACOMPANHAMENTO:
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
-
 ## 6.3. Telas do processo 2
 
-_Descrição da tela relativa à atividade 1._
+O processo de gestão para o profissional permite que os prestadores de serviço visualizem demandas, aceitem ou recusem novos projetos e acompanhem os detalhes de execução e entrega.
 
-Tela da atividade 1
+6.3.1. Tela de Solicitações e Aceite
 
-_Descrição da tela relativa à atividade 2._
+Nesta tela, o profissional visualiza uma lista de propostas de eventos disponíveis. Cada item apresenta informações como nome do evento, local, horário, data do evento e os serviços solicitados (Filmagem, Fotografia e Drone).
 
-Tela da atividade 2
+Tarefas do usuário:
+Visualizar solicitações, analisar disponibilidade, aceitar demanda e recusar demanda.
 
+Campos exibidos:
+Nome do evento, local, horário, data do evento e serviços solicitados.
+
+Comandos disponíveis:
+Botão “Aceitar” e botão “Recusar”, permitindo ao profissional responder à solicitação.
+
+Funcionalidade:
+O sistema permite que o profissional aceite ou recuse cada solicitação de acordo com sua disponibilidade.
+
+6.3.2. Detalhes do Projeto e Financeiro
+
+Após o aceite da solicitação, o sistema atualiza o item correspondente, exibindo os detalhes consolidados do projeto.
+
+Tarefas do usuário:
+Visualizar detalhes do projeto e acompanhar informações financeiras e prazos de entrega.
+
+Campos exibidos:
+Nome do evento, horário, data do evento, serviços contratados, preço do serviço e data de entrega.
+
+Comandos disponíveis:
+(sem comandos diretos nesta etapa, apenas visualização das informações).
+
+Funcionalidade:
+O sistema apresenta o valor acordado pelo serviço e a data limite para entrega do material, permitindo ao profissional acompanhar suas responsabilidades após o aceite da demanda.
+
+Tela:
+<img width="658" height="835" alt="Image" src="https://github.com/user-attachments/assets/e3042daf-21db-4e84-b3f4-7d23e71bc58f" />
 ------------------------------------------------------------------------------------------------------------------------------------
 
 
