@@ -121,9 +121,9 @@ As melhorias nos processos incluem uma melhor organização por meio de diferent
 
 ### 3.3. Modelagem dos processos
 
-[PROCESSO 1 - Gestão do Cliente](processo-1-nome-do-processo.md "Detalhamento do Processo 1.")
 
-[PROCESSO 1 - Gestão do Cliente-](processo1-gestao-cliente.md "Detalhamento do Processo 1.")
+
+[PROCESSO 1 - Gestão do Cliente](processo1-gestao-cliente.md "Detalhamento do Processo 1.")
 
 
 [PROCESSO 2 - Gestão dos Profissionais de serviço](processo-2-nome-do-processo.md "Detalhamento do Processo 2.")
