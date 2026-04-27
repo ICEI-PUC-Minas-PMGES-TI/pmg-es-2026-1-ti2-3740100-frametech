@@ -126,7 +126,7 @@ As melhorias nos processos incluem uma melhor organização por meio de diferent
 [PROCESSO 1 - Gestão do Cliente](processo1-gestao-cliente.md "Detalhamento do Processo 1.")
 
 
-[PROCESSO 2 - Gestão dos Profissionais de serviço](processo-2-nome-do-processo.md "Detalhamento do Processo 2.")
+[PROCESSO 2 - Gestão dos Profissionais de serviço](docs/processo-2-Gestão%20de%20Profissionais.md)
 
 [PROCESSO 3 - Gestão de eventos](processo-3-gestao-de-eventos.md "Detalhamento do Processo 3.")
 
