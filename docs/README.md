@@ -128,7 +128,7 @@ As melhorias nos processos incluem uma melhor organização por meio de diferent
 
 [PROCESSO 2 - Gestão dos Profissionais de serviço](processo-2-nome-do-processo.md "Detalhamento do Processo 2.")
 
-[PROCESSO 3 - Gestão de eventos](processo-3-nome-do-processo.md "Detalhamento do Processo 3.")
+[PROCESSO 3 - Gestão de eventos](docs/processo-3-gestao-de-eventos.md "Detalhamento do Processo 3.")
 
 [PROCESSO 4 - Solicitação de serviços](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
 
