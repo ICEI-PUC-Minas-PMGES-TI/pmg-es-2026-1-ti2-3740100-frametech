@@ -2,7 +2,7 @@
 
 Automatizar a verificação de disponibilidade dos profissionais e integrar notificações em tempo real, reduzindo conflitos de agenda e retrabalho na definição de equipes.
 
-<img width="2283" height="1222" alt="processoDiagrama.png">
+<img src="images/processoDiagrama.png" width="100%" alt="processoDiagrama">
 
 
 
