@@ -126,7 +126,7 @@ As melhorias nos processos incluem uma melhor organização por meio de diferent
 [PROCESSO 1 - Gestão do Cliente](processo1-gestao-cliente.md "Detalhamento do Processo 1.")
 
 
-[PROCESSO 2 - Gestão dos Profissionais de serviço](docs/processo-2-Gest%C3%A3o%20de%20Profissionais.md)
+[PROCESSO 2 - Gestão dos Profissionais de serviço](https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2026-1-ti2-3740100-frametech/blob/main/docs/processo-2-Gestão%20de%20Profissionais.md)
 
 [PROCESSO 3 - Gestão de eventos](processo-3-gestao-de-eventos.md "Detalhamento do Processo 3.")
 
