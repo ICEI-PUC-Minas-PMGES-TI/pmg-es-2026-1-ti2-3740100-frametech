@@ -10,7 +10,15 @@
 ---
 
 ### 4.2. Tecnologias
+O desenvolvimento do sistema será realizado utilizando um conjunto de tecnologias modernas voltadas para aplicações web.
 
+No front-end, será utilizado React.js junto com JavaScript (ES6+), HTML e CSS, permitindo a criação de interfaces dinâmicas e responsivas.
+
+No back-end, será utilizado Java com Spring Boot, responsável pela criação da API e pela lógica da aplicação.
+
+Para o banco de dados, será utilizado o MySQL, encarregado do armazenamento das informações.
+
+O controle de versão será feito com Git e GitHub, e o desenvolvimento será realizado nas IDEs Visual Studio Code e IntelliJ IDEA.
 
 
 | **Dimensão**            | **Tecnologia**             |
