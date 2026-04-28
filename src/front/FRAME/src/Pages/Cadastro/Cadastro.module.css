@@ -1,0 +1,155 @@
+.pagina {
+  display: flex;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+.conteudo {
+  margin-left: 90px;
+  flex: 1;
+  padding: 40px 12%;
+  font-family: sans-serif;
+  max-width: 1100px;
+}
+
+.cabecalho {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.entrar {
+  font-size: 13px;
+  text-align: right;
+  margin-bottom: 30px;
+}
+
+.laranja {
+  color: #E26B45;
+  font-weight: bold;
+}
+
+.titulo {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  color: #888;
+  font-size: 14px;
+}
+
+.secao {
+  background-color: #F8F7F5;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 25px;
+}
+
+.legenda {
+  font-size: 12px;
+  font-weight: bold;
+  color: #E26B45;
+  margin-bottom: 20px;
+}
+
+.gradeCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.2s;
+}
+
+.selecionado {
+  background-color: #FFEDE7;
+  border-color: #E26B45;
+}
+
+.icone {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.cardTitulo {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cardSub {
+  font-size: 11px;
+  color: #999;
+}
+
+.gradeInput {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.duplo {
+  grid-column: span 2;
+}
+
+.campo label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #555;
+}
+
+.campo input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.ajuda {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.termos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #F8F7F5;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  font-size: 13px;
+}
+
+.acoes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.botao {
+  padding: 12px 35px;
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  background: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.botao:hover {
+  border-color: #E26B45;
+  color: #E26B45;
+}
