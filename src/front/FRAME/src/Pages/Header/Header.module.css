@@ -1,0 +1,68 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 90px;
+  height: 100vh;
+  background-color: #F8F7F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 0;
+  border-right: 1px solid #EDEDED;
+  font-family: sans-serif;
+  z-index: 1000;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 55px;
+}
+
+.logoFrame {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4A4A4A;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.logoTech {
+  font-size: 15px;
+  font-weight: 900;
+  color: #E26B45;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.navGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #757575;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileIcon {
+  font-size: 28px;
+  font-weight: bold;
+  color: #A0A0A0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}

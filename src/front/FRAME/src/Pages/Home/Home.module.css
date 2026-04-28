@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+.paginaHome {
+  display: flex;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+.conteudoPrincipal {
+  margin-left: 90px;
+  padding: 60px 8%;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+.secaoTopo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 70px;
+}
+
+.containerTexto {
+  max-width: 480px;
+  margin-top: 20px;
+}
+
+.tituloPrincipal {
+  font-size: 54px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.tituloPrincipal span {
+  color: #E26B45;
+}
+
+.subtituloDescricao {
+  color: #888;
+  font-size: 17px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.containerBotoes {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.linkLaranja { color: #E26B45; cursor: pointer; }
+.linkVerde { color: #38b48b; cursor: pointer; }
+
+.mockupDashboard {
+  background: #F8F7F5;
+  padding: 22px;
+  border-radius: 24px;
+  width: 380px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.mockupCabecalho {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.bolinhasJanela { display: flex; gap: 6px; }
+.bolinhasJanela span { width: 10px; height: 10px; border-radius: 50%; }
+.vermelha { background: #ff5f56; }
+.amarela { background: #ffbd2e; }
+.verde { background: #27c93f; }
+.mockupTitulo { color: #aaa; font-size: 11px; font-weight: 500; }
+
+.mockupGrade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.quadroInfo { padding: 20px; border-radius: 12px; text-align: center; }
+.quadroInfo p { font-size: 11px; color: #666; margin-bottom: 5px; }
+.quadroInfo h3 { font-size: 24px; font-weight: 800; color: #E26B45; }
+
+.fundoLaranja { background: #FFEDE7; }
+.fundoVerde { background: #E7F6F2; }
+.fundoRoxo { background: #EEE7FF; }
+.fundoAmarelo { background: #FFF9E7; }
+
+.secaoEstatisticas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #eee;
+  margin-bottom: 70px;
+}
+
+.itemEstatistica {
+  padding: 35px 20px;
+  border-right: 1px solid #eee;
+  text-align: left;
+}
+
+.itemEstatistica:last-child { border-right: none; }
+
+.itemEstatistica h2 {
+  font-size: 44px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.numLaranja { color: #E26B45; }
+.numVerde { color: #38b48b; }
+.numRoxo { color: #6157e2; }
+.numCinza { color: #1a1a1a; }
+
+.itemEstatistica p {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.gradeServicos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 50px;
+  row-gap: 40px;
+}
+
+.cardServico {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.etiquetaCard {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #1a1a1a;
+  width: fit-content;
+}
+
+.tagLaranja { background-color: #ffe8e0; }
+.tagVerde { background-color: #e1f5f0; }
+.tagAmarela { background-color: #fff6e0; }
+.tagRoxa { background-color: #edeaff; }
+.tagLima { background-color: #f2fbc2; }
+
+.cardServico p {
+  color: #888;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
