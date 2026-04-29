@@ -3,8 +3,9 @@
 ### 4.1. Modelo de dados
 
 
+<img width="2080" height="1054" alt="teste drawio (2)" src="https://github.com/user-attachments/assets/98dbd38d-dce0-498d-b15f-646d6c576a03" />
 
-<img width="2132" height="656" alt="teste drawio" src="https://github.com/user-attachments/assets/9467a453-1ec6-48b5-ac60-c6d521ebff78" />
+
 
 
 ---
