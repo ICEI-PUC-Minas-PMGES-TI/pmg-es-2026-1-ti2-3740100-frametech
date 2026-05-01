@@ -1,0 +1,231 @@
+.pagina {
+  min-height: 100vh;
+  background: #f5f6fa;
+  font-family: sans-serif;
+  color: #222;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoFrame {
+  color: #e63946;
+}
+
+.logoTech {
+  color: #e63946;
+}
+
+.textoConta {
+  font-size: 13px;
+  color: #555;
+}
+
+.linkEntrar {
+  color: #e63946;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.subtitulo {
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 28px;
+}
+
+.secao {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px 18px 20px;
+  margin-bottom: 16px;
+  border: 1px solid #e8e8e8;
+}
+
+.rotuloSecao {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #aaa;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.tiposConta {
+  display: flex;
+  gap: 10px;
+}
+
+.botaoTipo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 8px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.botaoTipo:hover {
+  border-color: #e63946;
+}
+
+.botaoTipoAtivo {
+  border-color: #e63946;
+  background: #fff5f5;
+}
+
+.iconeTipo {
+  font-size: 20px;
+}
+
+.nomeTipo {
+  font-size: 11px;
+  font-weight: 700;
+  color: #222;
+}
+
+.papelTipo {
+  font-size: 11px;
+  color: #888;
+}
+
+.gradeFormulario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.larguraTotal {
+  grid-column: 1 / -1;
+}
+
+.rotulo {
+  font-size: 12px;
+  font-weight: 600;
+  color: #444;
+}
+
+.entrada {
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: #333;
+  outline: none;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+
+.entrada::placeholder {
+  color: #bbb;
+}
+
+.entrada:focus {
+  border-color: #e63946;
+}
+
+.dica {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.termos {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 8px 0 20px;
+  font-size: 12px;
+  color: #555;
+}
+
+.checkbox {
+  margin-top: 2px;
+  accent-color: #e63946;
+}
+
+.rotuloTermos {
+  line-height: 1.5;
+}
+
+.linkTermos {
+  color: #e63946;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.acoes {
+  display: flex;
+  gap: 12px;
+}
+
+.botaoSecundario {
+  flex: 1;
+  padding: 12px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.botaoSecundario:hover {
+  border-color: #aaa;
+}
+
+.botaoPrimario {
+  flex: 1.5;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.botaoPrimario:hover {
+  background: #000;
+}
