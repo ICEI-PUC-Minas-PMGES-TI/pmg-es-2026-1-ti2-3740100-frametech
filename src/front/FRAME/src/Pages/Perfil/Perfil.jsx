@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Header from "../../Components/Header/Header";
 import "./Perfil.css";
 
-const Profile = () => {
+const Perfil = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    
     fetch('http://localhost:8080/api/perfil')
       .then(res => res.json())
       .then(data => setUser(data))
@@ -16,19 +16,17 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      {/* Barra Lateral Representada na Imagem */}
-      <aside className="sidebar">
-        <div className="brand">FRAME<span>TECH</span></div>
-        <div className="nav-dots">
-          {[...Array(7)].map((_, i) => <div key={i} className="dot" />)}
-        </div>
-      </aside>
+
+      <Header />
 
       <main className="content">
         <header className="profile-header">
-          <h1>Olá, <span className="highlight">{user.nome}</span></h1>
+          <h1>
+            Olá, <span className="highlight">{user.nome}</span>
+          </h1>
+
           <div className="avatar-circle">
-            {user.nome.charAt(0)}
+            {user.nome?.charAt(0)}
           </div>
         </header>
 
@@ -38,6 +36,7 @@ const Profile = () => {
             <p><strong>Email:</strong> {user.email}</p>
             <p><strong>Senha:</strong> ***************</p>
           </div>
+
           <div className="info-column">
             <p><strong>Telefone:</strong> {user.telefone}</p>
             <p><strong>Tipo:</strong> {user.tipo}</p>
@@ -53,4 +52,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Perfil;

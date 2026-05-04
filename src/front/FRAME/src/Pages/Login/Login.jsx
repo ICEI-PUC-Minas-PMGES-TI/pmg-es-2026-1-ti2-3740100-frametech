@@ -15,7 +15,9 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    if (e) e.preventDefault();
+
     try {
       const res = await fetch('http://localhost:8080/auth/login', {
         method: 'POST',
@@ -23,23 +25,22 @@ function Login() {
         body: JSON.stringify({ email, senha, tipo }),
       });
 
-      if (!res.ok) throw new Error();
+      if (!res.ok) throw new Error('Erro no login');
 
       const data = await res.json();
 
       localStorage.setItem('usuario', JSON.stringify(data));
 
-      if (data.tipo === 'cliente') {
-        navigate('/Hc');
-      } else if (data.tipo === 'empresa') {
-        navigate('/home-empresa');
-      } else if (data.tipo === 'prestador') {
-        navigate('/home-prestador');
-      } else {
-        navigate('/');
-      }
+      const rotas = {
+        cliente: '/home-cliente',
+        empresa: '/home-empresa',
+        prestador: '/home-prestador'
+      };
 
-    } catch {
+      navigate(rotas[data.tipo] || '/');
+
+    } catch (err) {
+      console.error(err);
       alert('Erro no login');
     }
   };
@@ -52,11 +53,14 @@ function Login() {
       </div>
 
       <div className={styles.centro}>
-        <div className={styles.cartao}>
+        <form className={styles.cartao} onSubmit={handleLogin}>
           <h1 className={styles.tituloCartao}>Bem vindo de volta</h1>
 
           <p className={styles.subCartao}>
-            Ainda não tem cadastro? <Link to="/cadastro" className={styles.link}>Cadastre-se</Link>
+            Ainda não tem cadastro?{" "}
+            <Link to="/cadastro" className={styles.link}>
+              Cadastre-se
+            </Link>
           </p>
 
           <p className={styles.labelSecao}>Tipo de conta</p>
@@ -65,6 +69,7 @@ function Login() {
             {TIPOS.map(t => (
               <button
                 key={t.key}
+                type="button"
                 className={`${styles.botaoTipo} ${tipo === t.key ? styles.botaoTipoAtivo : ''}`}
                 onClick={() => setTipo(t.key)}
               >
@@ -100,14 +105,14 @@ function Login() {
             <a className={styles.link}>Esqueci a senha</a>
           </div>
 
-          <button className={styles.botaoPrincipal} onClick={handleLogin}>
+          <button type="submit" className={styles.botaoPrincipal}>
             Entrar
           </button>
 
-          <button className={styles.botaoGoogle}>
+          <button type="button" className={styles.botaoGoogle}>
             Entrar com Google
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );
