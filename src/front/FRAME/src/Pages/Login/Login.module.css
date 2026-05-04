@@ -1,86 +1,90 @@
-.pagina {
-  min-height: 100vh;
-  background: #f5f6fa;
-  font-family: sans-serif;
-  color: #222;
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap');
 
-.cabecalho {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+.pagina {
+  font-family: 'DM Sans', sans-serif;
+  background: #f5f4f2;
+  min-height: 100vh;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 28px 40px;
+  box-sizing: border-box;
 }
 
 .logo {
-  font-weight: 800;
-  font-size: 15px;
-  line-height: 1.1;
   display: flex;
   flex-direction: column;
+  line-height: 1.1;
 }
 
 .logoFrame {
-  color: #e63946;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #1a1a1a;
 }
 
 .logoTech {
-  color: #e63946;
-}
-
-.textoConta {
-  font-size: 13px;
-  color: #555;
-}
-
-.linkEntrar {
-  color: #e63946;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.container {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 32px 16px 48px;
-}
-
-.titulo {
-  text-align: center;
-  font-size: 22px;
+  font-size: 15px;
   font-weight: 700;
-  margin: 0 0 6px;
+  letter-spacing: 0.1em;
+  color: #d94f2b;
 }
 
-.subtitulo {
+.centro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartao {
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
+  padding: 52px 56px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.tituloCartao {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: #1a1a1a;
   text-align: center;
-  font-size: 13px;
-  color: #666;
-  margin: 0 0 28px;
+  margin: 0 0 8px;
 }
 
-.secao {
-  background: #fff;
-  border-radius: 10px;
-  padding: 18px 18px 20px;
-  margin-bottom: 16px;
-  border: 1px solid #e8e8e8;
+.subCartao {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  margin: 0 0 36px;
 }
 
-.rotuloSecao {
-  display: block;
+.link {
+  color: #d94f2b;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.labelSecao {
   font-size: 10px;
   font-weight: 700;
-  color: #aaa;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
+  letter-spacing: 0.14em;
+  color: #d94f2b;
+  text-transform: uppercase;
+  margin: 0 0 14px;
 }
 
 .tiposConta {
+  background: #f9f8f6;
+  border: 1px solid #e4e1db;
+  border-radius: 14px;
+  padding: 16px;
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
 .botaoTipo {
@@ -88,144 +92,82 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 14px 8px;
-  border: 1.5px solid #ddd;
-  border-radius: 8px;
-  background: #fff;
+  gap: 7px;
+  padding: 20px 10px 16px;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  background: transparent;
   cursor: pointer;
-  transition: border-color 0.15s;
-}
-
-.botaoTipo:hover {
-  border-color: #e63946;
 }
 
 .botaoTipoAtivo {
-  border-color: #e63946;
-  background: #fff5f5;
+  background: #fdf0ed;
+  border-color: #f5c4b8;
 }
 
 .iconeTipo {
-  font-size: 20px;
+  font-size: 24px;
 }
 
-.nomeTipo {
-  font-size: 11px;
-  font-weight: 700;
-  color: #222;
+.labelTipo {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #1a1a1a;
+  text-transform: uppercase;
 }
 
-.papelTipo {
+.subTipo {
   font-size: 11px;
   color: #888;
 }
 
-.gradeFormulario {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
 .campo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  margin-bottom: 18px;
 }
 
-.larguraTotal {
-  grid-column: 1 / -1;
-}
-
-.rotulo {
-  font-size: 12px;
-  font-weight: 600;
-  color: #444;
-}
-
-.entrada {
-  border: 1.5px solid #ddd;
-  border-radius: 6px;
-  padding: 9px 12px;
+.labelCampo {
+  display: block;
   font-size: 13px;
-  color: #333;
-  outline: none;
-  background: #fff;
-  transition: border-color 0.15s;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 7px;
 }
 
-.entrada::placeholder {
-  color: #bbb;
+.input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid #e4e1db;
+  border-radius: 10px;
+  font-size: 15px;
 }
 
-.entrada:focus {
-  border-color: #e63946;
+.esqueci {
+  text-align: right;
+  margin-bottom: 28px;
+  font-size: 13px;
 }
 
-.dica {
-  font-size: 11px;
-  color: #aaa;
-}
-
-.termos {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin: 8px 0 20px;
-  font-size: 12px;
-  color: #555;
-}
-
-.checkbox {
-  margin-top: 2px;
-  accent-color: #e63946;
-}
-
-.rotuloTermos {
-  line-height: 1.5;
-}
-
-.linkTermos {
-  color: #e63946;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.acoes {
-  display: flex;
-  gap: 12px;
-}
-
-.botaoSecundario {
-  flex: 1;
-  padding: 12px;
-  border: 1.5px solid #ddd;
-  border-radius: 8px;
-  background: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  cursor: pointer;
-  transition: border-color 0.15s;
-}
-
-.botaoSecundario:hover {
-  border-color: #aaa;
-}
-
-.botaoPrimario {
-  flex: 1.5;
-  padding: 12px;
+.botaoPrincipal {
+  width: 100%;
+  padding: 16px;
+  background: #1a1a1a;
+  color: #ffffff;
   border: none;
-  border-radius: 8px;
-  background: #222;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
+  border-radius: 12px;
+  font-size: 15px;
   cursor: pointer;
-  transition: background 0.15s;
+  margin-bottom: 12px;
 }
 
-.botaoPrimario:hover {
-  background: #000;
+.botaoGoogle {
+  width: 100%;
+  padding: 15px;
+  background: #ffffff;
+  border: 1.5px solid #e4e1db;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }

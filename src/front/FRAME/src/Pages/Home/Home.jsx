@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import styles from './Home.module.css';
 
@@ -6,7 +7,7 @@ function Home() {
   const [dados, setDados] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/home")
+    fetch("http://localhost:8080/api/perfil")
       .then(res => res.json())
       .then(data => setDados(data))
       .catch(err => console.error(err));
@@ -29,7 +30,8 @@ function Home() {
               Do primeiro contato com o cliente até a entrega final — tudo em uma plataforma.
             </p>
             <p className={styles.containerBotoes}>
-              <span className={styles.linkLaranja}>Faça login</span> ou <span className={styles.linkVerde}>cadastre-se</span>
+              <Link to="/login" className={styles.linkLaranja}>Faça login</Link> ou{" "}
+              <Link to="/cadastro" className={styles.linkVerde}>cadastre-se</Link>
             </p>
           </div>
 
@@ -45,23 +47,23 @@ function Home() {
 
             <div className={styles.mockupGrade}>
               <div className={`${styles.quadroInfo} ${styles.fundoLaranja}`}>
-                <p>Projetos ativos</p>
-                <h3>{dados.projetos}</h3>
+                <p>Nome</p>
+                <h3>{dados.nome}</h3>
               </div>
 
               <div className={`${styles.quadroInfo} ${styles.fundoVerde}`}>
-                <p>Clientes</p>
-                <h3>{dados.clientes}</h3>
+                <p>Email</p>
+                <h3>{dados.email}</h3>
               </div>
 
               <div className={`${styles.quadroInfo} ${styles.fundoRoxo}`}>
-                <p>Receita mês</p>
-                <h3>{dados.receita}</h3>
+                <p>Telefone</p>
+                <h3>{dados.telefone}</h3>
               </div>
 
               <div className={`${styles.quadroInfo} ${styles.fundoAmarelo}`}>
-                <p>Entregas</p>
-                <h3>{dados.entregas}</h3>
+                <p>Tipo</p>
+                <h3>{dados.tipo}</h3>
               </div>
             </div>
           </div>
@@ -126,4 +128,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Home;  
