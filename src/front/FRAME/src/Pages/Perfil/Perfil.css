@@ -1,0 +1,75 @@
+.profile-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar {
+  width: 100px;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.brand span { color: #ff5722; display: block; }
+
+.dot {
+  width: 25px;
+  height: 25px;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.content { flex: 1; padding: 60px; position: relative; }
+
+.profile-header h1 { font-size: 32px; font-weight: 500; }
+.highlight { color: #ff5722; }
+
+.avatar-circle {
+  position: absolute;
+  top: 60px;
+  right: 100px;
+  width: 70px;
+  height: 70px;
+  background-color: #ffe0d8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.info-card {
+  background-color: #fdfaf7;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  gap: 120px;
+  margin-top: 40px;
+}
+
+.info-column p { margin: 18px 0; color: #444; }
+
+.button-group { margin-top: 40px; display: flex; gap: 20px; }
+
+.btn {
+  padding: 12px 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  border: 1px solid #444;
+  background: white;
+}
+
+.btn-danger { color: #ff5722; border-color: #ccc; }
