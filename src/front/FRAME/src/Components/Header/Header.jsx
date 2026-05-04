@@ -53,7 +53,10 @@ const Header = () => {
       </div>
 
       <div>
-        <button className={styles.profileIcon} onClick={() => navigate("/perfil")}>
+        <button
+          className={styles.profileIcon}
+          onClick={() => navigate("/perfil")}
+        >
           <User size={20} />
         </button>
       </div>
