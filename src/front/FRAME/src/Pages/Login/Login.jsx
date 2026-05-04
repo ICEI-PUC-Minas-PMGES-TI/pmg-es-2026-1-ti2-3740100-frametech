@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from './Login.module.css';
 
 const TIPOS = [
@@ -13,6 +13,8 @@ function Login() {
   const [senha, setSenha] = useState('');
   const [tipo, setTipo] = useState('empresa');
 
+  const navigate = useNavigate();
+
   const handleLogin = async () => {
     try {
       const res = await fetch('http://localhost:8080/auth/login', {
@@ -24,8 +26,19 @@ function Login() {
       if (!res.ok) throw new Error();
 
       const data = await res.json();
+
       localStorage.setItem('usuario', JSON.stringify(data));
-      alert('Login realizado');
+
+      if (data.tipo === 'cliente') {
+        navigate('/Hc');
+      } else if (data.tipo === 'empresa') {
+        navigate('/home-empresa');
+      } else if (data.tipo === 'prestador') {
+        navigate('/home-prestador');
+      } else {
+        navigate('/');
+      }
+
     } catch {
       alert('Erro no login');
     }
