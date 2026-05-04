@@ -16,13 +16,13 @@
 .secaoTopo {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  gap: 40px;
   margin-bottom: 70px;
 }
 
 .containerTexto {
   max-width: 480px;
-  margin-top: 20px;
 }
 
 .tituloPrincipal {
@@ -40,49 +40,93 @@
 .subtituloDescricao {
   color: #888;
   font-size: 17px;
-  line-height: 1.4;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .containerBotoes {
-  font-size: 14px;
-  font-weight: 700;
+  display: flex;
+  gap: 12px;
 }
 
-.linkLaranja { color: #E26B45; cursor: pointer; }
-.linkVerde { color: #38b48b; cursor: pointer; }
+.botaoIcone {
+  background: #ffe8e0;
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: #E26B45;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.botaoIconeVerde {
+  background: #e1f5f0;
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: #38b48b;
+  font-weight: 600;
+  text-decoration: none;
+}
 
 .mockupDashboard {
   background: #F8F7F5;
-  padding: 22px;
+  padding: 28px;
   border-radius: 24px;
-  width: 380px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  width: 480px;
+  min-height: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .mockupCabecalho {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-.bolinhasJanela { display: flex; gap: 6px; }
-.bolinhasJanela span { width: 10px; height: 10px; border-radius: 50%; }
+.bolinhasJanela {
+  display: flex;
+  gap: 6px;
+}
+
+.bolinhasJanela span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
 .vermelha { background: #ff5f56; }
 .amarela { background: #ffbd2e; }
 .verde { background: #27c93f; }
-.mockupTitulo { color: #aaa; font-size: 11px; font-weight: 500; }
+
+.mockupTitulo {
+  color: #aaa;
+  font-size: 12px;
+}
 
 .mockupGrade {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 18px;
 }
 
-.quadroInfo { padding: 20px; border-radius: 12px; text-align: center; }
-.quadroInfo p { font-size: 11px; color: #666; margin-bottom: 5px; }
-.quadroInfo h3 { font-size: 24px; font-weight: 800; color: #E26B45; }
+.quadroInfo {
+  padding: 24px;
+  border-radius: 14px;
+  text-align: center;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quadroInfo p {
+  font-size: 12px;
+  color: #666;
+}
+
+.quadroInfo h3 {
+  font-size: 22px;
+  font-weight: 800;
+}
 
 .fundoLaranja { background: #FFEDE7; }
 .fundoVerde { background: #E7F6F2; }
@@ -93,21 +137,20 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid #eee;
-  margin-bottom: 70px;
 }
 
 .itemEstatistica {
   padding: 35px 20px;
   border-right: 1px solid #eee;
-  text-align: left;
 }
 
-.itemEstatistica:last-child { border-right: none; }
+.itemEstatistica:last-child {
+  border-right: none;
+}
 
 .itemEstatistica h2 {
   font-size: 44px;
   font-weight: 800;
-  margin-bottom: 8px;
 }
 
 .numLaranja { color: #E26B45; }
@@ -118,41 +161,4 @@
 .itemEstatistica p {
   color: #777;
   font-size: 14px;
-  line-height: 1.2;
-}
-
-.gradeServicos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 50px;
-  row-gap: 40px;
-}
-
-.cardServico {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: flex-start;
-}
-
-.etiquetaCard {
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 13px;
-  color: #1a1a1a;
-  width: fit-content;
-}
-
-.tagLaranja { background-color: #ffe8e0; }
-.tagVerde { background-color: #e1f5f0; }
-.tagAmarela { background-color: #fff6e0; }
-.tagRoxa { background-color: #edeaff; }
-.tagLima { background-color: #f2fbc2; }
-
-.cardServico p {
-  color: #888;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0;
 }
