@@ -16,16 +16,28 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    if (e) e.preventDefault();
+    e.preventDefault();
+
+    if (!email || !senha) {
+      alert("Preencha email e senha");
+      return;
+    }
 
     try {
       const res = await fetch('http://localhost:8080/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, senha, tipo }),
+        body: JSON.stringify({
+          email,
+          senha,
+          tipoConta: tipo
+        }),
       });
 
-      if (!res.ok) throw new Error('Erro no login');
+      if (!res.ok) {
+        const erro = await res.text();
+        throw new Error(erro);
+      }
 
       const data = await res.json();
 
@@ -37,11 +49,10 @@ function Login() {
         prestador: '/home-prestador'
       };
 
-      navigate(rotas[data.tipo] || '/');
+      navigate(rotas[data.tipoConta] || '/');
 
     } catch (err) {
-      console.error(err);
-      alert('Erro no login');
+      alert(err.message || 'Erro no login');
     }
   };
 
