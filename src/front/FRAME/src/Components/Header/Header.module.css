@@ -57,6 +57,11 @@
   justify-content: center;
 }
 
+.iconButton:hover {
+  color: #E26B45;
+  transform: scale(1.1); 
+}
+
 .profileIcon {
   font-size: 28px;
   font-weight: bold;
@@ -65,4 +70,8 @@
   border: none;
   cursor: pointer;
   margin-bottom: 10px;
+}
+
+.profileIcon:hover {
+  color: #4A4A4A;
 }
