@@ -1,25 +1,9 @@
 package com.example.back.repository;
 
 import com.example.back.model.Usuario;
-import java.util.*;
-import java.util.ArrayList;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-import com.example.back.model.Usuario;
-
-public class UsuarioRepository {
-    private List<Usuario> usuarios = new ArrayList<>();
-    private Long contadorId = 1L;
-
-    public Usuario salvar(Usuario usuario) {
-        usuario.setId(contadorId++);
-        usuarios.add(usuario);
-        return usuario;
-    }
-
-    public Optional<Usuario> buscarPorEmail(String email) {
-        return usuarios.stream()
-                .filter(u -> u.getEmail().equals(email))
-                .findFirst();
-    }
-
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+    Optional<Usuario> findByEmail(String email);
 }

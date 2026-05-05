@@ -1,10 +1,7 @@
 package com.example.back.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.back.model.Usuario;
 import com.example.back.services.UsuarioService;
@@ -13,7 +10,9 @@ import com.example.back.services.UsuarioService;
 @RestController
 @RequestMapping("/auth")
 public class UsuarioController {
-    private UsuarioService service = new UsuarioService();
+
+    @Autowired
+    private UsuarioService service;
 
     @PostMapping("/cadastro")
     public Usuario cadastrar(@RequestBody Usuario usuario) {
@@ -22,7 +21,12 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public Usuario login(@RequestBody Usuario usuario) {
-        return service.login(usuario.getEmail(), usuario.getSenha(  ));
+        return service.login(usuario.getEmail(), usuario.getSenha());
     }
     
+     @GetMapping("/teste")
+    public String teste() {
+    return "API funcionando";
+    }
+
 }
