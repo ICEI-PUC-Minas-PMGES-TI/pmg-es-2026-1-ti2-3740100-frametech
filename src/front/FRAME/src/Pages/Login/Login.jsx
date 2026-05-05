@@ -1,49 +1,119 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import styles from './Login.module.css';
+
+const TIPOS = [
+  { key: 'empresa', icon: '🏢', label: 'Empresa', sub: 'Adm' },
+  { key: 'prestador', icon: '📷', label: 'Prestador', sub: 'Evento' },
+  { key: 'cliente', icon: '👤', label: 'Cliente', sub: 'Usuário' },
+];
 
 function Login() {
-
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [tipo, setTipo] = useState('empresa');
 
-  const handleLogin = async () => {
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    if (e) e.preventDefault();
+
     try {
-      const response = await fetch('http://localhost:8080/auth/login', {
+      const res = await fetch('http://localhost:8080/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, senha })
+        body: JSON.stringify({ email, senha, tipo }),
       });
 
-      if (!response.ok) throw new Error();
+      if (!res.ok) throw new Error('Erro no login');
 
-      const data = await response.json();
+      const data = await res.json();
 
-      alert("Login realizado ✅");
+      localStorage.setItem('usuario', JSON.stringify(data));
 
-      // salva usuário (simples)
-      localStorage.setItem("usuario", JSON.stringify(data));
+      const rotas = {
+        cliente: '/home-cliente',
+        empresa: '/home-empresa',
+        prestador: '/home-prestador'
+      };
 
-    } catch {
-      alert("Email ou senha inválidos");
+      navigate(rotas[data.tipo] || '/');
+
+    } catch (err) {
+      console.error(err);
+      alert('Erro no login');
     }
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className={styles.pagina}>
+      <div className={styles.logo}>
+        <span className={styles.logoFrame}>FRAME</span>
+        <span className={styles.logoTech}>TECH</span>
+      </div>
 
-      <input
-        type="email"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <div className={styles.centro}>
+        <form className={styles.cartao} onSubmit={handleLogin}>
+          <h1 className={styles.tituloCartao}>Bem vindo de volta</h1>
 
-      <input
-        type="password"
-        placeholder="Senha"
-        onChange={(e) => setSenha(e.target.value)}
-      />
+          <p className={styles.subCartao}>
+            Ainda não tem cadastro?{" "}
+            <Link to="/cadastro" className={styles.link}>
+              Cadastre-se
+            </Link>
+          </p>
 
-      <button onClick={handleLogin}>Entrar</button>
+          <p className={styles.labelSecao}>Tipo de conta</p>
+
+          <div className={styles.tiposConta}>
+            {TIPOS.map(t => (
+              <button
+                key={t.key}
+                type="button"
+                className={`${styles.botaoTipo} ${tipo === t.key ? styles.botaoTipoAtivo : ''}`}
+                onClick={() => setTipo(t.key)}
+              >
+                <span className={styles.iconeTipo}>{t.icon}</span>
+                <span className={styles.labelTipo}>{t.label}</span>
+                <span className={styles.subTipo}>{t.sub}</span>
+              </button>
+            ))}
+          </div>
+
+          <p className={styles.labelSecao}>Credenciais</p>
+
+          <div className={styles.campo}>
+            <label className={styles.labelCampo}>Email</label>
+            <input
+              className={styles.input}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className={styles.campo}>
+            <label className={styles.labelCampo}>Senha</label>
+            <input
+              type="password"
+              className={styles.input}
+              value={senha}
+              onChange={e => setSenha(e.target.value)}
+            />
+          </div>
+
+          <div className={styles.esqueci}>
+            <a className={styles.link}>Esqueci a senha</a>
+          </div>
+
+          <button type="submit" className={styles.botaoPrincipal}>
+            Entrar
+          </button>
+
+          <button type="button" className={styles.botaoGoogle}>
+            Entrar com Google
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
