@@ -12,7 +12,6 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
 
-    
     public Usuario cadastrar(Usuario usuario) {
 
         if (repository.findByEmail(usuario.getEmail()).isPresent()) {
@@ -22,7 +21,6 @@ public class UsuarioService {
         return repository.save(usuario);
     }
 
-   
     public Usuario login(String email, String senha) {
 
         Usuario usuario = repository.findByEmail(email)
@@ -35,14 +33,12 @@ public class UsuarioService {
         return usuario;
     }
 
-   
     public Usuario buscarPorId(Long id) {
 
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }
 
-    
     public Usuario atualizar(Long id, Usuario dadosAtualizados) {
 
         Usuario usuario = repository.findById(id)
@@ -51,12 +47,22 @@ public class UsuarioService {
         usuario.setNome(dadosAtualizados.getNome());
         usuario.setEmail(dadosAtualizados.getEmail());
 
-       
-        if (dadosAtualizados.getSenha() != null &&
-            !dadosAtualizados.getSenha().isEmpty()) {
-
+        if (
+            dadosAtualizados.getSenha() != null &&
+            !dadosAtualizados.getSenha().isEmpty()
+        ) {
             usuario.setSenha(dadosAtualizados.getSenha());
         }
+
+        return repository.save(usuario);
+    }
+
+    public Usuario atualizarFoto(Long id, String foto) {
+
+        Usuario usuario = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        usuario.setFotoPerfil(foto);
 
         return repository.save(usuario);
     }

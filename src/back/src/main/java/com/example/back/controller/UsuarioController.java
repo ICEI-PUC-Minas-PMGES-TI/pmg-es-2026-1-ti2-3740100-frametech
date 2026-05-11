@@ -16,21 +16,40 @@ public class UsuarioController {
 
     @PostMapping("/cadastro")
     public Usuario cadastrar(@RequestBody Usuario usuario) {
+
         return service.cadastrar(usuario);
     }
 
     @PostMapping("/login")
     public Usuario login(@RequestBody Usuario usuario) {
-        return service.login(usuario.getEmail(), usuario.getSenha());
+
+        return service.login(
+                usuario.getEmail(),
+                usuario.getSenha()
+        );
     }
 
     @GetMapping("/perfil/{id}")
     public Usuario buscarPerfil(@PathVariable Long id) {
+
         return service.buscarPorId(id);
+    }
+
+    @PutMapping("/foto/{id}")
+    public Usuario atualizarFoto(
+            @PathVariable Long id,
+            @RequestBody Usuario usuario
+    ) {
+
+        return service.atualizarFoto(
+                id,
+                usuario.getFotoPerfil()
+        );
     }
 
     @GetMapping("/teste")
     public String teste() {
+
         return "API funcionando";
     }
 }
