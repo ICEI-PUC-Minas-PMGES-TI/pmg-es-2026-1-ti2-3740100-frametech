@@ -1,23 +1,48 @@
 package com.example.back.controller;
 
-import com.example.back.model.PerfilUser;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+import com.example.back.model.Usuario;
+import com.example.back.services.UsuarioService;
+
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:3000")
-public class PerfilController {
+@RequestMapping("/auth")
+public class UsuarioController {
 
-    @GetMapping("/perfil")
-    public PerfilUser getPerfil() {
-        return new PerfilUser(
-            "Pedro",
-            "pedrosouza12@gmail.com",
-            "31 9926734-3828",
-            "Usuário"
-        );
+    @Autowired
+    private UsuarioService service;
+
+    @PostMapping("/cadastro")
+    public Usuario cadastrar(@RequestBody Usuario usuario) {
+        return service.cadastrar(usuario);
+    }
+
+    
+    @PostMapping("/login")
+    public Usuario login(@RequestBody Usuario usuario) {
+        return service.login(usuario.getEmail(), usuario.getSenha());
+    }
+
+    
+    @GetMapping("/perfil/{id}")
+    public Usuario buscarPerfil(@PathVariable Long id) {
+        return service.buscarPorId(id);
+    }
+
+    
+    @PutMapping("/perfil/{id}")
+    public Usuario atualizarPerfil(
+            @PathVariable Long id,
+            @RequestBody Usuario dadosAtualizados) {
+
+        return service.atualizar(id, dadosAtualizados);
+    }
+
+   
+    @GetMapping("/teste")
+    public String teste() {
+        return "API funcionando";
     }
 }
