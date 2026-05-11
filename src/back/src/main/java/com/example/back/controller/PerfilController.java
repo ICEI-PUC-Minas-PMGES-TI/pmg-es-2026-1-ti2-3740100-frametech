@@ -8,31 +8,18 @@ import com.example.back.services.UsuarioService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/auth")
-public class UsuarioController {
+@RequestMapping("/perfil")
+public class PerfilController {
 
     @Autowired
     private UsuarioService service;
 
-    @PostMapping("/cadastro")
-    public Usuario cadastrar(@RequestBody Usuario usuario) {
-        return service.cadastrar(usuario);
-    }
-
-    
-    @PostMapping("/login")
-    public Usuario login(@RequestBody Usuario usuario) {
-        return service.login(usuario.getEmail(), usuario.getSenha());
-    }
-
-    
-    @GetMapping("/perfil/{id}")
+    @GetMapping("/{id}")
     public Usuario buscarPerfil(@PathVariable Long id) {
         return service.buscarPorId(id);
     }
 
-    
-    @PutMapping("/perfil/{id}")
+    @PutMapping("/{id}")
     public Usuario atualizarPerfil(
             @PathVariable Long id,
             @RequestBody Usuario dadosAtualizados) {
@@ -40,9 +27,8 @@ public class UsuarioController {
         return service.atualizar(id, dadosAtualizados);
     }
 
-   
     @GetMapping("/teste")
     public String teste() {
-        return "API funcionando";
+        return "Perfil funcionando";
     }
 }

@@ -23,10 +23,14 @@ public class UsuarioController {
     public Usuario login(@RequestBody Usuario usuario) {
         return service.login(usuario.getEmail(), usuario.getSenha());
     }
-    
-     @GetMapping("/teste")
-    public String teste() {
-    return "API funcionando";
+
+    @GetMapping("/perfil/{id}")
+    public Usuario buscarPerfil(@PathVariable Long id) {
+        return service.buscarPorId(id);
     }
 
+    @GetMapping("/teste")
+    public String teste() {
+        return "API funcionando";
+    }
 }
