@@ -1,0 +1,134 @@
+.eventos-container {
+  background-color: #f9f9f9;
+  font-family: sans-serif;
+  padding-bottom: 50px;
+}
+
+.eventos-header {
+  padding: 20px;
+  background: white;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.logo-text span {
+  color: #ff5a35; /* Laranja do Figma */
+}
+
+.eventos-form {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-section {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.grey-bg {
+  background-color: #f1f1f1;
+}
+
+h3 {
+  color: #ff5a35;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background: #fdfdfd;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.radio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.radio-option {
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.radio-option.selected {
+  border-color: #ff5a35;
+  background: #fff5f2;
+}
+
+.service-card {
+  background: white;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.service-card.active-border {
+  border: 2px solid #3498db; /* Azul conforme image_7841d8.png */
+}
+
+.service-card p {
+  font-size: 0.8rem;
+  color: #888;
+  margin: 5px 0 0 0;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  padding: 15px 40px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.btn-submit {
+  padding: 15px 40px;
+  border-radius: 8px;
+  border: none;
+  background: #333;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
