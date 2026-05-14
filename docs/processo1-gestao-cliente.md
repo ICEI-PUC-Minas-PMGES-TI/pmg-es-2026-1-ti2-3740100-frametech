@@ -1,5 +1,6 @@
 
-<img width="2722" height="880" alt="Gestao--Cliente Diagrama (2)" src="https://github.com/user-attachments/assets/0188454e-18b6-4998-843e-dcb40e26c0e3" />
+<img width="3841" height="863" alt="Correçao Processo 1 Diagrama (1)" src="https://github.com/user-attachments/assets/aa804817-6a01-4e08-b712-fa7511afea15" />
+
 O processo de gestao do cliente, tem como objetivo organizar o fluxo de atendimento do, desde o acesso ao sistema até a contratação e acompanhamento do serviço.
 
 **Login**
