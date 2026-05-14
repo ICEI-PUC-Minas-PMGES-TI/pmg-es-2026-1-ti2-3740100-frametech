@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Header from "../../Components/Header/Header";
 import styles from './Home.module.css';
 
@@ -10,15 +12,21 @@ import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
 
 function Home() {
+
+  const navigate = useNavigate();
+
   return (
+
     <div className={styles.paginaHome}>
+
       <Header />
 
       <main className={styles.conteudoPrincipal}>
 
-        {/* HERO */}
         <section className={styles.secaoTopo}>
+
           <div className={styles.containerTexto}>
+
             <h1 className={styles.tituloPrincipal}>
               Gestão que acompanha seu <span>ritmo</span>
             </h1>
@@ -29,19 +37,29 @@ function Home() {
             </p>
 
             <div className={styles.containerBotoes}>
-              <button className={styles.botaoPrimario}>
+
+              <button
+                className={styles.botaoPrimario}
+                onClick={() => navigate("/cadastro")}
+              >
                 Começar agora
               </button>
 
-              <button className={styles.botaoSecundario}>
+              <button
+                className={styles.botaoSecundario}
+                onClick={() => navigate("/login")}
+              >
                 Já tenho conta
               </button>
+
             </div>
+
           </div>
 
-          {/* MOCKUP */}
           <div className={styles.mockupDashboard}>
+
             <div className={styles.mockupCabecalho}>
+
               <div className={styles.bolinhasJanela}>
                 <span className={styles.vermelha}></span>
                 <span className={styles.amarela}></span>
@@ -51,6 +69,7 @@ function Home() {
               <span className={styles.mockupTitulo}>
                 FrameTech - Dashboard
               </span>
+
             </div>
 
             <div className={styles.mockupGrade}>
@@ -76,10 +95,11 @@ function Home() {
               </div>
 
             </div>
+
           </div>
+
         </section>
 
-        {/* CARROSSEL */}
         <section className={styles.secaoCarrossel}>
 
           <h2 className={styles.tituloCarrossel}>
@@ -144,9 +164,9 @@ function Home() {
             </SwiperSlide>
 
           </Swiper>
+
         </section>
 
-        {/* ESTATÍSTICAS */}
         <section className={styles.secaoEstatisticas}>
 
           <div>
@@ -171,7 +191,6 @@ function Home() {
 
         </section>
 
-        {/* SERVIÇOS */}
         <section className={styles.gradeServicos}>
 
           <div className={styles.cardServico}>
@@ -237,6 +256,7 @@ function Home() {
         </section>
 
       </main>
+
     </div>
   );
 }

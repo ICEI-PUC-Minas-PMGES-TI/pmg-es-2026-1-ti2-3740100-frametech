@@ -12,11 +12,38 @@ import {
 } from 'lucide-react';
 
 const Header = () => {
+
   const navigate = useNavigate();
 
+  const usuarioLogado = sessionStorage.getItem("usuarioId");
+
+  const verificarAcesso = (rota) => {
+
+    if (rota === "/login" || rota === "/cadastro") {
+      navigate(rota);
+      return;
+    }
+
+    if (!usuarioLogado) {
+      alert("Você precisa fazer login ou cadastro primeiro.");
+      navigate("/login");
+      return;
+    }
+
+    navigate(rota);
+  };
+
   return (
+
     <aside className={styles.sidebar}>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
+      >
 
         <div className={styles.logoContainer}>
           <span className={styles.logoFrame}>FRAME</span>
@@ -25,41 +52,63 @@ const Header = () => {
 
         <nav className={styles.navGroup}>
 
-          <button className={styles.iconButton} onClick={() => navigate("/")}>
+          <button
+            className={styles.iconButton}
+            onClick={() => verificarAcesso("/")}
+          >
             <Home size={20} />
           </button>
 
-          <button className={styles.iconButton} onClick={() => navigate("/home-cliente")}>
+          <button
+            className={styles.iconButton}
+            onClick={() => verificarAcesso("/home-cliente")}
+          >
             <BarChart3 size={20} />
           </button>
 
-          <button className={styles.iconButton} onClick={() => navigate("/perfil")}>
+          <button
+            className={styles.iconButton}
+            onClick={() => verificarAcesso("/perfil")}
+          >
             <User size={20} />
           </button>
 
-          <button className={styles.iconButton} onClick={() => navigate("/login")}>
+          <button
+            className={styles.iconButton}
+            onClick={() => verificarAcesso("/login")}
+          >
             <LogIn size={20} />
           </button>
 
-          <button className={styles.iconButton} onClick={() => navigate("/cadastro")}>
+          <button
+            className={styles.iconButton}
+            onClick={() => verificarAcesso("/cadastro")}
+          >
             <UserPlus size={20} />
           </button>
 
-          <button className={styles.iconButton} onClick={() => navigate("/configuracoes")}>
+          <button
+            className={styles.iconButton}
+            onClick={() => verificarAcesso("/configuracoes")}
+          >
             <Settings size={20} />
           </button>
 
         </nav>
+
       </div>
 
       <div>
+
         <button
           className={styles.profileIcon}
-          onClick={() => navigate("/perfil")}
+          onClick={() => verificarAcesso("/perfil")}
         >
           <User size={20} />
         </button>
+
       </div>
+
     </aside>
   );
 };
