@@ -16,10 +16,10 @@ function App() {
         <Route path="/home-cliente" element={<HomeClient />} />
         <Route path="/perfil" element={<Perfil />} />
 
-        {/* Nova rota para a tela que você está criando conforme o Figma */}
+ 
         <Route path="/eventos" element={<PaginaEventos />} />
-
-        {/* Redireciona qualquer rota inexistente para a Home */}
+      
+        
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

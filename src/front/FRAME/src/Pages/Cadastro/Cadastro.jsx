@@ -41,13 +41,12 @@ function Cadastro() {
       const resposta = await fetch('http://localhost:8080/auth/cadastro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-
-        // 🔥 ENVIA SÓ O QUE O BACKEND ESPERA
-        body: JSON.stringify({
-          nome: form.nome,
-          email: form.email,
-          senha: form.senha,
-        }),
+body: JSON.stringify({
+  nome: form.nome,
+  email: form.email,
+  senha: form.senha,
+  tipo: tipoConta
+}),
       });
 
       if (!resposta.ok) {

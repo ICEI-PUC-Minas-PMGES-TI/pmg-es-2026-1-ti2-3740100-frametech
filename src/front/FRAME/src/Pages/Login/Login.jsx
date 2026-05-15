@@ -58,18 +58,17 @@ function Login() {
         "ID SALVO:",
         sessionStorage.getItem("usuarioId")
       );
+if (data.tipo === "cliente") {
+  navigate("/home-cliente");
+}
 
-      if (tipo === "cliente") {
-        navigate("/home-cliente");
-      }
+if (data.tipo === "empresa") {
+  navigate("/home-adm");
+}
 
-      if (tipo === "empresa") {
-        navigate("/home-empresa");
-      }
-
-      if (tipo === "prestador") {
-        navigate("/home-prestador");
-      }
+if (data.tipo === "prestador") {
+  navigate("/home-prestador");
+}
 
     } catch (err) {
 
