@@ -132,6 +132,8 @@ As melhorias nos processos incluem uma melhor organização por meio de diferent
 
 [PROCESSO 4 - Solicitação de serviços](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
 
+[PROCESSO 5 - Cadastro de equipamentos](processo-5-cadastro-equipamentos.md)
+
 
 ## 4. Projeto da solução
 
