@@ -132,7 +132,7 @@ As melhorias nos processos incluem uma melhor organização por meio de diferent
 
 [PROCESSO 4 - Solicitação de serviços](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
 
-[PROCESSO 5 - cadastro de equipamentos](processo-5-nome-do-processo.md "Detalhamento do Processo 5.")
+
 ## 4. Projeto da solução
 
 _O documento a seguir apresenta o detalhamento do projeto da solução. São apresentadas duas seções que descrevem, respectivamente: modelo relacional e tecnologias._
