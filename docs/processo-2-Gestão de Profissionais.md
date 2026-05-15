@@ -1,4 +1,3 @@
-<img width="1600" height="801" alt="WhatsApp Image 2026-05-14 at 14 49 07" src="https://github.com/user-attachments/assets/db9782b9-a4a7-4995-b4b4-cb9ed67d8ee8" />
 ### 3.3.2 Processo 2 – GESTÃO DE PROFISSIONAIS DE SERVIÇO
 
 Automatizar a verificação de disponibilidade dos profissionais e integrar notificações em tempo real, reduzindo conflitos de agenda e retrabalho na definição de equipes.
