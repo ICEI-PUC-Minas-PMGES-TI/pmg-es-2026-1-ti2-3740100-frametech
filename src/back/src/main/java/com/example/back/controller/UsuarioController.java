@@ -25,7 +25,8 @@ public class UsuarioController {
 
         return service.login(
                 usuario.getEmail(),
-                usuario.getSenha()
+                usuario.getSenha(),
+                usuario.getTipo()
         );
     }
 

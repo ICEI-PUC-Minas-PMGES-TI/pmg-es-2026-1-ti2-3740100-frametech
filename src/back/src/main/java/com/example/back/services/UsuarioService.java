@@ -14,6 +14,11 @@ public class UsuarioService {
 
     public Usuario cadastrar(Usuario usuario) {
 
+        System.out.println(usuario.getNome());
+        System.out.println(usuario.getEmail());
+        System.out.println(usuario.getSenha());
+        System.out.println(usuario.getTipo());
+
         if (repository.findByEmail(usuario.getEmail()).isPresent()) {
             throw new RuntimeException("Email já cadastrado");
         }
@@ -21,13 +26,17 @@ public class UsuarioService {
         return repository.save(usuario);
     }
 
-    public Usuario login(String email, String senha) {
+    public Usuario login(String email, String senha, String tipo) {
 
         Usuario usuario = repository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
         if (!usuario.getSenha().equals(senha)) {
             throw new RuntimeException("Senha inválida");
+        }
+
+        if (!usuario.getTipo().equals(tipo)) {
+            throw new RuntimeException("Tipo de conta inválido");
         }
 
         return usuario;

@@ -33,7 +33,8 @@ function Login() {
 
           body: JSON.stringify({
             email,
-            senha
+            senha,
+            tipo
           }),
         }
       );
@@ -58,17 +59,18 @@ function Login() {
         "ID SALVO:",
         sessionStorage.getItem("usuarioId")
       );
-if (data.tipo === "cliente") {
-  navigate("/home-cliente");
-}
 
-if (data.tipo === "empresa") {
-  navigate("/home-adm");
-}
+      if (data.tipo === "cliente") {
+        navigate("/home-cliente");
+      }
 
-if (data.tipo === "prestador") {
-  navigate("/home-prestador");
-}
+      if (data.tipo === "empresa") {
+        navigate("/home-adm");
+      }
+
+      if (data.tipo === "prestador") {
+        navigate("/home-prestador");
+      }
 
     } catch (err) {
 
