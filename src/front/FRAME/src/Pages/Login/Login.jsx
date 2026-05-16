@@ -55,6 +55,11 @@ function Login() {
         data.id
       );
 
+      sessionStorage.setItem(
+        "tipoUsuario",
+        data.tipo
+      );
+
       console.log(
         "ID SALVO:",
         sessionStorage.getItem("usuarioId")
@@ -69,7 +74,7 @@ function Login() {
       }
 
       if (data.tipo === "prestador") {
-        navigate("/home-prestador");
+        navigate("/home-profissional");
       }
 
     } catch (err) {
