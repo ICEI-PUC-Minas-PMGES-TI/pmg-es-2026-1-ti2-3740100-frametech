@@ -1,46 +1,53 @@
 .eventos-container {
   background-color: #f9f9f9;
-  font-family: sans-serif;
-  padding-bottom: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  padding-bottom: 60px;
 }
 
 .eventos-header {
-  padding: 20px;
+  padding: 20px 40px;
   background: white;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
 }
 
 .logo-text {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
   color: #333;
+  margin: 0;
 }
 
 .logo-text span {
-  color: #ff5a35; /* Laranja do Figma */
+  color: #ff5a35;
 }
 
 .eventos-form {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 40px auto 0; 
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
+  padding: 0 20px; 
 }
 
 .form-section {
   background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
 }
 
 .grey-bg {
-  background-color: #f1f1f1;
+  background-color: #f5f5f5;
+  box-shadow: none;
 }
 
 h3 {
   color: #ff5a35;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
+  font-size: 0.85rem;
+  margin-top: 0;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
 }
 
 .input-group {
@@ -52,83 +59,146 @@ h3 {
 
 label {
   font-size: 0.85rem;
-  color: #666;
-  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 8px;
 }
 
-input, textarea {
-  padding: 10px;
-  border: 1px solid #eee;
-  border-radius: 5px;
+input[type="text"], 
+input[type="date"], 
+input[type="time"], 
+textarea {
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
   background: #fdfdfd;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+
+input[type="text"]:focus, 
+input[type="date"]:focus, 
+input[type="time"]:focus, 
+textarea:focus {
+  outline: none;
+  border-color: #ff5a35;
+  box-shadow: 0 0 0 3px rgba(255, 90, 53, 0.1);
 }
 
 .row {
   display: flex;
-  gap: 15px;
+  gap: 20px;
+  flex-wrap: wrap; 
+}
+
+.sub-label {
+  display: block;
+  margin-top: 10px;
 }
 
 .radio-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 15px;
 }
 
 .radio-option {
-  border: 1px solid #eee;
-  padding: 10px;
+  border: 1px solid #e0e0e0;
+  padding: 12px;
   border-radius: 8px;
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  background: white;
+  font-size: 0.9rem;
+  color: #555;
+  transition: all 0.2s ease;
+}
+
+.radio-option:hover {
+  border-color: #ff5a35;
 }
 
 .radio-option.selected {
   border-color: #ff5a35;
   background: #fff5f2;
+  color: #ff5a35;
+  font-weight: 500;
 }
 
 .service-card {
   background: white;
-  margin-bottom: 10px;
-  padding: 15px;
-  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 18px;
+  border-radius: 8px;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-start; 
   gap: 15px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.service-card input[type="checkbox"] {
+  margin-top: 4px; 
+  transform: scale(1.1); 
+  cursor: pointer;
 }
 
 .service-card.active-border {
-  border: 2px solid #3498db; /* Azul conforme image_7841d8.png */
+  border: 2px solid #3498db; 
+}
+
+.service-card strong {
+  font-size: 0.9rem;
+  color: #333;
 }
 
 .service-card p {
-  font-size: 0.8rem;
-  color: #888;
+  font-size: 0.85rem;
+  color: #777;
   margin: 5px 0 0 0;
+  line-height: 1.4;
 }
 
 .form-actions {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
+
 .btn-cancel {
-  padding: 15px 40px;
+  padding: 14px 40px;
   border-radius: 8px;
   border: 1px solid #ccc;
   background: white;
   cursor: pointer;
+  font-weight: 500;
+  color: #555;
+  transition: 0.3s;
+}
+
+.btn-cancel:hover {
+  background: #f1f1f1;
+  border-color: #bbb;
 }
 
 .btn-submit {
-  padding: 15px 40px;
+  padding: 14px 40px;
   border-radius: 8px;
   border: none;
   background: #333;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background: #ff5a35; 
+  transform: translateY(-2px); 
 }
