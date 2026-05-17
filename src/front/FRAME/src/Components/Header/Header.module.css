@@ -1,8 +1,6 @@
 .sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
   width: 90px;
+  min-width: 90px;
   height: 100vh;
   background-color: #F8F7F5;
   display: flex;
@@ -12,7 +10,7 @@
   padding: 35px 0;
   border-right: 1px solid #EDEDED;
   font-family: sans-serif;
-  z-index: 1000;
+  flex-shrink: 0;
 }
 
 .logoContainer {
@@ -59,7 +57,7 @@
 
 .iconButton:hover {
   color: #E26B45;
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 .profileIcon {

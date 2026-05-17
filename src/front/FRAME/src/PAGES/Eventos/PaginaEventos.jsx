@@ -12,7 +12,7 @@ const PaginaEventos = () => {
 
       <main className="eventos-form">
 
-        {/* SOBRE O EVENTO */}
+       
         <section className="form-section">
           <h3>SOBRE O EVENTO</h3>
 

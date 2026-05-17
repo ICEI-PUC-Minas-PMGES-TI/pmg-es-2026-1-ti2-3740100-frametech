@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./HomeProfissional.module.css";
+import Header from "../../Components/Header/Header";
 
 const Ico = ({ name, size = 18 }) => (
   <i className={`ti ti-${name}`} style={{ fontSize: size }} aria-hidden="true" />
@@ -109,25 +110,27 @@ export default function HomeProfissional() {
 
   return (
     <div className={styles.root}>
+      <Header />
 
-      <div className={styles.statsRow}>
-        <div className={`${styles.stat} ${styles.statPink}`}>
-          <span className={styles.statLbl}>Novos pedidos</span>
-          <span className={styles.statVal}>{newCount}</span>
+      <div className={styles.mainContent}>
+        <div className={styles.statsRow}>
+          <div className={`${styles.stat} ${styles.statPink}`}>
+            <span className={styles.statLbl}>Novos pedidos</span>
+            <span className={styles.statVal}>{newCount}</span>
+          </div>
+          <div className={`${styles.stat} ${styles.statGreen}`}>
+            <span className={styles.statLbl}>Na escala</span>
+            <span className={styles.statVal}>{scale.length}</span>
+          </div>
+          <div className={`${styles.stat} ${styles.statPurple}`}>
+            <span className={styles.statLbl}>Próximo evento</span>
+            <span className={styles.statVal}>15 jun</span>
+          </div>
+          <div className={`${styles.stat} ${styles.statYellow}`}>
+            <span className={styles.statLbl}>Concluídos</span>
+            <span className={styles.statVal}>12</span>
+          </div>
         </div>
-        <div className={`${styles.stat} ${styles.statGreen}`}>
-          <span className={styles.statLbl}>Na escala</span>
-          <span className={styles.statVal}>{scale.length}</span>
-        </div>
-        <div className={`${styles.stat} ${styles.statPurple}`}>
-          <span className={styles.statLbl}>Próximo evento</span>
-          <span className={styles.statVal}>15 jun</span>
-        </div>
-        <div className={`${styles.stat} ${styles.statYellow}`}>
-          <span className={styles.statLbl}>Concluídos</span>
-          <span className={styles.statVal}>12</span>
-        </div>
-      </div>
 
         <div className={styles.columns}>
 
@@ -226,13 +229,14 @@ export default function HomeProfissional() {
                       <div className={styles.scSub}><Ico name="camera" size={11} />{s.svc}</div>
                     )}
                   </div>
-                  <span className={styles.tagConf}>{MONTHS[s.mon]}</span>
+                  <span className={`${styles.tag} ${styles.tagConf}`}>{MONTHS[s.mon]}</span>
                 </div>
               ))}
             </div>
           </div>
 
         </div>
+      </div>
 
       {toast && (
         <div className={styles.toast}>

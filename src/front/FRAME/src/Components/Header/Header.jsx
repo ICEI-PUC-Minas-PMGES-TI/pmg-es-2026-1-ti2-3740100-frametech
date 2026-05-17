@@ -6,7 +6,7 @@ import {
   Home,
   BarChart3,
   User,
-  LogIn,
+ LogIn,
   UserPlus,
   Settings
 } from 'lucide-react';
@@ -33,6 +33,22 @@ const Header = () => {
     navigate(rota);
   };
 
+  const verificarHome = () => {
+
+    if (!usuarioLogado) {
+      navigate("/");
+      return;
+    }
+
+    const tipoUsuario = sessionStorage.getItem("tipoUsuario");
+
+    if (tipoUsuario === "profissional") {
+      navigate("/home-profissional");
+    } else {
+      navigate("/home-cliente");
+    }
+  };
+
   return (
 
     <aside className={styles.sidebar}>
@@ -54,7 +70,7 @@ const Header = () => {
 
           <button
             className={styles.iconButton}
-            onClick={() => verificarAcesso("/")}
+            onClick={verificarHome}
           >
             <Home size={20} />
           </button>
