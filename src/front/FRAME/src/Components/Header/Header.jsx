@@ -6,7 +6,7 @@ import {
   Home,
   BarChart3,
   User,
- LogIn,
+  LogIn,
   UserPlus,
   Settings
 } from 'lucide-react';
@@ -42,10 +42,21 @@ const Header = () => {
 
     const tipoUsuario = sessionStorage.getItem("tipoUsuario");
 
-    if (tipoUsuario === "profissional") {
+    if (tipoUsuario === "prestador") {
       navigate("/home-profissional");
     } else {
       navigate("/home-cliente");
+    }
+  };
+
+  const verificarDashboard = () => {
+
+    const tipoUsuario = sessionStorage.getItem("tipoUsuario");
+
+    if (tipoUsuario === "prestador") {
+      verificarAcesso("/home-profissional");
+    } else {
+      verificarAcesso("/home-cliente");
     }
   };
 
@@ -77,7 +88,7 @@ const Header = () => {
 
           <button
             className={styles.iconButton}
-            onClick={() => verificarAcesso("/home-cliente")}
+            onClick={verificarDashboard}
           >
             <BarChart3 size={20} />
           </button>
