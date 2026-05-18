@@ -16,19 +16,30 @@ public class PerfilController {
 
     @GetMapping("/{id}")
     public Usuario buscarPerfil(@PathVariable Long id) {
+
         return service.buscarPorId(id);
     }
 
     @PutMapping("/{id}")
     public Usuario atualizarPerfil(
             @PathVariable Long id,
-            @RequestBody Usuario dadosAtualizados) {
+            @RequestBody Usuario dadosAtualizados
+    ) {
 
         return service.atualizar(id, dadosAtualizados);
     }
 
+    @DeleteMapping("/{id}")
+    public String deletarPerfil(@PathVariable Long id) {
+
+        service.deletar(id);
+
+        return "Usuário deletado com sucesso";
+    }
+
     @GetMapping("/teste")
     public String teste() {
+
         return "Perfil funcionando";
     }
 }

@@ -54,7 +54,10 @@ public class UsuarioService {
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
         usuario.setNome(dadosAtualizados.getNome());
+
         usuario.setEmail(dadosAtualizados.getEmail());
+
+        usuario.setTelefone(dadosAtualizados.getTelefone());
 
         if (
             dadosAtualizados.getSenha() != null &&
@@ -74,5 +77,13 @@ public class UsuarioService {
         usuario.setFotoPerfil(foto);
 
         return repository.save(usuario);
+    }
+
+    public void deletar(Long id) {
+
+        Usuario usuario = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        repository.delete(usuario);
     }
 }

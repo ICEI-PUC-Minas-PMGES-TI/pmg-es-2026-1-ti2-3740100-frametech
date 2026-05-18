@@ -19,6 +19,8 @@ public class Usuario {
 
     private String tipo;
 
+    private String telefone;
+
     @Lob
     @Column(columnDefinition = "LONGTEXT")
     private String fotoPerfil;
@@ -31,6 +33,7 @@ public class Usuario {
             String email,
             String senha,
             String tipo,
+            String telefone,
             String fotoPerfil
     ) {
         this.id = id;
@@ -38,6 +41,7 @@ public class Usuario {
         this.email = email;
         this.senha = senha;
         this.tipo = tipo;
+        this.telefone = telefone;
         this.fotoPerfil = fotoPerfil;
     }
 
@@ -79,6 +83,14 @@ public class Usuario {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getFotoPerfil() {
