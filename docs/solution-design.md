@@ -1,9 +1,10 @@
+
 ## 4. Projeto da solução
 
 ### 4.1. Modelo de dados
 
 
-<img width="2080" height="1054" alt="teste drawio (2)" src="https://github.com/user-attachments/assets/98dbd38d-dce0-498d-b15f-646d6c576a03" />
+<img width="206" height="150" alt="erd_estilo_original_reorganizado" src="https://github.com/user-attachments/assets/94733840-b56c-4363-9b66-2428bae3109c" />
 
 
 
