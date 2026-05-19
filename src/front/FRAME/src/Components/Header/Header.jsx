@@ -8,14 +8,16 @@ import {
   User,
   LogIn,
   UserPlus,
-  Settings
+  Settings,
+  LogOut
 } from 'lucide-react';
 
 const Header = () => {
 
   const navigate = useNavigate();
 
-  const usuarioLogado = sessionStorage.getItem("usuarioId");
+  const usuarioLogado =
+    sessionStorage.getItem("usuarioId");
 
   const verificarAcesso = (rota) => {
 
@@ -25,8 +27,13 @@ const Header = () => {
     }
 
     if (!usuarioLogado) {
-      alert("Você precisa fazer login ou cadastro primeiro.");
+
+      alert(
+        "Você precisa fazer login ou cadastro primeiro."
+      );
+
       navigate("/login");
+
       return;
     }
 
@@ -36,28 +43,21 @@ const Header = () => {
   const verificarHome = () => {
 
     if (!usuarioLogado) {
+
       navigate("/");
+
       return;
     }
 
-    const tipoUsuario = sessionStorage.getItem("tipoUsuario");
-
-    if (tipoUsuario === "prestador") {
-      navigate("/home-profissional");
-    } else {
-      navigate("/home-cliente");
-    }
+    navigate("/home-cliente");
   };
 
-  const verificarDashboard = () => {
+  const sair = () => {
 
-    const tipoUsuario = sessionStorage.getItem("tipoUsuario");
+    sessionStorage.removeItem("usuarioId");
+    sessionStorage.removeItem("tipoUsuario");
 
-    if (tipoUsuario === "prestador") {
-      verificarAcesso("/home-profissional");
-    } else {
-      verificarAcesso("/home-cliente");
-    }
+    navigate("/login");
   };
 
   return (
@@ -73,8 +73,15 @@ const Header = () => {
       >
 
         <div className={styles.logoContainer}>
-          <span className={styles.logoFrame}>FRAME</span>
-          <span className={styles.logoTech}>TECH</span>
+
+          <span className={styles.logoFrame}>
+            FRAME
+          </span>
+
+          <span className={styles.logoTech}>
+            TECH
+          </span>
+
         </div>
 
         <nav className={styles.navGroup}>
@@ -88,7 +95,7 @@ const Header = () => {
 
           <button
             className={styles.iconButton}
-            onClick={verificarDashboard}
+            onClick={verificarHome}
           >
             <BarChart3 size={20} />
           </button>
@@ -119,6 +126,13 @@ const Header = () => {
             onClick={() => verificarAcesso("/configuracoes")}
           >
             <Settings size={20} />
+          </button>
+
+          <button
+            className={styles.iconButton}
+            onClick={sair}
+          >
+            <LogOut size={20} />
           </button>
 
         </nav>

@@ -1,204 +1,188 @@
-.eventos-container {
-  background-color: #f9f9f9;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-  padding-bottom: 60px;
+.layout-eventos{
+  display: flex;
+  min-height: 100vh;
+  background: #f5f5f5;
 }
 
-.eventos-header {
-  padding: 20px 40px;
-  background: white;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+.eventos-container{
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
 }
 
-.logo-text {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #333;
-  margin: 0;
-}
-
-.logo-text span {
-  color: #ff5a35;
-}
-
-.eventos-form {
-  max-width: 800px;
-  margin: 40px auto 0; 
+.eventos-form{
+  max-width: 950px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 25px;
-  padding: 0 20px; 
 }
 
-.form-section {
+.form-section{
   background: white;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
-.grey-bg {
-  background-color: #f5f5f5;
+.grey-bg{
+  background: #f7f7f7;
   box-shadow: none;
 }
 
-h3 {
+h3{
   color: #ff5a35;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   margin-top: 0;
   margin-bottom: 25px;
   letter-spacing: 0.5px;
 }
 
-.input-group {
+.input-group{
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
   flex: 1;
 }
 
-label {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #555;
+label{
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
   margin-bottom: 8px;
 }
 
-input[type="text"], 
-input[type="date"], 
-input[type="time"], 
-textarea {
-  padding: 12px;
+input[type="text"],
+input[type="date"],
+input[type="time"],
+textarea{
+  padding: 14px;
   border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  background: #fdfdfd;
-  font-family: inherit;
-  font-size: 0.9rem;
+  border-radius: 10px;
+  background: #fcfcfc;
+  font-size: 0.95rem;
   color: #333;
-  transition: all 0.3s ease;
+  transition: 0.3s;
+  font-family: inherit;
 }
 
-
-input[type="text"]:focus, 
-input[type="date"]:focus, 
-input[type="time"]:focus, 
-textarea:focus {
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+textarea:focus{
   outline: none;
   border-color: #ff5a35;
-  box-shadow: 0 0 0 3px rgba(255, 90, 53, 0.1);
+  box-shadow: 0 0 0 3px rgba(255,90,53,0.12);
 }
 
-.row {
+textarea{
+  resize: vertical;
+  min-height: 130px;
+}
+
+.row{
   display: flex;
   gap: 20px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
-.sub-label {
+.sub-label{
   display: block;
   margin-top: 10px;
+  margin-bottom: 12px;
 }
 
-.radio-grid {
+.radio-grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
-.radio-option {
-  border: 1px solid #e0e0e0;
-  padding: 12px;
-  border-radius: 8px;
+.radio-option{
+  border: 1px solid #e3e3e3;
+  padding: 14px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
-  cursor: pointer;
   background: white;
-  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
   color: #555;
-  transition: all 0.2s ease;
 }
 
-.radio-option:hover {
+.radio-option:hover{
   border-color: #ff5a35;
 }
 
-.radio-option.selected {
+.radio-option.selected{
   border-color: #ff5a35;
   background: #fff5f2;
   color: #ff5a35;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-.service-card {
+.service-card{
   background: white;
-  margin-bottom: 15px;
   padding: 18px;
-  border-radius: 8px;
+  border-radius: 12px;
+  margin-bottom: 15px;
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   gap: 15px;
   border: 2px solid transparent;
-  transition: border-color 0.3s;
+  transition: 0.3s;
 }
 
-.service-card input[type="checkbox"] {
-  margin-top: 4px; 
-  transform: scale(1.1); 
-  cursor: pointer;
+.service-card.active-border{
+  border-color: #3498db;
 }
 
-.service-card.active-border {
-  border: 2px solid #3498db; 
-}
-
-.service-card strong {
-  font-size: 0.9rem;
+.service-card strong{
   color: #333;
+  font-size: 0.95rem;
 }
 
-.service-card p {
-  font-size: 0.85rem;
+.service-card p{
+  margin-top: 6px;
   color: #777;
-  margin: 5px 0 0 0;
-  line-height: 1.4;
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
-.form-actions {
+.form-actions{
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
 
-
-.btn-cancel {
+.btn-cancel{
   padding: 14px 40px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  border: 1px solid #d0d0d0;
   background: white;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
   color: #555;
   transition: 0.3s;
 }
 
-.btn-cancel:hover {
+.btn-cancel:hover{
   background: #f1f1f1;
-  border-color: #bbb;
 }
 
-.btn-submit {
+.btn-submit{
   padding: 14px 40px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
-  background: #333;
+  background: #222;
   color: white;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.btn-submit:hover {
-  background: #ff5a35; 
-  transform: translateY(-2px); 
+.btn-submit:hover{
+  background: #ff5a35;
+  transform: translateY(-2px);
 }

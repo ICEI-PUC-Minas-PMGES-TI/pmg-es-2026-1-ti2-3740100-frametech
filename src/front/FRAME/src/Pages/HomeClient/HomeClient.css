@@ -1,95 +1,159 @@
-.container {
+.home-layout{
+  display: flex;
+}
+
+.container{
+  flex: 1;
   padding: 30px;
   background: #f5f5f5;
   min-height: 100vh;
   font-family: Arial;
 }
 
-.header {
+.topo-home{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 28px;
 }
 
-.header h2 span {
-  color: #ff4d2d;
+.topo-home h1{
+  margin: 0;
+  font-size: 1.7rem;
+  color: #222;
 }
 
-.btn {
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  background: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.cards {
-  display: flex;
-  gap: 20px;
-  margin: 20px 0;
-}
-
-.card {
-  background: #eaeaea;
-  padding: 20px;
-  border-radius: 10px;
-  flex: 1;
-}
-
-.card-title {
-  font-size: 12px;
-  color: gray;
-}
-
-.project-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  margin-top: 20px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 15px;
-}
-
-.label {
-  color: gray;
-  font-size: 12px;
-}
-
-.status-bar {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.status-bar span {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #ccc;
-}
-
-.status-bar .active {
-  background: #2ecc71;
-}
-
-.status-bar .current {
-  background: #ff4d2d;
-}
-
-.status-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
+.subtitulo{
+  color: #7b7b7b;
   margin-top: 5px;
-  color: gray;
+  font-size: 0.92rem;
 }
 
-.loading {
-  padding: 50px;
+.novo-evento-btn{
+  background: #111;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.novo-evento-btn:hover{
+  opacity: 0.92;
+  transform: translateY(-2px);
+}
+
+.eventos-lista{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card-evento-horizontal{
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  transition: 0.3s;
+  border: 1px solid #ececec;
+}
+
+.card-evento-horizontal:hover{
+  transform: translateY(-2px);
+}
+
+.evento-topo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.evento-topo h2{
+  margin: 0;
+  font-size: 1.3rem;
+  color: #1f1f1f;
+}
+
+.status-evento{
+  background: #fff3cd;
+  color: #c28a00;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.evento-info{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-item{
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid #efefef;
+}
+
+.info-label{
+  display: block;
+  font-size: 0.72rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.info-item p{
+  margin: 0;
+  font-size: 0.94rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.azul{
+  color: #3b82f6;
+}
+
+.rosa{
+  color: #ec4899;
+}
+
+.verde{
+  color: #10b981;
+}
+
+.laranja{
+  color: #f97316;
+}
+
+.roxo{
+  color: #8b5cf6;
+}
+
+.descricao-evento{
+  margin-top: 8px !important;
+  line-height: 1.6;
+}
+
+.sem-eventos{
+  background: white;
+  padding: 45px;
+  border-radius: 16px;
   text-align: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+}
+
+.sem-eventos h2{
+  margin-top: 0;
+  color: #222;
+}
+
+.sem-eventos p{
+  color: gray;
 }

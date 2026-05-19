@@ -13,6 +13,8 @@ import Perfil from "./Pages/Perfil/Perfil";
 import PaginaEventos from "./PAGES/Eventos/PaginaEventos";
 import HomeProfissional from "./Pages/HomeProfissional/HomeProfissional";
 
+
+
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
@@ -26,8 +28,11 @@ function App() {
         <Route
           path="/"
           element={<Home />}
-        />
+        /> 
 
+
+
+        
         <Route
           path="/cadastro"
           element={<Cadastro />}

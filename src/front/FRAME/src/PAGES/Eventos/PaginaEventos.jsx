@@ -1,215 +1,231 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './PaginaEventos.css';
+import Header from '../../Components/Header/Header';
 
 const PaginaEventos = () => {
+
+  const navigate = useNavigate();
+
+  const [nomeEvento, setNomeEvento] = useState("");
+  const [tipoEvento, setTipoEvento] = useState("");
+  const [porteEvento, setPorteEvento] = useState("");
+  const [descricao, setDescricao] = useState("");
+  const [dataEvento, setDataEvento] = useState("");
+
+  const salvarEvento = () => {
+
+    const usuarioId =
+      sessionStorage.getItem("usuarioId");
+
+    fetch(`http://localhost:8080/api/eventos/${usuarioId}`, {
+
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+
+        nomeEvento,
+        tipoEvento,
+        porteEvento,
+        descricao,
+        dataEvento
+
+      })
+
+    })
+
+    .then(res => res.json())
+
+    .then(data => {
+
+      console.log(data);
+
+      alert("Evento criado!");
+
+      navigate("/home-cliente");
+
+    })
+
+    .catch(err => {
+
+      console.log(err);
+
+    });
+  };
+
   return (
-    <div className="eventos-container">
-      <header className="eventos-header">
-        <h1 className="logo-text">
-          FRAME<span>TECH</span>
-        </h1>
-      </header>
 
-      <main className="eventos-form">
+    <div className="layout-eventos">
 
-       
-        <section className="form-section">
-          <h3>SOBRE O EVENTO</h3>
+      <Header />
 
-          <div className="input-group">
-            <label>Nome do evento</label>
-            <input
-              type="text"
-              placeholder="Ex: Casamento João e Ana"
-            />
-          </div>
+      <div className="eventos-container">
 
-          <div className="row">
+        <main className="eventos-form">
+
+          <section className="form-section">
+
+            <h3>SOBRE O EVENTO</h3>
+
             <div className="input-group">
-              <label>Tipo de evento</label>
+
+              <label>Nome do evento</label>
+
               <input
                 type="text"
-                placeholder="Ex: Formatura"
+                placeholder="Ex: Casamento João e Ana"
+                value={nomeEvento}
+                onChange={(e) =>
+                  setNomeEvento(e.target.value)
+                }
               />
+
             </div>
 
-            <div className="input-group">
-              <label>Porte do evento</label>
-              <input
-                type="text"
-                placeholder="50 pessoas"
-              />
-            </div>
-          </div>
+            <div className="row">
 
-          <div className="input-group">
-            <label>Descrição</label>
-            <textarea rows="4"></textarea>
-          </div>
-        </section>
+              <div className="input-group">
 
-        {/* DATA E HORÁRIO */}
-        <section className="form-section">
-          <h3>DATA E HORÁRIO</h3>
+                <label>Tipo de evento</label>
 
-          <div className="row">
-            <div className="input-group">
-              <label>Data</label>
-              <input
-                type="date"
-                defaultValue="2026-07-25"
-              />
-            </div>
+                <input
+                  type="text"
+                  placeholder="Ex: Formatura"
+                  value={tipoEvento}
+                  onChange={(e) =>
+                    setTipoEvento(e.target.value)
+                  }
+                />
 
-            <div className="input-group">
-              <label>Início</label>
-              <input type="time" />
-            </div>
-
-            <div className="input-group">
-              <label>Término</label>
-              <input type="time" />
-            </div>
-          </div>
-        </section>
-
-        {/* LOCAL */}
-        <section className="form-section">
-          <h3>LOCAL</h3>
-
-          <div className="input-group">
-            <label>Nome do espaço / local</label>
-            <input
-              type="text"
-              placeholder="Ex: Espaço Garden"
-            />
-          </div>
-
-          <div className="input-group">
-            <label>Endereço</label>
-            <input
-              type="text"
-              placeholder="Ex: Rua Dom José Gaspar"
-            />
-          </div>
-
-          <div className="row">
-            <div className="input-group">
-              <label>Número</label>
-              <input
-                type="text"
-                placeholder="Ex: 500"
-              />
-            </div>
-
-            <div className="input-group">
-              <label>Bairro</label>
-              <input
-                type="text"
-                placeholder="Ex: Coração Eucarístico"
-              />
-            </div>
-          </div>
-
-          <label className="sub-label">
-            Tipo de ambiente
-          </label>
-
-          <div className="radio-grid">
-
-            <label className="radio-option selected">
-              <input
-                type="radio"
-                name="ambiente"
-                defaultChecked
-              />
-              Interno (coberto)
-            </label>
-
-            <label className="radio-option">
-              <input
-                type="radio"
-                name="ambiente"
-              />
-              Externo (ao ar livre)
-            </label>
-
-            <label className="radio-option">
-              <input
-                type="radio"
-                name="ambiente"
-              />
-              Misto
-            </label>
-
-            <label className="radio-option">
-              <input
-                type="radio"
-                name="ambiente"
-              />
-              Ainda não sei
-            </label>
-
-          </div>
-        </section>
-
-        {/* SERVIÇOS */}
-        <section className="form-section grey-bg">
-          <h3>SERVIÇOS</h3>
-
-          {[
-            {
-              t: 'FILMAGEM',
-              d: 'Cobertura completa do evento em vídeo'
-            },
-            {
-              t: 'FOTOGRAFIA',
-              d: 'Ensaio e cobertura fotográfica profissional'
-            },
-            {
-              t: 'EDIÇÃO DE VÍDEO',
-              d: 'Corte, trilha sonora, legendas e color grading',
-              active: true
-            },
-            {
-              t: 'TRANSMISSÃO AO VIVO',
-              d: 'Streaming para YouTube, Instagram ou plataforma personalizada'
-            },
-            {
-              t: 'DRONE',
-              d: 'Imagens aéreas do evento e do local'
-            }
-          ].map((servico, i) => (
-            <div
-              key={i}
-              className={`service-card ${servico.active ? 'active-border' : ''}`}
-            >
-              <input
-                type="checkbox"
-                checked={servico.active}
-                readOnly
-              />
-
-              <div>
-                <strong>{servico.t}</strong>
-                <p>{servico.d}</p>
               </div>
+
+              <div className="input-group">
+
+                <label>Porte do evento</label>
+
+                <input
+                  type="text"
+                  placeholder="50 pessoas"
+                  value={porteEvento}
+                  onChange={(e) =>
+                    setPorteEvento(e.target.value)
+                  }
+                />
+
+              </div>
+
             </div>
-          ))}
-        </section>
 
-        {/* BOTÕES */}
-        <div className="form-actions">
-          <button className="btn-cancel">
-            Cancelar
-          </button>
+            <div className="input-group">
 
-          <button className="btn-submit">
-            Enviar solicitação
-          </button>
-        </div>
+              <label>Descrição</label>
 
-      </main>
+              <textarea
+                rows="4"
+                value={descricao}
+                onChange={(e) =>
+                  setDescricao(e.target.value)
+                }
+              ></textarea>
+
+            </div>
+
+          </section>
+
+          <section className="form-section">
+
+            <h3>DATA E HORÁRIO</h3>
+
+            <div className="row">
+
+              <div className="input-group">
+
+                <label>Data</label>
+
+                <input
+                  type="date"
+                  value={dataEvento}
+                  onChange={(e) =>
+                    setDataEvento(e.target.value)
+                  }
+                />
+
+              </div>
+
+              <div className="input-group">
+
+                <label>Início</label>
+
+                <input type="time" />
+
+              </div>
+
+              <div className="input-group">
+
+                <label>Término</label>
+
+                <input type="time" />
+
+              </div>
+
+            </div>
+
+          </section>
+
+          <section className="form-section">
+
+            <h3>LOCAL</h3>
+
+            <div className="input-group">
+
+              <label>Nome do espaço / local</label>
+
+              <input
+                type="text"
+                placeholder="Ex: Espaço Garden"
+              />
+
+            </div>
+
+            <div className="input-group">
+
+              <label>Endereço</label>
+
+              <input
+                type="text"
+                placeholder="Ex: Rua Dom José Gaspar"
+              />
+
+            </div>
+
+          </section>
+
+          <div className="form-actions">
+
+            <button
+              className="btn-cancel"
+              onClick={() => navigate("/home-cliente")}
+            >
+              Cancelar
+            </button>
+
+            <button
+              className="btn-submit"
+              onClick={salvarEvento}
+            >
+              Enviar solicitação
+            </button>
+
+          </div>
+
+        </main>
+
+      </div>
+
     </div>
   );
 };
