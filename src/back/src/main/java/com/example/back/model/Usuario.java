@@ -21,8 +21,6 @@ public class Usuario {
 
     private String telefone;
 
-    @Lob
-    @Column(columnDefinition = "LONGTEXT")
     private String fotoPerfil;
 
     public Usuario() {}
