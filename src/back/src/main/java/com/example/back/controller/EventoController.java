@@ -40,6 +40,6 @@ public class EventoController {
             @PathVariable Long usuarioId
     ) {
 
-        return eventoRepository.findByUsuarioId(usuarioId);
+        return eventoRepository.findByUsuario_Id(usuarioId);
     }
 }

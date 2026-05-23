@@ -16,11 +16,31 @@ export default function HomeClient() {
 
     fetch(`http://localhost:8080/api/eventos/${usuarioId}`)
 
-      .then(res => res.json())
+      .then(async (res) => {
+
+        if (!res.ok) {
+
+          const erro = await res.text();
+
+          console.log("ERRO:", erro);
+
+          throw new Error("Erro ao buscar eventos");
+        }
+
+        return res.json();
+
+      })
 
       .then(data => {
 
-        setEventos(data);
+        if (Array.isArray(data)) {
+
+          setEventos(data);
+
+        } else {
+
+          setEventos([]);
+        }
 
       })
 
@@ -28,6 +48,7 @@ export default function HomeClient() {
 
         console.log(err);
 
+        setEventos([]);
       });
 
   }, []);
@@ -90,17 +111,21 @@ export default function HomeClient() {
                     className="card-evento-horizontal"
                   >
 
-                    <div className="evento-header">
+                    <div className="evento-topo">
 
                       <div>
 
-                        <p className="evento-label">
-                          EVENTO
-                        </p>
+                        <span className="evento-categoria">
+                          PROJETO ATIVO
+                        </span>
 
                         <h2>
                           {evento.nomeEvento}
                         </h2>
+
+                        <p className="evento-subtitulo">
+                          {evento.tipoEvento}
+                        </p>
 
                       </div>
 
@@ -110,23 +135,23 @@ export default function HomeClient() {
 
                     </div>
 
-                    <div className="evento-grid">
+                    <div className="evento-info">
 
-                      <div className="info-box">
+                      <div className="info-item">
 
-                        <span className="info-title">
-                          Tipo
+                        <span className="info-label">
+                          Data do evento
                         </span>
 
                         <p>
-                          {evento.tipoEvento}
+                          {evento.dataEvento}
                         </p>
 
                       </div>
 
-                      <div className="info-box">
+                      <div className="info-item">
 
-                        <span className="info-title">
+                        <span className="info-label">
                           Porte
                         </span>
 
@@ -136,29 +161,41 @@ export default function HomeClient() {
 
                       </div>
 
-                      <div className="info-box">
+                      <div className="info-item">
 
-                        <span className="info-title">
-                          Data
+                        <span className="info-label">
+                          Tipo
                         </span>
 
                         <p>
-                          {evento.dataEvento}
+                          {evento.tipoEvento}
                         </p>
 
                       </div>
 
-                    </div>
+                      <div className="info-item">
 
-                    <div className="descricao-box">
+                        <span className="info-label">
+                          Status
+                        </span>
 
-                      <span className="info-title">
-                        Descrição
-                      </span>
+                        <p>
+                          Em análise
+                        </p>
 
-                      <p>
-                        {evento.descricao}
-                      </p>
+                      </div>
+
+                      <div className="info-item descricao-evento">
+
+                        <span className="info-label">
+                          Descrição
+                        </span>
+
+                        <p>
+                          {evento.descricao}
+                        </p>
+
+                      </div>
 
                     </div>
 
