@@ -1,9 +1,11 @@
 package com.example.back.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "usuarios")
 public class Usuario {
 
     @Id
@@ -11,36 +13,17 @@ public class Usuario {
     private Long id;
 
     private String nome;
-
-    @Column(unique = true)
     private String email;
-
     private String senha;
-
     private String tipo;
+private String telefone;
 
-    private String telefone;
+private String fotoPerfil;
+    @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
+    private List<Evento> eventos;
 
-    private String fotoPerfil;
-
-    public Usuario() {}
-
-    public Usuario(
-            Long id,
-            String nome,
-            String email,
-            String senha,
-            String tipo,
-            String telefone,
-            String fotoPerfil
-    ) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.tipo = tipo;
-        this.telefone = telefone;
-        this.fotoPerfil = fotoPerfil;
+    public Usuario() {
     }
 
     public Long getId() {
@@ -83,19 +66,26 @@ public class Usuario {
         this.tipo = tipo;
     }
 
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+
+    public void setEventos(List<Evento> eventos) {
+        this.eventos = eventos;
+    }
     public String getTelefone() {
-        return telefone;
-    }
+    return telefone;
+}
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+public void setTelefone(String telefone) {
+    this.telefone = telefone;
+}
 
-    public String getFotoPerfil() {
-        return fotoPerfil;
-    }
+public String getFotoPerfil() {
+    return fotoPerfil;
+}
 
-    public void setFotoPerfil(String fotoPerfil) {
-        this.fotoPerfil = fotoPerfil;
-    }
+public void setFotoPerfil(String fotoPerfil) {
+    this.fotoPerfil = fotoPerfil;
+}
 }
