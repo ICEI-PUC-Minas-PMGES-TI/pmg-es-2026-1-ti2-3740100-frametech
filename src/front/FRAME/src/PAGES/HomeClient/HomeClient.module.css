@@ -1,0 +1,252 @@
+/* ─── Layout ─────────────────────────────────────────────── */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.main {
+  flex: 1;
+  padding: 32px 28px;
+  max-width: 900px;
+}
+
+/* ─── Topo ───────────────────────────────────────────────── */
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.greeting {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.greetingName {
+  color: #1a1a1a;
+}
+
+.greetingSub {
+  font-size: 0.78rem;
+  color: #888;
+  margin: 2px 0 0;
+}
+
+.btnNovoEvento {
+  background: #fff;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+}
+
+.btnNovoEvento:hover {
+  border-color: #888;
+}
+
+/* ─── Stats ──────────────────────────────────────────────── */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.statCard {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #aaa;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.statNum {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.1;
+}
+
+.statSub {
+  font-size: 0.72rem;
+  color: #888;
+}
+
+/* ─── Projeto Card ───────────────────────────────────────── */
+.projetosLista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 20px 22px 18px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.cardBadge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #e05a2b;
+  text-transform: uppercase;
+}
+
+.valorBox {
+  text-align: right;
+}
+
+.valorLabel {
+  display: block;
+  font-size: 0.68rem;
+  color: #aaa;
+  margin-bottom: 1px;
+}
+
+.valorNum {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.cardTitulo {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 2px;
+}
+
+.cardSubtitulo {
+  font-size: 0.72rem;
+  color: #aaa;
+  margin: 0 0 14px;
+}
+
+/* ─── Card Grid ──────────────────────────────────────────── */
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  margin-bottom: 18px;
+}
+
+.fieldLabel {
+  font-size: 0.68rem;
+  color: #aaa;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.fieldValue {
+  font-size: 0.85rem;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* ─── Timeline ───────────────────────────────────────────── */
+.timeline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding-top: 4px;
+}
+
+.etapaItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.etapaTrack {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+  height: 20px;
+}
+
+.line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.lineDone {
+  background-color: #3ab26e;
+}
+
+.linePending {
+  background-color: #d0d0d0;
+}
+
+/* Dot */
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.dot_done {
+  background-color: #3ab26e;
+}
+
+.dot_active {
+  background-color: #e05a2b;
+}
+
+.dot_pending {
+  background-color: #d0d0d0;
+}
+
+.etapaLabel {
+  font-size: 0.6rem;
+  color: #aaa;
+  text-align: center;
+  margin-top: 4px;
+  white-space: nowrap;
+}

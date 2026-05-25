@@ -12,6 +12,7 @@ import HomeClient from "./Pages/HomeClient/HomeClient";
 import Perfil from "./Pages/Perfil/Perfil";
 import HomeProfissional from "./Pages/HomeProfissional/HomeProfissional";
 import HomeAdm from "./Pages/HomeAdm/HomeAdm";
+import Eventos from "./Pages/Eventos/Eventos.jsx";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -21,12 +22,9 @@ function App() {
       <Routes>
 
         <Route path="/" element={<Home />} />
-
         <Route path="/cadastro" element={<Cadastro />} />
-
         <Route path="/login" element={<Login />} />
 
-        {/* CLIENTE */}
         <Route
           path="/home-cliente"
           element={
@@ -36,7 +34,15 @@ function App() {
           }
         />
 
-        {/* PROFISSIONAL */}
+        <Route
+          path="/eventos"
+          element={
+            <ProtectedRoute permitido="cliente">
+              <Eventos />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/home-profissional"
           element={
@@ -46,7 +52,6 @@ function App() {
           }
         />
 
-        {/* ADMIN */}
         <Route
           path="/home-adm"
           element={
@@ -56,7 +61,6 @@ function App() {
           }
         />
 
-        {/* PERFIL */}
         <Route
           path="/perfil"
           element={
@@ -66,7 +70,6 @@ function App() {
           }
         />
 
-        {/* ROTA PADRÃO */}
         <Route path="*" element={<Navigate to="/" />} />
 
       </Routes>

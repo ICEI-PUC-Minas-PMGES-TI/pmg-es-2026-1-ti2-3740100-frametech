@@ -1,37 +1,115 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Header from '../../Components/Header/Header';
+import styles from '../HomeClient/HomeClient.module.css';
 
-export default function HomeClient() {
-    const [eventos, setEventos] = useState([]);
+const StatusDot = ({ status }) => (
+  <span className={`${styles.dot} ${styles[`dot_${status}`]}`} />
+);
 
-    useEffect(() => {
-        // Busca apenas os eventos deste cliente
-        fetch('http://localhost:8080/api/eventos')
-            .then(res => res.json())
-            .then(data => setEventos(data.filter(e => e.status === 'ORCADO')));
-    }, []);
-
-    const aceitarOrcamento = (id) => {
-        fetch(`http://localhost:8080/api/eventos/${id}/status`, {
-            method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ status: 'ACEITO' })
-        }).then(() => {
-            alert("Orçamento aceito! Aguarde a escala.");
-            window.location.reload();
-        });
-    };
-
-    return (
-        <div>
-            <h1>Meus Orçamentos</h1>
-            {eventos.length === 0 ? <p>Nenhum orçamento pendente.</p> : null}
-            {eventos.map(e => (
-                <div key={e.id} style={{border: '1px solid #ccc', padding: '15px', margin: '10px'}}>
-                    <h3>Evento: {e.nomeEvento}</h3>
-                    <p>Valor Orçado: R$ {e.orcamento}</p>
-                    <button onClick={() => aceitarOrcamento(e.id)}>Aceitar Orçamento</button>
-                </div>
-            ))}
+const EtapaTimeline = ({ etapas }) => (
+  <div className={styles.timeline}>
+    {(etapas || []).map((etapa, i) => (
+      <div key={i} className={styles.etapaItem}>
+        <div className={styles.etapaTrack}>
+          {i > 0 && (
+            <span
+              className={`${styles.line} ${
+                etapas[i - 1]?.status === 'done'
+                  ? styles.lineDone
+                  : styles.linePending
+              }`}
+            />
+          )}
+          <StatusDot status={etapa.status} />
         </div>
-    );
-}
+        <span className={styles.etapaLabel}>{etapa.label}</span>
+      </div>
+    ))}
+  </div>
+);
+
+const ProjetoCard = ({ projeto }) => {
+  const etapas = projeto.etapas || [];
+
+  return (
+    <div className={styles.card}>
+      <div className={styles.cardHeader}>
+        <span className={styles.cardBadge}>PROJETOS ATIVOS</span>
+      </div>
+
+      <h3 className={styles.cardTitulo}>{projeto.titulo}</h3>
+      <p className={styles.cardSubtitulo}>{projeto.subtitulo}</p>
+
+      <div className={styles.cardGrid}>
+        <div>
+          <span className={styles.fieldLabel}>Data do evento</span>
+          <p className={styles.fieldValue}>{projeto.dataEvento}</p>
+        </div>
+
+        <div>
+          <span className={styles.fieldLabel}>Horário</span>
+          <p className={styles.fieldValue}>{projeto.horario}</p>
+        </div>
+
+        <div>
+          <span className={styles.fieldLabel}>Serviços</span>
+          <p className={styles.fieldValue}>{projeto.servicos}</p>
+        </div>
+
+        <div>
+          <span className={styles.fieldLabel}>Entrega prevista</span>
+          <p className={styles.fieldValue}>{projeto.entrega}</p>
+        </div>
+      </div>
+
+      <EtapaTimeline etapas={etapas} />
+    </div>
+  );
+};
+
+const HomeClient = () => {
+  const navigate = useNavigate();
+
+  const projetosAtivos =
+    JSON.parse(localStorage.getItem('eventos')) || [];
+
+  return (
+    <div className={styles.layout}>
+      <Header />
+
+      <main className={styles.main}>
+        <div className={styles.topRow}>
+          <div>
+            <h1 className={styles.greeting}>
+              Olá, <span className={styles.greetingName}>Cliente</span>
+            </h1>
+
+            <p className={styles.greetingSub}>
+              você tem {projetosAtivos.length} projetos ativos
+            </p>
+          </div>
+
+          <button
+            className={styles.btnNovoEvento}
+            onClick={() => navigate('/eventos')}
+          >
+            Novo Evento
+          </button>
+        </div>
+
+        <div className={styles.projetosLista}>
+          {projetosAtivos.length === 0 ? (
+            <p>Nenhum evento criado ainda.</p>
+          ) : (
+            projetosAtivos.map((p, i) => (
+              <ProjetoCard key={p.id || i} projeto={p} />
+            ))
+          )}
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default HomeClient;
