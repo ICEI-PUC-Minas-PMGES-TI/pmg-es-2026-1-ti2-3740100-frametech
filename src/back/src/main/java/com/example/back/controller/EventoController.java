@@ -1,12 +1,16 @@
 package com.example.back.controller;
 
+import com.example.back.model.Escala;
 import com.example.back.model.Evento;
+import com.example.back.model.Usuario;
+import com.example.back.repository.EscalaRepository;
 import com.example.back.repository.EventoRepository;
+import com.example.back.repository.UsuarioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/eventos")
@@ -14,25 +18,43 @@ import java.util.Map;
 public class EventoController {
 
     @Autowired
-    private EventoRepository repository;
+    private EventoRepository eventoRepository;
 
-    // LISTAR TODOS
-    @GetMapping
-    public List<Evento> listarTodos() {
-        return repository.findAll();
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private EscalaRepository escalaRepository;
+
+    @PostMapping("/{usuarioId}")
+    public Evento criarEvento(
+            @PathVariable Long usuarioId,
+            @RequestBody Evento evento
+    ) {
+
+        Usuario usuario =
+                usuarioRepository.findById(usuarioId).orElse(null);
+
+        evento.setUsuario(usuario);
+
+        Evento eventoSalvo = eventoRepository.save(evento);
+
+        List<Usuario> profissionais =
+                usuarioRepository.findByTipoIgnoreCase("prestador");
+
+        for (Usuario profissional : profissionais) {
+            Escala escala = new Escala(eventoSalvo, profissional);
+            escalaRepository.save(escala);
+        }
+
+        return eventoSalvo;
     }
 
-    // CRIAR EVENTO
-    @PostMapping
-    public Evento criarEvento(@RequestBody Evento evento) {
-        return repository.save(evento);
-    }
+    @GetMapping("/{usuarioId}")
+    public List<Evento> listarEventos(
+            @PathVariable Long usuarioId
+    ) {
 
-    // ATUALIZAR STATUS
-    @PutMapping("/{id}/status")
-    public Evento atualizarStatus(@PathVariable Long id, @RequestBody Map<String, String> body) {
-        Evento evento = repository.findById(id).orElseThrow();
-        evento.setStatus(body.get("status"));
-        return repository.save(evento);
+        return eventoRepository.findByUsuario_Id(usuarioId);
     }
 }
