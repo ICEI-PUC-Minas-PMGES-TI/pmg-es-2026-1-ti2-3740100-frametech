@@ -67,7 +67,14 @@ function App() {
           }
         />
 
-        <Route path="/perfil" element={<Perfil />} />
+        <Route
+          path="/perfil"
+          element={
+            <ProtectedRoute permitido={["cliente", "prestador", "adm"]}>
+              <Perfil />
+            </ProtectedRoute>
+          }
+        />
 
         <Route path="*" element={<Navigate to="/" />} />
 

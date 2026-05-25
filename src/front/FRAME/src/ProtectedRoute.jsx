@@ -5,7 +5,11 @@ function ProtectedRoute({ children, permitido }) {
   const tipoUsuario =
     sessionStorage.getItem("tipoUsuario");
 
-  if (tipoUsuario !== permitido) {
+  const tiposPermitidos = Array.isArray(permitido)
+    ? permitido
+    : [permitido];
+
+  if (!tiposPermitidos.includes(tipoUsuario)) {
     return <Navigate to="/login" />;
   }
 

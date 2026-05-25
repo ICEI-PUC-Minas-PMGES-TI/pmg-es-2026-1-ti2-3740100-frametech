@@ -1,49 +1,93 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import "./Perfil.css";
+
+const API_URL = "http://localhost:8080";
+
+const criarForm = (usuario) => ({
+  nome: usuario?.nome || "",
+  email: usuario?.email || "",
+  telefone: usuario?.telefone || "",
+  senha: ""
+});
+
+const tipoLabel = {
+  adm: "Empresa",
+  empresa: "Empresa",
+  prestador: "Prestador",
+  cliente: "Cliente"
+};
 
 const Perfil = () => {
 
   const [user, setUser] = useState(null);
-
   const [isEditing, setIsEditing] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [erro, setErro] = useState("");
+  const [formData, setFormData] = useState(criarForm());
 
-  const [formData, setFormData] = useState({
-    nome: "",
-    email: "",
-    telefone: "",
-    senha: ""
-  });
-
+  const navigate = useNavigate();
   const usuarioId = sessionStorage.getItem("usuarioId");
 
   useEffect(() => {
 
-    if (!usuarioId) return;
+    if (!usuarioId) {
+      navigate("/login", { replace: true });
+      return;
+    }
 
-    fetch(`http://localhost:8080/perfil/${usuarioId}`)
-      .then(res => res.json())
-      .then(data => {
+    let ativo = true;
+
+    const carregarPerfil = async () => {
+
+      try {
+
+        setLoading(true);
+        setErro("");
+
+        const response = await fetch(`${API_URL}/perfil/${usuarioId}`);
+
+        if (!response.ok) {
+          throw new Error("Nao foi possivel carregar o perfil.");
+        }
+
+        const data = await response.json();
+
+        if (!ativo) return;
 
         setUser(data);
+        setFormData(criarForm(data));
 
-        setFormData({
-          nome: data.nome || "",
-          email: data.email || "",
-          telefone: data.telefone || "",
-          senha: ""
-        });
+      } catch (err) {
 
-      })
-      .catch(err => console.error("Erro ao buscar dados:", err));
+        if (ativo) {
+          console.error(err);
+          setErro("Nao foi possivel carregar os dados do perfil.");
+        }
 
-  }, [usuarioId]);
+      } finally {
+
+        if (ativo) {
+          setLoading(false);
+        }
+      }
+    };
+
+    carregarPerfil();
+
+    return () => {
+      ativo = false;
+    };
+
+  }, [navigate, usuarioId]);
 
   const handleChange = (e) => {
 
     const { name, value } = e.target;
 
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value
     }));
@@ -51,31 +95,38 @@ const Perfil = () => {
 
   const handleSave = async () => {
 
+    if (!formData.nome.trim() || !formData.email.trim()) {
+      setErro("Nome e email sao obrigatorios.");
+      return;
+    }
+
     try {
 
-      const response = await fetch(`http://localhost:8080/perfil/${usuarioId}`, {
+      setSaving(true);
+      setErro("");
+
+      const response = await fetch(`${API_URL}/perfil/${usuarioId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          nome: formData.nome,
+          email: formData.email,
+          telefone: formData.telefone,
+          senha: formData.senha
+        })
       });
 
       if (!response.ok) {
-        throw new Error("Erro ao atualizar");
+        const mensagem = await response.text();
+        throw new Error(mensagem || "Erro ao atualizar perfil.");
       }
 
       const usuarioAtualizado = await response.json();
 
       setUser(usuarioAtualizado);
-
-      setFormData({
-        nome: usuarioAtualizado.nome || "",
-        email: usuarioAtualizado.email || "",
-        telefone: usuarioAtualizado.telefone || "",
-        senha: ""
-      });
-
+      setFormData(criarForm(usuarioAtualizado));
       setIsEditing(false);
 
       alert("Perfil atualizado com sucesso!");
@@ -83,10 +134,19 @@ const Perfil = () => {
     } catch (err) {
 
       console.error(err);
+      setErro("Erro ao atualizar perfil. Confira os dados e tente novamente.");
 
-      alert("Erro ao atualizar perfil");
+    } finally {
 
+      setSaving(false);
     }
+  };
+
+  const handleCancel = () => {
+
+    setFormData(criarForm(user));
+    setIsEditing(false);
+    setErro("");
   };
 
   const handleDelete = async () => {
@@ -99,29 +159,32 @@ const Perfil = () => {
 
     try {
 
-      const response = await fetch(
-        `http://localhost:8080/perfil/${usuarioId}`,
-        {
-          method: "DELETE"
-        }
-      );
+      setSaving(true);
+      setErro("");
+
+      const response = await fetch(`${API_URL}/perfil/${usuarioId}`, {
+        method: "DELETE"
+      });
 
       if (!response.ok) {
-        throw new Error("Erro ao excluir conta");
+        const mensagem = await response.text();
+        throw new Error(mensagem || "Erro ao excluir conta.");
       }
 
       sessionStorage.clear();
 
-      alert("Conta excluída com sucesso!");
+      alert("Conta excluida com sucesso!");
 
-      window.location.href = "/";
+      navigate("/login", { replace: true });
 
     } catch (err) {
 
       console.error(err);
+      setErro("Erro ao excluir conta. Tente novamente.");
 
-      alert("Erro ao excluir conta");
+    } finally {
 
+      setSaving(false);
     }
   };
 
@@ -137,17 +200,21 @@ const Perfil = () => {
 
       try {
 
-        const base64 = reader.result;
+        setErro("");
 
-        const res = await fetch(`http://localhost:8080/auth/foto/${usuarioId}`, {
+        const res = await fetch(`${API_URL}/auth/foto/${usuarioId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            fotoPerfil: base64
+            fotoPerfil: reader.result
           })
         });
+
+        if (!res.ok) {
+          throw new Error("Erro ao atualizar foto.");
+        }
 
         const data = await res.json();
 
@@ -156,15 +223,26 @@ const Perfil = () => {
       } catch (err) {
 
         console.error(err);
-
+        setErro("Erro ao atualizar foto do perfil.");
       }
     };
 
     reader.readAsDataURL(file);
   };
 
-  if (!user) {
+  if (loading) {
     return <div className="loading">Carregando...</div>;
+  }
+
+  if (erro && !user) {
+    return (
+      <div className="profile-container">
+        <Header />
+        <main className="content">
+          <p className="error-message">{erro}</p>
+        </main>
+      </div>
+    );
   }
 
   return (
@@ -177,7 +255,7 @@ const Perfil = () => {
         <header className="profile-header">
 
           <h1>
-            Olá, <span className="highlight">{user.nome}</span>
+            Ola, <span className="highlight">{user.nome}</span>
           </h1>
 
           <label className="avatar-label">
@@ -205,6 +283,8 @@ const Perfil = () => {
 
         </header>
 
+        {erro && <p className="error-message">{erro}</p>}
+
         <section className="info-card">
 
           <div className="info-column">
@@ -230,6 +310,7 @@ const Perfil = () => {
               {isEditing ? (
                 <input
                   name="email"
+                  type="email"
                   value={formData.email}
                   onChange={handleChange}
                   className="edit-input"
@@ -254,7 +335,7 @@ const Perfil = () => {
                   className="edit-input"
                 />
               ) : (
-                user.telefone
+                user.telefone || "Nao informado"
               )}
             </p>
 
@@ -268,6 +349,7 @@ const Perfil = () => {
                   value={formData.senha}
                   onChange={handleChange}
                   className="edit-input"
+                  placeholder="Deixe vazio para manter"
                 />
               ) : (
                 "********"
@@ -275,7 +357,7 @@ const Perfil = () => {
             </p>
 
             <p>
-              <strong>Tipo:</strong> {user.tipo}
+              <strong>Tipo:</strong> {tipoLabel[user.tipo] || user.tipo}
             </p>
 
           </div>
@@ -289,13 +371,15 @@ const Perfil = () => {
               <button
                 className="btn btn-save"
                 onClick={handleSave}
+                disabled={saving}
               >
-                Salvar Alterações
+                {saving ? "Salvando..." : "Salvar alteracoes"}
               </button>
 
               <button
                 className="btn"
-                onClick={() => setIsEditing(false)}
+                onClick={handleCancel}
+                disabled={saving}
               >
                 Cancelar
               </button>
@@ -305,15 +389,17 @@ const Perfil = () => {
               <button
                 className="btn btn-outline"
                 onClick={() => setIsEditing(true)}
+                disabled={saving}
               >
-                Editar Perfil
+                Editar perfil
               </button>
 
               <button
                 className="btn btn-danger"
                 onClick={handleDelete}
+                disabled={saving}
               >
-                Excluir Conta
+                {saving ? "Excluindo..." : "Excluir conta"}
               </button>
             </>
           )}

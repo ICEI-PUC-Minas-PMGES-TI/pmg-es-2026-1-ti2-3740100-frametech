@@ -9,4 +9,6 @@ import com.example.back.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     Optional<Usuario> findByEmail(String email);
+
+    boolean existsByEmailIgnoreCaseAndIdNot(String email, Long id);
 }

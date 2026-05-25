@@ -19,6 +19,9 @@ const Header = () => {
   const usuarioLogado =
     sessionStorage.getItem("usuarioId");
 
+  const tipoUsuario =
+    sessionStorage.getItem("tipoUsuario");
+
   const verificarAcesso = (rota) => {
 
     if (rota === "/login" || rota === "/cadastro") {
@@ -46,6 +49,16 @@ const Header = () => {
 
       navigate("/");
 
+      return;
+    }
+
+    if (tipoUsuario === "adm") {
+      navigate("/home-adm");
+      return;
+    }
+
+    if (tipoUsuario === "prestador") {
+      navigate("/home-profissional");
       return;
     }
 

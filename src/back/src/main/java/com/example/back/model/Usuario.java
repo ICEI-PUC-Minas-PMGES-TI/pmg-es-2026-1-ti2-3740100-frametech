@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "usuario")
 public class Usuario {
 
     @Id
@@ -16,9 +17,11 @@ public class Usuario {
     private String email;
     private String senha;
     private String tipo;
-private String telefone;
+    private String telefone;
 
-private String fotoPerfil;
+    @Column(name = "foto_perfil", columnDefinition = "TEXT")
+    private String fotoPerfil;
+
     @OneToMany(mappedBy = "usuario")
     @JsonIgnore
     private List<Evento> eventos;
@@ -73,19 +76,20 @@ private String fotoPerfil;
     public void setEventos(List<Evento> eventos) {
         this.eventos = eventos;
     }
+
     public String getTelefone() {
-    return telefone;
-}
+        return telefone;
+    }
 
-public void setTelefone(String telefone) {
-    this.telefone = telefone;
-}
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
-public String getFotoPerfil() {
-    return fotoPerfil;
-}
+    public String getFotoPerfil() {
+        return fotoPerfil;
+    }
 
-public void setFotoPerfil(String fotoPerfil) {
-    this.fotoPerfil = fotoPerfil;
-}
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
 }

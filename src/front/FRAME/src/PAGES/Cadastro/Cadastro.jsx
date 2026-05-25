@@ -44,6 +44,7 @@ function Cadastro() {
 body: JSON.stringify({
   nome: form.nome,
   email: form.email,
+  telefone: form.telefone,
   senha: form.senha,
   tipo: tipoConta
 }),
@@ -130,6 +131,16 @@ body: JSON.stringify({
                 placeholder="Email"
                 value={form.email}
                 onChange={atualizar('email')}
+              />
+            </div>
+
+            <div className={styles.grupoEntrada}>
+              <label className={styles.rotulo}>Telefone</label>
+              <input
+                className={styles.entrada}
+                placeholder="(31) 99999-9999"
+                value={form.telefone}
+                onChange={atualizar('telefone')}
               />
             </div>
           </div>
