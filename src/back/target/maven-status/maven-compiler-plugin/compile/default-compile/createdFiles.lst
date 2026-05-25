@@ -1,0 +1,17 @@
+com\example\back\controller\UsuarioController.class
+com\example\back\config\CorsConfig.class
+com\example\back\model\Usuario.class
+com\example\back\repository\EventoRepository.class
+com\example\back\controller\EventoController.class
+com\example\back\config\CorsConfig$1.class
+com\example\back\repository\UsuarioRepository.class
+com\example\back\services\UsuarioService.class
+com\example\back\controller\HomeController.class
+com\example\back\model\Escala.class
+com\example\back\model\PerfilUser.class
+com\example\back\controller\EscalaController.class
+com\example\back\repository\EscalaRepository.class
+com\example\back\model\Evento.class
+com\example\back\controller\PerfilController.class
+com\example\back\PerfilApiApplication.class
+com\example\back\model\Status.class

@@ -1,0 +1,221 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f4f5;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ── Main content ── */
+.main {
+  flex: 1;
+  padding: 40px 48px;
+  overflow-y: auto;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+/* ── Botão Escalas ── */
+.btnEscalas {
+  background-color: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btnEscalas:hover {
+  background-color: #333;
+}
+
+/* ── Lista de cards ── */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vazio {
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ── Card ── */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.cardAceita {
+  border-left: 4px solid #22c55e;
+}
+
+/* ── Card Header ── */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cardTitulo {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+.cardLocal {
+  font-size: 12px;
+  color: #888;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+/* ── Meta items ── */
+.metaItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.metaIcon {
+  color: #aaa;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.metaLabel {
+  display: block;
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 1px;
+}
+
+.metaValor {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #222;
+}
+
+.destaque {
+  color: #111;
+  font-size: 14px;
+}
+
+/* ── Card Footer ── */
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.servicosArea {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.servicosLabel {
+  font-size: 11px;
+  color: #999;
+}
+
+.servicosTags {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.servicoTag {
+  font-size: 13px;
+  font-weight: 600;
+  color: #222;
+}
+
+.servicoSeparador {
+  color: #bbb;
+  font-size: 13px;
+}
+
+/* ── Ações ── */
+.acoes {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.btnAceitar {
+  background-color: #111;
+  color: #fff;
+}
+
+.btnRecusar {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+/* ── Preços área ── */
+.precosArea {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}

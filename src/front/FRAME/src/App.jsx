@@ -10,12 +10,9 @@ import Cadastro from "./Pages/Cadastro/Cadastro";
 import Login from "./Pages/Login/Login";
 import HomeClient from "./Pages/HomeClient/HomeClient";
 import Perfil from "./Pages/Perfil/Perfil";
-
-// Forçando a importação limpa dos dois arquivos distintos
-import FormularioCliente from "./PAGES/Eventos/PaginaEventos"; 
-import PainelAdministrador from "./PAGES/Eventos/PaginaEventosAdm"; 
-
 import HomeProfissional from "./Pages/HomeProfissional/HomeProfissional";
+import HomeAdm from "./Pages/HomeAdm/HomeAdm";
+
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
@@ -23,8 +20,10 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<Home />} /> 
+        <Route path="/" element={<Home />} />
+
         <Route path="/cadastro" element={<Cadastro />} />
+
         <Route path="/login" element={<Login />} />
 
         {/* CLIENTE */}
@@ -33,16 +32,6 @@ function App() {
           element={
             <ProtectedRoute permitido="cliente">
               <HomeClient />
-            </ProtectedRoute>
-          }
-        />
-
-        {/* ROTA DO FORMULÁRIO (Apontando explicitamente para o componente do formulário) */}
-        <Route
-          path="/novo-evento"
-          element={
-            <ProtectedRoute permitido="cliente">
-              <FormularioCliente />
             </ProtectedRoute>
           }
         />
@@ -57,16 +46,17 @@ function App() {
           }
         />
 
-        {/* ADMINISTRADOR */}
+        {/* ADMIN */}
         <Route
           path="/home-adm"
           element={
             <ProtectedRoute permitido="adm">
-              <PainelAdministrador />
+              <HomeAdm />
             </ProtectedRoute>
           }
         />
 
+        {/* PERFIL */}
         <Route
           path="/perfil"
           element={
@@ -76,6 +66,7 @@ function App() {
           }
         />
 
+        {/* ROTA PADRÃO */}
         <Route path="*" element={<Navigate to="/" />} />
 
       </Routes>

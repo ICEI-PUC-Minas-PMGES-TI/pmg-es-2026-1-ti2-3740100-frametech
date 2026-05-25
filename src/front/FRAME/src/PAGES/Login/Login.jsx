@@ -52,14 +52,15 @@ function Login() {
       console.log("ID SALVO:", sessionStorage.getItem("usuarioId"));
       console.log("TIPO SALVO:", sessionStorage.getItem("tipoUsuario"));
 
-      // Redirecionamentos baseados no tipo retornado
-      if (data.tipo === "cliente") {
-        navigate("/home-cliente");
-      } else if (data.tipo === "empresa" || data.tipo === "adm") {
-        navigate("/home-adm");
-      } else if (data.tipo === "prestador") {
-        navigate("/home-profissional");
-      }
+     if (tipoDefinido === "cliente") {
+  navigate("/home-cliente");
+
+} else if (tipoDefinido === "adm") {
+  navigate("/home-adm");
+
+} else if (tipoDefinido === "prestador") {
+  navigate("/home-profissional");
+}
 
     } catch (err) {
       console.log(err);
