@@ -4,6 +4,7 @@ import com.example.back.model.Evento;
 import com.example.back.model.Usuario;
 import com.example.back.repository.EventoRepository;
 import com.example.back.repository.UsuarioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,10 @@ public class EventoService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Evento salvar(Evento evento, Long usuarioId) {
+    public Evento salvar(
+            Evento evento,
+            Long usuarioId
+    ) {
 
         Usuario usuario = usuarioRepository
                 .findById(usuarioId)
@@ -31,7 +35,30 @@ public class EventoService {
         return eventoRepository.save(evento);
     }
 
-    public List<Evento> listarPorUsuario(Long usuarioId) {
-        return eventoRepository.findByUsuario_Id(usuarioId);
+    public List<Evento> listarPorUsuario(
+            Long usuarioId
+    ) {
+
+        return eventoRepository
+                .findByUsuario_Id(usuarioId);
+    }
+
+    public List<Evento> listarTodos() {
+
+        return eventoRepository.findAll();
+    }
+
+    public Evento atualizarStatus(
+            Long id,
+            String status
+    ) {
+
+        Evento evento = eventoRepository
+                .findById(id)
+                .orElseThrow();
+
+        evento.setStatus(status);
+
+        return eventoRepository.save(evento);
     }
 }

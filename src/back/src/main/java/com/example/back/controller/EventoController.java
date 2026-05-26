@@ -32,4 +32,19 @@ public class EventoController {
 
         return service.listarPorUsuario(usuarioId);
     }
+
+    @GetMapping
+    public List<Evento> listarTodos() {
+
+        return service.listarTodos();
+    }
+
+    @PutMapping("/{id}/status")
+    public Evento atualizarStatus(
+            @PathVariable Long id,
+            @RequestParam String status
+    ) {
+
+        return service.atualizarStatus(id, status);
+    }
 }
