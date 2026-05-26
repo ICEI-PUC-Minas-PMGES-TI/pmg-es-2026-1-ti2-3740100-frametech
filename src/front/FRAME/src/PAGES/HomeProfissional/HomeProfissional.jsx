@@ -103,6 +103,7 @@ export default function HomeProfissional() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability
     carregarEscalas();
   }, []);
 

@@ -1,60 +1,35 @@
 package com.example.back.controller;
 
-import com.example.back.model.Escala;
 import com.example.back.model.Evento;
-import com.example.back.model.Usuario;
-import com.example.back.repository.EscalaRepository;
-import com.example.back.repository.EventoRepository;
-import com.example.back.repository.UsuarioRepository;
+import com.example.back.services.EventoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/eventos")
 @CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/eventos")
 public class EventoController {
 
     @Autowired
-    private EventoRepository eventoRepository;
-
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    @Autowired
-    private EscalaRepository escalaRepository;
+    private EventoService service;
 
     @PostMapping("/{usuarioId}")
     public Evento criarEvento(
-            @PathVariable Long usuarioId,
-            @RequestBody Evento evento
+            @RequestBody Evento evento,
+            @PathVariable Long usuarioId
     ) {
 
-        Usuario usuario =
-                usuarioRepository.findById(usuarioId).orElse(null);
-
-        evento.setUsuario(usuario);
-
-        Evento eventoSalvo = eventoRepository.save(evento);
-
-        List<Usuario> profissionais =
-                usuarioRepository.findByTipoIgnoreCase("prestador");
-
-        for (Usuario profissional : profissionais) {
-            Escala escala = new Escala(eventoSalvo, profissional);
-            escalaRepository.save(escala);
-        }
-
-        return eventoSalvo;
+        return service.salvar(evento, usuarioId);
     }
 
-    @GetMapping("/{usuarioId}")
+    @GetMapping("/usuario/{usuarioId}")
     public List<Evento> listarEventos(
             @PathVariable Long usuarioId
     ) {
 
-        return eventoRepository.findByUsuario_Id(usuarioId);
+        return service.listarPorUsuario(usuarioId);
     }
 }

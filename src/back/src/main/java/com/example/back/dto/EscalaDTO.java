@@ -32,9 +32,9 @@ public class EscalaDTO {
             this.eventoId = evento.getId();
             this.nomeEvento = evento.getNomeEvento();
             this.tipoEvento = evento.getTipoEvento();
-            this.porteEvento = evento.getPorteEvento();
+            this.porteEvento = evento.getNomeEvento();
             this.descricao = evento.getDescricao();
-            this.dataEvento = evento.getDataEvento();
+            this.dataEvento = evento.getData();
 
             Usuario cliente = evento.getUsuario();
 

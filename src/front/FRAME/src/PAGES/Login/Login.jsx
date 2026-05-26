@@ -17,9 +17,11 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
+
     e.preventDefault();
 
     try {
+
       const res = await fetch(
         'http://localhost:8080/auth/login',
         {
@@ -36,34 +38,45 @@ function Login() {
       );
 
       if (!res.ok) {
+
         const erro = await res.text();
         throw new Error(erro);
       }
 
       const data = await res.json();
-      console.log("LOGIN:", data);
 
-      sessionStorage.setItem("usuarioId", data.id);
+      sessionStorage.setItem(
+        "usuarioId",
+        data.id
+      );
 
-      // Padroniza o tipo para "adm" caso venha "empresa", batendo com a ProtectedRoute do App.jsx
-      const tipoDefinido = data.tipo === "empresa" ? "adm" : data.tipo;
-      sessionStorage.setItem("tipoUsuario", tipoDefinido);
+      const tipoDefinido =
+        data.tipo === "empresa"
+          ? "adm"
+          : data.tipo;
 
-      console.log("ID SALVO:", sessionStorage.getItem("usuarioId"));
-      console.log("TIPO SALVO:", sessionStorage.getItem("tipoUsuario"));
+      sessionStorage.setItem(
+        "tipoUsuario",
+        tipoDefinido
+      );
 
-     if (tipoDefinido === "cliente") {
-  navigate("/home-cliente");
+      if (tipoDefinido === "cliente") {
 
-} else if (tipoDefinido === "adm") {
-  navigate("/home-adm");
+        navigate("/home-cliente");
 
-} else if (tipoDefinido === "prestador") {
-  navigate("/home-profissional");
-}
+      } else if (tipoDefinido === "adm") {
+
+        navigate("/home-adm");
+
+      } else if (tipoDefinido === "prestador") {
+
+        navigate("/home-profissional");
+      }
 
     } catch (err) {
+
       console.log(err);
+
       alert("Erro no login");
     }
   };
@@ -77,7 +90,10 @@ function Login() {
 
       <div className={styles.centro}>
         <form className={styles.cartao} onSubmit={handleLogin}>
-          <h1 className={styles.tituloCartao}>Bem vindo de volta</h1>
+
+          <h1 className={styles.tituloCartao}>
+            Bem vindo de volta
+          </h1>
 
           <p className={styles.subCartao}>
             Ainda não tem cadastro?{" "}
@@ -86,58 +102,97 @@ function Login() {
             </Link>
           </p>
 
-          <p className={styles.labelSecao}>Tipo de conta</p>
+          <p className={styles.labelSecao}>
+            Tipo de conta
+          </p>
 
           <div className={styles.tiposConta}>
+
             {TIPOS.map(t => (
+
               <button
                 key={t.key}
                 type="button"
                 className={`
                   ${styles.botaoTipo}
-                  ${tipo === t.key ? styles.botaoTipoAtivo : ''}
+                  ${tipo === t.key
+                    ? styles.botaoTipoAtivo
+                    : ''
+                  }
                 `}
                 onClick={() => setTipo(t.key)}
               >
-                <span className={styles.iconeTipo}>{t.icon}</span>
-                <span className={styles.labelTipo}>{t.label}</span>
-                <span className={styles.subTipo}>{t.sub}</span>
+
+                <span className={styles.iconeTipo}>
+                  {t.icon}
+                </span>
+
+                <span className={styles.labelTipo}>
+                  {t.label}
+                </span>
+
+                <span className={styles.subTipo}>
+                  {t.sub}
+                </span>
+
               </button>
             ))}
+
           </div>
 
-          <p className={styles.labelSecao}>Credenciais</p>
+          <p className={styles.labelSecao}>
+            Credenciais
+          </p>
 
           <div className={styles.campo}>
-            <label className={styles.labelCampo}>Email</label>
+
+            <label className={styles.labelCampo}>
+              Email
+            </label>
+
             <input
               className={styles.input}
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
+
           </div>
 
           <div className={styles.campo}>
-            <label className={styles.labelCampo}>Senha</label>
+
+            <label className={styles.labelCampo}>
+              Senha
+            </label>
+
             <input
               type="password"
               className={styles.input}
               value={senha}
               onChange={e => setSenha(e.target.value)}
             />
+
           </div>
 
           <div className={styles.esqueci}>
-            <a className={styles.link}>Esqueci a senha</a>
+            <a className={styles.link}>
+              Esqueci a senha
+            </a>
           </div>
 
-          <button type="submit" className={styles.botaoPrincipal}>
+          <button
+            type="submit"
+            className={styles.botaoPrincipal}
+          >
             Entrar
           </button>
 
-          <button type="button" className={styles.botaoGoogle}>
+          <button
+            type="button"
+            className={styles.botaoGoogle}
+          >
             Entrar com Google
           </button>
+
         </form>
       </div>
     </div>
