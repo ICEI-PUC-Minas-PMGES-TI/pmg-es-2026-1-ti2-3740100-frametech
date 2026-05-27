@@ -14,12 +14,16 @@ function ProtectedRoute({
 }) {
 
   const location = useLocation();
+
   const {
     isAuthenticated,
     tipoUsuario
   } = getCurrentUser();
 
-  console.log("TIPO USUARIO:", tipoUsuario);
+  console.log(
+    "TIPO USUARIO:",
+    tipoUsuario
+  );
 
   const tiposPermitidos =
     Array.isArray(permitido)
@@ -28,28 +32,39 @@ function ProtectedRoute({
 
   if (!tipoUsuario) {
 
-    return <Navigate to="/login" />;
-  }
-
-  if (!isAuthenticated) {
     return (
       <Navigate
         to="/login"
         replace
-        state={{ from: location.pathname }}
       />
     );
   }
 
-  if (!tiposPermitidos.includes(tipoUsuario)) {
+  if (!isAuthenticated) {
+
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={{
+          from: location.pathname
+        }}
+      />
+    );
+  }
+
+  if (
+    !tiposPermitidos.includes(
+      tipoUsuario
+    )
+  ) {
+
     return (
       <Navigate
         to={getHomeByRole(tipoUsuario)}
         replace
       />
     );
-
-    return <Navigate to="/login" />;
   }
 
   return children;
