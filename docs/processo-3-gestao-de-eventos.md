@@ -1,19 +1,24 @@
-
+<img width="2685" height="1010" alt="Processo de gestão de profissionais - cópia de Diagrama (2)" src="https://github.com/user-attachments/assets/b986ac83-379a-4a0c-8cdc-0257502d6056" />
 
 
 # **3.3.3 Processo 3 – Solicitação de Eventos**
 
-O processo de gestão de eventos tem como objetivo organizar o agendamento dos serviços audiovisuais, garantindo o controle da disponibilidade de datas, equipe e equipamentos, além de assegurar a correta execução dos serviços contratados.
+O processo de solicitação de eventos tem como objetivo organizar o fluxo de criação, análise, aprovação e possível reprogramação de eventos dentro da plataforma, garantindo o controle da disponibilidade de recursos, profissionais e equipamentos necessários para a execução do serviço.
 
-Como oportunidade de melhoria, propõe-se a automatização da verificação de disponibilidade dos recursos (datas, equipe e equipamentos), bem como a sugestão de novas datas em casos de indisponibilidade, reduzindo conflitos de agenda e retrabalho. Além disso, o processo considera a autenticação do usuário, a seleção de eventos existentes ou criação de novos eventos, e decisões estruturadas para reprogramação, composição de equipe e confirmação final do serviço.
+O processo inicia com o cliente acessando a plataforma e visualizando os eventos ativos. Caso deseje criar um novo evento, o cliente realiza a solicitação informando os dados necessários do evento. Após o envio, a solicitação é recebida pelo administrador, que verifica a disponibilidade de equipe e equipamentos.
 
-<img width="2685" height="1010" alt="Processo de gestão de profissionais - cópia de Diagrama (2)" src="https://github.com/user-attachments/assets/b986ac83-379a-4a0c-8cdc-0257502d6056" />
+Quando não há disponibilidade de recursos, o sistema permite sugerir automaticamente uma nova data ao cliente, reduzindo conflitos de agenda e facilitando o replanejamento do evento. O cliente pode então optar por reprogamar o evento e reenviar a solicitação atualizada.
+
+Nos casos em que há disponibilidade, o administrador realiza a alocação dos profissionais e equipamentos necessários e confirma o evento. O processo contempla notificações automáticas ao cliente sempre que houver atualização ou necessidade de reenvio da solicitação, proporcionando maior controle e comunicação durante todo o fluxo.
 
 ---
 
+<img width="2685" height="1010" alt="Processo de gestão de profissionais - cópia de Diagrama (2)" src="https://github.com/user-attachments/assets/b986ac83-379a-4a0c-8cdc-0257502d6056" />
+
+
 # **Detalhamento das atividades**
 
-## **Acessar Sistema / Realizar Login**
+## **Acessar Plataforma**
 
 **Campos:**
 
@@ -22,44 +27,73 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 **Comandos:**
 
-| Comando  | Destino              | Tipo    |
-| -------- | -------------------- | ------- |
-| entrar   | Usuário autenticado? | default |
-| cancelar | Encerrar processo    | cancel  |
+| Comando  | Destino                    | Tipo    |
+| -------- | -------------------------- | ------- |
+| entrar   | Visualizar projetos ativos | default |
+| cancelar | Encerrar processo          | cancel  |
 
 ---
 
-## **Listar Eventos Disponíveis**
+## **Visualizar Projetos Ativos**
 
 **Campos:**
 
-* lista_eventos (Tabela, automático)
+* lista_projetos (Tabela, automático)
 
 **Comandos:**
 
-| Comando    | Destino        | Tipo    |
-| ---------- | -------------- | ------- |
-| selecionar | Evento é novo? | default |
+| Comando    | Destino                  | Tipo    |
+| ---------- | ------------------------ | ------- |
+| selecionar | Deseja cadastrar evento? | default |
 
 ---
 
-## **Solicitar Serviço**
+## **Deseja Cadastrar um Novo Evento?**
 
 **Campos:**
 
-* cliente (Caixa de texto, obrigatório)
-* tipo_servico (Seleção única, obrigatório)
-* data_desejada (Data, obrigatório)
-* horario (Hora, obrigatório)
-* local (Caixa de texto, obrigatório)
+* opcao_evento (Sim/Não, obrigatório)
+
+**Comandos:**
+
+| Comando | Destino                  | Tipo    |
+| ------- | ------------------------ | ------- |
+| sim     | Selecionar “Novo Evento” | default |
+| não     | Encerrar processo        | cancel  |
+
+---
+
+## **Selecionar Novo Evento**
+
+**Campos:**
+
+* botao_novo_evento (Botão, automático)
+
+**Comandos:**
+
+| Comando | Destino                         | Tipo    |
+| ------- | ------------------------------- | ------- |
+| avançar | Preencher informações do evento | default |
+
+---
+
+## **Preencher Informações do Evento**
+
+**Campos:**
+
+* nome_evento (Caixa de texto, obrigatório)
+* tipo_evento (Seleção única, obrigatório)
+* data_evento (Data, obrigatório)
+* horario_evento (Hora, obrigatório)
+* local_evento (Caixa de texto, obrigatório)
 * observacoes (Área de texto, opcional)
 
 **Comandos:**
 
-| Comando  | Destino             | Tipo    |
-| -------- | ------------------- | ------- |
-| enviar   | Receber solicitação | default |
-| cancelar | Encerrar processo   | cancel  |
+| Comando            | Destino             | Tipo    |
+| ------------------ | ------------------- | ------- |
+| enviar solicitação | Receber solicitação | default |
+| cancelar           | Encerrar processo   | cancel  |
 
 ---
 
@@ -72,130 +106,128 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 **Comandos:**
 
-| Comando   | Destino                           | Tipo    |
-| --------- | --------------------------------- | ------- |
-| continuar | Verificar disponibilidade de data | default |
+| Comando   | Destino                               | Tipo    |
+| --------- | ------------------------------------- | ------- |
+| continuar | Verificar disponibilidade de recursos | default |
 
 ---
 
-## **Verificar Disponibilidade de Data**
-
-**Campos:**
-
-* data_evento (Data, obrigatório)
-* horario (Hora, obrigatório)
-
-**Comandos:**
-
-| Comando   | Destino                             | Tipo    |
-| --------- | ----------------------------------- | ------- |
-| verificar | Verificar disponibilidade da equipe | default |
-| cancelar  | Encerrar processo                   | cancel  |
-
----
-
-## **Verificar Disponibilidade da Equipe**
+## **Verificar Disponibilidade de Recursos e Equipe**
 
 **Campos:**
 
 * equipe_disponivel (Lista, automático)
+* equipamentos_disponiveis (Lista, automático)
+* disponibilidade_data (Texto, automático)
 
 **Comandos:**
 
-| Comando   | Destino                                   | Tipo    |
-| --------- | ----------------------------------------- | ------- |
-| verificar | Verificar disponibilidade de equipamentos | default |
-| cancelar  | Encerrar processo                         | cancel  |
+| Comando      | Destino                              | Tipo    |
+| ------------ | ------------------------------------ | ------- |
+| disponível   | Alocar profissionais e equipamentos  | default |
+| indisponível | Verificar disponibilidade no sistema | default |
 
 ---
 
-## **Verificar Disponibilidade de Equipamentos**
+## **Verificar Disponibilidade no Sistema**
 
 **Campos:**
 
-* equipamentos (Lista, automático)
+* datas_disponiveis (Lista, automático)
+* horarios_disponiveis (Lista, automático)
 
 **Comandos:**
 
-| Comando  | Destino                         | Tipo    |
-| -------- | ------------------------------- | ------- |
-| validar  | Disponibilidade de recursos OK? | default |
-| cancelar | Encerrar processo               | cancel  |
+| Comando  | Destino                      | Tipo    |
+| -------- | ---------------------------- | ------- |
+| sugerir  | Sugerir nova data ao cliente | default |
+| cancelar | Encerrar processo            | cancel  |
 
 ---
 
-## **Sugerir Nova Data**
+## **Sugerir Nova Data ao Cliente**
 
 **Campos:**
 
 * nova_data (Data, obrigatório)
 * novo_horario (Hora, obrigatório)
-* observacao (Área de texto, opcional)
+* justificativa (Área de texto, opcional)
 
 **Comandos:**
 
-| Comando   | Destino                      | Tipo    |
-| --------- | ---------------------------- | ------- |
-| confirmar | Deseja reprogramar o evento? | default |
-| cancelar  | Encerrar processo            | cancel  |
+| Comando  | Destino                                  | Tipo    |
+| -------- | ---------------------------------------- | ------- |
+| enviar   | Notificar cliente sobre nova solicitação | default |
+| cancelar | Encerrar processo                        | cancel  |
 
 ---
 
-## **Atualizar Dados do Evento**
+## **Receber Notificação de Nova Solicitação**
 
 **Campos:**
 
-* dados_evento (Texto, automático)
+* mensagem_notificacao (Texto, automático)
 
 **Comandos:**
 
-| Comando | Destino           | Tipo    |
-| ------- | ----------------- | ------- |
-| salvar  | Encerrar processo | default |
+| Comando    | Destino                      | Tipo    |
+| ---------- | ---------------------------- | ------- |
+| visualizar | Deseja reprogramar o evento? | default |
 
 ---
 
-## **Cadastrar Novo Profissional**
+## **Deseja Reprogramar o Evento?**
 
 **Campos:**
 
-* nome_profissional (Caixa de texto, obrigatório)
-* funcao (Seleção única, obrigatório)
+* opcao_reprogramacao (Sim/Não, obrigatório)
 
 **Comandos:**
 
-| Comando | Destino           | Tipo    |
-| ------- | ----------------- | ------- |
-| salvar  | Encerrar processo | default |
+| Comando | Destino                       | Tipo    |
+| ------- | ----------------------------- | ------- |
+| sim     | Alterar informações do evento | default |
+| não     | Encerrar processo             | cancel  |
 
 ---
 
-## **Cadastrar Evento**
+## **Alterar Informações do Evento**
 
 **Campos:**
 
-* cliente (Seleção única, obrigatório)
-* tipo_servico (Seleção única, obrigatório)
 * data_evento (Data, obrigatório)
-* horario (Hora, obrigatório)
-* equipe (Lista, obrigatório)
-* equipamentos (Lista, obrigatório)
-* local (Caixa de texto, obrigatório)
+* horario_evento (Hora, obrigatório)
+* observacoes (Área de texto, opcional)
 
 **Comandos:**
 
-| Comando  | Destino           | Tipo    |
-| -------- | ----------------- | ------- |
-| salvar   | Registrar evento  | default |
-| cancelar | Encerrar processo | cancel  |
+| Comando  | Destino              | Tipo    |
+| -------- | -------------------- | ------- |
+| reenviar | Reenviar solicitação | default |
+| cancelar | Encerrar processo    | cancel  |
 
 ---
 
-## **Registrar Evento**
+## **Reenviar Solicitação**
 
 **Campos:**
 
 * dados_evento (Texto, automático)
+
+**Comandos:**
+
+| Comando | Destino             | Tipo    |
+| ------- | ------------------- | ------- |
+| enviar  | Receber solicitação | default |
+
+---
+
+## **Alocar Profissionais e Equipamentos**
+
+**Campos:**
+
+* profissionais_alocados (Lista, obrigatório)
+* equipamentos_alocados (Lista, obrigatório)
 
 **Comandos:**
 
@@ -205,16 +237,46 @@ Como oportunidade de melhoria, propõe-se a automatização da verificação de 
 
 ---
 
-## **Enviar Confirmação ao Cliente**
+## **Confirmar Evento**
 
 **Campos:**
 
-* mensagem (Texto, automático)
-* status (Texto, automático – padrão: Confirmado)
+* status_evento (Texto, automático)
+* resumo_evento (Texto, automático)
+
+**Comandos:**
+
+| Comando | Destino                       | Tipo    |
+| ------- | ----------------------------- | ------- |
+| sim     | Selecionar “Confirmar Evento” | default |
+| não     | Selecionar “Recusar Proposta” | cancel  |
+
+---
+
+## **Selecionar “Recusar Proposta”**
+
+**Campos:**
+
+* motivo_recusa (Área de texto, opcional)
+
+**Comandos:**
+
+| Comando | Destino                                  | Tipo    |
+| ------- | ---------------------------------------- | ------- |
+| enviar  | Notificar cliente sobre nova solicitação | default |
+
+---
+
+## **Selecionar “Confirmar Evento”**
+
+**Campos:**
+
+* status_confirmacao (Texto, automático – padrão: Confirmado)
 
 **Comandos:**
 
 | Comando   | Destino           | Tipo    |
 | --------- | ----------------- | ------- |
 | finalizar | Encerrar processo | default |
+
 
