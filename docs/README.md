@@ -130,7 +130,7 @@ As melhorias nos processos incluem uma melhor organização por meio de diferent
 
 [PROCESSO 3 - Solicitação de eventos](processo-3-Solicitação-de-eventos.md "Detalhamento do Processo 3.")
 
-[PROCESSO 4 - Gestão Eventos confirmados](processo-4-Gestão-Eventos-confirmados.md "Detalhamento do Processo 4.")
+[PROCESSO 4 - Gestão Eventos confirmados](processo-4-Gestão-eventos-confirmados.md "Detalhamento do Processo 4.")
 
 [PROCESSO 5 - Cadastro de equipamentos](processo-5-cadastro-equipamentos.md)
 
