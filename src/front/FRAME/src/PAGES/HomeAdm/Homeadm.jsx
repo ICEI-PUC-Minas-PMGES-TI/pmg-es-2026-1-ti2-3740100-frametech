@@ -306,7 +306,7 @@ const HomeAdm = () => {
 
           <button
             className={styles.btnEscalas}
-            onClick={() => navigate('/escala-equipe')}
+          onClick={() => navigate('/escalas')}
           >
             Escalas
           </button>

@@ -8,23 +8,31 @@ import {
 import Home from "./PAGES/HOME/Home";
 import Cadastro from "./PAGES/Cadastro/Cadastro";
 import Login from "./PAGES/Login/Login";
+
 import HomeClient from "./PAGES/HomeClient/HomeClient";
-import Perfil from "./PAGES/Perfil/Perfil";
 import HomeProfissional from "./PAGES/HomeProfissional/HomeProfissional";
 import HomeAdm from "./PAGES/HomeAdm/Homeadm";
-import Eventos from "./PAGES/Eventos/Eventos.jsx";
+
+import Perfil from "./PAGES/Perfil/Perfil";
+import Eventos from "./PAGES/Eventos/Eventos";
+import EscalaEquipe from "./PAGES/Escalas/Escalaequipe";
 
 import ProtectedRoute from "./ProtectedRoute";
+
 import {
   getCurrentUser,
   getHomeByRole
 } from "./utils/authRoutes";
 
 function RoleRedirect() {
-  const { isAuthenticated, tipoUsuario } =
-    getCurrentUser();
+
+  const {
+    isAuthenticated,
+    tipoUsuario
+  } = getCurrentUser();
 
   return (
+
     <Navigate
       to={
         isAuthenticated
@@ -33,19 +41,28 @@ function RoleRedirect() {
       }
       replace
     />
+
   );
 }
 
-function PublicOnlyRoute({ children }) {
-  const { isAuthenticated, tipoUsuario } =
-    getCurrentUser();
+function PublicOnlyRoute({
+  children
+}) {
+
+  const {
+    isAuthenticated,
+    tipoUsuario
+  } = getCurrentUser();
 
   if (isAuthenticated) {
+
     return (
+
       <Navigate
         to={getHomeByRole(tipoUsuario)}
         replace
       />
+
     );
   }
 
@@ -127,7 +144,7 @@ function App() {
           path="/escalas"
           element={
             <ProtectedRoute permitido="adm">
-              <Navigate to="/home-adm" replace />
+              <EscalaEquipe />
             </ProtectedRoute>
           }
         />
@@ -135,13 +152,20 @@ function App() {
         <Route
           path="/perfil"
           element={
-            <ProtectedRoute permitido={["cliente", "prestador", "adm"]}>
+            <ProtectedRoute permitido={[
+              "cliente",
+              "prestador",
+              "adm"
+            ]}>
               <Perfil />
             </ProtectedRoute>
           }
         />
 
-        <Route path="*" element={<RoleRedirect />} />
+        <Route
+          path="*"
+          element={<RoleRedirect />}
+        />
 
       </Routes>
 
