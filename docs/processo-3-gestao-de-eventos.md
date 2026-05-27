@@ -1,13 +1,13 @@
 
 
-# **3.3.3 Processo 3 – Gestão de Eventos**
+
+# **3.3.3 Processo 3 – Solicitação de Eventos**
 
 O processo de gestão de eventos tem como objetivo organizar o agendamento dos serviços audiovisuais, garantindo o controle da disponibilidade de datas, equipe e equipamentos, além de assegurar a correta execução dos serviços contratados.
 
 Como oportunidade de melhoria, propõe-se a automatização da verificação de disponibilidade dos recursos (datas, equipe e equipamentos), bem como a sugestão de novas datas em casos de indisponibilidade, reduzindo conflitos de agenda e retrabalho. Além disso, o processo considera a autenticação do usuário, a seleção de eventos existentes ou criação de novos eventos, e decisões estruturadas para reprogramação, composição de equipe e confirmação final do serviço.
 
-<img width="2685" height="1010" alt="Processo de gestão de eventos" src="https://github.com/user-attachments/assets/f35cdf94-0fcf-49ce-bec0-ba3ce5d8e335" />
-
+<img width="2685" height="1010" alt="Processo de gestão de profissionais - cópia de Diagrama (2)" src="https://github.com/user-attachments/assets/b986ac83-379a-4a0c-8cdc-0257502d6056" />
 
 ---
 
