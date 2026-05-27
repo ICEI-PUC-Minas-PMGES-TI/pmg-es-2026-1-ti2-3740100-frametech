@@ -1,4 +1,3 @@
-<img width="2685" height="1010" alt="Processo de gestão de profissionais - cópia de Diagrama (2)" src="https://github.com/user-attachments/assets/b986ac83-379a-4a0c-8cdc-0257502d6056" />
 
 
 # **3.3.3 Processo 3 – Solicitação de Eventos**
