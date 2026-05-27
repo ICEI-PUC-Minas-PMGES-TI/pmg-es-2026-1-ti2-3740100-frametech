@@ -250,3 +250,58 @@
   margin-top: 4px;
   white-space: nowrap;
 }
+
+@media (max-width: 767px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .main {
+    width: 100%;
+    max-width: none;
+    padding: 20px 16px 32px;
+    box-sizing: border-box;
+  }
+
+  .topRow {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .btnNovoEvento {
+    width: 100%;
+  }
+
+  .statsRow,
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 18px 16px;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .valorBox {
+    text-align: left;
+  }
+
+  .timeline {
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+  .etapaItem {
+    min-width: 88px;
+  }
+}
+
+@media (min-width: 768px) {
+  .main {
+    width: 100%;
+  }
+}

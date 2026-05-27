@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useState
+} from "react";
 import styles from "./HomeProfissional.module.css";
 import Header from "../../Components/Header/Header";
 
@@ -102,12 +106,12 @@ export default function HomeProfissional() {
   const [filter, setFilter] = useState("todos");
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/immutability
-    carregarEscalas();
+  const showToast = useCallback((msg) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 2600);
   }, []);
 
-  function carregarEscalas() {
+  const carregarEscalas = useCallback(() => {
     const profissionalId = sessionStorage.getItem("usuarioId");
 
     if (!profissionalId) {
@@ -135,7 +139,12 @@ export default function HomeProfissional() {
       .finally(() => {
         setLoading(false);
       });
-  }
+  }, [showToast]);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    carregarEscalas();
+  }, [carregarEscalas]);
 
   const newCount = reqs.length;
 
@@ -149,11 +158,6 @@ export default function HomeProfissional() {
     filter === "todos"
       ? scale
       : scale.filter(s => s.mon === filter);
-
-  function showToast(msg) {
-    setToast(msg);
-    setTimeout(() => setToast(null), 2600);
-  }
 
   function removeReq(id, dir) {
     setLeaving(p => ({ ...p, [id]: dir }));

@@ -171,3 +171,58 @@
   justify-content: center;
   gap: 10px;
 }
+
+@media (max-width: 767px) {
+  .pagina {
+    min-height: 100vh;
+    height: auto;
+    padding: 20px 16px 32px;
+    grid-template-rows: auto auto;
+    gap: 28px;
+  }
+
+  .logo {
+    align-items: center;
+  }
+
+  .centro {
+    align-items: flex-start;
+  }
+
+  .cartao {
+    max-width: none;
+    padding: 28px 18px;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
+
+  .tituloCartao {
+    font-size: 28px;
+  }
+
+  .subCartao {
+    margin-bottom: 26px;
+  }
+
+  .tiposConta {
+    flex-direction: column;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .botaoTipo {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 14px;
+  }
+
+  .iconeTipo {
+    width: 32px;
+    text-align: center;
+  }
+
+  .input {
+    box-sizing: border-box;
+  }
+}

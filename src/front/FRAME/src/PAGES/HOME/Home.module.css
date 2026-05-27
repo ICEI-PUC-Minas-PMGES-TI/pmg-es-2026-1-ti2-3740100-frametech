@@ -537,3 +537,108 @@
     padding: 44px 28px;
   }
 }
+
+/* Ajustes mobile-first finais */
+.paginaHome {
+  flex-direction: column;
+}
+
+.conteudoPrincipal {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.tituloPrincipal {
+  letter-spacing: 0;
+}
+
+.secaoEstatisticas > div {
+  padding: 36px 28px;
+  border-right: 1px solid #ece9e4;
+  transition: background 0.2s;
+}
+
+.secaoEstatisticas > div:last-child {
+  border-right: none;
+}
+
+.secaoEstatisticas > div:hover {
+  background: #fafaf8;
+}
+
+.secaoEstatisticas > div h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.secaoEstatisticas > div p {
+  color: #888;
+  font-size: 13.5px;
+}
+
+@media (max-width: 767px) {
+  .conteudoPrincipal {
+    width: 100%;
+    padding: 28px 16px 56px;
+  }
+
+  .secaoTopo {
+    align-items: stretch;
+    gap: 28px;
+    margin-bottom: 52px;
+  }
+
+  .containerTexto {
+    max-width: none;
+  }
+
+  .tituloPrincipal {
+    font-size: 32px;
+  }
+
+  .containerBotoes,
+  .containerBotoesCta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .botaoPrimario,
+  .botaoSecundario {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mockupDashboard {
+    width: 100%;
+    padding: 20px 18px;
+    border-radius: 18px;
+    box-sizing: border-box;
+  }
+
+  .mockupGrade,
+  .secaoEstatisticas {
+    grid-template-columns: 1fr;
+  }
+
+  .secaoEstatisticas > div {
+    border-right: none;
+    border-bottom: 1px solid #ece9e4;
+  }
+
+  .secaoEstatisticas > div:last-child {
+    border-bottom: none;
+  }
+
+  .cardImagem {
+    height: 220px;
+  }
+}
+
+@media (min-width: 768px) {
+  .paginaHome {
+    flex-direction: row;
+  }
+}

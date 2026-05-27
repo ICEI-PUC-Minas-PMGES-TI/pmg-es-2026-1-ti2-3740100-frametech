@@ -251,3 +251,50 @@
 .btnEnviar:hover {
   background: #333;
 }
+
+@media (max-width: 767px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .main {
+    width: 100%;
+    padding: 20px 16px 32px;
+    box-sizing: border-box;
+  }
+
+  .form {
+    max-width: none;
+    width: 100%;
+  }
+
+  .secao {
+    padding: 18px 16px;
+    border-radius: 12px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .radioGrid,
+  .entregaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .radioLabel,
+  .servicoItem {
+    align-items: flex-start;
+  }
+
+  .botoesRodape {
+    flex-direction: column-reverse;
+    padding-bottom: 0;
+  }
+
+  .btnCancelar,
+  .btnEnviar {
+    width: 100%;
+  }
+}

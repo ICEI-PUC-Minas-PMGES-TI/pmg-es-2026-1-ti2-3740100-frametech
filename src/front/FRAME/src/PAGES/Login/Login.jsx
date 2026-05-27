@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import styles from './Login.module.css';
+import {
+  getHomeByRole,
+  normalizeUserType
+} from '../../utils/authRoutes';
 
 const TIPOS = [
   { key: 'empresa', icon: '🏢', label: 'Empresa', sub: 'Adm' },
@@ -51,27 +55,17 @@ function Login() {
       );
 
       const tipoDefinido =
-        data.tipo === "empresa"
-          ? "adm"
-          : data.tipo;
+        normalizeUserType(data.tipo || tipo);
 
       sessionStorage.setItem(
         "tipoUsuario",
         tipoDefinido
       );
 
-      if (tipoDefinido === "cliente") {
-
-        navigate("/home-cliente");
-
-      } else if (tipoDefinido === "adm") {
-
-        navigate("/home-adm");
-
-      } else if (tipoDefinido === "prestador") {
-
-        navigate("/home-profissional");
-      }
+      navigate(
+        getHomeByRole(tipoDefinido),
+        { replace: true }
+      );
 
     } catch (err) {
 

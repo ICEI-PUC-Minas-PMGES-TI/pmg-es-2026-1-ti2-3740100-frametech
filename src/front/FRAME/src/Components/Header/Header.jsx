@@ -1,18 +1,37 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {
+  useLocation,
+  useNavigate
+} from 'react-router-dom';
+import {
+  Home,
+  LogIn,
+  LogOut,
+  User,
+  UserPlus
+} from 'lucide-react';
 import styles from "./Header.module.css";
+import {
+  getCurrentUser,
+  getHomeByRole
+} from '../../utils/authRoutes';
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const usuarioLogado = sessionStorage.getItem("usuarioId");
-  const tipoUsuario = sessionStorage.getItem("tipoUsuario");
+  const {
+    isAuthenticated,
+    tipoUsuario
+  } = getCurrentUser();
 
   const verificarAcesso = (rota) => {
-    if (rota === "/login" || rota === "/cadastro") return navigate(rota);
+    if (rota === "/login" || rota === "/cadastro") {
+      return navigate(rota);
+    }
 
-    if (!usuarioLogado) {
-      alert("Você precisa fazer login primeiro.");
+    if (!isAuthenticated) {
+      alert("Voce precisa fazer login primeiro.");
       return navigate("/login");
     }
 
@@ -20,12 +39,11 @@ const Header = () => {
   };
 
   const verificarHome = () => {
-    if (!usuarioLogado) return navigate("/");
+    if (!isAuthenticated) {
+      return navigate("/");
+    }
 
-    if (tipoUsuario === "adm") return navigate("/home-adm");
-    if (tipoUsuario === "prestador") return navigate("/home-profissional");
-
-    navigate("/home-cliente");
+    navigate(getHomeByRole(tipoUsuario));
   };
 
   const sair = () => {
@@ -42,13 +60,59 @@ const Header = () => {
       </div>
 
       <div className={styles.navGroup}>
-        <button className={styles.iconButton} onClick={verificarHome}>🏠</button>
-        <button className={styles.iconButton} onClick={() => verificarAcesso("/perfil")}>👤</button>
-        <button className={styles.iconButton} onClick={() => verificarAcesso("/login")}>🔐</button>
-        <button className={styles.iconButton} onClick={() => verificarAcesso("/cadastro")}>➕</button>
+        <button
+          className={`${styles.iconButton} ${
+            location.pathname.includes("home")
+              ? styles.active
+              : ""
+          }`}
+          onClick={verificarHome}
+          aria-label="Ir para home"
+          title="Home"
+        >
+          <Home size={20} />
+        </button>
+
+        <button
+          className={`${styles.iconButton} ${
+            location.pathname === "/perfil"
+              ? styles.active
+              : ""
+          }`}
+          onClick={() => verificarAcesso("/perfil")}
+          aria-label="Ir para perfil"
+          title="Perfil"
+        >
+          <User size={20} />
+        </button>
+
+        <button
+          className={styles.iconButton}
+          onClick={() => verificarAcesso("/login")}
+          aria-label="Ir para login"
+          title="Login"
+        >
+          <LogIn size={20} />
+        </button>
+
+        <button
+          className={styles.iconButton}
+          onClick={() => verificarAcesso("/cadastro")}
+          aria-label="Ir para cadastro"
+          title="Cadastro"
+        >
+          <UserPlus size={20} />
+        </button>
       </div>
 
-      <button className={styles.profileIcon} onClick={sair}>🚪</button>
+      <button
+        className={styles.profileIcon}
+        onClick={sair}
+        aria-label="Sair"
+        title="Sair"
+      >
+        <LogOut size={22} />
+      </button>
 
     </div>
   );

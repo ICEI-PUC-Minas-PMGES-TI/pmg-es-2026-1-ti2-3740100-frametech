@@ -112,3 +112,101 @@
   cursor: not-allowed;
   opacity: 0.6;
 }
+
+.info-column {
+  min-width: 0;
+}
+
+.info-column input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.button-group button {
+  padding: 12px 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  border: 1px solid #444;
+  background: white;
+}
+
+.button-group button:first-child {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+}
+
+@media (max-width: 767px) {
+  .profile-container {
+    flex-direction: column;
+  }
+
+  .content {
+    width: 100%;
+    margin-left: 0;
+    padding: 28px 16px 40px;
+    box-sizing: border-box;
+  }
+
+  .profile-header {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .profile-header h1 {
+    font-size: 26px;
+    margin: 0;
+  }
+
+  .avatar-label {
+    position: static;
+  }
+
+  .avatar-circle,
+  .avatar-img {
+    width: 82px;
+    height: 82px;
+    font-size: 28px;
+  }
+
+  .info-card {
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px 18px;
+    margin-top: 28px;
+    border-radius: 14px;
+  }
+
+  .info-column p {
+    margin: 14px 0;
+    overflow-wrap: anywhere;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .button-group button,
+  .btn {
+    width: 100%;
+  }
+
+  .error-message {
+    max-width: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    margin-left: 0;
+  }
+}

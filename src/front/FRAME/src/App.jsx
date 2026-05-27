@@ -5,25 +5,84 @@ import {
   Navigate
 } from "react-router-dom";
 
-import Home from "./Pages/Home/Home";
-import Cadastro from "./Pages/Cadastro/Cadastro";
-import Login from "./Pages/Login/Login";
-import HomeClient from "./Pages/HomeClient/HomeClient";
-import Perfil from "./Pages/Perfil/Perfil";
-import HomeProfissional from "./Pages/HomeProfissional/HomeProfissional";
-import HomeAdm from "./Pages/HomeAdm/HomeAdm";
-import Eventos from "./Pages/Eventos/Eventos.jsx";
+import Home from "./PAGES/HOME/Home";
+import Cadastro from "./PAGES/Cadastro/Cadastro";
+import Login from "./PAGES/Login/Login";
+import HomeClient from "./PAGES/HomeClient/HomeClient";
+import Perfil from "./PAGES/Perfil/Perfil";
+import HomeProfissional from "./PAGES/HomeProfissional/HomeProfissional";
+import HomeAdm from "./PAGES/HomeAdm/Homeadm";
+import Eventos from "./PAGES/Eventos/Eventos.jsx";
 
 import ProtectedRoute from "./ProtectedRoute";
+import {
+  getCurrentUser,
+  getHomeByRole
+} from "./utils/authRoutes";
+
+function RoleRedirect() {
+  const { isAuthenticated, tipoUsuario } =
+    getCurrentUser();
+
+  return (
+    <Navigate
+      to={
+        isAuthenticated
+          ? getHomeByRole(tipoUsuario)
+          : "/"
+      }
+      replace
+    />
+  );
+}
+
+function PublicOnlyRoute({ children }) {
+  const { isAuthenticated, tipoUsuario } =
+    getCurrentUser();
+
+  if (isAuthenticated) {
+    return (
+      <Navigate
+        to={getHomeByRole(tipoUsuario)}
+        replace
+      />
+    );
+  }
+
+  return children;
+}
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<Home />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <PublicOnlyRoute>
+              <Home />
+            </PublicOnlyRoute>
+          }
+        />
+
+        <Route
+          path="/cadastro"
+          element={
+            <PublicOnlyRoute>
+              <Cadastro />
+            </PublicOnlyRoute>
+          }
+        />
+
+        <Route
+          path="/login"
+          element={
+            <PublicOnlyRoute>
+              <Login />
+            </PublicOnlyRoute>
+          }
+        />
 
         <Route
           path="/home-cliente"
@@ -62,6 +121,15 @@ function App() {
         />
 
         <Route
+          path="/escalas"
+          element={
+            <ProtectedRoute permitido="adm">
+              <Navigate to="/home-adm" replace />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/perfil"
           element={
             <ProtectedRoute permitido={["cliente", "prestador", "adm"]}>
@@ -70,7 +138,7 @@ function App() {
           }
         />
 
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<RoleRedirect />} />
 
       </Routes>
     </BrowserRouter>

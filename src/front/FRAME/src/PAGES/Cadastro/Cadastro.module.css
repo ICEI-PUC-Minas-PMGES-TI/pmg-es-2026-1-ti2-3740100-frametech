@@ -49,6 +49,12 @@
   gap: 20px;
 }
 
+.conteudo form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .titulo {
   font-size: 1.6rem;
   font-weight: 700;
@@ -237,4 +243,68 @@
 
 .botaoPrimario:hover {
   background: #f0f0f0;
+}
+
+@media (max-width: 767px) {
+  .cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .loginLink {
+    font-size: 0.82rem;
+  }
+
+  .conteudo {
+    width: 100%;
+    max-width: none;
+    padding: 28px 16px 48px;
+    box-sizing: border-box;
+  }
+
+  .titulo {
+    font-size: 1.35rem;
+  }
+
+  .cartao {
+    padding: 18px 16px;
+  }
+
+  .opcoesTipo,
+  .linhaGrade,
+  .acoes {
+    flex-direction: column;
+  }
+
+  .linhaGrade {
+    display: flex;
+  }
+
+  .opcaoTipo {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 14px;
+  }
+
+  .opcaoIcone {
+    width: 32px;
+    text-align: center;
+  }
+
+  .entrada {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .termos {
+    align-items: flex-start;
+  }
+
+  .botaoSecundario,
+  .botaoPrimario {
+    width: 100%;
+  }
 }

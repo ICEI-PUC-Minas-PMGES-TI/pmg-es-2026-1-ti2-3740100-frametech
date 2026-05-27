@@ -489,3 +489,98 @@ body,
   background: #E8604A;
   flex-shrink: 0;
 }
+
+@media (max-width: 767px) {
+  .root {
+    flex-direction: column;
+  }
+
+  .mainContent {
+    width: 100%;
+  }
+
+  .statsRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat {
+    padding: 14px 16px;
+  }
+
+  .stat:nth-child(2n) {
+    border-right: none;
+  }
+
+  .columns {
+    flex-direction: column;
+  }
+
+  .colLeft,
+  .colRight {
+    width: 100%;
+    min-width: 0;
+    border-right: none;
+  }
+
+  .colLeft {
+    border-bottom: 1px solid #e8e4dc;
+  }
+
+  .colHead {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .calNav {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filterRow {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .filterBtn {
+    flex: 0 0 auto;
+  }
+
+  .scroll {
+    max-height: none;
+  }
+
+  .reqTop,
+  .reqFoot,
+  .scItem {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .acts {
+    width: 100%;
+  }
+
+  .btnA,
+  .btnD,
+  .btnV {
+    flex: 1;
+  }
+
+  .calWrap {
+    padding: 14px 16px;
+  }
+
+  .day {
+    width: 34px;
+    height: 34px;
+  }
+
+  .toast {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    justify-content: center;
+  }
+}
