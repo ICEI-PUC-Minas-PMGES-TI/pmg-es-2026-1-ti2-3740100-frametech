@@ -57,6 +57,11 @@ public class UsuarioController {
         return service.atualizarFoto(id, usuario.getFotoPerfil());
     }
 
+    @GetMapping("/profissionais")
+    public ResponseEntity<?> listarProfissionais() {
+        return ResponseEntity.ok(service.listarProfissionais());
+    }
+
     @GetMapping("/teste")
     public String teste() {
         return "API funcionando";

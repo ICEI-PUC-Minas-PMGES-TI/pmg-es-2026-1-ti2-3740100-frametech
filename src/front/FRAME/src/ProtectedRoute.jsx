@@ -8,7 +8,10 @@ import {
   getHomeByRole
 } from "./utils/authRoutes";
 
-function ProtectedRoute({ children, permitido }) {
+function ProtectedRoute({
+  children,
+  permitido
+}) {
 
   const location = useLocation();
   const {
@@ -16,9 +19,17 @@ function ProtectedRoute({ children, permitido }) {
     tipoUsuario
   } = getCurrentUser();
 
-  const tiposPermitidos = Array.isArray(permitido)
-    ? permitido
-    : [permitido];
+  console.log("TIPO USUARIO:", tipoUsuario);
+
+  const tiposPermitidos =
+    Array.isArray(permitido)
+      ? permitido
+      : [permitido];
+
+  if (!tipoUsuario) {
+
+    return <Navigate to="/login" />;
+  }
 
   if (!isAuthenticated) {
     return (
@@ -37,6 +48,8 @@ function ProtectedRoute({ children, permitido }) {
         replace
       />
     );
+
+    return <Navigate to="/login" />;
   }
 
   return children;

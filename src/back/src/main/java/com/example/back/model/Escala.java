@@ -12,6 +12,8 @@ public class Escala {
 
     private String status;
 
+    private String diaSemana;
+
     @ManyToOne
     @JoinColumn(name = "evento_id")
     private Evento evento;
@@ -20,14 +22,9 @@ public class Escala {
     @JoinColumn(name = "profissional_id")
     private Usuario profissional;
 
-    public Escala() {
-    }
-
-    public Escala(Evento evento, Usuario profissional) {
-        this.evento = evento;
-        this.profissional = profissional;
-        this.status = "PENDENTE";
-    }
+    @ManyToOne
+    @JoinColumn(name = "adm_id")
+    private Usuario adm;
 
     public Long getId() {
         return id;
@@ -39,6 +36,14 @@ public class Escala {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDiaSemana() {
+        return diaSemana;
+    }
+
+    public void setDiaSemana(String diaSemana) {
+        this.diaSemana = diaSemana;
     }
 
     public Evento getEvento() {
@@ -55,5 +60,13 @@ public class Escala {
 
     public void setProfissional(Usuario profissional) {
         this.profissional = profissional;
+    }
+
+    public Usuario getAdm() {
+        return adm;
+    }
+
+    public void setAdm(Usuario adm) {
+        this.adm = adm;
     }
 }

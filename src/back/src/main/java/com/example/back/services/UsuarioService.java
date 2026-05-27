@@ -2,9 +2,11 @@ package com.example.back.services;
 
 import com.example.back.model.Usuario;
 import com.example.back.repository.UsuarioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,37 +20,53 @@ public class UsuarioService {
     }
 
     public Optional<Usuario> login(String email, String senha) {
-
-        Optional<Usuario> user = repository.findByEmail(email);
-
-        if (user.isPresent() && user.get().getSenha().equals(senha)) {
-            return user;
-        }
-
-        return Optional.empty();
+        return repository.findByEmailAndSenha(email, senha);
     }
 
     public Usuario buscarPorId(Long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id).orElse(null);
     }
 
-    public Usuario atualizar(Long id, Usuario novo) {
-        Usuario user = repository.findById(id).orElseThrow();
+    public Usuario atualizar(Long id, Usuario usuarioAtualizado) {
 
-        user.setNome(novo.getNome());
-        user.setEmail(novo.getEmail());
-        user.setTelefone(novo.getTelefone());
+        Usuario usuario = repository.findById(id).orElse(null);
 
-        return repository.save(user);
+        if (usuario == null) {
+            return null;
+        }
+
+        usuario.setNome(usuarioAtualizado.getNome());
+        usuario.setEmail(usuarioAtualizado.getEmail());
+        usuario.setTelefone(usuarioAtualizado.getTelefone());
+        usuario.setTipo(usuarioAtualizado.getTipo());
+        usuario.setFotoPerfil(usuarioAtualizado.getFotoPerfil());
+
+        return repository.save(usuario);
     }
 
     public void deletar(Long id) {
-        repository.deleteById(id);
+
+        Usuario usuario = repository.findById(id).orElse(null);
+
+        if (usuario != null) {
+            repository.delete(usuario);
+        }
     }
 
     public Usuario atualizarFoto(Long id, String foto) {
-        Usuario user = repository.findById(id).orElseThrow();
-        user.setFotoPerfil(foto);
-        return repository.save(user);
+
+        Usuario usuario = repository.findById(id).orElse(null);
+
+        if (usuario == null) {
+            return null;
+        }
+
+        usuario.setFotoPerfil(foto);
+
+        return repository.save(usuario);
+    }
+
+    public List<Usuario> listarProfissionais() {
+        return repository.findAll();
     }
 }

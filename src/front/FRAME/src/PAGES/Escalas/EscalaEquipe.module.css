@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.pagina {
+  padding: 42px;
+  background: #f6f8fb;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.pagina h1 {
+  font-size: 40px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 28px;
+  letter-spacing: -1px;
+}
+
+.tabela {
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 260px repeat(7, 1fr);
+  background: #fcfcfd;
+  border-bottom: 1px solid #eceff3;
+}
+
+.colaborador {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.dia {
+  padding: 24px 12px;
+  border-left: 1px solid #eceff3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dia strong {
+  font-size: 18px;
+  color: #374151;
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: 260px repeat(7, 1fr);
+  min-height: 140px;
+  border-bottom: 1px solid #eceff3;
+}
+
+.profissional {
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-right: 1px solid #eceff3;
+  background: white;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fff1eb;
+  color: #e05a2b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.infoProfissional {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoProfissional strong {
+  font-size: 16px;
+  color: #111827;
+}
+
+.infoProfissional span {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.celula {
+  border-left: 1px solid #eceff3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: #fbfcfe;
+}
+
+.botaoMais {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: none;
+  background: #fff1eb;
+  color: #e05a2b;
+  font-size: 28px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botaoMais:hover {
+  background: #ffe4d8;
+  transform: scale(1.05);
+}
+
+.cardEscala {
+  width: 100%;
+  min-height: 110px;
+  border-radius: 18px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.2s;
+  box-shadow:
+    0 4px 10px rgba(15, 23, 42, 0.04);
+}
+
+.cardEscala:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 22px rgba(15, 23, 42, 0.08);
+}
+
+.topoEvento {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tipoEvento {
+  background: #fff1eb;
+  color: #e05a2b;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.nomeEvento {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.3;
+}
+
+.infoEvento {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaEvento {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.status {
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #ecfdf3;
+  color: #027a48;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  width: 420px;
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow:
+    0 20px 60px rgba(15, 23, 42, 0.18);
+}
+
+.modal h2 {
+  font-size: 26px;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.card {
+  padding: 18px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid transparent;
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:hover {
+  background: #fff1eb;
+  border-color: #ffd2c0;
+}
+
+.card strong {
+  font-size: 15px;
+  color: #111827;
+}
+
+.botaoAtribuir {
+  width: 100%;
+  border: none;
+  background: #e05a2b;
+  color: white;
+  padding: 16px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botaoAtribuir:hover {
+  background: #c94d22;
+}

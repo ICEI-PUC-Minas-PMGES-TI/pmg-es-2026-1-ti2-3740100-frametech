@@ -1,8 +1,13 @@
 package com.example.back.controller;
 
 import com.example.back.dto.EscalaDTO;
+import com.example.back.dto.EscalaRequestDTO;
 import com.example.back.model.Escala;
+import com.example.back.model.Evento;
+import com.example.back.model.Usuario;
 import com.example.back.repository.EscalaRepository;
+import com.example.back.repository.EventoRepository;
+import com.example.back.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,43 +22,63 @@ public class EscalaController {
     @Autowired
     private EscalaRepository escalaRepository;
 
-    @GetMapping("/profissional/{profissionalId}")
-    public List<EscalaDTO> listarEscalasDoProfissional(
-            @PathVariable Long profissionalId
-    ) {
-        return escalaRepository.findByProfissional_Id(profissionalId)
+    @Autowired
+    private EventoRepository eventoRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @GetMapping("/aceitas")
+    public List<EscalaDTO> listarEscalasAceitas() {
+
+        return escalaRepository
+                .findByStatus("ACEITA")
                 .stream()
                 .map(EscalaDTO::new)
                 .toList();
     }
 
-    @PutMapping("/{escalaId}/aceitar")
-    public EscalaDTO aceitarEscala(
-            @PathVariable Long escalaId
+    @PostMapping
+    public EscalaDTO criarEscala(
+            @RequestBody EscalaRequestDTO dto
     ) {
-        Escala escala = escalaRepository.findById(escalaId).orElse(null);
 
-        if (escala == null) {
+        Evento evento = eventoRepository
+                .findById(dto.getEventoId())
+                .orElse(null);
+
+        Usuario profissional = usuarioRepository
+                .findById(dto.getProfissionalId())
+                .orElse(null);
+
+        Usuario adm = usuarioRepository
+                .findById(dto.getAdmId())
+                .orElse(null);
+
+        if (
+                evento == null ||
+                profissional == null ||
+                adm == null
+        ) {
             return null;
         }
+
+        Escala escala = new Escala();
+
+        escala.setEvento(evento);
+
+        escala.setProfissional(profissional);
+
+        escala.setAdm(adm);
+
+        escala.setDiaSemana(
+                dto.getDiaSemana()
+        );
 
         escala.setStatus("ACEITA");
 
-        return new EscalaDTO(escalaRepository.save(escala));
-    }
-
-    @PutMapping("/{escalaId}/recusar")
-    public EscalaDTO recusarEscala(
-            @PathVariable Long escalaId
-    ) {
-        Escala escala = escalaRepository.findById(escalaId).orElse(null);
-
-        if (escala == null) {
-            return null;
-        }
-
-        escala.setStatus("RECUSADA");
-
-        return new EscalaDTO(escalaRepository.save(escala));
+        return new EscalaDTO(
+                escalaRepository.save(escala)
+        );
     }
 }

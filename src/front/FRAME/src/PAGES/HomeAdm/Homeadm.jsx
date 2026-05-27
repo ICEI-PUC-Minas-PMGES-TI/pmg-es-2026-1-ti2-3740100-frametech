@@ -248,7 +248,7 @@ const HomeAdm = () => {
     }
   };
 
-  useEffect(() => {
+ useEffect(() => {
 
   const carregarEventos = async () => {
 
@@ -259,7 +259,6 @@ const HomeAdm = () => {
   carregarEventos();
 
 }, []);
-
   const handleAceitar = async (id) => {
 
     try {
@@ -307,7 +306,7 @@ const HomeAdm = () => {
 
           <button
             className={styles.btnEscalas}
-            onClick={() => navigate('/escalas')}
+            onClick={() => navigate('/escala-equipe')}
           >
             Escalas
           </button>
