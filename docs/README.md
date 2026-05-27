@@ -128,9 +128,9 @@ As melhorias nos processos incluem uma melhor organização por meio de diferent
 
 [PROCESSO 2 - Gestão dos Profissionais de serviço](https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2026-1-ti2-3740100-frametech/blob/main/docs/processo-2-Gestão%20de%20Profissionais.md)
 
-[PROCESSO 3 - Gestão de eventos](processo-3-gestao-de-eventos.md "Detalhamento do Processo 3.")
+[PROCESSO 3 - Solicitação de eventos](processo-3-Solicitação-de-eventos.md "Detalhamento do Processo 3.")
 
-[PROCESSO 4 - Solicitação de serviços](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
+[PROCESSO 4 - Gestão Eventos confirmados](processo-4-Gestão-Eventos-confirmados.md "Detalhamento do Processo 4.")
 
 [PROCESSO 5 - Cadastro de equipamentos](processo-5-cadastro-equipamentos.md)
 
