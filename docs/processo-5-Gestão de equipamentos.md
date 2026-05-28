@@ -1,5 +1,5 @@
 
-###  Processo 5 – Gerenciamento de cadastro de equipamentos
+###  Processo 5 – Gestão de equipamentos
 
 O processo de gerenciamento de cadastro de equipamentos tem como objetivo organizar o cadastro, atualização e controle dos equipamentos utilizados nos projetos audiovisuais, garantindo maior eficiência e disponibilidade dos recursos.
 
