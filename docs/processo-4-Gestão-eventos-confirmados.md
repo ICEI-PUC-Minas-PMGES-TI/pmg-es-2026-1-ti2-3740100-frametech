@@ -1,8 +1,9 @@
+
 ###  Processo 4 - Gestão Eventos confirmados
 
 O processo de solicitação de serviços tem como objetivo permitir que o cliente solicite, receba propostas, aprove e finalize a contratação de um serviço de forma organizada.
 
-<img width="1984" height="1084" alt="PROCESSO 4 - Solicitação de serviços Diagrama (4)" src="https://github.com/user-attachments/assets/90604596-0187-4d42-9395-532459e938d1" />
+<img width="2903" height="1657" alt="Gestão de eventos confirmados Diagrama" src="https://github.com/user-attachments/assets/c9cf0677-4f1a-4eb0-886d-950e8aafee7e" />
 
 
 
