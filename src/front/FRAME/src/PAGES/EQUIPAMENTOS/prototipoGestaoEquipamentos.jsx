@@ -1,5 +1,3 @@
-import React from "react";
+import GestaoEquipamentos from './GestaoEquipamentos';
 
-export default function PrototipoGestaoEquipamentos() {
-  return <div>Prototipo Gestao Equipamentos</div>;
-}
+export default GestaoEquipamentos;

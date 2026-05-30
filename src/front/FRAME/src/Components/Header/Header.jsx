@@ -8,7 +8,8 @@ import {
   LogIn,
   LogOut,
   User,
-  UserPlus
+  UserPlus,
+  Package
 } from 'lucide-react';
 import styles from "./Header.module.css";
 import {
@@ -70,7 +71,7 @@ const Header = () => {
           aria-label="Ir para home"
           title="Home"
         >
-          <Home size={20} />
+          <Home size={18} />
         </button>
 
         <button
@@ -83,8 +84,24 @@ const Header = () => {
           aria-label="Ir para perfil"
           title="Perfil"
         >
-          <User size={20} />
+          <User size={18} />
         </button>
+
+
+        {isAuthenticated && tipoUsuario === "adm" && (
+          <button
+            className={`${styles.iconButton} ${
+              location.pathname === "/equipamentos"
+                ? styles.active
+                : ""
+            }`}
+            onClick={() => verificarAcesso("/equipamentos")}
+            aria-label="Ir para equipamentos"
+            title="Equipamentos"
+          >
+            <Package size={18} />
+          </button>
+        )}
 
         <button
           className={styles.iconButton}
@@ -92,7 +109,7 @@ const Header = () => {
           aria-label="Ir para login"
           title="Login"
         >
-          <LogIn size={20} />
+          <LogIn size={18} />
         </button>
 
         <button
@@ -101,7 +118,7 @@ const Header = () => {
           aria-label="Ir para cadastro"
           title="Cadastro"
         >
-          <UserPlus size={20} />
+          <UserPlus size={18} />
         </button>
       </div>
 
@@ -111,7 +128,7 @@ const Header = () => {
         aria-label="Sair"
         title="Sair"
       >
-        <LogOut size={22} />
+        <LogOut size={19} />
       </button>
 
     </div>

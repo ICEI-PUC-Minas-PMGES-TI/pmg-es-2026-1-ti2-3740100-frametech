@@ -248,12 +248,21 @@ const SolicitacaoServico = () => {
                   Tipo de evento
                 </label>
 
-                <input
+                <select
                   className={styles.input}
-                  placeholder="Ex: Formatura"
                   value={form.tipoEvento}
                   onChange={set('tipoEvento')}
-                />
+                  required
+                >
+                  <option value="">Selecione</option>
+                  <option value="Casamento">Casamento</option>
+                  <option value="Formatura">Formatura</option>
+                  <option value="Aniversario">Aniversario</option>
+                  <option value="Empresarial">Empresarial</option>
+                  <option value="Show">Show</option>
+                  <option value="Ensaio">Ensaio</option>
+                  <option value="Outro">Outro</option>
+                </select>
 
               </div>
 

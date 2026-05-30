@@ -15,7 +15,8 @@ import HomeAdm from "./PAGES/HomeAdm/Homeadm";
 
 import Perfil from "./PAGES/Perfil/Perfil";
 import Eventos from "./PAGES/Eventos/Eventos";
-import EscalaEquipe from "./PAGES/Escalas/Escalaequipe";
+import EscalaEquipe from "./PAGES/Escalas/EscalaEquipe";
+import GestaoEquipamentos from "./PAGES/EQUIPAMENTOS/GestaoEquipamentos";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -145,6 +146,15 @@ function App() {
           element={
             <ProtectedRoute permitido="adm">
               <EscalaEquipe />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/equipamentos"
+          element={
+            <ProtectedRoute permitido="adm">
+              <GestaoEquipamentos />
             </ProtectedRoute>
           }
         />
