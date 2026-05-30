@@ -98,7 +98,8 @@ const Perfil = () => {
           nome: formData.nome,
           email: formData.email,
           telefone: formData.telefone,
-          senha: formData.senha
+          senha: formData.senha,
+          tipo: user.tipo
         })
       });
 
@@ -111,6 +112,10 @@ const Perfil = () => {
 
       setUser(updated);
       setFormData(criarForm(updated));
+      sessionStorage.setItem(
+        "tipoUsuario",
+        updated.tipo === "empresa" ? "adm" : updated.tipo
+      );
       setIsEditing(false);
 
       alert("Perfil atualizado com sucesso!");
@@ -278,8 +283,12 @@ const Perfil = () => {
         <div className="button-group">
           {isEditing ? (
             <>
-              <button onClick={handleSave} disabled={saving}>
-                Salvar
+              <button
+                className="btn btn-save"
+                onClick={handleSave}
+                disabled={saving}
+              >
+                {saving ? "Salvando..." : "Salvar"}
               </button>
 
               <button onClick={handleCancel}>Cancelar</button>

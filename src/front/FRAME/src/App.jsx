@@ -165,7 +165,8 @@ function App() {
             <ProtectedRoute permitido={[
               "cliente",
               "prestador",
-              "adm"
+              "adm",
+              "empresa"
             ]}>
               <Perfil />
             </ProtectedRoute>

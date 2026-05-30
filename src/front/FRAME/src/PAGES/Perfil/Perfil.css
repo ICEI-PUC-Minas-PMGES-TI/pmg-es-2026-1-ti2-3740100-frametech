@@ -210,3 +210,10 @@
     margin-left: 0;
   }
 }
+
+.btn-save:disabled {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  opacity: 1;
+}
