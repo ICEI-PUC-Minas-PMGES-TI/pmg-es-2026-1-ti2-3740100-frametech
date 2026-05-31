@@ -4,6 +4,7 @@ import {
   useNavigate
 } from 'react-router-dom';
 import {
+  CalendarDays,
   Home,
   LogIn,
   LogOut,
@@ -52,6 +53,9 @@ const Header = () => {
     navigate("/login");
   };
 
+  const isActive = (rota) =>
+    location.pathname === rota;
+
   return (
     <div className={styles.sidebar}>
 
@@ -89,47 +93,68 @@ const Header = () => {
 
 
         {isAuthenticated && tipoUsuario === "adm" && (
-          <button
-            className={`${styles.iconButton} ${
-              location.pathname === "/equipamentos"
-                ? styles.active
-                : ""
-            }`}
-            onClick={() => verificarAcesso("/equipamentos")}
-            aria-label="Ir para equipamentos"
-            title="Equipamentos"
-          >
-            <Package size={18} />
-          </button>
+          <>
+            <button
+              className={`${styles.iconButton} ${
+                isActive("/escalas")
+                  ? styles.active
+                  : ""
+              }`}
+              onClick={() => verificarAcesso("/escalas")}
+              aria-label="Ir para escalas"
+              title="Escalas"
+            >
+              <CalendarDays size={18} />
+            </button>
+
+            <button
+              className={`${styles.iconButton} ${
+                isActive("/equipamentos")
+                  ? styles.active
+                  : ""
+              }`}
+              onClick={() => verificarAcesso("/equipamentos")}
+              aria-label="Ir para equipamentos"
+              title="Equipamentos"
+            >
+              <Package size={18} />
+            </button>
+          </>
         )}
 
-        <button
-          className={styles.iconButton}
-          onClick={() => verificarAcesso("/login")}
-          aria-label="Ir para login"
-          title="Login"
-        >
-          <LogIn size={18} />
-        </button>
+        {!isAuthenticated && (
+          <>
+            <button
+              className={styles.iconButton}
+              onClick={() => verificarAcesso("/login")}
+              aria-label="Ir para login"
+              title="Login"
+            >
+              <LogIn size={18} />
+            </button>
 
-        <button
-          className={styles.iconButton}
-          onClick={() => verificarAcesso("/cadastro")}
-          aria-label="Ir para cadastro"
-          title="Cadastro"
-        >
-          <UserPlus size={18} />
-        </button>
+            <button
+              className={styles.iconButton}
+              onClick={() => verificarAcesso("/cadastro")}
+              aria-label="Ir para cadastro"
+              title="Cadastro"
+            >
+              <UserPlus size={18} />
+            </button>
+          </>
+        )}
       </div>
 
-      <button
-        className={styles.profileIcon}
-        onClick={sair}
-        aria-label="Sair"
-        title="Sair"
-      >
-        <LogOut size={19} />
-      </button>
+      {isAuthenticated && (
+        <button
+          className={styles.profileIcon}
+          onClick={sair}
+          aria-label="Sair"
+          title="Sair"
+        >
+          <LogOut size={19} />
+        </button>
+      )}
 
     </div>
   );

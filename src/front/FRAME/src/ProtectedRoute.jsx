@@ -20,25 +20,10 @@ function ProtectedRoute({
     tipoUsuario
   } = getCurrentUser();
 
-  console.log(
-    "TIPO USUARIO:",
-    tipoUsuario
-  );
-
   const tiposPermitidos =
     Array.isArray(permitido)
       ? permitido
       : [permitido];
-
-  if (!tipoUsuario) {
-
-    return (
-      <Navigate
-        to="/login"
-        replace
-      />
-    );
-  }
 
   if (!isAuthenticated) {
 

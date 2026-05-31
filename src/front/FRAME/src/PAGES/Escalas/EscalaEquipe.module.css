@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f6f8fb;
+}
+
 .pagina {
+  flex: 1;
+  width: 100%;
   padding: 42px;
   background: #f6f8fb;
-  min-height: 100vh;
   font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .pagina h1 {
@@ -18,7 +27,7 @@
 .tabela {
   background: #ffffff;
   border-radius: 24px;
-  overflow: hidden;
+  overflow-x: auto;
   border: 1px solid #e5e7eb;
   box-shadow:
     0 10px 30px rgba(15, 23, 42, 0.04);
@@ -27,6 +36,7 @@
 .header {
   display: grid;
   grid-template-columns: 260px repeat(7, 1fr);
+  min-width: 980px;
   background: #fcfcfd;
   border-bottom: 1px solid #eceff3;
 }
@@ -56,6 +66,7 @@
 .linha {
   display: grid;
   grid-template-columns: 260px repeat(7, 1fr);
+  min-width: 980px;
   min-height: 140px;
   border-bottom: 1px solid #eceff3;
 }
@@ -204,10 +215,11 @@
 }
 
 .modal {
-  width: 420px;
+  width: min(420px, calc(100vw - 32px));
   background: white;
   border-radius: 24px;
   padding: 28px;
+  box-sizing: border-box;
   box-shadow:
     0 20px 60px rgba(15, 23, 42, 0.18);
 }
@@ -253,4 +265,42 @@
 
 .botaoAtribuir:hover {
   background: #c94d22;
+}
+
+@media (max-width: 767px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .pagina {
+    padding: 22px 16px 36px;
+  }
+
+  .pagina h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    letter-spacing: 0;
+  }
+
+  .tabela {
+    border-radius: 16px;
+  }
+
+  .colaborador,
+  .dia,
+  .profissional,
+  .celula {
+    padding: 14px 10px;
+  }
+
+  .header,
+  .linha {
+    grid-template-columns: 220px repeat(7, 120px);
+    min-width: 1060px;
+  }
+
+  .modal {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
 }

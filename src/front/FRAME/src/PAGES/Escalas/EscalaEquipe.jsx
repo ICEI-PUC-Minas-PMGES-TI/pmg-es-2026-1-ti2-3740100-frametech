@@ -3,6 +3,9 @@ import React, {
   useState
 } from 'react';
 
+import Header
+from '../../Components/Header/Header';
+
 import styles from './EscalaEquipe.module.css';
 
 const EscalaEquipe = () => {
@@ -177,7 +180,11 @@ const EscalaEquipe = () => {
 
   return (
 
-    <div className={styles.pagina}>
+    <div className={styles.layout}>
+
+      <Header />
+
+      <main className={styles.pagina}>
 
       <h1>
         Escala de Equipe
@@ -387,6 +394,8 @@ const EscalaEquipe = () => {
         </div>
 
       )}
+
+      </main>
 
     </div>
   );

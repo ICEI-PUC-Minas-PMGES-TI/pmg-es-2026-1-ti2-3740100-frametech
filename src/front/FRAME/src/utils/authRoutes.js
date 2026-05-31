@@ -4,16 +4,25 @@ export const HOME_BY_ROLE = {
   prestador: "/home-profissional",
 };
 
-export function normalizeUserType(tipo) {
-  if (tipo === "empresa") {
-    return "adm";
-  }
+const ROLE_ALIASES = {
+  empresa: "adm",
+  administrador: "adm",
+};
 
-  return tipo;
+export function normalizeUserType(tipo) {
+  if (!tipo) return null;
+
+  const normalized = String(tipo).trim().toLowerCase();
+
+  return ROLE_ALIASES[normalized] || normalized;
 }
 
 export function getHomeByRole(tipo) {
   return HOME_BY_ROLE[normalizeUserType(tipo)] || "/login";
+}
+
+export function isKnownRole(tipo) {
+  return Boolean(HOME_BY_ROLE[normalizeUserType(tipo)]);
 }
 
 export function getCurrentUser() {
@@ -25,6 +34,6 @@ export function getCurrentUser() {
   return {
     usuarioId,
     tipoUsuario,
-    isAuthenticated: Boolean(usuarioId && tipoUsuario),
+    isAuthenticated: Boolean(usuarioId && isKnownRole(tipoUsuario)),
   };
 }

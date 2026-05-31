@@ -116,6 +116,7 @@ export default function HomeProfissional() {
   }, [showToast]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     carregarEscalas();
   }, [carregarEscalas]);
 
