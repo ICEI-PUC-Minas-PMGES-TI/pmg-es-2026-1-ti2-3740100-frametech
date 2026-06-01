@@ -69,88 +69,107 @@ const HomeClient = () => {
             </h1>
 
             <p className={styles.greetingSub}>
-              Você possui {
-                projetosAtivos.length
-              } eventos
+              Você possui {projetosAtivos.length} eventos
             </p>
 
           </div>
 
           <button
-            className={
-              styles.btnNovoEvento
-            }
+            className={styles.btnNovoEvento}
             onClick={() =>
               navigate('/eventos')
             }
           >
-
             Novo Evento
-
           </button>
 
         </div>
 
-        <div className={
-          styles.projetosLista
-        }>
+        <div className={styles.projetosLista}>
 
-          {projetosAtivos.length ===
-          0 ? (
+          {projetosAtivos.length === 0 ? (
 
-            <p>
-              Nenhum evento criado.
-            </p>
+            <p>Nenhum evento criado.</p>
 
           ) : (
 
             projetosAtivos.map(
               (evento) => (
 
-              <div
-                key={evento.id}
-                className={styles.card}
-              >
-
-                <h2
-                  className={
-                    styles.cardTitulo
-                  }
+                <div
+                  key={evento.id}
+                  className={styles.card}
                 >
-                  {evento.nomeEvento}
-                </h2>
 
-                <p>
-                  {evento.tipoEvento}
-                </p>
+                  <h2 className={styles.cardTitulo}>
+                    {evento.nomeEvento}
+                  </h2>
 
-                <p>
-                  {evento.data}
-                </p>
+                  <p className={styles.cardSubtitulo}>
+                    {evento.tipoEvento}
+                  </p>
 
-                <p>
-                  {evento.inicio}
-                  {" "}às{" "}
-                  {evento.termino}
-                </p>
+                  <div className={styles.cardGrid}>
 
-                <p>
-                  {evento.servicosSelecionados}
-                </p>
+                    <div>
+                      <span className={styles.fieldLabel}>
+                        Data
+                      </span>
 
-                <p>
-                  Status:
-                  {" "}
-                  {evento.status}
-                </p>
+                      <p className={styles.fieldValue}>
+                        {evento.data}
+                      </p>
+                    </div>
 
-              </div>
-            ))
+                    <div>
+                      <span className={styles.fieldLabel}>
+                        Horário
+                      </span>
+
+                      <p className={styles.fieldValue}>
+                        {evento.inicio} às {evento.termino}
+                      </p>
+                    </div>
+
+                    <div>
+                      <span className={styles.fieldLabel}>
+                        Serviços
+                      </span>
+
+                      <p className={styles.fieldValue}>
+                        {evento.servicosSelecionados}
+                      </p>
+                    </div>
+
+                    <div>
+                      <span className={styles.fieldLabel}>
+                        Status
+                      </span>
+
+                      <span
+                        className={
+                          evento.status === "ACEITO"
+                            ? styles.statusAceito
+                            : evento.status === "RECUSADO"
+                            ? styles.statusRecusado
+                            : styles.statusAnalise
+                        }
+                      >
+                        {evento.status}
+                      </span>
+                    </div>
+
+                  </div>
+
+                </div>
+              )
+            )
           )}
 
         </div>
 
       </main>
+
     </div>
   );
 };

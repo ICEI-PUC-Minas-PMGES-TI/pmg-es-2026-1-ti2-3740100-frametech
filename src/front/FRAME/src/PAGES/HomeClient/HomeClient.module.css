@@ -8,119 +8,122 @@
 
 .main {
   flex: 1;
-  padding: 32px 28px;
-  max-width: 900px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 32px;
+  margin: 0 auto;
 }
 
 /* ─── Topo ───────────────────────────────────────────────── */
 .topRow {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .greeting {
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #111827;
   margin: 0;
-  line-height: 1.2;
 }
 
 .greetingName {
-  color: #1a1a1a;
+  color: #111827;
 }
 
 .greetingSub {
-  font-size: 0.78rem;
-  color: #888;
-  margin: 2px 0 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 4px;
 }
 
 .btnNovoEvento {
   background: #fff;
-  border: 1.5px solid #d0d0d0;
-  border-radius: 8px;
-  padding: 8px 18px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: #1a1a1a;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
   cursor: pointer;
-  white-space: nowrap;
-  transition: border-color 0.2s;
+  transition: 0.2s;
 }
 
 .btnNovoEvento:hover {
-  border-color: #888;
+  background: #f9fafb;
+  border-color: #9ca3af;
 }
 
 /* ─── Stats ──────────────────────────────────────────────── */
 .statsRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 28px;
 }
 
 .statCard {
   background: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 10px;
-  padding: 16px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid #e5e7eb;
 }
 
 .statLabel {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #aaa;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  color: #9ca3af;
+  font-weight: 700;
+  margin-bottom: 6px;
 }
 
 .statNum {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.1;
+  color: #111827;
 }
 
 .statSub {
-  font-size: 0.72rem;
-  color: #888;
+  font-size: 0.8rem;
+  color: #6b7280;
 }
 
-/* ─── Projeto Card ───────────────────────────────────────── */
+/* ─── Lista de Eventos ───────────────────────────────────── */
 .projetosLista {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
+/* ─── Card ───────────────────────────────────────────────── */
 .card {
   background: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 12px;
-  padding: 20px 22px 18px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
 }
 
 .cardHeader {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 6px;
+  align-items: center;
+  margin-bottom: 14px;
 }
 
 .cardBadge {
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #e05a2b;
+  color: #ea580c;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .valorBox {
@@ -129,49 +132,53 @@
 
 .valorLabel {
   display: block;
-  font-size: 0.68rem;
-  color: #aaa;
-  margin-bottom: 1px;
+  font-size: 0.75rem;
+  color: #9ca3af;
 }
 
 .valorNum {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #111827;
 }
 
 .cardTitulo {
-  font-size: 0.97rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #1a1a1a;
-  margin: 0 0 2px;
+  color: #111827;
+  margin: 0;
 }
 
 .cardSubtitulo {
-  font-size: 0.72rem;
-  color: #aaa;
-  margin: 0 0 14px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 4px;
+  margin-bottom: 18px;
 }
 
-/* ─── Card Grid ──────────────────────────────────────────── */
+/* ─── Grid de Informações ────────────────────────────────── */
 .cardGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
   margin-bottom: 18px;
 }
 
 .fieldLabel {
-  font-size: 0.68rem;
-  color: #aaa;
   display: block;
-  margin-bottom: 2px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 4px;
 }
 
 .fieldValue {
-  font-size: 0.85rem;
-  color: #1a1a1a;
+  font-size: 0.95rem;
+  color: #111827;
+  font-weight: 500;
   margin: 0;
+  line-height: 1.5;
 }
 
 .bold {
@@ -182,8 +189,7 @@
 .timeline {
   display: flex;
   align-items: flex-start;
-  gap: 0;
-  padding-top: 4px;
+  padding-top: 8px;
 }
 
 .etapaItem {
@@ -197,10 +203,10 @@
 .etapaTrack {
   display: flex;
   align-items: center;
-  width: 100%;
   justify-content: center;
+  width: 100%;
   position: relative;
-  height: 20px;
+  height: 22px;
 }
 
 .line {
@@ -208,82 +214,98 @@
   top: 50%;
   left: 0;
   right: 50%;
-  height: 2px;
+  height: 3px;
   transform: translateY(-50%);
+  border-radius: 10px;
 }
 
 .lineDone {
-  background-color: #3ab26e;
+  background: #22c55e;
 }
 
 .linePending {
-  background-color: #d0d0d0;
+  background: #d1d5db;
 }
 
-/* Dot */
 .dot {
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  display: inline-block;
   position: relative;
-  z-index: 1;
-  flex-shrink: 0;
+  z-index: 2;
 }
 
 .dot_done {
-  background-color: #3ab26e;
+  background: #22c55e;
 }
 
 .dot_active {
-  background-color: #e05a2b;
+  background: #f97316;
 }
 
 .dot_pending {
-  background-color: #d0d0d0;
+  background: #d1d5db;
 }
 
 .etapaLabel {
-  font-size: 0.6rem;
-  color: #aaa;
+  font-size: 0.72rem;
+  color: #6b7280;
+  margin-top: 8px;
   text-align: center;
-  margin-top: 4px;
-  white-space: nowrap;
 }
 
+/* ─── Status Visual ──────────────────────────────────────── */
+.statusAceito {
+  color: #15803d;
+  font-weight: 700;
+}
+
+.statusRecusado {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.statusAnalise {
+  color: #d97706;
+  font-weight: 700;
+}
+
+/* ─── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 767px) {
   .layout {
     flex-direction: column;
   }
 
   .main {
-    width: 100%;
-    max-width: none;
-    padding: 20px 16px 32px;
-    box-sizing: border-box;
+    padding: 20px 16px;
   }
 
   .topRow {
     flex-direction: column;
-    gap: 14px;
+    align-items: stretch;
+    gap: 16px;
   }
 
   .btnNovoEvento {
     width: 100%;
   }
 
-  .statsRow,
+  .statsRow {
+    grid-template-columns: 1fr;
+  }
+
   .cardGrid {
     grid-template-columns: 1fr;
   }
 
   .card {
-    padding: 18px 16px;
+    padding: 18px;
   }
 
   .cardHeader {
     flex-direction: column;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 10px;
   }
 
   .valorBox {
@@ -292,16 +314,38 @@
 
   .timeline {
     overflow-x: auto;
-    padding-bottom: 6px;
+    padding-bottom: 8px;
   }
 
   .etapaItem {
-    min-width: 88px;
+    min-width: 90px;
   }
+}.statusAceito {
+  display: inline-block;
+  background: #dcfce7;
+  color: #15803d;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
 }
 
-@media (min-width: 768px) {
-  .main {
-    width: 100%;
-  }
+.statusRecusado {
+  display: inline-block;
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.statusAnalise {
+  display: inline-block;
+  background: #fef3c7;
+  color: #d97706;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
 }
