@@ -18,8 +18,12 @@ public class UsuarioController {
     private UsuarioService service;
 
     @PostMapping("/cadastro")
-    public Usuario cadastrar(@RequestBody Usuario usuario) {
-        return service.cadastrar(usuario);
+    public ResponseEntity<?> cadastrar(@RequestBody Usuario usuario) {
+        try {
+            return ResponseEntity.ok(service.cadastrar(usuario));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/login")
@@ -43,8 +47,12 @@ public class UsuarioController {
     }
 
     @PutMapping("/perfil/{id}")
-    public Usuario atualizarPerfil(@PathVariable Long id, @RequestBody Usuario usuario) {
-        return service.atualizar(id, usuario);
+    public ResponseEntity<?> atualizarPerfil(@PathVariable Long id, @RequestBody Usuario usuario) {
+        try {
+            return ResponseEntity.ok(service.atualizar(id, usuario));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @DeleteMapping("/perfil/{id}")

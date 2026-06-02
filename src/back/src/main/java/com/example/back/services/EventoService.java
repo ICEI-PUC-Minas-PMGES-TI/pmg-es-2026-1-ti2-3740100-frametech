@@ -8,6 +8,7 @@ import com.example.back.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Arrays;
 
@@ -27,6 +28,8 @@ public class EventoService {
 
         validarTipoEvento(evento.getTipoEvento());
         validarHorarioEvento(evento);
+        validarDataEvento(evento.getData());
+        validarNumeroEndereco(evento.getNumero());
 
         Usuario usuario = usuarioRepository
                 .findById(usuarioId)
@@ -90,6 +93,29 @@ public class EventoService {
 
         if (evento.getInicio().compareTo(evento.getTermino()) >= 0) {
             throw new RuntimeException("O horario de inicio deve ser menor que o horario de termino.");
+        }
+    }
+
+    private void validarDataEvento(String data) {
+        if (data == null || data.isBlank()) {
+            throw new RuntimeException("A data do evento e obrigatoria.");
+        }
+
+        LocalDate dataEvento = LocalDate.parse(data);
+        LocalDate hoje = LocalDate.now();
+
+        if (!dataEvento.isAfter(hoje)) {
+            throw new RuntimeException("A data do evento deve ser uma data futura.");
+        }
+    }
+
+    private void validarNumeroEndereco(String numero) {
+        if (numero == null || numero.isBlank()) {
+            return;
+        }
+
+        if (!numero.matches("\\d+")) {
+            throw new RuntimeException("O numero do endereco deve conter apenas digitos.");
         }
     }
 

@@ -16,6 +16,8 @@ public class UsuarioService {
     private UsuarioRepository repository;
 
     public Usuario cadastrar(Usuario usuario) {
+        validarSenha(usuario.getSenha());
+        validarTelefone(usuario.getTelefone());
         return repository.save(usuario);
     }
 
@@ -33,6 +35,10 @@ public class UsuarioService {
 
         if (usuario == null) {
             return null;
+        }
+
+        if (usuarioAtualizado.getTelefone() != null && !usuarioAtualizado.getTelefone().isBlank()) {
+            validarTelefone(usuarioAtualizado.getTelefone());
         }
 
         usuario.setNome(usuarioAtualizado.getNome());
@@ -68,5 +74,21 @@ public class UsuarioService {
 
     public List<Usuario> listarProfissionais() {
         return repository.findAll();
+    }
+
+    private void validarSenha(String senha) {
+        if (senha == null || senha.length() < 8) {
+            throw new RuntimeException("A senha deve ter no minimo 8 caracteres.");
+        }
+    }
+
+    private void validarTelefone(String telefone) {
+        if (telefone == null || telefone.isBlank()) {
+            return;
+        }
+        String apenasNumeros = telefone.replaceAll("\\D", "");
+        if (apenasNumeros.length() < 10 || apenasNumeros.length() > 11) {
+            throw new RuntimeException("Telefone invalido. Informe entre 10 e 11 digitos numericos.");
+        }
     }
 }

@@ -4,6 +4,7 @@ import com.example.back.model.Evento;
 import com.example.back.services.EventoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,12 +18,15 @@ public class EventoController {
     private EventoService service;
 
     @PostMapping("/{usuarioId}")
-    public Evento criarEvento(
+    public ResponseEntity<?> criarEvento(
             @RequestBody Evento evento,
             @PathVariable Long usuarioId
     ) {
-
-        return service.salvar(evento, usuarioId);
+        try {
+            return ResponseEntity.ok(service.salvar(evento, usuarioId));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/usuario/{usuarioId}")
