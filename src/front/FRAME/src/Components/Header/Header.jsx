@@ -1,8 +1,10 @@
 import React from 'react';
+
 import {
   useLocation,
   useNavigate
 } from 'react-router-dom';
+
 import {
   CalendarDays,
   Home,
@@ -10,16 +12,21 @@ import {
   LogOut,
   User,
   UserPlus,
-  Package
+  Package,
+  MessageCircle
 } from 'lucide-react';
+
 import styles from "./Header.module.css";
+
 import {
   getCurrentUser,
   getHomeByRole
 } from '../../utils/authRoutes';
 
 const Header = () => {
+
   const navigate = useNavigate();
+
   const location = useLocation();
 
   const {
@@ -28,12 +35,21 @@ const Header = () => {
   } = getCurrentUser();
 
   const verificarAcesso = (rota) => {
-    if (rota === "/login" || rota === "/cadastro") {
+
+    if (
+      rota === "/login" ||
+      rota === "/cadastro"
+    ) {
+
       return navigate(rota);
     }
 
     if (!isAuthenticated) {
-      alert("Voce precisa fazer login primeiro.");
+
+      alert(
+        "Voce precisa fazer login primeiro."
+      );
+
       return navigate("/login");
     }
 
@@ -41,15 +57,21 @@ const Header = () => {
   };
 
   const verificarHome = () => {
+
     if (!isAuthenticated) {
+
       return navigate("/");
     }
 
-    navigate(getHomeByRole(tipoUsuario));
+    navigate(
+      getHomeByRole(tipoUsuario)
+    );
   };
 
   const sair = () => {
+
     sessionStorage.clear();
+
     navigate("/login");
   };
 
@@ -57,14 +79,23 @@ const Header = () => {
     location.pathname === rota;
 
   return (
+
     <div className={styles.sidebar}>
 
       <div className={styles.logoContainer}>
-        <div className={styles.logoFrame}>FRAME</div>
-        <div className={styles.logoTech}>TECH</div>
+
+        <div className={styles.logoFrame}>
+          FRAME
+        </div>
+
+        <div className={styles.logoTech}>
+          TECH
+        </div>
+
       </div>
 
       <div className={styles.navGroup}>
+
         <button
           className={`${styles.iconButton} ${
             location.pathname.includes("home")
@@ -75,7 +106,9 @@ const Header = () => {
           aria-label="Ir para home"
           title="Home"
         >
+
           <Home size={18} />
+
         </button>
 
         <button
@@ -84,27 +117,37 @@ const Header = () => {
               ? styles.active
               : ""
           }`}
-          onClick={() => verificarAcesso("/perfil")}
+          onClick={() =>
+            verificarAcesso("/perfil")
+          }
           aria-label="Ir para perfil"
           title="Perfil"
         >
+
           <User size={18} />
+
         </button>
 
+        {isAuthenticated &&
+          tipoUsuario === "adm" && (
 
-        {isAuthenticated && tipoUsuario === "adm" && (
           <>
+
             <button
               className={`${styles.iconButton} ${
                 isActive("/escalas")
                   ? styles.active
                   : ""
               }`}
-              onClick={() => verificarAcesso("/escalas")}
+              onClick={() =>
+                verificarAcesso("/escalas")
+              }
               aria-label="Ir para escalas"
               title="Escalas"
             >
+
               <CalendarDays size={18} />
+
             </button>
 
             <button
@@ -113,50 +156,101 @@ const Header = () => {
                   ? styles.active
                   : ""
               }`}
-              onClick={() => verificarAcesso("/equipamentos")}
+              onClick={() =>
+                verificarAcesso(
+                  "/equipamentos"
+                )
+              }
               aria-label="Ir para equipamentos"
               title="Equipamentos"
             >
+
               <Package size={18} />
+
             </button>
+
           </>
+
+        )}
+
+        {isAuthenticated && (
+
+          <button
+            className={`${styles.iconButton} ${
+              isActive("/chat-eventos")
+                ? styles.active
+                : ""
+            }`}
+            onClick={() =>
+              verificarAcesso(
+                "/chat-eventos"
+              )
+            }
+            aria-label="Chat"
+            title="Chat"
+          >
+
+            <MessageCircle size={18} />
+
+          </button>
+
         )}
 
         {!isAuthenticated && (
+
           <>
+
             <button
               className={styles.iconButton}
-              onClick={() => verificarAcesso("/login")}
+              onClick={() =>
+                verificarAcesso("/login")
+              }
               aria-label="Ir para login"
               title="Login"
             >
+
               <LogIn size={18} />
+
             </button>
 
             <button
               className={styles.iconButton}
-              onClick={() => verificarAcesso("/cadastro")}
+              onClick={() =>
+                verificarAcesso(
+                  "/cadastro"
+                )
+              }
               aria-label="Ir para cadastro"
               title="Cadastro"
             >
+
               <UserPlus size={18} />
+
             </button>
+
           </>
+
         )}
+
       </div>
 
       {isAuthenticated && (
+
         <button
           className={styles.profileIcon}
           onClick={sair}
           aria-label="Sair"
           title="Sair"
         >
+
           <LogOut size={19} />
+
         </button>
+
       )}
 
     </div>
+
   );
 };
 

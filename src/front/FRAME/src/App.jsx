@@ -6,17 +6,26 @@ import {
 } from "react-router-dom";
 
 import Home from "./PAGES/HOME/Home";
+
 import Cadastro from "./PAGES/Cadastro/Cadastro";
+
 import Login from "./PAGES/Login/Login";
 
 import HomeClient from "./PAGES/HomeClient/HomeClient";
+
 import HomeProfissional from "./PAGES/HomeProfissional/HomeProfissional";
+
 import HomeAdm from "./PAGES/HomeAdm/Homeadm";
 
 import Perfil from "./PAGES/Perfil/Perfil";
+
 import Eventos from "./PAGES/Eventos/Eventos";
+
 import EscalaEquipe from "./PAGES/Escalas/EscalaEquipe";
+
 import GestaoEquipamentos from "./PAGES/EQUIPAMENTOS/GestaoEquipamentos";
+
+import ChatEventos from "./PAGES/ChatEventos/ChatEventos";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -155,6 +164,19 @@ function App() {
           element={
             <ProtectedRoute permitido="adm">
               <GestaoEquipamentos />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/chat-eventos"
+          element={
+            <ProtectedRoute permitido={[
+              "cliente",
+              "prestador",
+              "adm"
+            ]}>
+              <ChatEventos />
             </ProtectedRoute>
           }
         />

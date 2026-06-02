@@ -3,6 +3,7 @@ C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\controller\EscalaController.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\controller\EventoController.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\controller\HomeController.java
+C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\controller\MensagemChatController.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\controller\PerfilController.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\controller\UsuarioController.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\dto\AssociarEquipamentoDTO.java
@@ -13,6 +14,7 @@ C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\model\Escala.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\model\Evento.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\model\EventoEquipamento.java
+C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\model\MensagemChat.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\model\PerfilUser.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\model\Status.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\model\Usuario.java
@@ -21,8 +23,10 @@ C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\repository\EscalaRepository.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\repository\EventoEquipamentoRepository.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\repository\EventoRepository.java
+C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\repository\MensagemChatRepository.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\repository\UsuarioRepository.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\services\EquipamentoService.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\services\EscalaService.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\services\EventoService.java
+C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\services\MensagemChatService.java
 C:\Users\Windows 10\OneDrive\Documentos\pmg-es-2026-1-ti2-3740100-frametech\src\back\src\main\java\com\example\back\services\UsuarioService.java
