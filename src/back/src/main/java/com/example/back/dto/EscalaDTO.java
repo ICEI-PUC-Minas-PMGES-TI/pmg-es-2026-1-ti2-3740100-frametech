@@ -6,6 +6,9 @@ public class EscalaDTO {
 
     private Long id;
 
+    private Long eventoId;
+    private Long profissionalId;
+
     private String nomeEvento;
     private String nomeProfissional;
     private String diaSemana;
@@ -19,6 +22,9 @@ public class EscalaDTO {
     private String tipoEvento;
     private String porteEvento;
     private String descricao;
+    private String endereco;
+    private String bairro;
+    private String servicosSelecionados;
 
     public EscalaDTO(Escala escala) {
 
@@ -27,14 +33,18 @@ public class EscalaDTO {
         this.diaSemana = escala.getDiaSemana();
 
         if (escala.getEvento() != null) {
-            this.nomeEvento = escala.getEvento().getNomeEvento();
-            this.dataEvento  = escala.getEvento().getData();
-            this.inicio      = escala.getEvento().getInicio();
-            this.termino     = escala.getEvento().getTermino();
-            this.nomeLocal   = escala.getEvento().getNomeLocal();
-            this.tipoEvento  = escala.getEvento().getTipoEvento();
-            this.porteEvento = escala.getEvento().getPorteEvento();
-            this.descricao   = escala.getEvento().getDescricao();
+            this.eventoId        = escala.getEvento().getId();
+            this.nomeEvento      = escala.getEvento().getNomeEvento();
+            this.dataEvento      = escala.getEvento().getData();
+            this.inicio          = escala.getEvento().getInicio();
+            this.termino         = escala.getEvento().getTermino();
+            this.nomeLocal       = escala.getEvento().getNomeLocal();
+            this.tipoEvento      = escala.getEvento().getTipoEvento();
+            this.porteEvento     = escala.getEvento().getPorteEvento();
+            this.descricao       = escala.getEvento().getDescricao();
+            this.endereco        = escala.getEvento().getEndereco();
+            this.bairro          = escala.getEvento().getBairro();
+            this.servicosSelecionados = escala.getEvento().getServicosSelecionados();
 
             if (escala.getEvento().getUsuario() != null) {
                 this.nomeCliente = escala.getEvento().getUsuario().getNome();
@@ -42,11 +52,16 @@ public class EscalaDTO {
         }
 
         if (escala.getProfissional() != null) {
+            this.profissionalId   = escala.getProfissional().getId();
             this.nomeProfissional = escala.getProfissional().getNome();
         }
     }
 
     public Long getId() { return id; }
+
+    public Long getEventoId() { return eventoId; }
+
+    public Long getProfissionalId() { return profissionalId; }
 
     public String getNomeEvento() { return nomeEvento; }
 
@@ -71,4 +86,10 @@ public class EscalaDTO {
     public String getPorteEvento() { return porteEvento; }
 
     public String getDescricao() { return descricao; }
+
+    public String getEndereco() { return endereco; }
+
+    public String getBairro() { return bairro; }
+
+    public String getServicosSelecionados() { return servicosSelecionados; }
 }

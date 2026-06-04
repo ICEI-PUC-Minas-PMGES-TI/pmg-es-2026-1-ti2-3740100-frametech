@@ -53,7 +53,6 @@ public class EscalaService {
         return new EventoDetalheDTO(evento, escalas);
     }
 
-    
     public EscalaDTO aceitar(Long escalaId) {
         Escala escala = escalaRepository
                 .findById(escalaId)
@@ -63,7 +62,6 @@ public class EscalaService {
         return new EscalaDTO(escalaRepository.save(escala));
     }
 
-    
     public EscalaDTO recusar(Long escalaId) {
         Escala escala = escalaRepository
                 .findById(escalaId)
@@ -73,7 +71,6 @@ public class EscalaService {
         return new EscalaDTO(escalaRepository.save(escala));
     }
 
-    
     @Transactional
     public void removerProfissionalDaEscala(Long escalaId) {
         Escala escala = escalaRepository
@@ -83,7 +80,6 @@ public class EscalaService {
         escalaRepository.delete(escala);
     }
 
-  
     @Transactional
     public EscalaDTO trocarProfissional(Long escalaId, Long novoProfissionalId, Long admId) {
         Escala escalaAntiga = escalaRepository
@@ -93,7 +89,6 @@ public class EscalaService {
         Evento evento = escalaAntiga.getEvento();
         String diaSemana = escalaAntiga.getDiaSemana();
 
-        
         boolean jaEscalado = escalaRepository
                 .findByEvento_IdAndProfissional_Id(evento.getId(), novoProfissionalId)
                 .isPresent();
@@ -110,10 +105,8 @@ public class EscalaService {
                 .findById(admId)
                 .orElseThrow(() -> new RuntimeException("Administrador não encontrado: " + admId));
 
-       
         escalaRepository.delete(escalaAntiga);
 
-        
         Escala novaEscala = new Escala();
         novaEscala.setEvento(evento);
         novaEscala.setProfissional(novoProfissional);
@@ -124,10 +117,8 @@ public class EscalaService {
         return new EscalaDTO(escalaRepository.save(novaEscala));
     }
 
-   
     @Transactional
     public EscalaDTO adicionarProfissionalAoEvento(Long eventoId, Long profissionalId, Long admId, String diaSemana) {
-     
         boolean jaEscalado = escalaRepository
                 .findByEvento_IdAndProfissional_Id(eventoId, profissionalId)
                 .isPresent();
