@@ -15,7 +15,6 @@ import {
   Calendar,
   Clock,
   DollarSign,
-  CheckCircle,
   XCircle
 } from 'lucide-react';
 
@@ -27,6 +26,7 @@ const CartaoProposta = ({
 
   const statusFormatado = {
     EM_ANALISE: 'pendente',
+    ORCAMENTO_ENVIADO: 'orçamento enviado',
     ACEITO: 'aceita',
     RECUSADO: 'recusada'
   };
@@ -145,9 +145,9 @@ const CartaoProposta = ({
               onClick={() => onAceitar(proposta.id)}
             >
 
-              <CheckCircle size={15} />
+              <DollarSign size={15} />
 
-              Aceitar
+              Enviar orçamento
 
             </button>
 
@@ -191,28 +191,32 @@ const CartaoProposta = ({
 
             </div>
 
-            <div className={styles.metaItem}>
+            {proposta.valorOrcamento && (
 
-              <Calendar
-                size={13}
-                className={styles.metaIcon}
-              />
+              <div className={styles.metaItem}>
 
-              <div>
+                <DollarSign
+                  size={13}
+                  className={styles.metaIcon}
+                />
 
-                <span className={styles.metaLabel}>
-                  Entrega prevista
-                </span>
+                <div>
 
-                <span
-                  className={`${styles.metaValor} ${styles.destaque}`}
-                >
-                  {proposta.prazoEntrega}
-                </span>
+                  <span className={styles.metaLabel}>
+                    Orçamento
+                  </span>
+
+                  <span
+                    className={`${styles.metaValor} ${styles.destaque}`}
+                  >
+                    R$ {proposta.valorOrcamento}
+                  </span>
+
+                </div>
 
               </div>
 
-            </div>
+            )}
 
           </div>
 
@@ -231,6 +235,15 @@ const HomeAdm = () => {
   const [propostas, setPropostas] =
     useState([]);
 
+  const [modalAberto, setModalAberto] =
+    useState(false);
+
+  const [eventoSelecionado, setEventoSelecionado] =
+    useState(null);
+
+  const [valorOrcamento, setValorOrcamento] =
+    useState('');
+
   const buscarEventos = async () => {
 
     try {
@@ -248,24 +261,33 @@ const HomeAdm = () => {
     }
   };
 
- useEffect(() => {
+  useEffect(() => {
 
-  const carregarEventos = async () => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    buscarEventos();
 
-    await buscarEventos();
+  }, []);
 
+  const handleAceitar = (id) => {
+
+    setEventoSelecionado(id);
+
+    setModalAberto(true);
   };
 
-  carregarEventos();
-
-}, []);
-  const handleAceitar = async (id) => {
+  const enviarOrcamento = async () => {
 
     try {
 
       await axios.put(
-        `http://localhost:8080/eventos/${id}/status?status=ACEITO`
+        `http://localhost:8080/eventos/${eventoSelecionado}/orcamento?valor=${valorOrcamento}`
       );
+
+      setModalAberto(false);
+
+      setEventoSelecionado(null);
+
+      setValorOrcamento('');
 
       buscarEventos();
 
@@ -306,7 +328,7 @@ const HomeAdm = () => {
 
           <button
             className={styles.btnEscalas}
-          onClick={() => navigate('/escalas')}
+            onClick={() => navigate('/escalas')}
           >
             Escalas
           </button>
@@ -329,6 +351,54 @@ const HomeAdm = () => {
         </div>
 
       </main>
+
+      {modalAberto && (
+
+        <div className={styles.modalOverlay}>
+
+          <div className={styles.modal}>
+
+            <h2>
+              Enviar orçamento
+            </h2>
+
+            <input
+              type="number"
+              placeholder="Digite o valor"
+              value={valorOrcamento}
+              onChange={(e) =>
+                setValorOrcamento(
+                  e.target.value
+                )
+              }
+              className={styles.inputOrcamento}
+            />
+
+            <div className={styles.modalButtons}>
+
+              <button
+                className={styles.btnRecusar}
+                onClick={() =>
+                  setModalAberto(false)
+                }
+              >
+                Cancelar
+              </button>
+
+              <button
+                className={styles.btnAceitar}
+                onClick={enviarOrcamento}
+              >
+                Enviar
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
 
     </div>
   );

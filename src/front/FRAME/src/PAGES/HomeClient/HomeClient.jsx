@@ -22,36 +22,71 @@ const HomeClient = () => {
     setProjetosAtivos] =
     useState([]);
 
-  useEffect(() => {
+  const buscarEventos =
+    async () => {
 
-    const buscarEventos =
-      async () => {
+    try {
 
-      try {
-
-        const usuarioId =
-          sessionStorage.getItem(
-            "usuarioId"
-          );
-
-        const response =
-          await axios.get(
-            `http://localhost:8080/eventos/usuario/${usuarioId}`
-          );
-
-        setProjetosAtivos(
-          response.data
+      const usuarioId =
+        sessionStorage.getItem(
+          "usuarioId"
         );
 
-      } catch (error) {
+      const response =
+        await axios.get(
+          `http://localhost:8080/eventos/usuario/${usuarioId}`
+        );
 
-        console.log(error);
-      }
-    };
+      setProjetosAtivos(
+        response.data
+      );
 
+    } catch (error) {
+
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     buscarEventos();
 
   }, []);
+
+  const aceitarOrcamento =
+    async (id) => {
+
+    try {
+
+      await axios.put(
+        `http://localhost:8080/eventos/${id}/status?status=ACEITO`
+      );
+
+      buscarEventos();
+
+    } catch (error) {
+
+      console.log(error);
+    }
+  };
+
+  const recusarOrcamento =
+    async (id) => {
+
+    try {
+
+      await axios.put(
+        `http://localhost:8080/eventos/${id}/status?status=RECUSADO`
+      );
+
+      buscarEventos();
+
+    } catch (error) {
+
+      console.log(error);
+    }
+  };
 
   return (
     <div className={styles.layout}>
@@ -112,6 +147,7 @@ const HomeClient = () => {
                   <div className={styles.cardGrid}>
 
                     <div>
+
                       <span className={styles.fieldLabel}>
                         Data
                       </span>
@@ -119,9 +155,11 @@ const HomeClient = () => {
                       <p className={styles.fieldValue}>
                         {evento.data}
                       </p>
+
                     </div>
 
                     <div>
+
                       <span className={styles.fieldLabel}>
                         Horário
                       </span>
@@ -129,9 +167,11 @@ const HomeClient = () => {
                       <p className={styles.fieldValue}>
                         {evento.inicio} às {evento.termino}
                       </p>
+
                     </div>
 
                     <div>
+
                       <span className={styles.fieldLabel}>
                         Serviços
                       </span>
@@ -139,9 +179,11 @@ const HomeClient = () => {
                       <p className={styles.fieldValue}>
                         {evento.servicosSelecionados}
                       </p>
+
                     </div>
 
                     <div>
+
                       <span className={styles.fieldLabel}>
                         Status
                       </span>
@@ -157,9 +199,57 @@ const HomeClient = () => {
                       >
                         {evento.status}
                       </span>
+
                     </div>
 
+                    {evento.valorOrcamento && (
+
+                      <div>
+
+                        <span className={styles.fieldLabel}>
+                          Orçamento
+                        </span>
+
+                        <p className={styles.valorOrcamento}>
+                          R$ {evento.valorOrcamento}
+                        </p>
+
+                      </div>
+
+                    )}
+
                   </div>
+
+                  {evento.status ===
+                    "ORCAMENTO_ENVIADO" && (
+
+                    <div className={styles.areaBotoes}>
+
+                      <button
+                        className={styles.btnAceitar}
+                        onClick={() =>
+                          aceitarOrcamento(
+                            evento.id
+                          )
+                        }
+                      >
+                        Aceitar orçamento
+                      </button>
+
+                      <button
+                        className={styles.btnRecusar}
+                        onClick={() =>
+                          recusarOrcamento(
+                            evento.id
+                          )
+                        }
+                      >
+                        Recusar orçamento
+                      </button>
+
+                    </div>
+
+                  )}
 
                 </div>
               )

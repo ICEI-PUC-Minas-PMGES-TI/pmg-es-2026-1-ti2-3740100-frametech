@@ -23,9 +23,19 @@ public class EventoController {
             @PathVariable Long usuarioId
     ) {
         try {
-            return ResponseEntity.ok(service.salvar(evento, usuarioId));
+
+            return ResponseEntity.ok(
+                    service.salvar(
+                            evento,
+                            usuarioId
+                    )
+            );
+
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+
+            return ResponseEntity
+                    .badRequest()
+                    .body(e.getMessage());
         }
     }
 
@@ -34,7 +44,9 @@ public class EventoController {
             @PathVariable Long usuarioId
     ) {
 
-        return service.listarPorUsuario(usuarioId);
+        return service.listarPorUsuario(
+                usuarioId
+        );
     }
 
     @GetMapping
@@ -49,6 +61,21 @@ public class EventoController {
             @RequestParam String status
     ) {
 
-        return service.atualizarStatus(id, status);
+        return service.atualizarStatus(
+                id,
+                status
+        );
+    }
+
+    @PutMapping("/{id}/orcamento")
+    public Evento enviarOrcamento(
+            @PathVariable Long id,
+            @RequestParam Double valor
+    ) {
+
+        return service.enviarOrcamento(
+                id,
+                valor
+        );
     }
 }

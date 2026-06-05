@@ -81,41 +81,57 @@ public class EventoService {
 
         if (!tiposPermitidos.contains(tipoFormatado)) {
             throw new RuntimeException(
-                    "Tipo de evento invalido. Use: Casamento, Formatura, Aniversario, Empresarial, Show, Ensaio ou Outro."
+                    "Tipo de evento invalido."
             );
         }
     }
 
     private void validarHorarioEvento(Evento evento) {
+
         if (evento.getInicio() == null || evento.getTermino() == null) {
-            throw new RuntimeException("Horario do evento obrigatorio.");
+            throw new RuntimeException("Horario obrigatorio.");
         }
 
         if (evento.getInicio().compareTo(evento.getTermino()) >= 0) {
-            throw new RuntimeException("O horario de inicio deve ser menor que o horario de termino.");
+            throw new RuntimeException(
+                    "Horario invalido."
+            );
         }
     }
 
     private void validarDataEvento(String data) {
+
         if (data == null || data.isBlank()) {
-            throw new RuntimeException("A data do evento e obrigatoria.");
+            throw new RuntimeException(
+                    "Data obrigatoria."
+            );
         }
 
-        LocalDate dataEvento = LocalDate.parse(data);
-        LocalDate hoje = LocalDate.now();
+        LocalDate dataEvento =
+                LocalDate.parse(data);
+
+        LocalDate hoje =
+                LocalDate.now();
 
         if (!dataEvento.isAfter(hoje)) {
-            throw new RuntimeException("A data do evento deve ser uma data futura.");
+            throw new RuntimeException(
+                    "Data deve ser futura."
+            );
         }
     }
 
-    private void validarNumeroEndereco(String numero) {
+    private void validarNumeroEndereco(
+            String numero
+    ) {
+
         if (numero == null || numero.isBlank()) {
             return;
         }
 
         if (!numero.matches("\\d+")) {
-            throw new RuntimeException("O numero do endereco deve conter apenas digitos.");
+            throw new RuntimeException(
+                    "Numero invalido."
+            );
         }
     }
 
@@ -124,11 +140,31 @@ public class EventoService {
             String status
     ) {
 
-        Evento evento = eventoRepository
-                .findById(id)
-                .orElseThrow();
+        Evento evento =
+                eventoRepository
+                        .findById(id)
+                        .orElseThrow();
 
         evento.setStatus(status);
+
+        return eventoRepository.save(evento);
+    }
+
+    public Evento enviarOrcamento(
+            Long id,
+            Double valor
+    ) {
+
+        Evento evento =
+                eventoRepository
+                        .findById(id)
+                        .orElseThrow();
+
+        evento.setValorOrcamento(valor);
+
+        evento.setStatus(
+                "ORCAMENTO_ENVIADO"
+        );
 
         return eventoRepository.save(evento);
     }

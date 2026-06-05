@@ -25,6 +25,7 @@ public class Evento {
     private String endereco;
     private String numero;
     private String bairro;
+    private Double valorOrcamento;
 
     private String tipoAmbiente;
 
@@ -50,7 +51,13 @@ public class Evento {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+public Double getValorOrcamento() {
+    return valorOrcamento;
+}
 
+public void setValorOrcamento(Double valorOrcamento) {
+    this.valorOrcamento = valorOrcamento;
+}
     public Evento() {
     }
 
