@@ -3,7 +3,8 @@
 
 O processo de solicitação de serviços tem como objetivo permitir que o cliente solicite, receba propostas, aprove e finalize a contratação de um serviço de forma organizada.
 
-<img width="2903" height="1657" alt="Gestão de eventos confirmados Diagrama" src="https://github.com/user-attachments/assets/c9cf0677-4f1a-4eb0-886d-950e8aafee7e" />
+## Gestão Cliente:
+<img width="1600" height="892" alt="WhatsApp Image 2026-06-03 at 15 36 15" src="https://github.com/user-attachments/assets/af78e602-e7dc-4a59-9340-cc19290217f8" />
 
 
 
