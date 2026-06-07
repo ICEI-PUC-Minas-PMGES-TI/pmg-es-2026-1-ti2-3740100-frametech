@@ -3,7 +3,7 @@
 
 O processo de gerenciamento de cadastro de equipamentos tem como objetivo organizar o cadastro, atualização e controle dos equipamentos utilizados nos projetos audiovisuais, garantindo maior eficiência e disponibilidade dos recursos.
 
-<img width="1024" height="442" alt="Gerenciamento-equipamentoNovo" src="https://github.com/user-attachments/assets/ba5da2b8-debb-4cd4-b30f-2944d0819a45" />
+<img width="1808" height="870" alt="Image" src="https://github.com/user-attachments/assets/a60f49fc-821b-4e8e-9180-bf8324ee50be" />
 
 
 
