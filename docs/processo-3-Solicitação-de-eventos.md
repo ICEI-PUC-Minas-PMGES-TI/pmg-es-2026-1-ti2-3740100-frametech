@@ -1,5 +1,6 @@
 
 
+
 # **3.3.3 Processo 3 – Solicitação de Eventos**
 
 O processo de solicitação de eventos tem como objetivo organizar o fluxo de criação, análise, aprovação e possível reprogramação de eventos dentro da plataforma, garantindo o controle da disponibilidade de recursos, profissionais e equipamentos necessários para a execução do serviço.
@@ -12,7 +13,7 @@ Nos casos em que há disponibilidade, o administrador realiza a alocação dos p
 
 ---
 
-<img width="2685" height="1010" alt="Processo de gestão de profissionais - cópia de Diagrama (2)" src="https://github.com/user-attachments/assets/b986ac83-379a-4a0c-8cdc-0257502d6056" />
+<img width="1600" height="601" alt="WhatsApp Image 2026-06-03 at 15 36 08 (1)" src="https://github.com/user-attachments/assets/36a54c44-24d4-4bf8-8662-8296d3342479" />
 
 
 # **Detalhamento das atividades**
