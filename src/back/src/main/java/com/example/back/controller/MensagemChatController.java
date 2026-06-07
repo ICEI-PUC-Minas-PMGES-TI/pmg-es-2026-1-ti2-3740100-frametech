@@ -1,5 +1,6 @@
 package com.example.back.controller;
 
+import com.example.back.dto.ChatContatoDTO;
 import com.example.back.model.Evento;
 import com.example.back.model.MensagemChat;
 import com.example.back.services.MensagemChatService;
@@ -50,5 +51,14 @@ public class MensagemChatController {
 
         return service
                 .listarEventosUsuario(usuarioId);
+    }
+
+    @GetMapping("/contatos/{usuarioId}")
+    public List<ChatContatoDTO> listarContatos(
+            @PathVariable Long usuarioId
+    ) {
+
+        return service
+                .listarContatosDisponiveis(usuarioId);
     }
 }
