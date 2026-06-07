@@ -1,10 +1,10 @@
 
+
 ### 3.3.2 Processo 2 – GESTÃO DE PROFISSIONAIS DE SERVIÇO
 
 Automatizar a verificação de disponibilidade dos profissionais e integrar notificações em tempo real, reduzindo conflitos de agenda e retrabalho na definição de equipes.
 
-<img width="2396" height="1200" alt="Processo de gestão de profissionais Diagrama" src="https://github.com/user-attachments/assets/1ac0f638-2791-4573-958d-362452117c3f" />
-
+<img width="1600" height="801" alt="WhatsApp Image 2026-06-03 at 15 36 23" src="https://github.com/user-attachments/assets/499d694d-7395-4432-8e8a-01bc35963d70" />
 
 
 **Atividade: Cadastrar novo profissional**
