@@ -7,6 +7,13 @@ O processo de solicitação de serviços tem como objetivo permitir que o client
 <img width="1600" height="892" alt="WhatsApp Image 2026-06-03 at 15 36 15" src="https://github.com/user-attachments/assets/af78e602-e7dc-4a59-9340-cc19290217f8" />
 
 
+## Gestão Administrador
+<img width="2903" height="1619" alt="Gestão de eventos confirmados Cliente - cópia de Diagrama" src="https://github.com/user-attachments/assets/530ace87-8f2d-4580-babe-25b638334bb2" />
+
+## Gestão Profissional de serviço
+<img width="2903" height="1619" alt="Gestão de eventos confirmados Cliente - cópia de Diagrama (1)" src="https://github.com/user-attachments/assets/2f51f27b-1f24-4321-9ebb-5698c7c3a57c" />
+
+
 
 **Atividade: Fazer login / cadastro**
 
