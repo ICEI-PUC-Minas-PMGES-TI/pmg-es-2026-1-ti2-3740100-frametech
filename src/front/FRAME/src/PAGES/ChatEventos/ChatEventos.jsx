@@ -15,13 +15,11 @@ const ChatEventos = () => {
   const usuarioId =
     sessionStorage.getItem('usuarioId');
 
-  const [eventos, setEventos] =
+  const [contatos, setContatos] =
     useState([]);
 
-  const [
-    eventoSelecionado,
-    setEventoSelecionado
-  ] = useState(null);
+  const [contatoSelecionado, setContatoSelecionado] =
+    useState(null);
 
   const [mensagens, setMensagens] =
     useState([]);
@@ -32,23 +30,23 @@ const ChatEventos = () => {
   const mensagensRef =
     useRef(null);
 
-  async function buscarEventos() {
+  async function buscarContatos() {
 
     try {
 
       const response =
         await axios.get(
-          `http://localhost:8080/chat/eventos/${usuarioId}`
+          `http://localhost:8080/chat/contatos/${usuarioId}`
         );
 
-      setEventos(response.data);
+      setContatos(response.data);
 
       if (
         response.data.length > 0 &&
-        !eventoSelecionado
+        !contatoSelecionado
       ) {
 
-        setEventoSelecionado(
+        setContatoSelecionado(
           response.data[0]
         );
       }
@@ -61,13 +59,13 @@ const ChatEventos = () => {
 
   async function buscarMensagens() {
 
-    if (!eventoSelecionado) return;
+    if (!contatoSelecionado) return;
 
     try {
 
       const response =
         await axios.get(
-          `http://localhost:8080/chat/mensagens/${eventoSelecionado.id}`
+          `http://localhost:8080/chat/mensagens/${contatoSelecionado.eventoId}`
         );
 
       setMensagens(response.data);
@@ -90,7 +88,7 @@ const ChatEventos = () => {
           mensagem: texto,
           usuarioId,
           eventoId:
-            eventoSelecionado.id
+            contatoSelecionado.eventoId
         }
       );
 
@@ -108,7 +106,7 @@ const ChatEventos = () => {
 
     const carregar = async () => {
 
-      await buscarEventos();
+      await buscarContatos();
 
     };
 
@@ -118,7 +116,7 @@ const ChatEventos = () => {
 
   useEffect(() => {
 
-    if (!eventoSelecionado) return;
+    if (!contatoSelecionado) return;
 
     const carregarMensagens =
       async () => {
@@ -139,7 +137,7 @@ const ChatEventos = () => {
     return () =>
       clearInterval(interval);
 
-  }, [eventoSelecionado]);
+  }, [contatoSelecionado]);
 
   useEffect(() => {
 
@@ -166,31 +164,39 @@ const ChatEventos = () => {
 
           <div className={styles.listaEventos}>
 
-            {eventos.map((evento) => (
+            {contatos.map((contato) => (
 
               <button
-                key={evento.id}
+                key={`${contato.eventoId}-${contato.usuarioId}-${contato.descricao}`}
                 className={`${styles.eventoItem}
                 ${
-                  eventoSelecionado?.id === evento.id
+                  contatoSelecionado?.eventoId === contato.eventoId &&
+                  contatoSelecionado?.usuarioId === contato.usuarioId &&
+                  contatoSelecionado?.descricao === contato.descricao
                     ? styles.eventoAtivo
                     : ''
                 }`}
                 onClick={() =>
-                  setEventoSelecionado(evento)
+                  setContatoSelecionado(contato)
                 }
               >
 
                 <div
                   className={styles.eventoNome}
                 >
-                  {evento.nomeEvento}
+                  {contato.nomeUsuario}
                 </div>
 
                 <div
                   className={styles.eventoLocal}
                 >
-                  {evento.nomeLocal}
+                  {contato.tipoUsuario} · {contato.descricao}
+                </div>
+
+                <div
+                  className={styles.eventoLocal}
+                >
+                  Evento: {contato.nomeEvento}
                 </div>
 
               </button>
@@ -203,7 +209,7 @@ const ChatEventos = () => {
 
         <div className={styles.chatArea}>
 
-          {eventoSelecionado ? (
+          {contatoSelecionado ? (
 
             <>
 
@@ -214,17 +220,16 @@ const ChatEventos = () => {
                   <h2
                     className={styles.chatTitulo}
                   >
-                    {
-                      eventoSelecionado.nomeEvento
-                    }
+                    {contatoSelecionado.nomeUsuario}
                   </h2>
 
                   <span
                     className={styles.chatSub}
                   >
-                    {
-                      eventoSelecionado.nomeLocal
-                    }
+                    {contatoSelecionado.nomeEvento}
+                    {contatoSelecionado.nomeLocal
+                      ? ` · ${contatoSelecionado.nomeLocal}`
+                      : ''}
                   </span>
 
                 </div>
@@ -282,6 +287,11 @@ const ChatEventos = () => {
                   }
                   className={styles.input}
                   placeholder="Digite uma mensagem"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      enviarMensagem();
+                    }
+                  }}
                 />
 
                 <button
