@@ -18,6 +18,7 @@ import GestaoEquipamentos from "./PAGES/EQUIPAMENTOS/GestaoEquipamentos";
 import ChatEventos from "./PAGES/ChatEventos/ChatEventos";
 import EsqueciSenha from "./PAGES/EsqueciSenha/EsqueciSenha";
 import ProtectedRoute from "./ProtectedRoute";
+import ThemeToggle from "./Components/ThemeToggle/ThemeToggle";
 import {
     getCurrentUser,
     getHomeByRole
@@ -47,6 +48,7 @@ function PublicOnlyRoute({ children }) {
 function App() {
     return (
         <BrowserRouter>
+            <ThemeToggle />
             <Routes>
 
                 <Route

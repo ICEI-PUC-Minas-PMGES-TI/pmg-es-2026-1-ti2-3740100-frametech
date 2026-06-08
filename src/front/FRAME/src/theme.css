@@ -1,0 +1,293 @@
+:root {
+  --ft-bg: #f5f5f5;
+  --ft-surface: #ffffff;
+  --ft-surface-soft: #f8f7f5;
+  --ft-surface-muted: #fafafa;
+  --ft-text: #111827;
+  --ft-text-soft: #374151;
+  --ft-muted: #6b7280;
+  --ft-border: #e5e7eb;
+  --ft-accent: #e26b45;
+  --ft-accent-strong: #ff5722;
+  --ft-accent-soft: #fff1ec;
+  --ft-danger: #dc2626;
+  --ft-success: #15803d;
+  --ft-warning: #d97706;
+  --ft-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="dark"] {
+  --ft-bg: #101216;
+  --ft-surface: #181b21;
+  --ft-surface-soft: #20242c;
+  --ft-surface-muted: #151820;
+  --ft-text: #f4f6fb;
+  --ft-text-soft: #d5d9e2;
+  --ft-muted: #a8afbd;
+  --ft-border: #343a46;
+  --ft-accent: #ff8a5c;
+  --ft-accent-strong: #ff7043;
+  --ft-accent-soft: rgba(255, 138, 92, 0.16);
+  --ft-danger: #ff8a8a;
+  --ft-success: #70d99d;
+  --ft-warning: #f0bd61;
+  --ft-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: var(--ft-bg);
+  color: var(--ft-text);
+}
+
+body {
+  margin: 0;
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] #root,
+html[data-theme="dark"] [class] {
+  color: var(--ft-text);
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] p,
+html[data-theme="dark"] label,
+html[data-theme="dark"] span,
+html[data-theme="dark"] strong {
+  color: var(--ft-text) !important;
+}
+
+html[data-theme="dark"] .profile-container,
+html[data-theme="dark"] [class*="_layout_"],
+html[data-theme="dark"] [class*="_pagina_"],
+html[data-theme="dark"] [class*="_paginaHome_"],
+html[data-theme="dark"] [class*="_root_"] {
+  background: var(--ft-bg) !important;
+  color: var(--ft-text) !important;
+}
+
+html[data-theme="dark"] .content,
+html[data-theme="dark"] [class*="_main_"],
+html[data-theme="dark"] [class*="_mainContent_"],
+html[data-theme="dark"] [class*="_conteudo_"],
+html[data-theme="dark"] [class*="_conteudoPrincipal_"],
+html[data-theme="dark"] [class*="_pagina_"] {
+  background: transparent !important;
+  color: var(--ft-text) !important;
+}
+
+html[data-theme="dark"] .info-card,
+html[data-theme="dark"] [class*="_sidebar_"],
+html[data-theme="dark"] [class*="_sidebarChat_"],
+html[data-theme="dark"] [class*="_cabecalho_"],
+html[data-theme="dark"] [class*="_cartao_"],
+html[data-theme="dark"] [class*="_tiposConta_"],
+html[data-theme="dark"] [class*="_opcaoTipo_"],
+html[data-theme="dark"] [class*="_servicoItem_"],
+html[data-theme="dark"] [class*="_radioLabel_"],
+html[data-theme="dark"] [class*="_secao_"],
+html[data-theme="dark"] [class*="_mockupDashboard_"],
+html[data-theme="dark"] [class*="_secaoEstatisticas_"],
+html[data-theme="dark"] [class*="_itemEstatistica_"],
+html[data-theme="dark"] [class*="_quadroInfo_"],
+html[data-theme="dark"] [class*="_card_"],
+html[data-theme="dark"] [class*="_cardServico_"],
+html[data-theme="dark"] [class*="_cardEscala_"],
+html[data-theme="dark"] [class*="_tabela_"],
+html[data-theme="dark"] [class*="_header_"],
+html[data-theme="dark"] [class*="_profissional_"],
+html[data-theme="dark"] [class*="_celula_"],
+html[data-theme="dark"] [class*="_modal_"],
+html[data-theme="dark"] [class*="_modalCalendario_"],
+html[data-theme="dark"] [class*="_inputArea_"],
+html[data-theme="dark"] [class*="_chatHeader_"],
+html[data-theme="dark"] [class*="_colLeft_"],
+html[data-theme="dark"] [class*="_colRight_"],
+html[data-theme="dark"] [class*="_colHead_"],
+html[data-theme="dark"] [class*="_calWrap_"],
+html[data-theme="dark"] [class*="_req_"],
+html[data-theme="dark"] [class*="_scItem_"],
+html[data-theme="dark"] [class*="_equipamento_"],
+html[data-theme="dark"] [class*="_associacaoItem_"],
+html[data-theme="dark"] [class*="_agendaItem_"],
+html[data-theme="dark"] [class*="_eventoItem_"] {
+  background: var(--ft-surface) !important;
+  border-color: var(--ft-border) !important;
+  box-shadow: var(--ft-shadow) !important;
+  color: var(--ft-text) !important;
+}
+
+html[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]),
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select,
+html[data-theme="dark"] .edit-input {
+  background: var(--ft-surface-muted) !important;
+  border-color: var(--ft-border) !important;
+  color: var(--ft-text) !important;
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+  color: #7f8795 !important;
+}
+
+html[data-theme="dark"] [class*="_sub"],
+html[data-theme="dark"] [class*="_Sub"],
+html[data-theme="dark"] [class*="_meta"],
+html[data-theme="dark"] [class*="_Meta"],
+html[data-theme="dark"] [class*="_label"],
+html[data-theme="dark"] [class*="_Label"],
+html[data-theme="dark"] [class*="_rotulo"],
+html[data-theme="dark"] [class*="_Rotulo"],
+html[data-theme="dark"] [class*="_local"],
+html[data-theme="dark"] [class*="_Local"],
+html[data-theme="dark"] [class*="_dica"],
+html[data-theme="dark"] [class*="_empty"],
+html[data-theme="dark"] [class*="_vazio"],
+html[data-theme="dark"] [class*="_mockupTitulo_"] {
+  color: var(--ft-muted) !important;
+}
+
+html[data-theme="dark"] [class*="_titulo"],
+html[data-theme="dark"] [class*="_Titulo"],
+html[data-theme="dark"] [class*="_pageTitle_"],
+html[data-theme="dark"] [class*="_greeting_"],
+html[data-theme="dark"] [class*="_nomeEvento_"],
+html[data-theme="dark"] [class*="_cardTitulo_"],
+html[data-theme="dark"] [class*="_statVal_"],
+html[data-theme="dark"] [class*="_valorNum_"],
+html[data-theme="dark"] [class*="_fieldValue_"],
+html[data-theme="dark"] [class*="_servicoLabel_"],
+html[data-theme="dark"] [class*="_opcaoLabel_"],
+html[data-theme="dark"] [class*="_labelTipo_"],
+html[data-theme="dark"] [class*="_logoFrame_"],
+html[data-theme="dark"] [class*="_infoProfissional_"] strong,
+html[data-theme="dark"] [class*="_equipamento_"] h3,
+html[data-theme="dark"] [class*="_modalTopo_"] h2,
+html[data-theme="dark"] .profile-header h1,
+html[data-theme="dark"] .info-column p {
+  color: var(--ft-text) !important;
+}
+
+html[data-theme="dark"] a,
+html[data-theme="dark"] [class*="_link_"],
+html[data-theme="dark"] [class*="_logoTech_"],
+html[data-theme="dark"] [class*="_logoDestaque_"],
+html[data-theme="dark"] [class*="_highlight_"],
+html[data-theme="dark"] [class*="_badge_"],
+html[data-theme="dark"] [class*="_labelSecao_"],
+html[data-theme="dark"] [class*="_rotuloSecao_"],
+html[data-theme="dark"] [class*="_secaoTitulo_"],
+html[data-theme="dark"] [class*="_cardBadge_"],
+html[data-theme="dark"] [class*="_tagLaranja_"] {
+  color: var(--ft-accent) !important;
+}
+
+html[data-theme="dark"] [class*="_botaoPrincipal_"],
+html[data-theme="dark"] [class*="_botaoPrimario_"],
+html[data-theme="dark"] [class*="_botaoAtribuir_"],
+html[data-theme="dark"] [class*="_btnEnviar_"],
+html[data-theme="dark"] [class*="_btnEscalas_"],
+html[data-theme="dark"] [class*="_btnAceitar_"],
+html[data-theme="dark"] [class*="_btnA_"],
+html[data-theme="dark"] .btn-save,
+html[data-theme="dark"] .button-group button:first-child {
+  background: var(--ft-accent) !important;
+  border-color: var(--ft-accent) !important;
+  color: #111827 !important;
+}
+
+html[data-theme="dark"] [class*="_botaoSecundario_"],
+html[data-theme="dark"] [class*="_botaoGoogle_"],
+html[data-theme="dark"] [class*="_btnCancelar_"],
+html[data-theme="dark"] [class*="_btnRecusar_"],
+html[data-theme="dark"] [class*="_btnD_"],
+html[data-theme="dark"] [class*="_btnV_"],
+html[data-theme="dark"] [class*="_btnNovoEvento_"],
+html[data-theme="dark"] [class*="_calNavBtn_"],
+html[data-theme="dark"] [class*="_controleMes_"] button,
+html[data-theme="dark"] .btn,
+html[data-theme="dark"] .button-group button {
+  background: var(--ft-surface-soft) !important;
+  border-color: var(--ft-border) !important;
+  color: var(--ft-text) !important;
+}
+
+html[data-theme="dark"] [class*="_active_"],
+html[data-theme="dark"] [class*="_eventoAtivo_"],
+html[data-theme="dark"] [class*="_opcaoTipoAtiva_"],
+html[data-theme="dark"] [class*="_botaoTipoAtivo_"],
+html[data-theme="dark"] [class*="_servicoAtivo_"],
+html[data-theme="dark"] [class*="_radioAtivo_"],
+html[data-theme="dark"] [class*="_fundoLaranja_"] {
+  background: var(--ft-accent-soft) !important;
+  border-color: rgba(255, 138, 92, 0.45) !important;
+  color: var(--ft-accent) !important;
+}
+
+html[data-theme="dark"] [class*="_opcaoTipoAtiva_"] span,
+html[data-theme="dark"] [class*="_botaoTipoAtivo_"] span,
+html[data-theme="dark"] [class*="_servicoAtivo_"] span,
+html[data-theme="dark"] [class*="_radioAtivo_"] {
+  color: var(--ft-accent) !important;
+}
+
+html[data-theme="dark"] [class*="_statusAceito_"],
+html[data-theme="dark"] [class*="_statusDisponivel_"],
+html[data-theme="dark"] [class*="_tagConf_"] {
+  background: rgba(112, 217, 157, 0.16) !important;
+  color: var(--ft-success) !important;
+}
+
+html[data-theme="dark"] [class*="_statusRecusado_"],
+html[data-theme="dark"] [class*="_statusOcupado_"],
+html[data-theme="dark"] [class*="_botaoPerigo_"] {
+  background: rgba(255, 138, 138, 0.16) !important;
+  color: var(--ft-danger) !important;
+}
+
+html[data-theme="dark"] [class*="_statusAnalise_"],
+html[data-theme="dark"] [class*="_tagPend_"] {
+  background: rgba(240, 189, 97, 0.16) !important;
+  color: var(--ft-warning) !important;
+}
+
+html[data-theme="dark"] [class*="_diaLivre_"] {
+  background: rgba(112, 217, 157, 0.14) !important;
+  border-color: rgba(112, 217, 157, 0.4) !important;
+  color: var(--ft-success) !important;
+}
+
+html[data-theme="dark"] [class*="_diaOcupado_"] {
+  background: rgba(255, 138, 138, 0.14) !important;
+  border-color: rgba(255, 138, 138, 0.4) !important;
+  color: var(--ft-danger) !important;
+}
+
+html[data-theme="dark"] [class*="_diaLivre_"] strong,
+html[data-theme="dark"] [class*="_diaOcupado_"] strong {
+  color: var(--ft-text) !important;
+}
+
+html[data-theme="dark"] [class*="_barraProgresso_"],
+html[data-theme="dark"] [class*="_linePending_"] {
+  background: var(--ft-border) !important;
+}
+
+html[data-theme="dark"] [class*="_mensagem_"] {
+  background: var(--ft-surface) !important;
+  color: var(--ft-text) !important;
+}
+
+html[data-theme="dark"] [class*="_minhaMensagem_"] [class*="_mensagem_"] {
+  background: var(--ft-accent) !important;
+  color: #111827 !important;
+}

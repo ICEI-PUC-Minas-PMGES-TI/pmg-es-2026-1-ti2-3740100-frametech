@@ -1,8 +1,7 @@
-/* ─── Layout ─────────────────────────────────────────────── */
 .layout {
   display: flex;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: var(--ft-bg);
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -14,96 +13,56 @@
   margin: 0 auto;
 }
 
-/* ─── Topo ───────────────────────────────────────────────── */
 .topRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 28px;
+  gap: 18px;
 }
 
 .greeting {
   font-size: 2rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--ft-text);
   margin: 0;
-}
-
-.greetingName {
-  color: #111827;
 }
 
 .greetingSub {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--ft-muted);
   margin-top: 4px;
 }
 
 .btnNovoEvento {
-  background: #fff;
-  border: 1px solid #d1d5db;
+  background: var(--ft-surface);
+  border: 1px solid var(--ft-border);
   border-radius: 10px;
   padding: 10px 18px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--ft-text);
   cursor: pointer;
   transition: 0.2s;
 }
 
 .btnNovoEvento:hover {
-  background: #f9fafb;
-  border-color: #9ca3af;
+  background: var(--ft-surface-soft);
+  border-color: var(--ft-muted);
 }
 
-/* ─── Stats ──────────────────────────────────────────────── */
-.statsRow {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 28px;
-}
-
-.statCard {
-  background: #fff;
-  border-radius: 12px;
-  padding: 18px;
-  border: 1px solid #e5e7eb;
-}
-
-.statLabel {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #9ca3af;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.statNum {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #111827;
-}
-
-.statSub {
-  font-size: 0.8rem;
-  color: #6b7280;
-}
-
-/* ─── Lista de Eventos ───────────────────────────────────── */
 .projetosLista {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* ─── Card ───────────────────────────────────────────────── */
 .card {
-  background: #fff;
+  background: var(--ft-surface);
   border-radius: 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--ft-border);
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--ft-shadow);
   transition: 0.2s;
 }
 
@@ -114,54 +73,42 @@
 .cardHeader {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 14px;
-}
-
-.cardBadge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #ea580c;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.valorBox {
-  text-align: right;
-}
-
-.valorLabel {
-  display: block;
-  font-size: 0.75rem;
-  color: #9ca3af;
-}
-
-.valorNum {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #111827;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
 .cardTitulo {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--ft-text);
   margin: 0;
 }
 
 .cardSubtitulo {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: var(--ft-muted);
   margin-top: 4px;
-  margin-bottom: 18px;
+  margin-bottom: 0;
 }
 
-/* ─── Grid de Informações ────────────────────────────────── */
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 18px;
+}
+
+.fieldItem {
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--ft-border);
+  border-radius: 12px;
+  background: var(--ft-surface-muted);
+}
+
+.fieldItemLong {
+  grid-column: span 2;
 }
 
 .fieldLabel {
@@ -169,108 +116,90 @@
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #9ca3af;
+  color: var(--ft-muted);
   margin-bottom: 4px;
 }
 
 .fieldValue {
   font-size: 0.95rem;
-  color: #111827;
+  color: var(--ft-text);
   font-weight: 500;
   margin: 0;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
-.bold {
+.statusAceito,
+.statusRecusado,
+.statusAnalise {
+  display: inline-block;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
-/* ─── Timeline ───────────────────────────────────────────── */
-.timeline {
-  display: flex;
-  align-items: flex-start;
-  padding-top: 8px;
-}
-
-.etapaItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-  position: relative;
-}
-
-.etapaTrack {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  position: relative;
-  height: 22px;
-}
-
-.line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 50%;
-  height: 3px;
-  transform: translateY(-50%);
-  border-radius: 10px;
-}
-
-.lineDone {
-  background: #22c55e;
-}
-
-.linePending {
-  background: #d1d5db;
-}
-
-.dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  position: relative;
-  z-index: 2;
-}
-
-.dot_done {
-  background: #22c55e;
-}
-
-.dot_active {
-  background: #f97316;
-}
-
-.dot_pending {
-  background: #d1d5db;
-}
-
-.etapaLabel {
-  font-size: 0.72rem;
-  color: #6b7280;
-  margin-top: 8px;
-  text-align: center;
-}
-
-/* ─── Status Visual ──────────────────────────────────────── */
 .statusAceito {
-  color: #15803d;
-  font-weight: 700;
+  background: rgba(34, 197, 94, 0.16);
+  color: var(--ft-success);
 }
 
 .statusRecusado {
-  color: #dc2626;
-  font-weight: 700;
+  background: rgba(220, 38, 38, 0.14);
+  color: var(--ft-danger);
 }
 
 .statusAnalise {
-  color: #d97706;
-  font-weight: 700;
+  background: rgba(217, 119, 6, 0.15);
+  color: var(--ft-warning);
 }
 
-/* ─── Mobile ─────────────────────────────────────────────── */
+.valorOrcamento {
+  display: inline-flex;
+  width: fit-content;
+  margin: 0 0 18px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--ft-accent-soft);
+  color: var(--ft-accent);
+  font-weight: 800;
+}
+
+.areaBotoes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.btnAceitar,
+.btnRecusar {
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btnAceitar {
+  background: var(--ft-accent);
+  color: #111827;
+  border: 1px solid var(--ft-accent);
+}
+
+.btnRecusar {
+  background: var(--ft-surface-soft);
+  color: var(--ft-text);
+  border: 1px solid var(--ft-border);
+}
+
+.btnAceitar:hover,
+.btnRecusar:hover {
+  transform: translateY(-1px);
+}
+
 @media (max-width: 767px) {
   .layout {
     flex-direction: column;
@@ -278,6 +207,7 @@
 
   .main {
     padding: 20px 16px;
+    box-sizing: border-box;
   }
 
   .topRow {
@@ -290,14 +220,6 @@
     width: 100%;
   }
 
-  .statsRow {
-    grid-template-columns: 1fr;
-  }
-
-  .cardGrid {
-    grid-template-columns: 1fr;
-  }
-
   .card {
     padding: 18px;
   }
@@ -308,44 +230,17 @@
     gap: 10px;
   }
 
-  .valorBox {
-    text-align: left;
+  .cardGrid {
+    grid-template-columns: 1fr;
   }
 
-  .timeline {
-    overflow-x: auto;
-    padding-bottom: 8px;
+  .fieldItemLong {
+    grid-column: span 1;
   }
 
-  .etapaItem {
-    min-width: 90px;
+  .areaBotoes,
+  .btnAceitar,
+  .btnRecusar {
+    width: 100%;
   }
-}.statusAceito {
-  display: inline-block;
-  background: #dcfce7;
-  color: #15803d;
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-}
-
-.statusRecusado {
-  display: inline-block;
-  background: #fee2e2;
-  color: #dc2626;
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-}
-
-.statusAnalise {
-  display: inline-block;
-  background: #fef3c7;
-  color: #d97706;
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 0.8rem;
 }
