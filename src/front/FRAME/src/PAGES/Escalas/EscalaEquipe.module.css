@@ -304,3 +304,42 @@
     border-radius: 18px;
   }
 }
+
+.modalDetalhes {
+  width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 24px;
+  padding: 30px;
+}
+
+.itemProfissional {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.btnRemover {
+  border: none;
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.botaoFechar {
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  background: #111827;
+  color: white;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+}
