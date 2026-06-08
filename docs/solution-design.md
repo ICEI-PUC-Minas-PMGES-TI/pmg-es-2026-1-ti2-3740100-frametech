@@ -4,7 +4,7 @@
 ### 4.1. Modelo de dados
 
 
-<img width="1000" height="820" alt="erd_estilo_original_reorganizado" src="https://github.com/user-attachments/assets/94733840-b56c-4363-9b66-2428bae3109c" />
+<img width="1536" height="1024" alt="Image" src="https://github.com/user-attachments/assets/50a161e3-226d-4fdb-886c-b89ebe5357b5" />
 
 
 
