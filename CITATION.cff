@@ -1,31 +1,41 @@
+```yaml
 cff-version: 1.0.1
-message: Please cite this software using these metadata.
-title: 
+message: "Please cite this software using these metadata."
+title: "FrameTech"
 authors:
-  - family-names: sobrenome do aluno 1
-    given-names: Nome do aluno 1 
-  - family-names: sobrenome do aluno 2
-    given-names: Nome do aluno 2 
-  - family-names: sobrenome do aluno 3
-    given-names: Nome do aluno 3 
-  - family-names: sobrenome do aluno 4
-    given-names: Nome do aluno 4 
-  - family-names: sobrenome do aluno 5
-    given-names: Nome do aluno 5 
-  - family-names: sobrenome do aluno 6
-    given-names: Nome do aluno 6 
-  - name-suffix: Professora
+  - family-names: Ribas Marques
+    given-names: Mateus Marçal
+  - family-names: Monserrat Souza
+    given-names: Arthur
+  - family-names: de Aguiar Xavier
+    given-names: Bruno Henrique
+  - family-names: de Souza Carvalho Ferreira
+    given-names: Gabriel
+  - family-names: do Carmo Braz
+    given-names: Lucas
+  - family-names: Paulino Cicero
+    given-names: Gustavo
+  - family-names: Soares De Paiva Lacerda
+    given-names: Lucca
+    name-suffix: Professor
     affiliation: PUC Minas
-    family-names: Alonso Veloso
-    given-names: Eveline 
-  - name-suffix: Professora
+  - family-names: Hanne Soares de Almeida
+    given-names: Michelle
+    name-suffix: Professora
     affiliation: PUC Minas
-    family-names: Baroni De Carvalho
-    given-names: Juliana Amaral 
+  - family-names: da Silva
+    given-names: Luiz Carlos
+    name-suffix: Professor
+    affiliation: PUC Minas
+
 keywords:
-  - 
-  - 
-repository-code: 
+  - software
+  - engenharia de software
+  - PUC Minas
+  - FrameTech
+
+repository-code: "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2026-1-ti2-3740100-frametech.git"
 license: CC-BY-4.0
 version: 1.0.0
-date-released:
+date-released: 2026-06-09
+```
