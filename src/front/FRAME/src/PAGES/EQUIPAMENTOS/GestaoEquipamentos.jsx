@@ -10,7 +10,6 @@ const formInicial = {
   status: 'DISPONIVEL'
 };
 
-
 const meses = [
   'Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho',
   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
@@ -48,6 +47,8 @@ export default function GestaoEquipamentos() {
   const [erro, setErro] = useState('');
   const [equipamentoCalendario, setEquipamentoCalendario] = useState(null);
   const [mesCalendario, setMesCalendario] = useState(new Date());
+  const [mostrarIndicador, setMostrarIndicador] = useState(false);
+  const [indicadores, setIndicadores] = useState([]);
 
   const carregarDados = async () => {
     const [equipamentosResp, eventosResp, associacoesResp] = await Promise.all([
@@ -72,6 +73,19 @@ export default function GestaoEquipamentos() {
   const limparMensagens = () => {
     setMensagem('');
     setErro('');
+  };
+
+  const abrirIndicador = async () => {
+    const response = await fetch(
+      'http://localhost:8080/equipamentos/indicador-categoria'
+    );
+    const dados = await response.json();
+    setIndicadores(dados);
+    setMostrarIndicador(true);
+  };
+
+  const fecharIndicador = () => {
+    setMostrarIndicador(false);
   };
 
   const salvarEquipamento = async (e) => {
@@ -220,6 +234,12 @@ export default function GestaoEquipamentos() {
             <p className={styles.subtitulo}>
               Cadastre equipamentos, associe aos eventos e acompanhe disponibilidade.
             </p>
+            <button
+              className={styles.botaoIndicador}
+              onClick={abrirIndicador}
+            >
+              Ver Índice de Alocação
+            </button>
           </div>
         </div>
 
@@ -440,6 +460,44 @@ export default function GestaoEquipamentos() {
           </section>
         </div>
 
+        {mostrarIndicador && (
+          <div className={styles.modalFundo}>
+            <div className={styles.modalIndicador}>
+              <div className={styles.modalTopo}>
+                <div>
+                  <h2>Índice de Alocação por Categoria</h2>
+                 
+                </div>
+                <button
+                  className={styles.botaoFechar}
+                  onClick={fecharIndicador}
+                >
+                  X
+                </button>
+              </div>
+              <table className={styles.tabelaIndicador}>
+                <thead>
+                  <tr>
+                    <th>Categoria</th>
+                    <th>Total</th>
+                    <th>Alocados</th>
+                    <th>Índice (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {indicadores.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.categoria}</td>
+                      <td>{item.totalCategoria}</td>
+                      <td>{item.alocadosCategoria}</td>
+                      <td>{item.percentual.toFixed(2)}%</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
 
         {equipamentoCalendario && (
           <div className={styles.modalFundo}>
@@ -514,7 +572,6 @@ export default function GestaoEquipamentos() {
             </div>
           </div>
         )}
-
       </main>
     </div>
   );

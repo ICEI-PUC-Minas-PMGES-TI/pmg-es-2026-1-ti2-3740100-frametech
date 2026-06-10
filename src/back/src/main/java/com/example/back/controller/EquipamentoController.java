@@ -2,6 +2,7 @@ package com.example.back.controller;
 
 import com.example.back.dto.AssociarEquipamentoDTO;
 import com.example.back.dto.EventoEquipamentoDTO;
+import com.example.back.dto.IndicadorEquipamentoDTO;
 import com.example.back.model.Equipamento;
 import com.example.back.services.EquipamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +63,10 @@ public class EquipamentoController {
     @DeleteMapping("/associacoes/{id}")
     public void removerAssociacao(@PathVariable Long id) {
         equipamentoService.removerAssociacao(id);
+    }
+
+    @GetMapping("/indicador-categoria")
+    public List<IndicadorEquipamentoDTO> indicadorCategoria() {
+        return equipamentoService.calcularIndicePorCategoria();
     }
 }

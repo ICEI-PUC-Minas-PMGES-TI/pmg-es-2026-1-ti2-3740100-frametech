@@ -505,3 +505,38 @@
     align-items: flex-start;
   }
 }
+.botaoIndicador {
+  border: none;
+  background: #2563eb;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.modalIndicador {
+  width: 850px;
+  max-width: 95%;
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.tabelaIndicador {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.tabelaIndicador th,
+.tabelaIndicador td {
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  text-align: center;
+}
+
+.tabelaIndicador th {
+  background: #f3f4f6;
+}

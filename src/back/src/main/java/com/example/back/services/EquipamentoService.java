@@ -1,6 +1,7 @@
 package com.example.back.services;
 
 import com.example.back.dto.EventoEquipamentoDTO;
+import com.example.back.dto.IndicadorEquipamentoDTO;
 import com.example.back.model.Equipamento;
 import com.example.back.model.Evento;
 import com.example.back.model.EventoEquipamento;
@@ -10,7 +11,10 @@ import com.example.back.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class EquipamentoService {
@@ -156,5 +160,37 @@ public class EquipamentoService {
                 equipamentoRepository.save(equipamento);
             }
         }
+    }
+
+    public List<IndicadorEquipamentoDTO> calcularIndicePorCategoria() {
+        List<Equipamento> equipamentos = equipamentoRepository.findAll();
+
+        Map<String, List<Equipamento>> categorias =
+                equipamentos.stream()
+                        .collect(Collectors.groupingBy(Equipamento::getTipo));
+
+        List<IndicadorEquipamentoDTO> indicadores = new ArrayList<>();
+
+        for (String categoria : categorias.keySet()) {
+            List<Equipamento> lista = categorias.get(categoria);
+            long total = lista.size();
+
+            long alocados = lista.stream()
+                    .filter(e -> "OCUPADO".equals(e.getStatus()))
+                    .count();
+
+            double percentual = total == 0 ? 0 : (alocados * 100.0) / total;
+
+            indicadores.add(
+                    new IndicadorEquipamentoDTO(
+                            categoria,
+                            total,
+                            alocados,
+                            percentual
+                    )
+            );
+        }
+
+        return indicadores;
     }
 }
