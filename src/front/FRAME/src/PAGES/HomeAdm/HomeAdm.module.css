@@ -41,6 +41,80 @@
   background-color: #333;
 }
 
+.indicadorCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.indicadorIcone {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #fff1ec;
+  color: #e26b45;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicadorConteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.indicadorRotulo {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.indicadorValor {
+  font-size: 32px;
+  line-height: 1;
+  color: #111;
+}
+
+.indicadorDescricao {
+  color: #666;
+  font-size: 13px;
+  margin: 0;
+}
+
+.indicadorResumo {
+  display: flex;
+  gap: 12px;
+}
+
+.indicadorResumo span {
+  min-width: 92px;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #888;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.indicadorResumo strong {
+  color: #111;
+  font-size: 18px;
+}
+
 .lista {
   display: flex;
   flex-direction: column;
@@ -291,6 +365,21 @@
 
   .btnEscalas {
     width: 100%;
+  }
+
+  .indicadorCard {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    padding: 18px 16px;
+  }
+
+  .indicadorResumo {
+    flex-direction: column;
+  }
+
+  .indicadorResumo span {
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .card {

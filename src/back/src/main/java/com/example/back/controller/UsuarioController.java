@@ -3,13 +3,11 @@ package com.example.back.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.example.back.model.Usuario;
 import com.example.back.services.UsuarioService;
-
 import java.util.Optional;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/auth")
 public class UsuarioController {
@@ -28,16 +26,10 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Usuario usuario) {
-
-        Optional<Usuario> user = service.login(
-                usuario.getEmail(),
-                usuario.getSenha()
-        );
-
+        Optional<Usuario> user = service.login(usuario.getEmail(), usuario.getSenha());
         if (user.isPresent()) {
             return ResponseEntity.ok(user.get());
         }
-
         return ResponseEntity.status(401).body("Email ou senha inválidos");
     }
 
@@ -68,10 +60,5 @@ public class UsuarioController {
     @GetMapping("/profissionais")
     public ResponseEntity<?> listarProfissionais() {
         return ResponseEntity.ok(service.listarProfissionais());
-    }
-
-    @GetMapping("/teste")
-    public String teste() {
-        return "API funcionando";
     }
 }

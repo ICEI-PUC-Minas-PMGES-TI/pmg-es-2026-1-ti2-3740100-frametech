@@ -1,171 +1,81 @@
 package com.example.back.services;
 
+import com.example.back.dto.IndicadorSolicitacoesDTO;
 import com.example.back.model.Evento;
-import com.example.back.model.Usuario;
 import com.example.back.repository.EventoRepository;
-import com.example.back.repository.UsuarioRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @Service
 public class EventoService {
 
     @Autowired
-    private EventoRepository eventoRepository;
+    private EventoRepository repository;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    public Evento salvar(
-            Evento evento,
-            Long usuarioId
-    ) {
-
-        validarTipoEvento(evento.getTipoEvento());
-        validarHorarioEvento(evento);
-        validarDataEvento(evento.getData());
-        validarNumeroEndereco(evento.getNumero());
-
-        Usuario usuario = usuarioRepository
-                .findById(usuarioId)
-                .orElseThrow();
-
-        evento.setUsuario(usuario);
-
-        evento.setStatus("EM_ANALISE");
-
-        return eventoRepository.save(evento);
+    public Evento salvar(Evento evento, Long usuarioId) {
+        evento.setUsuarioId(usuarioId);
+        return repository.save(evento);
     }
 
-    public List<Evento> listarPorUsuario(
-            Long usuarioId
-    ) {
-
-        return eventoRepository
-                .findByUsuario_Id(usuarioId);
+    public List<Evento> listarPorUsuario(Long usuarioId) {
+        return repository.findAll().stream()
+                .filter(e -> e.getUsuario() != null &&
+                        e.getUsuario().getId().equals(usuarioId))
+                .collect(Collectors.toList());
     }
 
     public List<Evento> listarTodos() {
-
-        return eventoRepository.findAll();
+        return repository.findAll();
     }
 
-    private void validarTipoEvento(String tipoEvento) {
-        List<String> tiposPermitidos = Arrays.asList(
-                "CASAMENTO",
-                "FORMATURA",
-                "ANIVERSARIO",
-                "EMPRESARIAL",
-                "SHOW",
-                "ENSAIO",
-                "OUTRO"
+    public Evento atualizarStatus(Long id, String status) {
+        Evento e = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
+
+        e.setStatus(status);
+        return repository.save(e);
+    }
+
+    public Evento atualizarOrcamento(Long id, Double valor) {
+        Evento e = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
+
+        e.setValorOrcamento(valor);
+        return repository.save(e);
+    }
+
+    public IndicadorSolicitacoesDTO calcularTaxaSolicitacoesAtendidas() {
+
+        List<Evento> eventos = repository.findAll();
+
+        long total = eventos.size();
+
+        long atendidas = eventos.stream()
+                .filter(e -> {
+                    if (e.getStatus() == null) {
+                        return false;
+                    }
+
+                    String status = e.getStatus().trim().toUpperCase();
+
+                    return status.equals("ACEITO");
+                })
+                .count();
+
+        long pendentes = total - atendidas;
+
+        double percentual = total == 0
+                ? 0.0
+                : ((double) atendidas / total) * 100.0;
+
+        return new IndicadorSolicitacoesDTO(
+                total,
+                atendidas,
+                pendentes,
+                percentual
         );
-
-        if (tipoEvento == null || tipoEvento.isBlank()) {
-            throw new RuntimeException("Tipo de evento obrigatorio.");
-        }
-
-        String tipoFormatado = tipoEvento
-                .trim()
-                .toUpperCase()
-                .replace("Á", "A")
-                .replace("Ã", "A")
-                .replace("Â", "A")
-                .replace("Í", "I")
-                .replace("Ç", "C");
-
-        if (!tiposPermitidos.contains(tipoFormatado)) {
-            throw new RuntimeException(
-                    "Tipo de evento invalido."
-            );
-        }
-    }
-
-    private void validarHorarioEvento(Evento evento) {
-
-        if (evento.getInicio() == null || evento.getTermino() == null) {
-            throw new RuntimeException("Horario obrigatorio.");
-        }
-
-        if (evento.getInicio().compareTo(evento.getTermino()) >= 0) {
-            throw new RuntimeException(
-                    "Horario invalido."
-            );
-        }
-    }
-
-    private void validarDataEvento(String data) {
-
-        if (data == null || data.isBlank()) {
-            throw new RuntimeException(
-                    "Data obrigatoria."
-            );
-        }
-
-        LocalDate dataEvento =
-                LocalDate.parse(data);
-
-        LocalDate hoje =
-                LocalDate.now();
-
-        if (!dataEvento.isAfter(hoje)) {
-            throw new RuntimeException(
-                    "Data deve ser futura."
-            );
-        }
-    }
-
-    private void validarNumeroEndereco(
-            String numero
-    ) {
-
-        if (numero == null || numero.isBlank()) {
-            return;
-        }
-
-        if (!numero.matches("\\d+")) {
-            throw new RuntimeException(
-                    "Numero invalido."
-            );
-        }
-    }
-
-    public Evento atualizarStatus(
-            Long id,
-            String status
-    ) {
-
-        Evento evento =
-                eventoRepository
-                        .findById(id)
-                        .orElseThrow();
-
-        evento.setStatus(status);
-
-        return eventoRepository.save(evento);
-    }
-
-    public Evento enviarOrcamento(
-            Long id,
-            Double valor
-    ) {
-
-        Evento evento =
-                eventoRepository
-                        .findById(id)
-                        .orElseThrow();
-
-        evento.setValorOrcamento(valor);
-
-        evento.setStatus(
-                "ORCAMENTO_ENVIADO"
-        );
-
-        return eventoRepository.save(evento);
     }
 }
