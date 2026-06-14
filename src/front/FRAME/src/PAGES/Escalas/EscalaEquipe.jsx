@@ -4,7 +4,6 @@ import React, {
 } from 'react';
 
 import Header from '../../Components/Header/Header';
-import ModalDetalheEvento from '../Eventos/ModalDetalheEvento';
 import styles from './EscalaEquipe.module.css';
 
 const EscalaEquipe = () => {
@@ -34,8 +33,12 @@ const EscalaEquipe = () => {
   const [modalProfissionais, setModalProfissionais] =
     useState(false);
 
+  // 1. Adicionado junto dos outros states
   const [modalDetalhes, setModalDetalhes] =
     useState(false);
+
+  const [detalhesEvento, setDetalhesEvento] =
+    useState(null);
 
   const [escalaSelecionada, setEscalaSelecionada] =
     useState(null);
@@ -48,9 +51,6 @@ const EscalaEquipe = () => {
 
   const [profissionalSelecionado, setProfissionalSelecionado] =
     useState(null);
-
-  const [buscaEvento, setBuscaEvento] =
-    useState("");
 
   const buscarEventos = async () => {
     const response = await fetch(
@@ -90,7 +90,6 @@ const EscalaEquipe = () => {
   const abrirEventos = (profissional, dia) => {
     setProfissionalSelecionado(profissional);
     setDiaSelecionado(dia);
-    setBuscaEvento("");
     setModalEventos(true);
   };
 
@@ -121,14 +120,33 @@ const EscalaEquipe = () => {
     setModalProfissionais(false);
   };
 
-  const abrirDetalhes = (escala) => {
+  // 2. Adicionado abaixo de salvarEscala
+  const abrirDetalhes = async (escala) => {
+    const response = await fetch(
+      `http://localhost:8080/api/escalas/evento/${escala.eventoId}/detalhe`
+    );
+    const data = await response.json();
+    setDetalhesEvento(data);
     setEscalaSelecionada(escala);
     setModalDetalhes(true);
   };
 
-  const fecharDetalhes = () => {
-    setModalDetalhes(false);
-    setEscalaSelecionada(null);
+  // 3. Adicionado o método para remover o profissional e atualizar os detalhes
+  const removerProfissional = async (escalaId) => {
+    await fetch(
+      `http://localhost:8080/api/escalas/${escalaId}`,
+      {
+        method: 'DELETE'
+      }
+    );
+
+    await buscarEscalas();
+
+    const response = await fetch(
+      `http://localhost:8080/api/escalas/evento/${escalaSelecionada.eventoId}/detalhe`
+    );
+    const data = await response.json();
+    setDetalhesEvento(data);
   };
 
   const buscarEscala = (profissionalNome, dia) => {
@@ -138,10 +156,6 @@ const EscalaEquipe = () => {
         escala.diaSemana === dia
     );
   };
-
-  const eventosFiltrados = eventos.filter((evento) =>
-    evento.nomeEvento?.toLowerCase().includes(buscaEvento.toLowerCase())
-  );
 
   return (
     <div className={styles.layout}>
@@ -182,6 +196,7 @@ const EscalaEquipe = () => {
                 return (
                   <div key={dia} className={styles.celula}>
                     {escala ? (
+                      /* 4. Trocado para incluir o onClick={() => abrirDetalhes(escala)} */
                       <div
                         className={styles.cardEscala}
                         onClick={() => abrirDetalhes(escala)}
@@ -221,49 +236,18 @@ const EscalaEquipe = () => {
         </div>
 
         {modalEventos && (
-          <div className={styles.overlay} onClick={() => setModalEventos(false)}>
-            <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-              <div className={styles.cabecalhoModal}>
-                <h2>Selecionar Evento</h2>
-                <button
-                  className={styles.btnFecharModal}
-                  onClick={() => setModalEventos(false)}
-                  aria-label="Fechar"
+          <div className={styles.overlay}>
+            <div className={styles.modal}>
+              <h2>Selecionar Evento</h2>
+              {eventos.map((evento) => (
+                <div
+                  key={evento.id}
+                  className={styles.card}
+                  onClick={() => selecionarEvento(evento)}
                 >
-                  ✕
-                </button>
-              </div>
-
-              <input
-                type="text"
-                className={styles.inputBusca}
-                placeholder="Buscar evento..."
-                value={buscaEvento}
-                onChange={(e) => setBuscaEvento(e.target.value)}
-              />
-
-              <div className={styles.listaEventos}>
-                {eventosFiltrados.length === 0 ? (
-                  <p className={styles.semEventos}>Nenhum evento encontrado.</p>
-                ) : (
-                  eventosFiltrados.map((evento) => (
-                    <div
-                      key={evento.id}
-                      className={styles.card}
-                      onClick={() => selecionarEvento(evento)}
-                    >
-                      <strong>{evento.nomeEvento}</strong>
-                    </div>
-                  ))
-                )}
-              </div>
-
-              <button
-                className={styles.btnFecharRodape}
-                onClick={() => setModalEventos(false)}
-              >
-                Fechar
-              </button>
+                  <strong>{evento.nomeEvento}</strong>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -282,13 +266,45 @@ const EscalaEquipe = () => {
           </div>
         )}
 
-        {modalDetalhes && escalaSelecionada && (
-          <ModalDetalheEvento
-            eventoId={escalaSelecionada.eventoId}
-            profissionais={profissionais}
-            onFechar={fecharDetalhes}
-            onAtualizar={buscarEscalas}
-          />
+        {/* 5. Adicionado antes do fechamento do </main> */}
+        {modalDetalhes && detalhesEvento && (
+          <div className={styles.overlay}>
+            <div className={styles.modalDetalhes}>
+              <h2>{detalhesEvento.nomeEvento}</h2>
+
+              <p><strong>Cliente:</strong> {detalhesEvento.nomeCliente}</p>
+              <p><strong>Data:</strong> {detalhesEvento.data}</p>
+              <p><strong>Horário:</strong> {detalhesEvento.inicio} às {detalhesEvento.termino}</p>
+              <p><strong>Local:</strong> {detalhesEvento.nomeLocal}</p>
+              <p><strong>Endereço:</strong> {detalhesEvento.endereco}</p>
+              <p><strong>Bairro:</strong> {detalhesEvento.bairro}</p>
+              <p><strong>Descrição:</strong> {detalhesEvento.descricao}</p>
+
+              <h3>Profissionais</h3>
+
+              {detalhesEvento.profissionais?.map((profissional) => (
+                <div key={profissional.escalaId} className={styles.itemProfissional}>
+                  <div>
+                    <strong>{profissional.nome}</strong>
+                    <p>{profissional.telefone}</p>
+                  </div>
+                  <button
+                    className={styles.btnRemover}
+                    onClick={() => removerProfissional(profissional.escalaId)}
+                  >
+                    Remover
+                  </button>
+                </div>
+              ))}
+
+              <button
+                className={styles.botaoFechar}
+                onClick={() => setModalDetalhes(false)}
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
         )}
 
       </main>

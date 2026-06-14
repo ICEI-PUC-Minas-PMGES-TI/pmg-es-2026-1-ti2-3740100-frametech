@@ -196,7 +196,7 @@ const ModalDetalheEvento = ({ eventoId, profissionais, onFechar, onAtualizar }) 
                   onClick={() => { setProfissionalSelecionado(''); setModalAdicionar(true); }}
                   disabled={salvando || profissionaisDisponiveis.length === 0}
                 >
-                  + Escalar Profissional
+                  + Adicionar profissional
                 </button>
               </div>
 
@@ -243,7 +243,7 @@ const ModalDetalheEvento = ({ eventoId, profissionais, onFechar, onAtualizar }) 
         {modalAdicionar && (
           <div className={styles.subOverlay} onClick={() => setModalAdicionar(false)}>
             <div className={styles.subModal} onClick={(e) => e.stopPropagation()}>
-              <h3>Escalar profissional</h3>
+              <h3>Adicionar profissional</h3>
               {erro && <p className={styles.erro}>{erro}</p>}
               <select
                 className={styles.select}
