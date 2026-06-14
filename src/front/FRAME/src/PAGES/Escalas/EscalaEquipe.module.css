@@ -225,9 +225,71 @@
 }
 
 .modal h2 {
-  font-size: 26px;
+  font-size: 22px;
   color: #111827;
-  margin-bottom: 20px;
+  margin: 0 0 16px;
+}
+
+.cabecalhoModal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cabecalhoModal h2 {
+  margin: 0;
+}
+
+.btnFecharModal {
+  border: none;
+  background: #f1f5f9;
+  color: #475569;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.btnFecharModal:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.inputBusca {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  font-size: 14px;
+  margin-bottom: 12px;
+  outline: none;
+}
+
+.inputBusca:focus {
+  border-color: #e05a2b;
+  background: #ffffff;
+}
+
+.listaEventos {
+  max-height: 280px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding-right: 4px;
+}
+
+.semEventos {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  padding: 24px 0;
 }
 
 .card {
@@ -248,6 +310,24 @@
 .card strong {
   font-size: 15px;
   color: #111827;
+}
+
+.btnFecharRodape {
+  width: 100%;
+  border: none;
+  background: #f1f5f9;
+  color: #374151;
+  padding: 12px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: 0.2s;
+}
+
+.btnFecharRodape:hover {
+  background: #e2e8f0;
 }
 
 .botaoAtribuir {
@@ -303,43 +383,4 @@
     padding: 22px 18px;
     border-radius: 18px;
   }
-}
-
-.modalDetalhes {
-  width: 700px;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: white;
-  border-radius: 24px;
-  padding: 30px;
-}
-
-.itemProfissional {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 12px;
-  padding: 12px;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-}
-
-.btnRemover {
-  border: none;
-  background: #fee2e2;
-  color: #dc2626;
-  padding: 8px 12px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.botaoFechar {
-  width: 100%;
-  margin-top: 20px;
-  border: none;
-  background: #111827;
-  color: white;
-  padding: 14px;
-  border-radius: 12px;
-  cursor: pointer;
 }
