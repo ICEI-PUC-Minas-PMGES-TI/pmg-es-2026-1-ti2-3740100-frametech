@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../Components/Header/Header';
 import styles from './HomeAdm.module.css';
-import { Calendar, Clock, DollarSign, Gauge, XCircle } from 'lucide-react';
+import { Calendar, Clock, CreditCard, DollarSign, Gauge, XCircle } from 'lucide-react';
 
 const CartaoProposta = ({ proposta, onAceitar, onRecusar }) => {
   const statusFormatado = {
@@ -92,6 +92,13 @@ const HomeAdm = () => {
     pendentes: 0,
     percentual: 0
   });
+  const [indicadorPagamentos, setIndicadorPagamentos] = useState({
+    total: 0,
+    aprovados: 0,
+    pendentes: 0,
+    recusados: 0,
+    percentual: 0
+  });
   const [modalAberto, setModalAberto] = useState(false);
   const [eventoSelecionado, setEventoSelecionado] = useState(null);
   const [valorOrcamento, setValorOrcamento] = useState('');
@@ -103,6 +110,9 @@ const HomeAdm = () => {
 
       const indicadorResponse = await axios.get('http://localhost:8080/eventos/indicador-solicitacoes-atendidas');
       setIndicadorSolicitacoes(indicadorResponse.data);
+
+      const indicadorPagamentosResponse = await axios.get('http://localhost:8080/pagamentos/indicador-aprovados');
+      setIndicadorPagamentos(indicadorPagamentosResponse.data);
     } catch (error) {
       console.log(error);
     }
@@ -163,6 +173,26 @@ const HomeAdm = () => {
           <div className={styles.indicadorResumo}>
             <span>Atendidas <strong>{indicadorSolicitacoes.atendidas || 0}</strong></span>
             <span>Pendentes <strong>{indicadorSolicitacoes.pendentes || 0}</strong></span>
+          </div>
+        </section>
+
+        <section className={styles.indicadorCard}>
+          <div className={styles.indicadorIcone}>
+            <CreditCard size={22} />
+          </div>
+          <div className={styles.indicadorConteudo}>
+            <span className={styles.indicadorRotulo}>Percentual de pagamentos aprovados</span>
+            <strong className={styles.indicadorValor}>
+              {Number(indicadorPagamentos.percentual || 0).toFixed(1)}%
+            </strong>
+            <p className={styles.indicadorDescricao}>
+              {indicadorPagamentos.aprovados || 0} de {indicadorPagamentos.total || 0} pagamentos registrados foram aprovados.
+            </p>
+          </div>
+          <div className={styles.indicadorResumo}>
+            <span>Aprovados <strong>{indicadorPagamentos.aprovados || 0}</strong></span>
+            <span>Pendentes <strong>{indicadorPagamentos.pendentes || 0}</strong></span>
+            <span>Recusados <strong>{indicadorPagamentos.recusados || 0}</strong></span>
           </div>
         </section>
 

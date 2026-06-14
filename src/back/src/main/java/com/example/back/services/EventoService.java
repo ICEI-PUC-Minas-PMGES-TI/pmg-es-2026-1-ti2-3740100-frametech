@@ -15,8 +15,16 @@ public class EventoService {
     @Autowired
     private EventoRepository repository;
 
+    @Autowired
+    private PagamentoService pagamentoService;
+
     public Evento salvar(Evento evento, Long usuarioId) {
         evento.setUsuarioId(usuarioId);
+
+        if (evento.getStatus() == null || evento.getStatus().trim().isEmpty()) {
+            evento.setStatus("EM_ANALISE");
+        }
+
         return repository.save(evento);
     }
 
@@ -36,7 +44,17 @@ public class EventoService {
                 .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
 
         e.setStatus(status);
-        return repository.save(e);
+        Evento eventoSalvo = repository.save(e);
+
+        String statusNormalizado = status == null ? "" : status.trim().toUpperCase();
+
+        if (statusNormalizado.equals("ACEITO")) {
+            pagamentoService.aprovarPagamento(eventoSalvo);
+        } else if (statusNormalizado.equals("RECUSADO")) {
+            pagamentoService.recusarPagamento(eventoSalvo);
+        }
+
+        return eventoSalvo;
     }
 
     public Evento atualizarOrcamento(Long id, Double valor) {
@@ -44,7 +62,12 @@ public class EventoService {
                 .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
 
         e.setValorOrcamento(valor);
-        return repository.save(e);
+        e.setStatus("ORCAMENTO_ENVIADO");
+
+        Evento eventoSalvo = repository.save(e);
+        pagamentoService.registrarPagamentoPendente(eventoSalvo);
+
+        return eventoSalvo;
     }
 
     public IndicadorSolicitacoesDTO calcularTaxaSolicitacoesAtendidas() {
