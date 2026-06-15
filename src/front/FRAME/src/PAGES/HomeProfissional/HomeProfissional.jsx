@@ -361,7 +361,7 @@ export default function HomeProfissional() {
 
             <div
               className={styles.colHead}
-              style={{ borderTop: "1px solid #E8E4DC" }}
+              style={{ borderTop: "1px solid var(--ft-border)" }}
             >
               Eventos confirmados
 

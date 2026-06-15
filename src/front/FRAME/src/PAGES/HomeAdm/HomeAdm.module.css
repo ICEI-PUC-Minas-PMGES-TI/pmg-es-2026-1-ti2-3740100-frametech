@@ -1,13 +1,15 @@
 .layout {
   display: flex;
   min-height: 100vh;
-  background-color: #f4f4f5;
-  font-family: 'Segoe UI', sans-serif;
+  background: var(--ft-bg);
+  color: var(--ft-text);
+  font-family: var(--ft-font-sans);
 }
 
 .main {
   flex: 1;
-  padding: 40px 48px;
+  min-width: 0;
+  padding: var(--ft-page-padding);
   overflow-y: auto;
 }
 
@@ -15,334 +17,285 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 32px;
+  gap: var(--ft-space-4);
+  margin-bottom: var(--ft-space-8);
 }
 
 .pageTitle {
-  font-size: 22px;
-  font-weight: 700;
-  color: #111;
   margin: 0;
+  color: var(--ft-text);
+  font-family: var(--ft-font-display);
+  font-size: var(--ft-font-size-xl);
+  font-weight: 800;
 }
 
 .btnEscalas {
-  background-color: #111;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 22px;
-  font-size: 14px;
-  font-weight: 600;
+  min-height: var(--ft-button-height);
+  padding: 0 var(--ft-space-5);
+  color: var(--ft-on-accent);
+  background: var(--ft-accent);
+  border: 1px solid var(--ft-accent);
+  border-radius: var(--ft-radius-md);
+  font-size: var(--ft-font-size-sm);
+  font-weight: 800;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .btnEscalas:hover {
-  background-color: #333;
+  background: var(--ft-accent-strong);
+  transform: translateY(-1px);
+}
+
+.indicadorCard,
+.card,
+.modal {
+  background: var(--ft-surface);
+  border: 1px solid var(--ft-border);
+  border-radius: var(--ft-radius-lg);
+  box-shadow: var(--ft-shadow-xs);
 }
 
 .indicadorCard {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  padding: 18px 22px;
-  margin-bottom: 24px;
+  padding: var(--ft-card-padding);
+  margin-bottom: var(--ft-space-6);
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 18px;
+  gap: var(--ft-space-5);
   align-items: center;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .indicadorIcone {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  background: #fff1ec;
-  color: #e26b45;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--ft-radius-md);
+  background: var(--ft-accent-soft);
+  color: var(--ft-accent);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .indicadorConteudo {
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  min-width: 0;
+  gap: var(--ft-space-1);
 }
 
-.indicadorRotulo {
-  font-size: 11px;
+.indicadorRotulo,
+.metaLabel,
+.servicosLabel {
+  color: var(--ft-muted);
+  font-size: var(--ft-font-size-xs);
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: #999;
   text-transform: uppercase;
 }
 
 .indicadorValor {
-  font-size: 32px;
+  color: var(--ft-text);
+  font-size: var(--ft-font-size-3xl);
   line-height: 1;
-  color: #111;
 }
 
 .indicadorDescricao {
-  color: #666;
-  font-size: 13px;
   margin: 0;
+  color: var(--ft-muted);
+  font-size: var(--ft-font-size-sm);
 }
 
 .indicadorResumo {
   display: flex;
-  gap: 12px;
+  gap: var(--ft-space-3);
 }
 
 .indicadorResumo span {
-  min-width: 92px;
-  border: 1px solid #ececec;
-  border-radius: 10px;
-  padding: 10px 12px;
-  color: #888;
-  font-size: 11px;
-  font-weight: 700;
+  min-width: 96px;
+  padding: var(--ft-space-3);
+  color: var(--ft-muted);
+  border: 1px solid var(--ft-border);
+  border-radius: var(--ft-radius-md);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--ft-space-1);
 }
 
 .indicadorResumo strong {
-  color: #111;
-  font-size: 18px;
+  color: var(--ft-text);
+  font-size: var(--ft-font-size-lg);
 }
 
 .lista {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.vazio {
-  color: #999;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 40px;
+  gap: var(--ft-space-4);
 }
 
 .card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 20px 24px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  padding: var(--ft-card-padding);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  transition: box-shadow 0.2s;
+  gap: var(--ft-space-4);
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .card:hover {
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--ft-shadow-sm);
+  transform: translateY(-1px);
 }
 
 .cardAceita {
-  border-left: 4px solid #22c55e;
+  border-left: 4px solid var(--ft-success);
 }
 
-.cardHeader {
+.cardHeader,
+.cardFooter,
+.cardMeta,
+.precosArea {
   display: flex;
+  flex-wrap: wrap;
+  gap: var(--ft-space-4);
+}
+
+.cardHeader,
+.cardFooter {
   justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
-  flex-wrap: wrap;
 }
 
-.cardInfo {
+.cardInfo,
+.servicosArea {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--ft-space-1);
 }
 
 .cardTitulo {
-  font-size: 14px;
-  font-weight: 700;
-  color: #111;
   margin: 0;
+  color: var(--ft-text);
+  font-size: var(--ft-font-size-sm);
+  font-weight: 800;
 }
 
-.cardLocal {
-  font-size: 12px;
-  color: #888;
-}
-
-.cardMeta {
-  display: flex;
-  gap: 32px;
-  flex-wrap: wrap;
+.cardLocal,
+.servicoSeparador {
+  color: var(--ft-muted);
+  font-size: var(--ft-font-size-xs);
 }
 
 .metaItem {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
+  gap: var(--ft-space-2);
 }
 
 .metaIcon {
-  color: #aaa;
+  color: var(--ft-muted);
   margin-top: 2px;
   flex-shrink: 0;
 }
 
-.metaLabel {
-  display: block;
-  font-size: 11px;
-  color: #999;
-  margin-bottom: 1px;
-}
-
-.metaValor {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  color: #222;
-}
-
-.destaque {
-  color: #111;
-  font-size: 14px;
-}
-
-.cardFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.servicosArea {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.servicosLabel {
-  font-size: 11px;
-  color: #999;
+.metaValor,
+.destaque,
+.servicoTag {
+  color: var(--ft-text);
+  font-size: var(--ft-font-size-sm);
+  font-weight: 700;
 }
 
 .servicosTags {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--ft-space-1);
   flex-wrap: wrap;
-}
-
-.servicoTag {
-  font-size: 13px;
-  font-weight: 600;
-  color: #222;
-}
-
-.servicoSeparador {
-  color: #bbb;
-  font-size: 13px;
 }
 
 .acoes {
   display: flex;
-  gap: 10px;
+  gap: var(--ft-space-2);
+  flex-wrap: wrap;
 }
 
-.btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border: none;
-  border-radius: 8px;
-  padding: 9px 20px;
-  font-size: 13px;
-  font-weight: 600;
+.btn,
+.btnAceitar,
+.btnRecusar {
+  min-height: var(--ft-button-height);
+  padding: 0 var(--ft-space-5);
+  border-radius: var(--ft-radius-md);
+  border: 1px solid transparent;
+  font-size: var(--ft-font-size-sm);
+  font-weight: 800;
   cursor: pointer;
-  transition: opacity 0.2s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ft-space-2);
+  transition: transform 0.2s, opacity 0.2s;
 }
 
-.btn:hover {
-  opacity: 0.85;
+.btn:hover,
+.btnAceitar:hover,
+.btnRecusar:hover {
   transform: translateY(-1px);
 }
 
 .btnAceitar {
-  background-color: #111;
-  color: #fff;
+  background: var(--ft-accent);
+  border-color: var(--ft-accent);
+  color: var(--ft-on-accent);
 }
 
 .btnRecusar {
-  background-color: #f1f1f1;
-  color: #333;
-}
-
-.precosArea {
-  display: flex;
-  gap: 32px;
-  flex-wrap: wrap;
+  background: var(--ft-surface-soft);
+  border-color: var(--ft-border);
+  color: var(--ft-text);
 }
 
 .modalOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.45);
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: var(--ft-space-6);
   z-index: 999;
 }
 
 .modal {
-  width: 100%;
-  max-width: 420px;
-  background: #fff;
-  border-radius: 14px;
-  padding: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  width: min(420px, 100%);
+  padding: var(--ft-card-padding);
+  box-shadow: var(--ft-shadow-lg);
 }
 
 .modal h2 {
-  margin: 0 0 20px;
-  font-size: 20px;
-  color: #111;
+  margin: 0 0 var(--ft-space-5);
+  color: var(--ft-text);
+  font-size: var(--ft-font-size-xl);
 }
 
 .inputOrcamento {
   width: 100%;
-  box-sizing: border-box;
-  padding: 12px 14px;
-  border: 1px solid #d4d4d8;
-  border-radius: 8px;
-  font-size: 15px;
+  min-height: var(--ft-input-height);
+  padding: 0 var(--ft-space-4);
+  color: var(--ft-text);
+  background: var(--ft-surface-muted);
+  border: 1px solid var(--ft-border);
+  border-radius: var(--ft-radius-md);
+  font-size: var(--ft-font-size-sm);
   outline: none;
 }
 
 .inputOrcamento:focus {
-  border-color: #111;
+  border-color: var(--ft-accent);
 }
 
 .modalButtons {
+  margin-top: var(--ft-space-5);
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.modalButtons .btnAceitar {
-  background: #111;
-  color: #fff;
-}
-
-.modalButtons .btnRecusar {
-  background: #f1f1f1;
-  color: #333;
+  gap: var(--ft-space-3);
 }
 
 @media (max-width: 767px) {
@@ -352,74 +305,37 @@
 
   .main {
     width: 100%;
-    padding: 20px 16px 32px;
-    box-sizing: border-box;
+    padding: var(--ft-page-padding);
   }
 
-  .topBar {
+  .topBar,
+  .cardHeader,
+  .cardFooter,
+  .cardMeta,
+  .precosArea,
+  .indicadorResumo {
     flex-direction: column;
     align-items: stretch;
-    gap: 14px;
-    margin-bottom: 24px;
   }
 
-  .btnEscalas {
+  .btnEscalas,
+  .acoes,
+  .btn,
+  .btnAceitar,
+  .btnRecusar,
+  .modalButtons button {
     width: 100%;
   }
 
   .indicadorCard {
     grid-template-columns: 1fr;
-    align-items: stretch;
-    padding: 18px 16px;
-  }
-
-  .indicadorResumo {
-    flex-direction: column;
-  }
-
-  .indicadorResumo span {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .card {
-    padding: 18px 16px;
-    border-radius: 12px;
-  }
-
-  .cardHeader,
-  .cardFooter,
-  .cardMeta,
-  .precosArea {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .servicosTags,
-  .acoes {
-    flex-wrap: wrap;
-  }
-
-  .acoes,
-  .btn {
-    width: 100%;
-  }
-
-  .btn {
-    justify-content: center;
   }
 
   .modal {
-    width: calc(100% - 32px);
-    padding: 20px;
+    width: calc(100vw - 32px);
   }
 
   .modalButtons {
     flex-direction: column;
   }
-
-  .modalButtons button {
-    width: 100%;
-  } 
 }

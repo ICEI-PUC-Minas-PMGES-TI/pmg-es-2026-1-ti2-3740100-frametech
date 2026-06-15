@@ -1,34 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap');
 
 .pagina {
-  font-family: 'DM Sans', sans-serif;
-  background: #f5f4f2;
   min-height: 100vh;
-  height: 100vh;
+  padding: var(--ft-page-padding);
+  background: var(--ft-bg);
+  color: var(--ft-text);
+  font-family: var(--ft-font-sans);
   display: grid;
   grid-template-rows: auto 1fr;
-  padding: 28px 40px;
-  box-sizing: border-box;
+  gap: var(--ft-space-6);
 }
 
 .logo {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  line-height: 1;
+}
+
+.logoFrame,
+.logoTech {
+  font-family: var(--ft-font-display);
+  font-size: var(--ft-font-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.1em;
 }
 
 .logoFrame {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: #1a1a1a;
+  color: var(--ft-text);
 }
 
 .logoTech {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #d94f2b;
+  color: var(--ft-accent);
 }
 
 .centro {
@@ -38,147 +40,183 @@
 }
 
 .cartao {
-  background: #ffffff;
-  border-radius: 22px;
-  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
-  padding: 52px 56px;
-  width: 100%;
-  max-width: 600px;
+  width: min(100%, 560px);
+  padding: clamp(28px, 4vw, 48px);
+  background: var(--ft-surface);
+  border: 1px solid var(--ft-border);
+  border-radius: var(--ft-radius-xl);
+  box-shadow: var(--ft-shadow);
 }
 
 .tituloCartao {
-  font-family: 'DM Serif Display', serif;
-  font-size: 34px;
-  font-weight: 400;
-  color: #1a1a1a;
+  margin: 0 0 var(--ft-space-2);
+  color: var(--ft-text);
+  font-family: var(--ft-font-display);
+  font-size: var(--ft-font-size-2xl);
+  font-weight: 700;
+  line-height: var(--ft-line-tight);
   text-align: center;
-  margin: 0 0 8px;
 }
 
 .subCartao {
+  margin: 0 0 var(--ft-space-8);
+  color: var(--ft-muted);
+  font-size: var(--ft-font-size-sm);
   text-align: center;
-  font-size: 14px;
-  color: #888;
-  margin: 0 0 36px;
 }
 
 .link {
-  color: #d94f2b;
+  color: var(--ft-accent);
+  font-weight: 700;
   text-decoration: none;
-  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 .labelSecao {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: #d94f2b;
+  margin: 0 0 var(--ft-space-3);
+  color: var(--ft-accent);
+  font-size: var(--ft-font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin: 0 0 14px;
 }
 
 .tiposConta {
-  background: #f9f8f6;
-  border: 1px solid #e4e1db;
-  border-radius: 14px;
-  padding: 16px;
-  display: flex;
-  gap: 12px;
-  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ft-space-3);
+  padding: var(--ft-space-3);
+  margin-bottom: var(--ft-space-8);
+  background: var(--ft-surface-muted);
+  border: 1px solid var(--ft-border);
+  border-radius: var(--ft-radius-lg);
 }
 
 .botaoTipo {
-  flex: 1;
+  min-height: 96px;
+  padding: var(--ft-space-4) var(--ft-space-3);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--ft-radius-md);
+  color: var(--ft-text);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 7px;
-  padding: 20px 10px 16px;
-  border-radius: 10px;
-  border: 1.5px solid transparent;
-  background: transparent;
-  cursor: pointer;
+  justify-content: center;
+  gap: var(--ft-space-2);
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
 
+.botaoTipo:hover,
 .botaoTipoAtivo {
-  background: #fdf0ed;
-  border-color: #f5c4b8;
+  background: var(--ft-accent-soft);
+  border-color: var(--ft-accent);
 }
 
 .iconeTipo {
-  font-size: 24px;
+  font-size: 1.4rem;
+  line-height: 1;
 }
 
 .labelTipo {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: #1a1a1a;
+  color: var(--ft-text);
+  font-size: var(--ft-font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .subTipo {
-  font-size: 11px;
-  color: #888;
+  color: var(--ft-muted);
+  font-size: var(--ft-font-size-xs);
 }
 
 .campo {
-  margin-bottom: 18px;
+  margin-bottom: var(--ft-space-4);
 }
 
 .labelCampo {
   display: block;
-  font-size: 13px;
-  font-weight: 500;
-  color: #1a1a1a;
-  margin-bottom: 7px;
+  margin-bottom: var(--ft-space-2);
+  color: var(--ft-text-soft);
+  font-size: var(--ft-font-size-sm);
+  font-weight: 700;
 }
 
 .input {
   width: 100%;
-  padding: 13px 16px;
-  border: 1.5px solid #e4e1db;
-  border-radius: 10px;
-  font-size: 15px;
+  min-height: var(--ft-input-height);
+  padding: 0 var(--ft-space-4);
+  color: var(--ft-text);
+  background: var(--ft-surface-muted);
+  border: 1px solid var(--ft-border);
+  border-radius: var(--ft-radius-md);
+  font-size: var(--ft-font-size-sm);
+}
+
+.input:focus {
+  border-color: var(--ft-accent);
 }
 
 .esqueci {
+  margin: 0 0 var(--ft-space-5);
+  font-size: var(--ft-font-size-sm);
   text-align: right;
-  margin-bottom: 28px;
-  font-size: 13px;
+}
+
+.botaoPrincipal,
+.botaoGoogle {
+  width: 100%;
+  min-height: var(--ft-button-height);
+  border-radius: var(--ft-radius-md);
+  font-size: var(--ft-font-size-sm);
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .botaoPrincipal {
-  width: 100%;
-  padding: 16px;
-  background: #1a1a1a;
-  color: #ffffff;
-  border: none;
-  border-radius: 12px;
-  font-size: 15px;
-  cursor: pointer;
-  margin-bottom: 12px;
+  margin-bottom: var(--ft-space-3);
+  color: var(--ft-on-accent);
+  background: var(--ft-accent);
+  border: 1px solid var(--ft-accent);
+}
+
+.botaoPrincipal:hover {
+  background: var(--ft-accent-strong);
+  border-color: var(--ft-accent-strong);
 }
 
 .botaoGoogle {
-  width: 100%;
-  padding: 15px;
-  background: #ffffff;
-  border: 1.5px solid #e4e1db;
-  border-radius: 12px;
+  color: var(--ft-text);
+  background: var(--ft-surface);
+  border: 1px solid var(--ft-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: var(--ft-space-2);
+}
+
+.botaoGoogle:hover {
+  background: var(--ft-surface-soft);
+}
+
+.msgErro {
+  margin: 0 0 var(--ft-space-4);
+  padding: var(--ft-space-3) var(--ft-space-4);
+  color: var(--ft-danger);
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.22);
+  border-radius: var(--ft-radius-md);
+  font-size: var(--ft-font-size-sm);
 }
 
 @media (max-width: 767px) {
   .pagina {
-    min-height: 100vh;
-    height: auto;
-    padding: 20px 16px 32px;
-    grid-template-rows: auto auto;
-    gap: 28px;
+    padding: var(--ft-page-padding);
   }
 
   .logo {
@@ -190,48 +228,26 @@
   }
 
   .cartao {
-    max-width: none;
-    padding: 28px 18px;
-    border-radius: 16px;
-    box-sizing: border-box;
+    padding: var(--ft-card-padding);
   }
 
   .tituloCartao {
-    font-size: 28px;
-  }
-
-  .subCartao {
-    margin-bottom: 26px;
+    font-size: var(--ft-font-size-xl);
   }
 
   .tiposConta {
-    flex-direction: column;
-    padding: 12px;
-    gap: 10px;
+    grid-template-columns: 1fr;
   }
 
   .botaoTipo {
+    min-height: 64px;
     flex-direction: row;
     justify-content: flex-start;
     text-align: left;
-    padding: 14px;
   }
 
   .iconeTipo {
     width: 32px;
     text-align: center;
   }
-
-  .input {
-    box-sizing: border-box;
-  }
-}
-
-.msgErro {
-  font-size: 12px;
-  color: #c0392b;
-  margin: 0;
-  padding: 8px 12px;
-  background: #fdf0ef;
-  border-radius: 8px;
 }

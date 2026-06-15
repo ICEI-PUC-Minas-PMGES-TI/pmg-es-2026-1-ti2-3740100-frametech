@@ -1,15 +1,16 @@
 .themeToggle {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
+  right: var(--ft-space-5);
+  bottom: var(--ft-space-5);
   z-index: 1000;
   width: 42px;
   height: 42px;
+  min-height: 42px;
   border: 1px solid var(--ft-border);
-  border-radius: 12px;
+  border-radius: var(--ft-radius-md);
   background: var(--ft-surface);
   color: var(--ft-text);
-  box-shadow: var(--ft-shadow);
+  box-shadow: var(--ft-shadow-sm);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -25,9 +26,10 @@
 
 @media (max-width: 767px) {
   .themeToggle {
-    right: 14px;
-    bottom: 14px;
+    right: var(--ft-space-4);
+    bottom: var(--ft-space-4);
     width: 40px;
     height: 40px;
+    min-height: 40px;
   }
 }

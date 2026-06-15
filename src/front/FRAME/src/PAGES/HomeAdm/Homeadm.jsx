@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../Components/Header/Header';
@@ -111,7 +111,7 @@ const HomeAdm = () => {
   const [eventoSelecionado, setEventoSelecionado] = useState(null);
   const [valorOrcamento, setValorOrcamento] = useState('');
 
-  const buscarEventos = async () => {
+  const buscarEventos = useCallback(async () => {
     try {
       const eventosResponse = await axios.get('http://localhost:8080/eventos');
       setPropostas(eventosResponse.data);
@@ -127,11 +127,12 @@ const HomeAdm = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    buscarEventos();
-  }, []);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void buscarEventos();
+  }, [buscarEventos]);
 
   const handleAceitar = (id) => {
     setEventoSelecionado(id);
