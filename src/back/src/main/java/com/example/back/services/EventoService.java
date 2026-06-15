@@ -1,6 +1,7 @@
 package com.example.back.services;
 
 import com.example.back.dto.IndicadorSolicitacoesDTO;
+import com.example.back.dto.IndicadorEventosConcluidosDTO;
 import com.example.back.model.Evento;
 import com.example.back.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,4 +102,47 @@ public class EventoService {
                 percentual
         );
     }
+
+    public IndicadorEventosConcluidosDTO calcularTaxaEventosConcluidosPelosConfirmados() {
+
+        List<Evento> eventos = repository.findAll();
+
+        long confirmados = eventos.stream()
+                .filter(e -> {
+                    if (e.getStatus() == null) {
+                        return false;
+                    }
+
+                    String status = e.getStatus().trim().toUpperCase();
+
+                    return status.equals("ACEITO") || status.equals("CONCLUIDO") || status.equals("CONCLUIDA");
+                })
+                .count();
+
+        long concluidos = eventos.stream()
+                .filter(e -> {
+                    if (e.getStatus() == null) {
+                        return false;
+                    }
+
+                    String status = e.getStatus().trim().toUpperCase();
+
+                    return status.equals("CONCLUIDO") || status.equals("CONCLUIDA");
+                })
+                .count();
+
+        long pendentesConclusao = confirmados - concluidos;
+
+        double percentual = confirmados == 0
+                ? 0.0
+                : ((double) concluidos / confirmados) * 100.0;
+
+        return new IndicadorEventosConcluidosDTO(
+                confirmados,
+                concluidos,
+                pendentesConclusao,
+                percentual
+        );
+    }
+
 }
