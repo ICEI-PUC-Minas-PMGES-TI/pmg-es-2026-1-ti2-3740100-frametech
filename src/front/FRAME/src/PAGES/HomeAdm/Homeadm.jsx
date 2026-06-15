@@ -3,14 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../Components/Header/Header';
 import styles from './HomeAdm.module.css';
-import { Calendar, Clock, CreditCard, DollarSign, Gauge, XCircle } from 'lucide-react';
+import { Calendar, CheckCircle, Clock, CreditCard, DollarSign, Gauge, XCircle } from 'lucide-react';
 
 const CartaoProposta = ({ proposta, onAceitar, onRecusar }) => {
   const statusFormatado = {
     EM_ANALISE: 'pendente',
     ORCAMENTO_ENVIADO: 'orçamento enviado',
     ACEITO: 'aceita',
-    RECUSADO: 'recusada'
+    RECUSADO: 'recusada',
+    CONCLUIDO: 'concluída',
+    CONCLUIDA: 'concluída'
   };
 
   return (
@@ -99,6 +101,12 @@ const HomeAdm = () => {
     recusados: 0,
     percentual: 0
   });
+  const [indicadorEventosConcluidos, setIndicadorEventosConcluidos] = useState({
+    confirmados: 0,
+    concluidos: 0,
+    pendentesConclusao: 0,
+    percentual: 0
+  });
   const [modalAberto, setModalAberto] = useState(false);
   const [eventoSelecionado, setEventoSelecionado] = useState(null);
   const [valorOrcamento, setValorOrcamento] = useState('');
@@ -113,6 +121,9 @@ const HomeAdm = () => {
 
       const indicadorPagamentosResponse = await axios.get('http://localhost:8080/pagamentos/indicador-aprovados');
       setIndicadorPagamentos(indicadorPagamentosResponse.data);
+
+      const indicadorEventosConcluidosResponse = await axios.get('http://localhost:8080/eventos/indicador-eventos-concluidos');
+      setIndicadorEventosConcluidos(indicadorEventosConcluidosResponse.data);
     } catch (error) {
       console.log(error);
     }
@@ -193,6 +204,27 @@ const HomeAdm = () => {
             <span>Aprovados <strong>{indicadorPagamentos.aprovados || 0}</strong></span>
             <span>Pendentes <strong>{indicadorPagamentos.pendentes || 0}</strong></span>
             <span>Recusados <strong>{indicadorPagamentos.recusados || 0}</strong></span>
+          </div>
+        </section>
+
+
+        <section className={styles.indicadorCard}>
+          <div className={styles.indicadorIcone}>
+            <CheckCircle size={22} />
+          </div>
+          <div className={styles.indicadorConteudo}>
+            <span className={styles.indicadorRotulo}>Taxa de eventos concluídos pelos confirmados</span>
+            <strong className={styles.indicadorValor}>
+              {Number(indicadorEventosConcluidos.percentual || 0).toFixed(1)}%
+            </strong>
+            <p className={styles.indicadorDescricao}>
+              {indicadorEventosConcluidos.concluidos || 0} de {indicadorEventosConcluidos.confirmados || 0} eventos confirmados foram concluídos.
+            </p>
+          </div>
+          <div className={styles.indicadorResumo}>
+            <span>Concluídos <strong>{indicadorEventosConcluidos.concluidos || 0}</strong></span>
+            <span>Confirmados <strong>{indicadorEventosConcluidos.confirmados || 0}</strong></span>
+            <span>Pendentes <strong>{indicadorEventosConcluidos.pendentesConclusao || 0}</strong></span>
           </div>
         </section>
 
