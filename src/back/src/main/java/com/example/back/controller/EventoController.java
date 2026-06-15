@@ -1,6 +1,7 @@
 package com.example.back.controller;
 
 import com.example.back.dto.IndicadorSolicitacoesDTO;
+import com.example.back.dto.IndicadorEventosConcluidosDTO;
 import com.example.back.model.Evento;
 import com.example.back.services.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ public class EventoController {
     @GetMapping("/indicador-solicitacoes-atendidas")
     public IndicadorSolicitacoesDTO indicadorSolicitacoesAtendidas() {
         return service.calcularTaxaSolicitacoesAtendidas();
+    }
+
+    @GetMapping("/indicador-eventos-concluidos")
+    public IndicadorEventosConcluidosDTO indicadorEventosConcluidos() {
+        return service.calcularTaxaEventosConcluidosPelosConfirmados();
     }
 
     @PutMapping("/{id}/status")
