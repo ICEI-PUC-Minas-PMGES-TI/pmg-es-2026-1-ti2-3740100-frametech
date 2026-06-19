@@ -17,23 +17,18 @@
 
 .logoContainer {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 10%;
 }
 
-.logoFrame {
-  font-size: var(--ft-font-size-xs);
-  font-weight: 700;
-  color: var(--ft-text-soft);
-  letter-spacing: 0.06em;
-}
-
-.logoTech {
-  font-size: var(--ft-font-size-sm);
-  font-weight: 900;
-  color: var(--ft-accent);
-  letter-spacing: 0.06em;
+.logoImage {
+  width: 120%;
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .navGroup {
@@ -97,10 +92,6 @@
     padding: var(--ft-space-6) 0;
     border-right: 1px solid var(--ft-border);
     border-bottom: none;
-  }
-
-  .logoContainer {
-    align-items: center;
   }
 
   .navGroup {
