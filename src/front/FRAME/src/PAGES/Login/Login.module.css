@@ -2,19 +2,57 @@
 
 .pagina {
   min-height: 100vh;
-  padding: 10px var(--ft-page-padding) var(--ft-page-padding);
   background: var(--ft-bg);
   color: var(--ft-text);
   font-family: var(--ft-font-sans);
   display: grid;
   grid-template-rows: auto 1fr;
+}
+
+/* --- Barra Superior Atualizada --- */
+.barraSuperior {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Alinha o conteúdo à esquerda */
+  padding: 0 var(--ft-page-padding);
+  background: var(--ft-surface);
+  border-bottom: 1px solid var(--ft-border);
+  min-height: var(--ft-header-size, 80px); /* Garante uma altura consistente */
+}
+
+/* Container para agrupar o botão e as logos lado a lado */
+.esquerdaBarra {
+  display: flex;
+  align-items: center;
+  gap: var(--ft-space-4); /* Espaçamento ideal entre o botão de voltar e a logo */
+}
+
+/* Estilização do Botão de Voltar */
+.botaoVoltar {
+  display: flex;
+  align-items: center;
   gap: var(--ft-space-2);
+  color: var(--ft-muted);
+  font-size: var(--ft-font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+  padding: var(--ft-space-2) var(--ft-space-3);
+  border-radius: var(--ft-radius-md);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.botaoVoltar:hover {
+  background: var(--ft-surface-muted);
+  color: var(--ft-text);
+}
+
+.setaVoltar {
+  font-size: 1.1rem;
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   margin-top: 0;
 }
 
@@ -51,6 +89,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: var(--ft-page-padding);
 }
 
 .cartao {
@@ -228,13 +267,23 @@
   font-size: var(--ft-font-size-sm);
 }
 
+/* --- Responsividade Atualizada --- */
 @media (max-width: 767px) {
-  .pagina {
-    padding: var(--ft-page-padding);
+  .barraSuperior {
+    padding: var(--ft-space-3) var(--ft-page-padding);
+    min-height: auto;
+  }
+
+  .esquerdaBarra {
+    flex-direction: column-reverse; /* Ajusta o fluxo para empilhar verticalmente em telas pequenas */
+    align-items: flex-start;
+    gap: var(--ft-space-2);
+    width: 100%;
   }
 
   .logoContainer {
-    justify-content: center;
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .centro {

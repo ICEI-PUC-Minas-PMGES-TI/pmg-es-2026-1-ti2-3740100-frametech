@@ -16,6 +16,36 @@
   gap: var(--ft-space-4);
 }
 
+/* --- Alinhamento da Área Esquerda do Cabeçalho --- */
+.esquerdaCabecalho {
+  display: flex;
+  align-items: center;
+  gap: var(--ft-space-5);
+}
+
+/* Estilização do Botão de Voltar */
+.botaoVoltar {
+  display: flex;
+  align-items: center;
+  gap: var(--ft-space-2);
+  color: var(--ft-muted);
+  font-size: var(--ft-font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+  padding: var(--ft-space-2) var(--ft-space-3);
+  border-radius: var(--ft-radius-md);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.botaoVoltar:hover {
+  background: var(--ft-surface-muted);
+  color: var(--ft-text);
+}
+
+.setaVoltar {
+  font-size: 1.1rem;
+}
+
 .logoContainer {
   display: flex;
   align-items: center;
@@ -50,7 +80,6 @@
   display: block;
 }
 
-/* O restante do seu arquivo CSS permanece idêntico... */
 .logoDestaque,
 .loginLinkDestaque,
 .termoLink {
@@ -293,6 +322,14 @@
     align-items: flex-start;
     flex-direction: column;
     gap: var(--ft-space-3);
+  }
+
+  /* Organiza os botões em telas pequenas */
+  .esquerdaCabecalho {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: var(--ft-space-2);
+    width: 100%;
   }
 
   .conteudo {

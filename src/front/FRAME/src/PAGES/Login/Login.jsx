@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import styles from './Login.module.css';
 import LogoClara from '../../Components/Logo.png'; 
-import LogoEscura from '../../Components/LogoEscura.png'; // 👈 Adicionada a importação da logo escura
+import LogoEscura from '../../Components/LogoEscura.png'; 
 import {
     getHomeByRole,
     normalizeUserType
@@ -86,11 +86,17 @@ function Login() {
 
     return (
         <div className={styles.pagina}>
-            
-            {/* 👈 Estrutura atualizada para renderizar ambas as logos */}
-            <div className={styles.logoContainer}>
-                <img src={LogoClara} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoClara}`} />
-                <img src={LogoEscura} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoEscura}`} />
+            <div className={styles.barraSuperior}>
+                <div className={styles.esquerdaBarra}>
+                    <Link to="/" className={styles.botaoVoltar}>
+                        <span className={styles.setaVoltar}>←</span>
+                    </Link>
+                    {/* 🏢 Logo agora é um link clicável para a Home */}
+                    <Link to="/" className={styles.logoContainer}>
+                        <img src={LogoClara} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoClara}`} />
+                        <img src={LogoEscura} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoEscura}`} />
+                    </Link>
+                </div>
             </div>
 
             <div className={styles.centro}>

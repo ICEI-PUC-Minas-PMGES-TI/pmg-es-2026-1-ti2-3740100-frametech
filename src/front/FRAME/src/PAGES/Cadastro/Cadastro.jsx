@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Cadastro.module.css';
 import LogoClara from '../../Components/Logo.png'; 
-import LogoEscura from '../../Components/LogoEscura.png'; // 👈 Adicionada a importação da logo escura
+import LogoEscura from '../../Components/LogoEscura.png'; 
 import {
     validarTelefone,
     formatarTelefone,
@@ -106,17 +107,22 @@ function Cadastro() {
     return (
         <div className={styles.pagina}>
             <div className={styles.cabecalho}>
-                {/* 👈 Estrutura atualizada para renderizar ambas as logos */}
-                <div className={styles.logoContainer}>
-                    <img src={LogoClara} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoClara}`} />
-                    <img src={LogoEscura} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoEscura}`} />
+                <div className={styles.esquerdaCabecalho}>
+                    <Link to="/" className={styles.botaoVoltar}>
+                        <span className={styles.setaVoltar}>←</span>
+                    </Link>
+                    {/* 🏢 Logo agora é um link clicável para a Home */}
+                    <Link to="/" className={styles.logoContainer}>
+                        <img src={LogoClara} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoClara}`} />
+                        <img src={LogoEscura} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoEscura}`} />
+                    </Link>
                 </div>
                 
                 <span className={styles.loginLink}>
                     Já tem conta?{' '}
-                    <a href="/login" className={styles.loginLinkDestaque}>
+                    <Link to="/login" className={styles.loginLinkDestaque}>
                         Entrar agora
-                    </a>
+                    </Link>
                 </span>
             </div>
 
