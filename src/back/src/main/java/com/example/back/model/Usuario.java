@@ -1,6 +1,7 @@
 package com.example.back.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,16 +14,27 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String nome;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    // 🔒 Segurança: Impede que a senha seja exposta em requisições de leitura (GET)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Column(nullable = false)
     private String senha;
+
     private String tipo;
     private String telefone;
 
-    @Column(name = "foto_perfil", columnDefinition = "TEXT")
+    // 📸 Correção do Upload: @Lob garante suporte a arquivos grandes (Base64 longos) no Banco de Dados
+    // O columnDefinition garante compatibilidade com LONGTEXT em bancos como MySQL/MariaDB
+    @Lob
+    @Column(name = "foto_perfil", columnDefinition = "LONGTEXT")
     private String fotoPerfil;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Evento> eventos;
 
@@ -33,7 +45,7 @@ public class Usuario {
         return id;
     }
 
-    public void setId(Long id) {
+   public void setId(Long id) {
         this.id = id;
     }
 

@@ -110,7 +110,7 @@ const EscalaEquipe = () => {
         },
         body: JSON.stringify({
           eventoId: eventoSelecionado.id,
-          profissionalId: profissionalSelecionado.id,
+          profissionalId: profissionalSelecionado.id, // Corrigido aqui
           admId: sessionStorage.getItem("usuarioId"),
           diaSemana: diaSelecionado
         })
@@ -134,7 +134,7 @@ const EscalaEquipe = () => {
   const buscarEscala = (profissionalNome, dia) => {
     return escalas.find(
       (escala) =>
-        escala.nomeProfissional === profissionalNome &&
+        escala.nomeProfissional === profissionalNome && // Corrigido aqui
         escala.diaSemana === dia
     );
   };
@@ -167,7 +167,16 @@ const EscalaEquipe = () => {
             <div key={profissional.id} className={styles.linha}>
               <div className={styles.profissional}>
                 <div className={styles.avatar}>
-                  {profissional.nome?.charAt(0)?.toUpperCase()}
+                  {profissional.fotoPerfil ? (
+                    <img 
+                      src={profissional.fotoPerfil} 
+                      alt={`Foto de ${profissional.nome}`} 
+                      className={styles.avatarImg} 
+                      style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    profissional.nome?.charAt(0)?.toUpperCase()
+                  )}
                 </div>
 
                 <div className={styles.infoProfissional}>

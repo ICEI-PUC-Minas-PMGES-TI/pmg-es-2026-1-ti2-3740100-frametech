@@ -52,9 +52,15 @@ public class UsuarioController {
         service.deletar(id);
     }
 
+    // ✅ Tipo de retorno alterado para ResponseEntity para estruturar corretamente a resposta HTTP com a foto
     @PutMapping("/foto/{id}")
-    public Usuario atualizarFoto(@PathVariable Long id, @RequestBody Usuario usuario) {
-        return service.atualizarFoto(id, usuario.getFotoPerfil());
+    public ResponseEntity<?> atualizarFoto(@PathVariable Long id, @RequestBody Usuario usuario) {
+        try {
+            Usuario usuarioAtualizado = service.atualizarFoto(id, usuario.getFotoPerfil());
+            return ResponseEntity.ok(usuarioAtualizado);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/profissionais")

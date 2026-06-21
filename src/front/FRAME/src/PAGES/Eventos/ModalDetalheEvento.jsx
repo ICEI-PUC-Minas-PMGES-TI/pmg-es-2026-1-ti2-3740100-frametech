@@ -204,36 +204,49 @@ const ModalDetalheEvento = ({ eventoId, profissionais, onFechar, onAtualizar }) 
                 <p className={styles.semProfissionais}>Nenhum profissional escalado ainda.</p>
               ) : (
                 <ul className={styles.listaProfissionais}>
-                  {detalhe.profissionais.map((p) => (
-                    <li key={p.escalaId} className={styles.itemProfissional}>
-                      <div className={styles.avatarProfissional}>
-                        {p.nome?.charAt(0)?.toUpperCase()}
-                      </div>
-                      <div className={styles.infoProfissional}>
-                        <strong>{p.nome}</strong>
-                        {p.telefone && <span>{p.telefone}</span>}
-                      </div>
-                      <span className={`${styles.statusEscala} ${statusClass(p.statusEscala)}`}>
-                        {statusLabel(p.statusEscala)}
-                      </span>
-                      <div className={styles.acoesProfissional}>
-                        <button
-                          className={styles.btnTrocar}
-                          onClick={() => abrirModalTrocar(p)}
-                          disabled={salvando}
-                        >
-                          Trocar
-                        </button>
-                        <button
-                          className={styles.btnRemover}
-                          onClick={() => handleRemover(p.escalaId)}
-                          disabled={salvando}
-                        >
-                          Remover
-                        </button>
-                      </div>
-                    </li>
-                  ))}
+                  {detalhe.profissionais.map((p) => {
+                    // 🔍 Cruza o item da escala com o profissional da lista completa para obter a fotoPerfil
+                    const dadosCompletos = profissionais.find((prof) => prof.id === p.profissionalId);
+
+                    return (
+                      <li key={p.escalaId} className={styles.itemProfissional}>
+                        <div className={styles.avatarProfissional}>
+                          {dadosCompletos?.fotoPerfil ? (
+                            <img 
+                              src={dadosCompletos.fotoPerfil} 
+                              alt={`Foto de ${p.nome}`} 
+                              style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                            />
+                          ) : (
+                            p.nome?.charAt(0)?.toUpperCase()
+                          )}
+                        </div>
+                        <div className={styles.infoProfissional}>
+                          <strong>{p.nome}</strong>
+                          {p.telefone && <span>{p.telefone}</span>}
+                        </div>
+                        <span className={`${styles.statusEscala} ${statusClass(p.statusEscala)}`}>
+                          {statusLabel(p.statusEscala)}
+                        </span>
+                        <div className={styles.acoesProfissional}>
+                          <button
+                            className={styles.btnTrocar}
+                            onClick={() => abrirModalTrocar(p)}
+                            disabled={salvando}
+                          >
+                            Trocar
+                          </button>
+                          <button
+                            className={styles.btnRemover}
+                            onClick={() => handleRemover(p.escalaId)}
+                            disabled={salvando}
+                          >
+                            Remover
+                          </button>
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             </div>

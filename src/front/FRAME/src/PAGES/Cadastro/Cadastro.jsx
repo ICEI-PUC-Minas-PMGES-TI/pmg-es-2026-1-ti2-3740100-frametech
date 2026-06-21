@@ -26,12 +26,30 @@ function Cadastro() {
         senha: '',
         confirmarSenha: '',
     });
+    
+    // Novo estado para controlar o arquivo de imagem e a pré-visualização
+    const [fotoPerfil, setFotoPerfil] = useState('');
+    const [previewFoto, setPreviewFoto] = useState('');
 
     const [erros, setErros] = useState({});
     const [aceito, setAceito] = useState(false);
 
     const atualizar = (campo) => (e) =>
         setForm((f) => ({ ...f, [campo]: e.target.value }));
+
+    // Função para tratar o upload e converter em string Base64
+    const handleFotoChange = (e) => {
+        const arquivo = e.target.files[0];
+        if (arquivo) {
+            setPreviewFoto(URL.createObjectURL(arquivo)); // Cria URL para pré-visualização na tela
+            
+            const leitor = new FileReader();
+            leitor.onloadend = () => {
+                setFotoPerfil(leitor.result); // Armazena a string base64
+            };
+            leitor.readAsDataURL(arquivo);
+        }
+    };
 
     const handleTelefoneChange = (e) => {
         const formatado = formatarTelefone(e.target.value);
@@ -86,6 +104,7 @@ function Cadastro() {
                     telefone: filtrarApenasNumeros(form.telefone),
                     senha: form.senha,
                     tipo: tipoConta,
+                    fotoPerfil: fotoPerfil || null, // Enviando a foto (se houver) para o backend
                 }),
             });
 
@@ -111,7 +130,6 @@ function Cadastro() {
                     <Link to="/" className={styles.botaoVoltar}>
                         <span className={styles.setaVoltar}>←</span>
                     </Link>
-                    {/* 🏢 Logo agora é um link clicável para a Home */}
                     <Link to="/" className={styles.logoContainer}>
                         <img src={LogoClara} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoClara}`} />
                         <img src={LogoEscura} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoEscura}`} />
@@ -151,6 +169,33 @@ function Cadastro() {
                 </div>
 
                 <form onSubmit={handleCadastrar}>
+                    {/* 📸 Nova seção: Upload da foto de perfil opcional */}
+                    <div className={styles.cartao}>
+                        <span className={styles.rotuloSecao}>FOTO DE PERFIL (OPCIONAL)</span>
+                        <div className={styles.containerUploadFoto}>
+                            <div className={styles.previewAvatar}>
+                                {previewFoto ? (
+                                    <img src={previewFoto} alt="Preview do Perfil" className={styles.imagemPreview} />
+                                ) : (
+                                    <span className={styles.iconeAvatarVazio}>👤</span>
+                                )}
+                            </div>
+                            <div className={styles.infoUpload}>
+                                <label htmlFor="upload-foto" className={styles.botaoUploadLabel}>
+                                    Escolher Imagem
+                                </label>
+                                <input
+                                    id="upload-foto"
+                                    type="file"
+                                    accept="image/*"
+                                    className={styles.inputFotoOculto}
+                                    onChange={handleFotoChange}
+                                />
+                                <span className={styles.dicaUpload}>Formatos aceitos: JPG, PNG. Máx 5MB.</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className={`${styles.cartao} ${styles.cartaoDestacado}`}>
                         <span className={styles.rotuloSecao}>DADOS PESSOAIS</span>
 

@@ -78,7 +78,6 @@ const Perfil = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
@@ -115,7 +114,8 @@ const Perfil = () => {
                     email: formData.email,
                     telefone: filtrarApenasNumeros(formData.telefone),
                     senha: formData.senha,
-                    tipo: user.tipo
+                    tipo: user.tipo,
+                    fotoPerfil: user.fotoPerfil // 📸 Mantém a foto salva no banco ao atualizar dados textuais
                 })
             });
 
