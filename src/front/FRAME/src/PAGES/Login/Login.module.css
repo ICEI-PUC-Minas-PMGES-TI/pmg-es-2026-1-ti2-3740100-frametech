@@ -2,35 +2,49 @@
 
 .pagina {
   min-height: 100vh;
-  padding: var(--ft-page-padding);
+  padding: 10px var(--ft-page-padding) var(--ft-page-padding);
   background: var(--ft-bg);
   color: var(--ft-text);
   font-family: var(--ft-font-sans);
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: var(--ft-space-6);
+  gap: var(--ft-space-2);
 }
 
-.logo {
+.logoContainer {
   display: flex;
-  flex-direction: column;
-  line-height: 1;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 0;
 }
 
-.logoFrame,
-.logoTech {
-  font-family: var(--ft-font-display);
-  font-size: var(--ft-font-size-sm);
-  font-weight: 700;
-  letter-spacing: 0.1em;
+.logoImage {
+  height: 92px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
-.logoFrame {
-  color: var(--ft-text);
+/* --- Gerenciamento das Imagens da Logo --- */
+.logoClara {
+  display: block;
 }
 
-.logoTech {
-  color: var(--ft-accent);
+.logoEscura {
+  display: none;
+}
+
+/* Alternância global para o Modo Escuro */
+:global(.dark) .logoClara,
+:global(.dark-theme) .logoClara,
+:global([data-theme="dark"]) .logoClara {
+  display: none;
+}
+
+:global(.dark) .logoEscura,
+:global(.dark-theme) .logoEscura,
+:global([data-theme="dark"]) .logoEscura {
+  display: block;
 }
 
 .centro {
@@ -219,8 +233,8 @@
     padding: var(--ft-page-padding);
   }
 
-  .logo {
-    align-items: center;
+  .logoContainer {
+    justify-content: center;
   }
 
   .centro {

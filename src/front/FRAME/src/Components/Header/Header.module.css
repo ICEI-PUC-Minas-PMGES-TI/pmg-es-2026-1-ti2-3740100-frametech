@@ -31,6 +31,28 @@
   display: block;
 }
 
+/* --- Controle de visibilidade padrão (Modo Claro) --- */
+.logoClara {
+  display: block;
+}
+
+.logoEscura {
+  display: none;
+}
+
+/* --- Alternância para Modo Escuro global --- */
+:global(.dark) .logoClara,
+:global(.dark-theme) .logoClara,
+:global([data-theme="dark"]) .logoClara {
+  display: none;
+}
+
+:global(.dark) .logoEscura,
+:global(.dark-theme) .logoEscura,
+:global([data-theme="dark"]) .logoEscura {
+  display: block;
+}
+
 .navGroup {
   display: flex;
   align-items: center;

@@ -16,14 +16,41 @@
   gap: var(--ft-space-4);
 }
 
-.logo {
-  color: var(--ft-text);
-  font-family: var(--ft-font-display);
-  font-size: var(--ft-font-size-lg);
-  font-weight: 800;
-  letter-spacing: 0.08em;
+.logoContainer {
+  display: flex;
+  align-items: center;
 }
 
+.logoImage {
+  height: 92px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* --- Gerenciamento das Imagens da Logo --- */
+.logoClara {
+  display: block;
+}
+
+.logoEscura {
+  display: none;
+}
+
+/* Alternância global para o Modo Escuro */
+:global(.dark) .logoClara,
+:global(.dark-theme) .logoClara,
+:global([data-theme="dark"]) .logoClara {
+  display: none;
+}
+
+:global(.dark) .logoEscura,
+:global(.dark-theme) .logoEscura,
+:global([data-theme="dark"]) .logoEscura {
+  display: block;
+}
+
+/* O restante do seu arquivo CSS permanece idêntico... */
 .logoDestaque,
 .loginLinkDestaque,
 .termoLink {
@@ -265,6 +292,7 @@
     padding: var(--ft-space-4);
     align-items: flex-start;
     flex-direction: column;
+    gap: var(--ft-space-3);
   }
 
   .conteudo {

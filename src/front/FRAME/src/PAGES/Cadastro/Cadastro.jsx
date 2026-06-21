@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Cadastro.module.css';
+import LogoClara from '../../Components/Logo.png'; 
+import LogoEscura from '../../Components/LogoEscura.png'; // 👈 Adicionada a importação da logo escura
 import {
     validarTelefone,
     formatarTelefone,
@@ -8,7 +10,7 @@ import {
 } from '../../utils/validacoes';
 
 const TIPOS = [
-    { id: 'empresa', label: 'EMPRESA', sub: 'Adm', icone: '🏠' },
+    { id: 'empresa', label: 'EMPRESA', sub: 'Adm', icone: '🏢' },
     { id: 'prestador', label: 'PRESTADOR', sub: 'Evento', icone: '📷' },
     { id: 'cliente', label: 'CLIENTE', sub: 'Usuário', icone: '👤' },
 ];
@@ -104,9 +106,12 @@ function Cadastro() {
     return (
         <div className={styles.pagina}>
             <div className={styles.cabecalho}>
-                <span className={styles.logo}>
-                    FRAME<span className={styles.logoDestaque}>TECH</span>
-                </span>
+                {/* 👈 Estrutura atualizada para renderizar ambas as logos */}
+                <div className={styles.logoContainer}>
+                    <img src={LogoClara} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoClara}`} />
+                    <img src={LogoEscura} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoEscura}`} />
+                </div>
+                
                 <span className={styles.loginLink}>
                     Já tem conta?{' '}
                     <a href="/login" className={styles.loginLinkDestaque}>

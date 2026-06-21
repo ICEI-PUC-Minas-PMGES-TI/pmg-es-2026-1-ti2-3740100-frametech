@@ -1,5 +1,6 @@
 import React from 'react';
-import Logo from '../../Components/Logo.png'; // Corrigido: uso de aspas simples ou duplas
+import LogoClara from '../../Components/Logo.png'; 
+import LogoEscura from '../../Components/LogoEscura.png'; // Adicionada a importação da logo escura exclusiva do modo escuro.
 import {
   useLocation,
   useNavigate
@@ -59,9 +60,11 @@ const Header = () => {
 
   return (
     <div className={styles.sidebar}>
+      
+      {/* Container modificado para suportar ambas as logos */}
       <div className={styles.logoContainer}>
-        {/* Adição da imagem da Logo */}
-        <img src={Logo} alt="Logo FrameTech" className={styles.logoImage} />
+        <img src={LogoClara} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoClara}`} />
+        <img src={LogoEscura} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoEscura}`} />
       </div>
 
       <div className={styles.navGroup}>
