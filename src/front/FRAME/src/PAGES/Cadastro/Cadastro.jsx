@@ -8,7 +8,7 @@ import {
 } from '../../utils/validacoes';
 
 const TIPOS = [
-    { id: 'empresa', label: 'EMPRESA', sub: 'Adm', icone: '⊞' },
+    { id: 'empresa', label: 'EMPRESA', sub: 'Adm', icone: '🏠' },
     { id: 'prestador', label: 'PRESTADOR', sub: 'Evento', icone: '📷' },
     { id: 'cliente', label: 'CLIENTE', sub: 'Usuário', icone: '👤' },
 ];
