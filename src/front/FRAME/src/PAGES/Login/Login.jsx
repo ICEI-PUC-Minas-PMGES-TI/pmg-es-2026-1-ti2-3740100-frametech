@@ -3,10 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from './Login.module.css';
 import LogoClara from '../../Components/Logo.png'; 
 import LogoEscura from '../../Components/LogoEscura.png'; 
-import {
-    getHomeByRole,
-    normalizeUserType
-} from '../../utils/authRoutes';
+import { getHomeByRole, normalizeUserType } from '../../utils/authRoutes';
+
+const API_URL = "https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com";
 
 const TIPOS = [
     { key: 'empresa', icon: '🏢', label: 'Empresa', sub: 'Adm' },
@@ -27,20 +26,17 @@ function Login() {
         setErro('');
 
         try {
-            const res = await fetch(
-                'http://localhost:8080/auth/login',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email,
-                        senha,
-                        tipo
-                    }),
-                }
-            );
+            const res = await fetch(`${API_URL}/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    senha,
+                    tipo
+                }),
+            });
 
             if (!res.ok) {
                 const msg = await res.text();
@@ -48,39 +44,20 @@ function Login() {
             }
 
             const data = await res.json();
-
             const tipoBanco = normalizeUserType(data.tipo);
             const tipoEscolhido = normalizeUserType(tipo);
 
-            // BLOQUEIA TIPO DIFERENTE
             if (tipoBanco !== tipoEscolhido) {
-                throw new Error(
-                    "Tipo de conta incorreto para este usuário."
-                );
+                throw new Error("Tipo de conta incorreto para este usuário.");
             }
 
-            sessionStorage.setItem(
-                "usuarioId",
-                data.id
-            );
+            sessionStorage.setItem("usuarioId", data.id);
+            sessionStorage.setItem("tipoUsuario", tipoBanco);
 
-            sessionStorage.setItem(
-                "tipoUsuario",
-                tipoBanco
-            );
-
-            navigate(
-                getHomeByRole(tipoBanco),
-                {
-                    replace: true
-                }
-            );
+            navigate(getHomeByRole(tipoBanco), { replace: true });
 
         } catch (err) {
-            setErro(
-                err.message || 
-                "Email ou senha inválidos."
-            );
+            setErro(err.message || "Email ou senha inválidos.");
         }
     };
 
@@ -91,7 +68,6 @@ function Login() {
                     <Link to="/" className={styles.botaoVoltar}>
                         <span className={styles.setaVoltar}>←</span>
                     </Link>
-                    {/* 🏢 Logo agora é um link clicável para a Home */}
                     <Link to="/" className={styles.logoContainer}>
                         <img src={LogoClara} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoClara}`} />
                         <img src={LogoEscura} alt="Logo FrameTech" className={`${styles.logoImage} ${styles.logoEscura}`} />
@@ -100,116 +76,61 @@ function Login() {
             </div>
 
             <div className={styles.centro}>
-                <form
-                    className={styles.cartao}
-                    onSubmit={handleLogin}
-                >
-                    <h1 className={styles.tituloCartao}>
-                        Bem vindo de volta
-                    </h1>
+                <form className={styles.cartao} onSubmit={handleLogin}>
+                    <h1 className={styles.tituloCartao}>Bem vindo de volta</h1>
 
                     <p className={styles.subCartao}>
                         Ainda não tem cadastro?{" "}
-                        <Link
-                            to="/cadastro"
-                            className={styles.link}
-                        >
-                            Cadastre-se
-                        </Link>
+                        <Link to="/cadastro" className={styles.link}>Cadastre-se</Link>
                     </p>
 
-                    <p className={styles.labelSecao}>
-                        Tipo de conta
-                    </p>
+                    <p className={styles.labelSecao}>Tipo de conta</p>
 
                     <div className={styles.tiposConta}>
                         {TIPOS.map(t => (
                             <button
                                 key={t.key}
                                 type="button"
-                                className={`${styles.botaoTipo} ${
-                                    tipo === t.key
-                                    ? styles.botaoTipoAtivo
-                                    : ''
-                                }`}
-                                onClick={() =>
-                                    setTipo(t.key)
-                                }
+                                className={`${styles.botaoTipo} ${tipo === t.key ? styles.botaoTipoAtivo : ''}`}
+                                onClick={() => setTipo(t.key)}
                             >
-                                <span className={styles.iconeTipo}>
-                                    {t.icon}
-                                </span>
-
-                                <span className={styles.labelTipo}>
-                                    {t.label}
-                                </span>
-
-                                <span className={styles.subTipo}>
-                                    {t.sub}
-                                </span>
+                                <span className={styles.iconeTipo}>{t.icon}</span>
+                                <span className={styles.labelTipo}>{t.label}</span>
+                                <span className={styles.subTipo}>{t.sub}</span>
                             </button>
                         ))}
                     </div>
 
-                    <p className={styles.labelSecao}>
-                        Credenciais
-                    </p>
+                    <p className={styles.labelSecao}>Credenciais</p>
 
                     <div className={styles.campo}>
-                        <label className={styles.labelCampo}>
-                            Email
-                        </label>
+                        <label className={styles.labelCampo}>Email</label>
                         <input
                             className={styles.input}
                             value={email}
-                            onChange={e =>
-                                setEmail(e.target.value)
-                            }
+                            onChange={e => setEmail(e.target.value)}
                         />
                     </div>
 
                     <div className={styles.campo}>
-                        <label className={styles.labelCampo}>
-                            Senha
-                        </label>
+                        <label className={styles.labelCampo}>Senha</label>
                         <input
                             type="password"
                             className={styles.input}
                             value={senha}
-                            onChange={e =>
-                                setSenha(e.target.value)
-                            }
+                            onChange={e => setSenha(e.target.value)}
                         />
                     </div>
 
-                    {erro && (
-                        <p className={styles.msgErro}>
-                            {erro}
-                        </p>
-                    )}
+                    {erro && <p className={styles.msgErro}>{erro}</p>}
 
                     <div className={styles.esqueci}>
-                        <Link
-                            to="/esqueci-senha"
-                            className={styles.link}
-                        >
-                            Esqueci a senha
-                        </Link>
+                        <Link to="/esqueci-senha" className={styles.link}>Esqueci a senha</Link>
                     </div>
 
-                    <button
-                        type="submit"
-                        className={styles.botaoPrincipal}
-                    >
-                        Entrar
-                    </button>
+                    <button type="submit" className={styles.botaoPrincipal}>Entrar</button>
 
-                    <button
-                        type="button"
-                        className={styles.botaoGoogle}
-                    >
-                        Entrar com Google
-                    </button>
+                    <button type="button" className={styles.botaoGoogle}>Entrar com Google</button>
                 </form>
             </div>
         </div>
