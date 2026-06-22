@@ -7,7 +7,7 @@ import com.example.back.model.Usuario;
 import com.example.back.services.UsuarioService;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/auth")
 public class UsuarioController {
@@ -52,7 +52,6 @@ public class UsuarioController {
         service.deletar(id);
     }
 
-    // ✅ Tipo de retorno alterado para ResponseEntity para estruturar corretamente a resposta HTTP com a foto
     @PutMapping("/foto/{id}")
     public ResponseEntity<?> atualizarFoto(@PathVariable Long id, @RequestBody Usuario usuario) {
         try {
