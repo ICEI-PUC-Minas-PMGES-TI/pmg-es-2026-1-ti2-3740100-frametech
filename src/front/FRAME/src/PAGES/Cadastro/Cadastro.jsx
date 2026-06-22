@@ -95,7 +95,7 @@ function Cadastro() {
         }
 
         try {
-            const resposta = await fetch('http://localhost:8080/auth/cadastro', {
+            const resposta = await fetch('https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/auth/cadastro', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

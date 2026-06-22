@@ -54,7 +54,7 @@ const EscalaEquipe = () => {
 
   const buscarEventos = async () => {
     const response = await fetch(
-      'http://localhost:8080/eventos'
+      'https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos'
     );
     const data = await response.json();
     setEventos(data);
@@ -62,7 +62,7 @@ const EscalaEquipe = () => {
 
   const buscarProfissionais = async () => {
     const response = await fetch(
-      'http://localhost:8080/auth/profissionais'
+      'https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/auth/profissionais'
     );
     const data = await response.json();
     setProfissionais(
@@ -72,7 +72,7 @@ const EscalaEquipe = () => {
 
   const buscarEscalas = async () => {
     const response = await fetch(
-      'http://localhost:8080/api/escalas/aceitas'
+      'https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/api/escalas/aceitas'
     );
     const data = await response.json();
     setEscalas(data);
@@ -102,7 +102,7 @@ const EscalaEquipe = () => {
 
   const salvarEscala = async () => {
     await fetch(
-      'http://localhost:8080/api/escalas',
+      'https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/api/escalas',
       {
         method: 'POST',
         headers: {

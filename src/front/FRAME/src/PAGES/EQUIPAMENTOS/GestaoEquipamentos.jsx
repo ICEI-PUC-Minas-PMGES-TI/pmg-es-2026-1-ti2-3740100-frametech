@@ -52,9 +52,9 @@ export default function GestaoEquipamentos() {
 
   const carregarDados = async () => {
     const [equipamentosResp, eventosResp, associacoesResp] = await Promise.all([
-      fetch('http://localhost:8080/equipamentos'),
-      fetch('http://localhost:8080/eventos'),
-      fetch('http://localhost:8080/equipamentos/associacoes')
+      fetch('https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/equipamentos'),
+      fetch('https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos'),
+      fetch('https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/equipamentos/associacoes')
     ]);
 
     setEquipamentos(await equipamentosResp.json());
@@ -77,7 +77,7 @@ export default function GestaoEquipamentos() {
 
   const abrirIndicador = async () => {
     const response = await fetch(
-      'http://localhost:8080/equipamentos/indicador-categoria'
+      'https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/equipamentos/indicador-categoria'
     );
     const dados = await response.json();
     setIndicadores(dados);
@@ -93,8 +93,8 @@ export default function GestaoEquipamentos() {
     limparMensagens();
 
     const url = editandoId
-      ? `http://localhost:8080/equipamentos/${editandoId}`
-      : 'http://localhost:8080/equipamentos';
+      ? `https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/equipamentos/${editandoId}`
+      : 'https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/equipamentos';
 
     const metodo = editandoId ? 'PUT' : 'POST';
 
@@ -130,7 +130,7 @@ export default function GestaoEquipamentos() {
   const excluirEquipamento = async (id) => {
     limparMensagens();
 
-    await fetch(`http://localhost:8080/equipamentos/${id}`, {
+    await fetch(`https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/equipamentos/${id}`, {
       method: 'DELETE'
     });
 
@@ -142,7 +142,7 @@ export default function GestaoEquipamentos() {
     e.preventDefault();
     limparMensagens();
 
-    const response = await fetch('http://localhost:8080/equipamentos/associar', {
+    const response = await fetch('https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/equipamentos/associar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ eventoId, equipamentoId })
@@ -163,7 +163,7 @@ export default function GestaoEquipamentos() {
   const removerAssociacao = async (id) => {
     limparMensagens();
 
-    await fetch(`http://localhost:8080/equipamentos/associacoes/${id}`, {
+    await fetch(`https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/equipamentos/associacoes/${id}`, {
       method: 'DELETE'
     });
 

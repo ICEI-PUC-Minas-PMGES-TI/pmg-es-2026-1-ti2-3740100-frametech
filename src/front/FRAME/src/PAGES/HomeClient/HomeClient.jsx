@@ -220,7 +220,7 @@ const HomeClient = () => {
 
       const response =
         await axios.get(
-          `http://localhost:8080/eventos/usuario/${usuarioId}`
+          `https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos/usuario/${usuarioId}`
         );
 
       setProjetosAtivos(
@@ -246,7 +246,7 @@ const HomeClient = () => {
     try {
 
       await axios.put(
-        `http://localhost:8080/eventos/${id}/status?status=ACEITO`
+        `https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos/${id}/status?status=ACEITO`
       );
 
       buscarEventos();
@@ -263,7 +263,7 @@ const HomeClient = () => {
     try {
 
       await axios.put(
-        `http://localhost:8080/eventos/${id}/status?status=RECUSADO`
+        `https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos/${id}/status?status=RECUSADO`
       );
 
       buscarEventos();

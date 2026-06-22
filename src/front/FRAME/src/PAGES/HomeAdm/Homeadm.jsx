@@ -113,16 +113,16 @@ const HomeAdm = () => {
 
   const buscarEventos = useCallback(async () => {
     try {
-      const eventosResponse = await axios.get('http://localhost:8080/eventos');
+      const eventosResponse = await axios.get('https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos');
       setPropostas(eventosResponse.data);
 
-      const indicadorResponse = await axios.get('http://localhost:8080/eventos/indicador-solicitacoes-atendidas');
+      const indicadorResponse = await axios.get('https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos/indicador-solicitacoes-atendidas');
       setIndicadorSolicitacoes(indicadorResponse.data);
 
-      const indicadorPagamentosResponse = await axios.get('http://localhost:8080/pagamentos/indicador-aprovados');
+      const indicadorPagamentosResponse = await axios.get('https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/pagamentos/indicador-aprovados');
       setIndicadorPagamentos(indicadorPagamentosResponse.data);
 
-      const indicadorEventosConcluidosResponse = await axios.get('http://localhost:8080/eventos/indicador-eventos-concluidos');
+      const indicadorEventosConcluidosResponse = await axios.get('https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos/indicador-eventos-concluidos');
       setIndicadorEventosConcluidos(indicadorEventosConcluidosResponse.data);
     } catch (error) {
       console.log(error);
@@ -141,7 +141,7 @@ const HomeAdm = () => {
 
   const enviarOrcamento = async () => {
     try {
-      await axios.put(`http://localhost:8080/eventos/${eventoSelecionado}/orcamento?valor=${valorOrcamento}`);
+      await axios.put(`https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos/${eventoSelecionado}/orcamento?valor=${valorOrcamento}`);
       setModalAberto(false);
       setEventoSelecionado(null);
       setValorOrcamento('');
@@ -153,7 +153,7 @@ const HomeAdm = () => {
 
   const handleRecusar = async (id) => {
     try {
-      await axios.put(`http://localhost:8080/eventos/${id}/status?status=RECUSADO`);
+      await axios.put(`https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos/${id}/status?status=RECUSADO`);
       buscarEventos();
     } catch (error) {
       console.log(error);

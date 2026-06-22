@@ -22,7 +22,7 @@ function EsqueciSenha() {
         setCarregando(true);
 
         try {
-            const res = await fetch("http://localhost:8080/auth/recuperar-senha", {
+            const res = await fetch("https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/auth/recuperar-senha", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email }),
@@ -50,7 +50,7 @@ function EsqueciSenha() {
 
         try {
             const res = await fetch(
-                `http://localhost:8080/auth/validar-token?token=${token}`
+                `https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/auth/validar-token?token=${token}`
             );
 
             if (!res.ok) {
@@ -85,7 +85,7 @@ function EsqueciSenha() {
         setCarregando(true);
 
         try {
-            const res = await fetch("http://localhost:8080/auth/redefinir-senha", {
+            const res = await fetch("https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/auth/redefinir-senha", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token, novaSenha }),

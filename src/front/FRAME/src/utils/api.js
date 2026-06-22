@@ -1,0 +1,1 @@
+export const API_BASE_URL = "https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com";

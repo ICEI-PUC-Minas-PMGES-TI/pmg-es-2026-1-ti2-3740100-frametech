@@ -174,7 +174,7 @@ const SolicitacaoServico = () => {
                 anexoReferencias: form.anexoReferencias,
             };
 
-            const response = await fetch(`http://localhost:8080/eventos/${usuarioId}`, {
+            const response = await fetch(`https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/eventos/${usuarioId}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),

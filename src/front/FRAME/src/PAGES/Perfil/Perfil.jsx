@@ -8,7 +8,7 @@ import {
     filtrarApenasNumeros,
 } from "../../utils/validacoes";
 
-const API_URL = "http://localhost:8080/auth";
+const API_URL = "https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/auth";
 
 const criarForm = (usuario) => ({
     nome: usuario?.nome || "",

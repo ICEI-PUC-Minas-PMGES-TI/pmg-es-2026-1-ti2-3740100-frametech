@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080/api/escalas";
+const BASE_URL = "https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/api/escalas";
 
 export async function buscarEscalasPorProfissional(profissionalId) {
   const res = await fetch(`${BASE_URL}/profissional/${profissionalId}`);

@@ -36,7 +36,7 @@ const ChatEventos = () => {
 
       const response =
         await axios.get(
-          `http://localhost:8080/chat/contatos/${usuarioId}`
+          `https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/chat/contatos/${usuarioId}`
         );
 
       setContatos(response.data);
@@ -65,7 +65,7 @@ const ChatEventos = () => {
 
       const response =
         await axios.get(
-          `http://localhost:8080/chat/mensagens/${contatoSelecionado.eventoId}`
+          `https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/chat/mensagens/${contatoSelecionado.eventoId}`
         );
 
       setMensagens(response.data);
@@ -83,7 +83,7 @@ const ChatEventos = () => {
     try {
 
       await axios.post(
-        'http://localhost:8080/chat/enviar',
+        'https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/chat/enviar',
         {
           mensagem: texto,
           usuarioId,
