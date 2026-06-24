@@ -491,7 +491,7 @@
   }
 }
 
-/* Monitores grandes */
+
 @media (min-width: 1440px) {
   .conteudo { max-width: 720px; }
   .titulo { font-size: 2.5rem; }
