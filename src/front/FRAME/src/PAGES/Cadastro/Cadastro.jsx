@@ -27,7 +27,6 @@ function Cadastro() {
         confirmarSenha: '',
     });
     
-    // Novo estado para controlar o arquivo de imagem e a pré-visualização
     const [fotoPerfil, setFotoPerfil] = useState('');
     const [previewFoto, setPreviewFoto] = useState('');
 
@@ -37,17 +36,25 @@ function Cadastro() {
     const atualizar = (campo) => (e) =>
         setForm((f) => ({ ...f, [campo]: e.target.value }));
 
-    // Função para tratar o upload e converter em string Base64
     const handleFotoChange = (e) => {
         const arquivo = e.target.files[0];
         if (arquivo) {
-            setPreviewFoto(URL.createObjectURL(arquivo)); // Cria URL para pré-visualização na tela
+            setPreviewFoto(URL.createObjectURL(arquivo)); 
             
             const leitor = new FileReader();
             leitor.onloadend = () => {
-                setFotoPerfil(leitor.result); // Armazena a string base64
+                setFotoPerfil(leitor.result); 
             };
             leitor.readAsDataURL(arquivo);
+        }
+    };
+
+    const removerFoto = () => {
+        setFotoPerfil('');
+        setPreviewFoto('');
+        const inputElement = document.getElementById('upload-foto');
+        if (inputElement) {
+            inputElement.value = ''; 
         }
     };
 
@@ -95,7 +102,7 @@ function Cadastro() {
         }
 
         try {
-            const resposta = await fetch('https://pmg-es-2026-1-ti2-3740100-frametech-4.onrender.com/auth/cadastro', {
+            const resposta = await fetch('http://localhost:8080/auth/cadastro', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -104,7 +111,7 @@ function Cadastro() {
                     telefone: filtrarApenasNumeros(form.telefone),
                     senha: form.senha,
                     tipo: tipoConta,
-                    fotoPerfil: fotoPerfil || null, // Enviando a foto (se houver) para o backend
+                    fotoPerfil: fotoPerfil || null,
                 }),
             });
 
@@ -125,9 +132,9 @@ function Cadastro() {
 
     return (
         <div className={styles.pagina}>
-            <div className={styles.cabecalho}>
+            <header className={styles.cabecalho}>
                 <div className={styles.esquerdaCabecalho}>
-                    <Link to="/" className={styles.botaoVoltar}>
+                    <Link to="/" className={styles.botaoVoltar} aria-label="Voltar para página inicial">
                         <span className={styles.setaVoltar}>←</span>
                     </Link>
                     <Link to="/" className={styles.logoContainer}>
@@ -136,19 +143,21 @@ function Cadastro() {
                     </Link>
                 </div>
                 
-                <span className={styles.loginLink}>
-                    Já tem conta?{' '}
+                <div className={styles.loginLink}>
+                    Já tem conta?
                     <Link to="/login" className={styles.loginLinkDestaque}>
                         Entrar agora
                     </Link>
-                </span>
-            </div>
+                </div>
+            </header>
 
             <main className={styles.conteudo}>
-                <h1 className={styles.titulo}>Crie sua conta gratuita</h1>
-                <p className={styles.subtitulo}>
-                    Do primeiro contato à entrega final, tudo em uma plataforma.
-                </p>
+                <div>
+                    <h1 className={styles.titulo}>Crie sua conta gratuita</h1>
+                    <p className={styles.subtitulo}>
+                        Do primeiro contato à entrega final, tudo em uma plataforma.
+                    </p>
+                </div>
 
                 <div className={styles.cartao}>
                     <span className={styles.rotuloSecao}>TIPO DE CONTA</span>
@@ -169,7 +178,6 @@ function Cadastro() {
                 </div>
 
                 <form onSubmit={handleCadastrar}>
-                    {/* 📸 Nova seção: Upload da foto de perfil opcional */}
                     <div className={styles.cartao}>
                         <span className={styles.rotuloSecao}>FOTO DE PERFIL (OPCIONAL)</span>
                         <div className={styles.containerUploadFoto}>
@@ -181,9 +189,21 @@ function Cadastro() {
                                 )}
                             </div>
                             <div className={styles.infoUpload}>
-                                <label htmlFor="upload-foto" className={styles.botaoUploadLabel}>
-                                    Escolher Imagem
-                                </label>
+                                <div className={styles.botoesUploadWrapper}>
+                                    <label htmlFor="upload-foto" className={styles.botaoUploadLabel}>
+                                        Escolher Imagem
+                                    </label>
+                                    
+                                    {previewFoto && (
+                                        <button 
+                                            type="button" 
+                                            onClick={removerFoto}
+                                            className={styles.botaoRemoverFoto}
+                                        >
+                                            Remover Foto
+                                        </button>
+                                    )}
+                                </div>
                                 <input
                                     id="upload-foto"
                                     type="file"
@@ -206,6 +226,7 @@ function Cadastro() {
                                 placeholder="Seu nome"
                                 value={form.nome}
                                 onChange={atualizar('nome')}
+                                required
                             />
                         </div>
 
@@ -217,6 +238,7 @@ function Cadastro() {
                                 placeholder="Email"
                                 value={form.email}
                                 onChange={atualizar('email')}
+                                required
                             />
                         </div>
 
@@ -228,6 +250,7 @@ function Cadastro() {
                                 value={form.telefone}
                                 onChange={handleTelefoneChange}
                                 inputMode="numeric"
+                                required
                             />
                             {erros.telefone && <span className={styles.msgErro}>{erros.telefone}</span>}
                         </div>
@@ -243,6 +266,7 @@ function Cadastro() {
                                 type="password"
                                 value={form.senha}
                                 onChange={handleSenhaChange}
+                                required
                             />
                             {erros.senha && <span className={styles.msgErro}>{erros.senha}</span>}
                         </div>
@@ -254,6 +278,7 @@ function Cadastro() {
                                 type="password"
                                 value={form.confirmarSenha}
                                 onChange={atualizar('confirmarSenha')}
+                                required
                             />
                             {erros.confirmarSenha && (
                                 <span className={styles.msgErro}>{erros.confirmarSenha}</span>
@@ -264,10 +289,11 @@ function Cadastro() {
                     <div className={styles.termos}>
                         <input
                             type="checkbox"
+                            id="aceitar-termos"
                             checked={aceito}
                             onChange={(e) => setAceito(e.target.checked)}
                         />
-                        <label>Aceito os termos</label>
+                        <label htmlFor="aceitar-termos">Aceito os termos</label>
                     </div>
 
                     <div className={styles.acoes}>
