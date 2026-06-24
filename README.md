@@ -9,7 +9,7 @@ Além disso, o sistema busca otimizar a comunicação entre cliente e responsáv
 * Mateus Marçal Ribas Marques
 * Arthur Monserrat Souza
 * Bruno Henrique de Aguiar Xavier
-* Gabriel de Souza Carvalho Ferreira
+* Gabriel de Sousa Carvalho Ferreira
 * Lucas do carmo Braz
 * Gustavo Paulino cicero
 
