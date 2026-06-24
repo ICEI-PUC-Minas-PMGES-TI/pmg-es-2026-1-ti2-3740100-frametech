@@ -1,17 +1,19 @@
-
 ###  Processo 4 - Gestão Eventos confirmados
 
 O processo de solicitação de serviços tem como objetivo permitir que o cliente solicite, receba propostas, aprove e finalize a contratação de um serviço de forma organizada.
 
 ## Gestão Cliente:
-<img width="1600" height="892" alt="WhatsApp Image 2026-06-03 at 15 36 15" src="https://github.com/user-attachments/assets/af78e602-e7dc-4a59-9340-cc19290217f8" />
+<img width="2903" height="1619" alt="Gestão de eventos confirmados Cliente Diagrama" src="https://github.com/user-attachments/assets/bab38289-961b-4130-9624-5dd9f9d93b57" />
 
 
 ## Gestão Administrador
-<img width="2903" height="1619" alt="Gestão de eventos confirmados Cliente - cópia de Diagrama" src="https://github.com/user-attachments/assets/530ace87-8f2d-4580-babe-25b638334bb2" />
+<img width="2903" height="1210" alt="Gestão de eventos confirmados Cliente - cópia de - cópia de Diagrama" src="https://github.com/user-attachments/assets/636f54f2-1ddb-4b46-8b3b-036dff5f2d4f" />
 
 ## Gestão Profissional de serviço
-<img width="2903" height="1619" alt="Gestão de eventos confirmados Cliente - cópia de Diagrama (1)" src="https://github.com/user-attachments/assets/2f51f27b-1f24-4321-9ebb-5698c7c3a57c" />
+<img width="2903" height="1210" alt="Gestão de eventos confirmados Cliente - cópia de Diagrama (1)" src="https://github.com/user-attachments/assets/ed3fba32-68f6-461e-912f-59ce633bce63" />
+
+
+
 
 
 
