@@ -11,7 +11,7 @@
 
 **Lucas do Carmo Braz, Luiopsaga@gmail.com**
 
-**Gabriel de Souza Carvalho Ferreira, gabriel.scferreira@gmail.com**
+**Gabriel de Sousa Carvalho Ferreira, gabriel.scferreira@hotmail.com**
 
 ---
 
