@@ -73,6 +73,12 @@ const EscalaEquipe = () => {
     setModalProfissionais(false);
   };
 
+  // Função para voltar do modal de confirmação para o de eventos
+  const voltarParaEventos = () => {
+    setModalProfissionais(false);
+    setModalEventos(true);
+  };
+
   const abrirDetalhes = (escala) => {
     setEscalaSelecionada(escala);
     setModalDetalhes(true);
@@ -85,7 +91,7 @@ const EscalaEquipe = () => {
 
   const buscarEscala = (profissionalNome, dia) => {
     return escalas.find(
-      (escala) => escala.nomeProfissional === profissionalNome && escala.diaSemana === dia
+      (escala) => escala.nomeProfissional === profesionalNome && escala.diaSemana === dia
     );
   };
 
@@ -144,6 +150,8 @@ const EscalaEquipe = () => {
             </div>
           ))}
         </div>
+        
+        {/* MODAL SELECIONAR EVENTO */}
         {modalEventos && (
           <div className={styles.overlay} onClick={() => setModalEventos(false)}>
             <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -166,14 +174,37 @@ const EscalaEquipe = () => {
             </div>
           </div>
         )}
-        {modalProfissionais && (
-          <div className={styles.overlay}>
-            <div className={styles.modal}>
-              <h2>Confirmar Escala</h2>
-              <button className={styles.botaoAtribuir} onClick={salvarEscala}>Confirmar</button>
-            </div>
-          </div>
-        )}
+
+      {/* MODAL CONFIRMAR ESCALA */}
+{modalProfissionais && (
+  <div className={styles.overlay} onClick={voltarParaEventos}>
+    <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.cabecalhoModal}>
+        <h2>Confirmar Escala</h2>
+        <button className={styles.btnFecharModal} onClick={voltarParaEventos}>✕</button>
+      </div>
+      
+      {eventoSelecionado && (
+        <div className={styles.corpoModalConfirmacao}>
+          <p>
+            Deseja escalar <strong>{profissionalSelecionado?.nome}</strong> para o evento <strong>{eventoSelecionado.nomeEvento}</strong> na <strong>{diaSelecionado}</strong>?
+          </p>
+        </div>
+      )}
+
+      {/* Usando as classes nativas do seu CSS para manter o padrão visual */}
+      <div className={styles.rodapeModalConfirmacao}>
+        <button className={styles.botaoAtribuir} onClick={salvarEscala}>
+          Confirmar
+        </button>
+        <button className={styles.btnFecharRodape} onClick={voltarParaEventos}>
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
         {modalDetalhes && escalaSelecionada && (
           <ModalDetalheEvento
             eventoId={escalaSelecionada.eventoId}

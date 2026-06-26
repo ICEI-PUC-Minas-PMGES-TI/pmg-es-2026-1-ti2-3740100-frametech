@@ -426,3 +426,22 @@
     padding: var(--ft-space-4);
   }
 }
+/* Pequenos ajustes para o modal de confirmação ficar impecável */
+.corpoModalConfirmacao {
+  margin: var(--ft-space-4) 0 var(--ft-space-6);
+  color: var(--ft-text);
+  font-size: var(--ft-font-size-sm);
+  line-height: 1.5;
+}
+
+.rodapeModalConfirmacao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ft-space-2);
+}
+
+/* Garante que o margintop padrão não quebre o espaçamento do flex gap */
+.rodapeModalConfirmacao .btnFecharRodape,
+.rodapeModalConfirmacao .botaoAtribuir {
+  margin-top: 0; 
+}
