@@ -102,7 +102,7 @@ function Cadastro() {
         }
 
         try {
-            const resposta = await fetch('http://localhost:8080/auth/cadastro', {
+            const resposta = await fetch('https://frametech-backend.onrender.com/auth/cadastro', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
