@@ -91,7 +91,7 @@ const EscalaEquipe = () => {
 
   const buscarEscala = (profissionalNome, dia) => {
     return escalas.find(
-      (escala) => escala.nomeProfissional === profesionalNome && escala.diaSemana === dia
+      (escala) => escala.nomeProfissional === profissionalNome && escala.diaSemana === dia
     );
   };
 
