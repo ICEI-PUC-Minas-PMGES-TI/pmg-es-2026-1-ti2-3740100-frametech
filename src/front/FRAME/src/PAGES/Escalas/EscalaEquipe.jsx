@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import Header from '../../Components/Header/Header';
 import ModalDetalheEvento from '../Eventos/ModalDetalheEvento';
 import styles from './EscalaEquipe.module.css';
 import { API_BASE_URL } from '../../utils/api';
 
+const DIAS = ["SEG", "TER", "QUA", "QUI", "SEX", "SAB", "DOM"];
+
 const EscalaEquipe = () => {
-  const dias = ["SEG", "TER", "QUA", "QUI", "SEX", "SAB", "DOM"];
   const [eventos, setEventos] = useState([]);
   const [profissionais, setProfissionais] = useState([]);
   const [escalas, setEscalas] = useState([]);
@@ -18,47 +19,53 @@ const EscalaEquipe = () => {
   const [profissionalSelecionado, setProfissionalSelecionado] = useState(null);
   const [buscaEvento, setBuscaEvento] = useState("");
 
-  const buscarEventos = async () => {
-    const response = await fetch(`${API_BASE_URL}/eventos`);
-    const data = await response.json();
-    setEventos(data);
-  };
-
-  const buscarProfissionais = async () => {
-    const response = await fetch(`${API_BASE_URL}/auth/profissionais`);
-    const data = await response.json();
-    setProfissionais(data.filter((p) => p.tipo === "prestador"));
-  };
-
-  const buscarEscalas = async () => {
-    const response = await fetch(`${API_BASE_URL}/api/escalas/aceitas`);
-    const data = await response.json();
+  const buscarEscalas = useCallback(async () => {
+    const res = await fetch(`${API_BASE_URL}/api/escalas/aceitas`);
+    const data = await res.json();
     setEscalas(data);
-  };
+  }, []);
 
   useEffect(() => {
     const carregar = async () => {
-      await buscarEventos();
-      await buscarProfissionais();
-      await buscarEscalas();
+      const [resEventos, resProfissionais, resEscalas] = await Promise.all([
+        fetch(`${API_BASE_URL}/eventos`),
+        fetch(`${API_BASE_URL}/auth/profissionais`),
+        fetch(`${API_BASE_URL}/api/escalas/aceitas`)
+      ]);
+      const [dataEventos, dataProfissionais, dataEscalas] = await Promise.all([
+        resEventos.json(),
+        resProfissionais.json(),
+        resEscalas.json()
+      ]);
+      setEventos(dataEventos);
+      setProfissionais(dataProfissionais.filter((p) => p.tipo === "prestador"));
+      setEscalas(dataEscalas);
     };
     carregar();
   }, []);
 
-  const abrirEventos = (profissional, dia) => {
+  const escalasMap = useMemo(() => {
+    const map = new Map();
+    escalas.forEach((escala) => {
+      map.set(`${escala.nomeProfissional}|${escala.diaSemana}`, escala);
+    });
+    return map;
+  }, [escalas]);
+
+  const abrirEventos = useCallback((profissional, dia) => {
     setProfissionalSelecionado(profissional);
     setDiaSelecionado(dia);
     setBuscaEvento("");
     setModalEventos(true);
-  };
+  }, []);
 
-  const selecionarEvento = (evento) => {
+  const selecionarEvento = useCallback((evento) => {
     setEventoSelecionado(evento);
     setModalEventos(false);
     setModalProfissionais(true);
-  };
+  }, []);
 
-  const salvarEscala = async () => {
+  const salvarEscala = useCallback(async () => {
     await fetch(`${API_BASE_URL}/api/escalas`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -71,32 +78,35 @@ const EscalaEquipe = () => {
     });
     await buscarEscalas();
     setModalProfissionais(false);
-  };
+  }, [eventoSelecionado, profissionalSelecionado, diaSelecionado, buscarEscalas]);
 
-  // Função para voltar do modal de confirmação para o de eventos
-  const voltarParaEventos = () => {
+  const voltarParaEventos = useCallback(() => {
     setModalProfissionais(false);
     setModalEventos(true);
-  };
+  }, []);
 
-  const abrirDetalhes = (escala) => {
+  // Nova função adaptada com useCallback para fechar tudo e voltar pros calendários
+  const fecharModaisCompleto = useCallback(() => {
+    setModalProfissionais(false);
+    setModalEventos(false);
+    setEventoSelecionado(null);
+    setProfissionalSelecionado(null);
+    setDiaSelecionado("");
+  }, []);
+
+  const abrirDetalhes = useCallback((escala) => {
     setEscalaSelecionada(escala);
     setModalDetalhes(true);
-  };
+  }, []);
 
-  const fecharDetalhes = () => {
+  const fecharDetalhes = useCallback(() => {
     setModalDetalhes(false);
     setEscalaSelecionada(null);
-  };
+  }, []);
 
-  const buscarEscala = (profissionalNome, dia) => {
-    return escalas.find(
-      (escala) => escala.nomeProfissional === profissionalNome && escala.diaSemana === dia
-    );
-  };
-
-  const eventosFiltrados = eventos.filter((evento) =>
-    evento.nomeEvento?.toLowerCase().includes(buscaEvento.toLowerCase())
+  const eventosFiltrados = useMemo(() =>
+    eventos.filter((e) => e.nomeEvento?.toLowerCase().includes(buscaEvento.toLowerCase())),
+    [eventos, buscaEvento]
   );
 
   return (
@@ -107,7 +117,7 @@ const EscalaEquipe = () => {
         <div className={styles.tabela}>
           <div className={styles.header}>
             <div className={styles.colaborador}>Colaborador</div>
-            {dias.map((dia) => (
+            {DIAS.map((dia) => (
               <div key={dia} className={styles.dia}><strong>{dia}</strong></div>
             ))}
           </div>
@@ -126,8 +136,8 @@ const EscalaEquipe = () => {
                   <span>Prestador</span>
                 </div>
               </div>
-              {dias.map((dia) => {
-                const escala = buscarEscala(profissional.nome, dia);
+              {DIAS.map((dia) => {
+                const escala = escalasMap.get(`${profissional.nome}|${dia}`);
                 return (
                   <div key={dia} className={styles.celula}>
                     {escala ? (
@@ -150,7 +160,7 @@ const EscalaEquipe = () => {
             </div>
           ))}
         </div>
-        
+
         {/* MODAL SELECIONAR EVENTO */}
         {modalEventos && (
           <div className={styles.overlay} onClick={() => setModalEventos(false)}>
@@ -175,35 +185,28 @@ const EscalaEquipe = () => {
           </div>
         )}
 
-      {/* MODAL CONFIRMAR ESCALA */}
-{modalProfissionais && (
-  <div className={styles.overlay} onClick={voltarParaEventos}>
-    <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-      <div className={styles.cabecalhoModal}>
-        <h2>Confirmar Escala</h2>
-        <button className={styles.btnFecharModal} onClick={voltarParaEventos}>✕</button>
-      </div>
-      
-      {eventoSelecionado && (
-        <div className={styles.corpoModalConfirmacao}>
-          <p>
-            Deseja escalar <strong>{profissionalSelecionado?.nome}</strong> para o evento <strong>{eventoSelecionado.nomeEvento}</strong> na <strong>{diaSelecionado}</strong>?
-          </p>
-        </div>
-      )}
-
-      {/* Usando as classes nativas do seu CSS para manter o padrão visual */}
-      <div className={styles.rodapeModalConfirmacao}>
-        <button className={styles.botaoAtribuir} onClick={salvarEscala}>
-          Confirmar
-        </button>
-        <button className={styles.btnFecharRodape} onClick={voltarParaEventos}>
-          Cancelar
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+        {/* MODAL CONFIRMAR ESCALA */}
+        {modalProfissionais && (
+          <div className={styles.overlay} onClick={fecharModaisCompleto}>
+            <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+              <div className={styles.cabecalhoModal}>
+                <h2>Confirmar Escala</h2>
+                <button className={styles.btnFecharModal} onClick={fecharModaisCompleto}>✕</button>
+              </div>
+              {eventoSelecionado && (
+                <div className={styles.corpoModalConfirmacao}>
+                  <p>
+                    Deseja escalar <strong>{profissionalSelecionado?.nome}</strong> para o evento <strong>{eventoSelecionado.nomeEvento}</strong> na <strong>{diaSelecionado}</strong>?
+                  </p>
+                </div>
+              )}
+              <div className={styles.rodapeModalConfirmacao}>
+                <button className={styles.botaoAtribuir} onClick={salvarEscala}>Confirmar</button>
+                <button className={styles.btnFecharRodape} onClick={voltarParaEventos}>Cancelar</button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {modalDetalhes && escalaSelecionada && (
           <ModalDetalheEvento

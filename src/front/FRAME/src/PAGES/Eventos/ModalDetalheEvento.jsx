@@ -50,7 +50,8 @@ const ModalDetalheEvento = ({ eventoId, profissionais, onFechar, onAtualizar }) 
         eventoId,
         profissionalId: Number(profissionalSelecionado),
         admId: Number(admId),
-        diaSemana: '',
+        // Envia o diaSemana correto vindo dos detalhes do evento atual
+        diaSemana: detalhe?.diaSemana || '', 
       });
       setProfissionalSelecionado('');
       setModalAdicionar(false);
@@ -205,7 +206,6 @@ const ModalDetalheEvento = ({ eventoId, profissionais, onFechar, onAtualizar }) 
               ) : (
                 <ul className={styles.listaProfissionais}>
                   {detalhe.profissionais.map((p) => {
-                    // 🔍 Cruza o item da escala com o profissional da lista completa para obter a fotoPerfil
                     const dadosCompletos = profissionais.find((prof) => prof.id === p.profissionalId);
 
                     return (
