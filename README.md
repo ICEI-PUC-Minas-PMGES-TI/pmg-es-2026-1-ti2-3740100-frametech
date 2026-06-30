@@ -21,7 +21,15 @@ Além disso, o sistema busca otimizar a comunicação entre cliente e responsáv
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+| Ferramenta | Versão recomendada      | Obrigatório?   |
+| ---------- | ----------------------- | ------------   |
+| Git        | Última versão           | ✅             |
+| Java JDK   | **17**                  | ✅             |
+| Maven      | 3.9+ (ou Maven Wrapper) | ✅            |
+| Node.js    | **22 LTS** (ou 20 LTS)  | ✅            |
+| npm        | Vem com o Node          | ✅            |
+| VS Code    | Última versão           | ✅            |
+
 
 ## Histórico de versões
 
