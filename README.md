@@ -29,9 +29,9 @@ Além disso, o sistema busca otimizar a comunicação entre cliente e responsáv
 | Node.js    | **22 LTS** (ou 20 LTS)  | ✅            |
 | npm        | Vem com o Node          | ✅            |
 | VS Code    | Última versão           | ✅            |
+
+
 Projeto hospedado: frametechh.netlify.app
-
-
 ## Histórico de versões
 
 * 0.1.1
