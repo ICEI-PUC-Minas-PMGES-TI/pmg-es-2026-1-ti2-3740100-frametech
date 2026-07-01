@@ -21,14 +21,14 @@ Além disso, o sistema busca otimizar a comunicação entre cliente e responsáv
 
 ## Instruções de utilização
 
-| Ferramenta | Versão recomendada      | Obrigatório?   |
-| ---------- | ----------------------- | ------------   |
+| Ferramenta | Versão recomendada      | Obrigatório?    |
+| ---------- | ----------------------- | ------------    |
 | Git        | Última versão           | ✅             |
 | Java JDK   | **17**                  | ✅             |
-| Maven      | 3.9+ (ou Maven Wrapper) | ✅            |
-| Node.js    | **22 LTS** (ou 20 LTS)  | ✅            |
-| npm        | Vem com o Node          | ✅            |
-| VS Code    | Última versão           | ✅            |
+| Maven      | 3.9+ (ou Maven Wrapper) | ✅             |
+| Node.js    | **22 LTS** (ou 20 LTS)  | ✅             |
+| npm        | Vem com o Node          | ✅             |
+| VS Code    | Última versão           | ✅             |
 
 
 
@@ -41,12 +41,23 @@ Além disso, o sistema busca otimizar a comunicação entre cliente e responsáv
 | Back-end (API Local) | `http://localhost:8080` |
 | Projeto hospedado | `https://frametechh.netlify.app` |
 
+
 ## Histórico de versões
 
-* 0.1.1
-    * CHANGE: Atualização das documentações. Código permaneceu inalterado.
-* 0.1.0
-    * Implementação da funcionalidade X pertencente ao processo P.
-* 0.0.1
-    * Trabalhando na modelagem do processo de negócio.
+* **1.0.0**
+    * Finalização do FrameTech.
+    * Implementação das principais funcionalidades do sistema.
+    * Correção de bugs e melhorias na interface.
+    * Atualização da documentação.
 
+* **0.2.0**
+    * Desenvolvimento do processo completo de gerenciamento de tarefas.
+    * Implementação das funcionalidades de projetos e tarefas.
+    * Integração entre o front-end e o back-end.
+    * Realização de testes e ajustes no sistema.
+
+* **0.1.0**
+    * Início do desenvolvimento do projeto.
+    * Levantamento dos requisitos e modelagem do sistema.
+    * Configuração do ambiente de desenvolvimento.
+    * Criação da estrutura inicial do front-end e do back-end.
