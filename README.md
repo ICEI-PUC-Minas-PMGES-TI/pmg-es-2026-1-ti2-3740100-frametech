@@ -30,28 +30,16 @@ Além disso, o sistema busca otimizar a comunicação entre cliente e responsáv
 | npm        | Vem com o Node          | ✅            |
 | VS Code    | Última versão           | ✅            |
 
-# Executando o Back-end
- Dentro da pasta backend/
-cd backend
-mvn spring-boot:run
 
-# Executando o Front-end
-Dentro da pasta src/
-cd FRAME
-npm install
-npm run dev
 
-# Executando Front-end e Back-end simultaneamente
-Terminal 1 — Back-end
-cd backend
-mvn spring-boot:run
-
-Terminal 2 — Front-end
-cd frontend
-npm install   # apenas na primeira execução
-npm run dev
-
-Projeto hospedado: frametechh.netlify.app
+| Etapa | Comando / Informação |
+|-------|-----------------------|
+| Executar o Back-end | `cd backend`<br>`mvn spring-boot:run` |
+| Executar o Front-end | `cd FRAME`<br>`npm install` *(apenas na primeira execução)*<br>`npm run dev` |
+| Executar Front-end e Back-end simultaneamente | **Terminal 1 (Back-end):**<br>`cd backend`<br>`mvn spring-boot:run`<br><br>**Terminal 2 (Front-end):**<br>`cd FRAME`<br>`npm install` *(apenas na primeira execução)*<br>`npm run dev` |
+| Front-end (Local) | `http://localhost:5173` |
+| Back-end (API Local) | `http://localhost:8080` |
+| Projeto hospedado | `https://frametechh.netlify.app` |
 
 ## Histórico de versões
 
