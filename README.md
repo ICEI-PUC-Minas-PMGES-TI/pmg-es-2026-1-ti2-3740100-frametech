@@ -30,18 +30,18 @@ Além disso, o sistema busca otimizar a comunicação entre cliente e responsáv
 | npm        | Vem com o Node          | ✅            |
 | VS Code    | Última versão           | ✅            |
 
-Executando o Back-end
-# Dentro da pasta backend/
+# Executando o Back-end
+ Dentro da pasta backend/
 cd backend
 mvn spring-boot:run
 
-Executando o Front-end
-# Dentro da pasta src/
+# Executando o Front-end
+Dentro da pasta src/
 cd FRAME
 npm install
 npm run dev
 
-Executando Front-end e Back-end simultaneamente
+# Executando Front-end e Back-end simultaneamente
 Terminal 1 — Back-end
 cd backend
 mvn spring-boot:run
