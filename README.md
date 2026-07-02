@@ -45,11 +45,15 @@ Além disso, o sistema busca otimizar a comunicação entre cliente e responsáv
 
 
 
-
 ## Histórico de versões
 
+* **2.0.0**
+    * Versão final do FrameTech.
+    * Conclusão de todas as funcionalidades previstas.
+    * Correção de bugs, otimização de desempenho e melhorias na interface.
+    * Validação completa do sistema e atualização da documentação final.
+
 * **1.0.0**
-    * Finalização do FrameTech.
     * Implementação das principais funcionalidades do sistema.
     * Correção de bugs e melhorias na interface.
     * Atualização da documentação.
