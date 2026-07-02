@@ -156,8 +156,9 @@ _A sessão a seguir apresenta a descrição do produto de software desenvolvido.
 [Documentação da interface do sistema](interface.md)
 
 ## 7. Conclusão
+O desenvolvimento do FrameTech permitiu aplicar, na prática, conhecimentos adquiridos ao longo do curso, envolvendo tecnologias de front-end, back-end e banco de dados. Durante o projeto, foi possível compreender todas as etapas do desenvolvimento de software, desde o levantamento dos requisitos até a implementação, integração e testes das funcionalidades.
 
-_Apresente aqui a conclusão do seu trabalho. Deve ser apresentada aqui uma discussão dos resultados obtidos no trabalho, local em que se verifica as observações pessoais de cada aluno. Essa seção poderá também apresentar sugestões de novas linhas de estudo._
+Os resultados obtidos demonstram que o sistema atende aos objetivos propostos, oferecendo uma plataforma funcional para o gerenciamento de projetos, tarefas e equipes. Além disso, o desenvolvimento proporcionou experiência com integração entre aplicações, organização de código, versionamento e resolução de problemas encontrados durante a implementação.
 
 # REFERÊNCIAS
 
