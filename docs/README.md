@@ -196,7 +196,6 @@ _Atualizar os links e adicionar novos links para que a estrutura do código este
 
 
 [Slides da apresentação final](presentations/)
-https://canva.link/80tpy8j4cgi8eil
 
 [Vídeo da apresentação final](video/)
 
